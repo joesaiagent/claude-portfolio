@@ -1,6 +1,12 @@
-# AI Portfolio — $300 → $10K (Autonomous)
+# claude-portfolio — $300 → $10K (autonomous)
 
-Fully autonomous multi-agent system trading $300 via Alpaca and posting to X. You supervise via Alpaca's web UI, X feed, and the local dashboard. No approval clicks.
+[![Live status](https://img.shields.io/badge/live-status-blue)](https://joesaiagent.github.io/claude-portfolio/)
+[![Stars](https://img.shields.io/github/stars/joesaiagent/claude-portfolio?style=social)](https://github.com/joesaiagent/claude-portfolio)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+An autonomous AI agent stack trying to turn **$300 into $10K**. Real (paper) money in Alpaca, real posts on X/Bluesky/Mastodon, real public source code. Watch the experiment at **[joesaiagent.github.io/claude-portfolio](https://joesaiagent.github.io/claude-portfolio/)**.
+
+Not financial advice. This is a public experiment in cheap LLM-driven autonomy.
 
 ## Strategy
 
@@ -12,76 +18,69 @@ Fully autonomous multi-agent system trading $300 via Alpaca and posting to X. Yo
 
 ## Agents
 
-| Agent | Role |
-|-------|------|
-| `research` | Web-search candidates per bucket → `watchlist.json`. |
-| `allocator` | Sizes orders, **places them via Alpaca** when autonomous. |
-| `tracker` | Reads positions + prices from Alpaca, per-bucket P/L, Claude summary. |
-| `content` | Drafts posts, **auto-posts to X** when autonomous. |
-| `analytics` | Pulls post KPIs (X analytics — stubbed for v1). |
+| Agent | Cost | Role |
+|-------|------|------|
+| `research` | $0 | yfinance + Python scoring rules pick candidates per bucket |
+| `allocator` | $0 | Deterministic sizing, places real orders via Alpaca |
+| `tracker` | $0 | Reads Alpaca state, computes P/L, templated summary |
+| `content` | ~$0.005/cycle | Templated posts + 1 Claude Haiku narrative call |
+| `analytics` | $0 | Counts post KPIs |
+| `publish` | $0 | Pushes status JSON to GitHub Pages |
 
-All powered by `claude-opus-4-7` with adaptive thinking.
+**Total cost: ~$0.50-1.50/month** (3 cycles/day). Free-tier architecture: heavy lifting is Python rules + free APIs (yfinance, Alpaca), Claude is reserved for the human-voice content.
 
 ## Setup
 
-### 1. Install
 ```bash
-cd ~/ai-portfolio
-source .venv/bin/activate
+git clone https://github.com/joesaiagent/claude-portfolio.git
+cd claude-portfolio
+python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
+cp .env.example .env  # fill in keys (see below)
 ```
 
-### 2. Get Alpaca paper keys (free, instant)
-1. Sign up at https://alpaca.markets/
-2. Dashboard → **Paper Trading** tab (top-right toggle)
-3. Click **Generate New Keys** → copy `API Key ID` + `Secret Key`
-4. Paste into `.env`:
-   ```
-   ALPACA_API_KEY=PK...
-   ALPACA_SECRET_KEY=...
-   ALPACA_PAPER=true
-   ```
+Required keys:
+- **Alpaca paper** (free): https://alpaca.markets → Paper Trading → API Keys
+- **Anthropic** (~$5 buys months of runway at this rate): https://console.anthropic.com/settings/keys
 
-### 3. Get X (Twitter) API keys
-1. Apply at https://developer.x.com — Free tier supports posting (50 tweets/day).
-2. Create an App → Generate **Consumer Keys** (API Key + Secret)
-3. Generate **Access Token + Secret** (must have read-and-write permission)
-4. Paste all four into `.env`.
+Optional (for social fan-out):
+- **Bluesky** app password: https://bsky.app/settings/app-passwords (instant, free)
+- **Mastodon** access token: any instance's Preferences → Development → New Application
+- **X** API keys: https://developer.x.com (1-3 day approval)
 
-If X keys aren't ready yet, drafts will save to the dashboard and you can paste manually.
+## Run
 
-### 4. Run dashboard
 ```bash
+# Dashboard
 streamlit run dashboard.py
+
+# Autonomous loop (3 cycles/day at 9:00, 12:00, 16:30 ET)
+caffeinate -i python runner.py
+
+# Single cycle
+python runner.py --dry
 ```
 
-### 5. Run the autonomous loop
-```bash
-python runner.py                    # 1-hour cycles, forever
-python runner.py --once             # one cycle, exit
-python runner.py --interval 1800    # 30-minute cycles
+## Architecture
+
+```
+runner.py          → schedules 3 daily cycles in ET
+  ├─ research      → yfinance screens → watchlist.json
+  ├─ allocator     → sizes per bucket, places Alpaca orders (autonomous mode)
+  ├─ tracker       → broker state → tracker_report.json
+  ├─ content       → drafts + auto-posts to X/Bluesky/Mastodon
+  ├─ analytics     → counts post KPIs
+  └─ publish       → copies state to docs/, git push → GitHub Pages updates
 ```
 
-When `autonomous_mode: true` and market is open, the allocator places orders directly and the content agent auto-posts.
+## Safety rails
 
-## Going Live
+- **Lottery hard cap:** never deploys more than $15 cumulative
+- **Bucket budgets enforced in code,** not just prompts
+- **Market-hours check** before placing orders
+- **Paper-mode default** — must explicitly flip `ALPACA_PAPER=false` to risk real money
+- **Affiliate links optional** — set `ALPACA_REFERRAL_URL` in `.env` to auto-append
 
-After 2-4 weeks in paper mode showing decent picks:
+## License
 
-1. In Alpaca dashboard → toggle to **Live Trading** → fund via ACH from Robinhood ($300)
-2. Generate **Live keys** → paste into `.env`, set `ALPACA_PAPER=false`
-3. Restart runner. Same code, real money.
-
-## Where to supervise
-
-- **Brokerage:** Alpaca dashboard shows live positions, fills, P/L
-- **Social:** X feed shows posts as they go up
-- **Local:** Streamlit dashboard (`localhost:8501`) for buckets + watchlist + drafts
-- **Logs:** every order is appended to `data/portfolio_state.json` → `order_log`
-
-## Safety rails (still in place)
-
-- **Lottery hard cap:** `lottery_deployed_total` ≥ $15 → allocator skips lottery buys forever.
-- **Bucket budgets** enforced in code, not just prompts.
-- **Market-hours check** before placing orders.
-- **Paper mode default.** You must explicitly flip `ALPACA_PAPER=false` to risk real money.
+MIT. See [LICENSE](LICENSE).

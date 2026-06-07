@@ -5,7 +5,7 @@ import traceback
 from datetime import datetime, timezone, timedelta
 from zoneinfo import ZoneInfo
 
-from agents import broker
+from agents import broker, publish
 from agents.analytics import agent as analytics
 from agents.content import agent as content
 from agents.allocator import agent as allocator
@@ -31,12 +31,14 @@ def cycle_premarket():
     step("research", research.run)
     step("tracker", tracker.run)
     step("allocator", allocator.run)
+    step("publish", publish.run)
 
 
 def cycle_midday():
     """Once daily ~12:00 ET. Light: refresh tracker + draft a post."""
     step("tracker", tracker.run)
     step("content", content.run)
+    step("publish", publish.run)
 
 
 def cycle_postclose():
@@ -44,6 +46,7 @@ def cycle_postclose():
     step("tracker", tracker.run)
     step("content", content.run)
     step("analytics", analytics.run)
+    step("publish", publish.run)
 
 
 CYCLES = {

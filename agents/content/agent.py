@@ -135,13 +135,14 @@ def run() -> dict:
             "created_at": now,
         }
         if is_autonomous(state):
-            result = social.post_tweet(post["text"])
+            result = social.post_everywhere(post["text"])
+            post["fanout"] = result["results"]
             if result.get("posted"):
                 post["status"] = "posted"
                 post["posted_at"] = now
-                post["external_id"] = result["tweet_id"]
+                post["posted_platforms"] = [r["platform"] for r in result["results"] if r["posted"]]
             else:
-                post["post_error"] = result.get("reason")
+                post["post_error"] = "no platform credentials configured"
         drafts.append(post)
 
     existing = json.loads(POSTS_FILE.read_text()) if POSTS_FILE.exists() else []
