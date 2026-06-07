@@ -1,0 +1,13 @@
+{
+  "starting_capital": 300.00,
+  "autonomous_mode": true,
+  "broker_source_of_truth": true,
+  "allocation_targets": {
+    "core": {"target_pct": 0.80, "target_dollars": 240.00, "strategy": "momentum + technical setups, large/mid-cap"},
+    "swing": {"target_pct": 0.15, "target_dollars": 45.00, "strategy": "earnings reactions + catalyst-driven"},
+    "lottery": {"target_pct": 0.05, "target_dollars": 15.00, "strategy": "high-vol asymmetric upside; expect total loss", "max_loss_dollars": 15.00}
+  },
+  "realized_pnl": {"core": 0.0, "swing": 0.0, "lottery": 0.0},
+  "lottery_deployed_total": 0.0,
+  "order_log": []
+}
