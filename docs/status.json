@@ -1,0 +1,41 @@
+{
+  "timestamp": "2026-06-07T19:29:07.035324+00:00",
+  "broker_mode": "paper",
+  "positions": [],
+  "buckets": {
+    "core": {
+      "target_dollars": 240.0,
+      "deployed_cost_basis": 0,
+      "current_value": 0,
+      "unrealized_pl_dollars": 0,
+      "unrealized_pl_pct": 0,
+      "realized_pl_dollars": 0.0,
+      "position_count": 0
+    },
+    "swing": {
+      "target_dollars": 45.0,
+      "deployed_cost_basis": 0,
+      "current_value": 0,
+      "unrealized_pl_dollars": 0,
+      "unrealized_pl_pct": 0,
+      "realized_pl_dollars": 0.0,
+      "position_count": 0
+    },
+    "lottery": {
+      "target_dollars": 15.0,
+      "deployed_cost_basis": 0,
+      "current_value": 0,
+      "unrealized_pl_dollars": 0,
+      "unrealized_pl_pct": 0,
+      "realized_pl_dollars": 0.0,
+      "position_count": 0
+    }
+  },
+  "cash": 300.0,
+  "buying_power": 300.0,
+  "total_invested_value": 0.0,
+  "total_portfolio_value": 300.0,
+  "total_pl_dollars": 0.0,
+  "total_pl_pct": 0.0,
+  "summary": "Portfolio: $300 cash, 0% deployed. Waiting for next premarket cycle."
+}

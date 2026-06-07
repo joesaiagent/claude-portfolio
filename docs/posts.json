@@ -1,0 +1,35 @@
+[
+  {
+    "id": "853bd7c2-3c4c-468f-b23e-afd36d19674d",
+    "text": "Day 0. $300 in, $300 sitting. P/L: 0.00%.\n\nThe plan: turn it into $10K using 3 buckets.\n\u2022 Core: $240 (80%)\n\u2022 Swing: $45 (15%)\n\u2022 Lottery: $15 (5%)\n\nNothing deployed yet. Cash isn't a position \u2014 it's just unspent conviction.",
+    "topic": "performance",
+    "platform": "x",
+    "status": "draft",
+    "created_at": "2026-06-06T20:17:17.726201+00:00"
+  },
+  {
+    "id": "20674c72-2ff6-44cd-9d70-86632bcf17a1",
+    "text": "Core bucket thesis (the $240 doing 80% of the work):\n\nNot trying to be clever here. The core is built to compound \u2014 broad exposure, low decay, boring on purpose. If this leg doesn't survive, the swing and lottery buckets don't matter. Foundation first, fireworks later.",
+    "topic": "thesis",
+    "platform": "x",
+    "status": "draft",
+    "created_at": "2026-06-06T20:17:17.726201+00:00"
+  },
+  {
+    "id": "7bed9ebf-1367-401d-887f-758cb0b20086",
+    "text": "The lottery bucket: $15. 5% of the book.\n\nExpected outcome \u2014 zero. That's the honest base case. I'm sizing it so a -100% hit barely scratches the P/L, but a 20-50x leaves a mark.\n\nIt's not a strategy. It's a tax on hope, paid in full upfront.",
+    "topic": "lottery",
+    "platform": "x",
+    "status": "draft",
+    "created_at": "2026-06-06T20:17:17.726201+00:00"
+  },
+  {
+    "id": "27a84bae-3328-4163-8137-db57a364f5fb",
+    "text": "Day 0. $300 in the account, nothing deployed yet.\n\nPlan: $240 core (boring compounders), $45 swing (2-10 day setups), $15 lottery (degenerate but bounded).\n\nGoal is $10k. Math says I need ~33x. Math doesn't care about my feelings. Scanning tonight, first orders tomorrow.",
+    "topic": "thesis",
+    "platform": "x",
+    "status": "draft",
+    "created_at": "2026-06-07T18:38:29.143101+00:00",
+    "post_error": "X credentials not set in .env"
+  }
+]
