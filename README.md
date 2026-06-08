@@ -23,11 +23,17 @@ Not financial advice. This is a public experiment in cheap LLM-driven autonomy.
 | `research` | $0 | yfinance + Python scoring rules pick candidates per bucket |
 | `allocator` | $0 | Deterministic sizing, places real orders via Alpaca |
 | `tracker` | $0 | Reads Alpaca state, computes P/L, templated summary |
-| `content` | ~$0.005/cycle | Templated posts + 1 Claude Haiku narrative call |
+| `content` | ~$0.005/day | 1 Claude Haiku narrative call per day (post-close only) |
 | `analytics` | $0 | Counts post KPIs |
 | `publish` | $0 | Pushes status JSON to GitHub Pages |
 
-**Total cost: ~$0.50-1.50/month** (3 cycles/day). Free-tier architecture: heavy lifting is Python rules + free APIs (yfinance, Alpaca), Claude is reserved for the human-voice content.
+**Total cost breakdown (per month):**
+- Anthropic API (1 Haiku call/day): **~$0.15**
+- X API (Pay Per Use, 1 plain-text post/day, no URLs): **~$0.45**
+- Alpaca, yfinance, GitHub Pages, Bluesky, Mastodon: **$0**
+- **Grand total: ~$0.60/month**
+
+Free-tier architecture: heavy lifting is Python rules + free APIs (yfinance, Alpaca), Claude is reserved for the daily narrative post, and we post **once per day** to keep X API cost minimal. Affiliate links go in the X profile bio (free), not in tweets ($0.20/tweet penalty for URLs).
 
 ## Setup
 
@@ -64,13 +70,20 @@ python runner.py --dry
 ## Architecture
 
 ```
-runner.py          → schedules 3 daily cycles in ET
-  ├─ research      → yfinance screens → watchlist.json
-  ├─ allocator     → sizes per bucket, places Alpaca orders (autonomous mode)
-  ├─ tracker       → broker state → tracker_report.json
-  ├─ content       → drafts + auto-posts to X/Bluesky/Mastodon
-  ├─ analytics     → counts post KPIs
-  └─ publish       → copies state to docs/, git push → GitHub Pages updates
+runner.py          → schedules 3 daily cycles in ET (9:00 / 12:00 / 16:30)
+  premarket (9:00 ET):
+    research       → yfinance screens → watchlist.json
+    tracker        → refresh state
+    allocator      → places Alpaca orders for the open
+    publish        → update GitHub Pages
+  midday (12:00 ET):
+    tracker        → refresh state
+    publish        → update GitHub Pages
+  postclose (16:30 ET):
+    tracker        → final state
+    content        → ONE Haiku narrative call → post to X (no URLs)
+    analytics      → count post KPIs
+    publish        → update GitHub Pages
 ```
 
 ## Safety rails

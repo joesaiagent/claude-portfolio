@@ -35,16 +35,15 @@ def cycle_premarket():
 
 
 def cycle_midday():
-    """Once daily ~12:00 ET. Light: refresh tracker + draft a post."""
+    """Once daily ~12:00 ET. Light: refresh tracker only (no content — saves $)."""
     step("tracker", tracker.run)
-    step("content", content.run)
     step("publish", publish.run)
 
 
 def cycle_postclose():
-    """Once daily ~16:30 ET. Final tracker, content recap, analytics."""
+    """Once daily ~16:30 ET. Final tracker + the ONE daily X post + analytics."""
     step("tracker", tracker.run)
-    step("content", content.run)
+    step("content", content.run)  # generates and posts the 1 daily summary
     step("analytics", analytics.run)
     step("publish", publish.run)
 
