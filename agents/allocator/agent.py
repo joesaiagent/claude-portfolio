@@ -114,8 +114,11 @@ def run() -> dict:
         spent_total += s["estimated_cost"]
         safe.append(s)
 
+    # Note: we do NOT gate on broker.is_market_open(). Alpaca accepts DAY limit
+    # orders submitted outside market hours and queues them for the next open.
+    # This lets the 9:00 ET premarket cycle place orders that fill at 9:30 ET.
     placed = []
-    if is_autonomous(state) and broker.is_market_open():
+    if is_autonomous(state):
         for s in safe:
             try:
                 order = broker.submit_buy(s["ticker"], s["shares"], s.get("max_price"))
