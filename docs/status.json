@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-07T19:29:07.035324+00:00",
+  "timestamp": "2026-06-08T03:22:32.791359+00:00",
   "broker_mode": "paper",
   "positions": [],
   "buckets": {
@@ -32,7 +32,7 @@
     }
   },
   "cash": 300.0,
-  "buying_power": 300.0,
+  "buying_power": 16.85,
   "total_invested_value": 0.0,
   "total_portfolio_value": 300.0,
   "total_pl_dollars": 0.0,

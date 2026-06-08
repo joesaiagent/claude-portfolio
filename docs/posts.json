@@ -31,5 +31,112 @@
     "status": "draft",
     "created_at": "2026-06-07T18:38:29.143101+00:00",
     "post_error": "X credentials not set in .env"
+  },
+  {
+    "id": "c7599d20-3cc7-4d81-a9a4-f08d4dedaff4",
+    "text": "Cash on the sidelines, screener running. Next entries when premarket fires.",
+    "topic": "update",
+    "platform": "x",
+    "status": "draft",
+    "created_at": "2026-06-08T01:23:38.093905+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "post_error": "no platform credentials configured"
+  },
+  {
+    "id": "09c170a9-9fd4-4062-be7d-3456dc74ad28",
+    "text": "Just kicked off the $300 to $10K challenge. Starting from zero positions, building a diversified strategy across core, swing, and lottery plays. Day 1 begins now. Let's see where this goes.",
+    "topic": "narrative",
+    "platform": "x",
+    "status": "draft",
+    "created_at": "2026-06-08T01:23:38.093905+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "post_error": "no platform credentials configured"
+  },
+  {
+    "id": "0ca74e24-5565-4ef8-85ba-caaf3ab75a1e",
+    "text": "Day 1: Starting the 300 to 10K journey. Core bucket ready for boring winners, swing trades for momentum, lottery tickets for moonshots. The strategy is simple\u2014let compounding do the heavy lifting. No positions yet, but the plan is locked in.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "draft",
+    "created_at": "2026-06-08T02:35:01.474574+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "post_error": "no platform credentials configured"
+  },
+  {
+    "id": "9b14e55e-b051-4286-b879-762792c4546a",
+    "text": "Day 1 of the challenge: $300 starting capital, zero positions deployed yet. Built the playbook\u201480% core, 15% swing, 5% lottery. Now comes the hard part: finding setups worth risking on. Patience wins over panic buys. Let's go.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-06-08T02:45:02.257235+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2063814530384191821"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-06-08T02:45:02.257235+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
