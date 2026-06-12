@@ -5,7 +5,7 @@ import traceback
 from datetime import datetime, timezone, timedelta
 from zoneinfo import ZoneInfo
 
-from agents import broker, publish
+from agents import broker, exits, publish
 from agents.analytics import agent as analytics
 from agents.content import agent as content
 from agents.allocator import agent as allocator
@@ -27,7 +27,9 @@ def step(name: str, fn):
 
 
 def cycle_premarket():
-    """Once daily ~9:00 ET. Find candidates + queue/place orders for the open."""
+    """Once daily ~9:00 ET. Exits first (queue sells for the open), then find
+    candidates + queue/place buys for the open."""
+    step("exits", exits.run)
     step("research", research.run)
     step("tracker", tracker.run)
     step("allocator", allocator.run)
@@ -35,7 +37,8 @@ def cycle_premarket():
 
 
 def cycle_midday():
-    """Once daily ~12:00 ET. Light: refresh tracker only (no content — saves $)."""
+    """Once daily ~12:00 ET. Intraday stop check + tracker refresh (no content — saves $)."""
+    step("exits", exits.run)
     step("tracker", tracker.run)
     step("publish", publish.run)
 
