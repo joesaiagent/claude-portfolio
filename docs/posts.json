@@ -138,5 +138,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "c62f8d49-5faf-4464-a71f-6972e3c7ad12",
+    "text": "Day 1: Up $1.08 on the $300 grind. Core bucket holding steady with AMD and JPM keeping things green. Swing trades treading water, lottery ticket warming up. The 3-bucket approach is simple: stack wins, don't chase, let compounding work. Still got 9,699 to go.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-06-12T20:30:36.447747+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2065532241141281107"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-06-12T20:30:36.447747+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
