@@ -5,6 +5,7 @@ __pycache__/
 .venv/
 venv/
 .DS_Store
+runner.log
 
 # Editor / IDE / tool-local config
 .claude/
