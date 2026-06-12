@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.aibia.claudeportfolio.midday</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/caffeinate</string>
+        <string>-i</string>
+        <string>/Users/joesaiagent/ai-portfolio/.venv/bin/python</string>
+        <string>/Users/joesaiagent/ai-portfolio/runner.py</string>
+        <string>--once</string>
+        <string>midday</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/joesaiagent/ai-portfolio</string>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>12</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/Users/joesaiagent/ai-portfolio/runner.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/joesaiagent/ai-portfolio/runner.log</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/Users/joesaiagent/ai-portfolio/.venv/bin:/usr/local/bin:/usr/bin:/bin</string>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+    </dict>
+
+    <key>ProcessType</key>
+    <string>Background</string>
+</dict>
+</plist>
