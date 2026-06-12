@@ -1,41 +1,102 @@
 {
-  "timestamp": "2026-06-08T03:22:32.791359+00:00",
+  "timestamp": "2026-06-12T02:36:31.963816+00:00",
   "broker_mode": "paper",
-  "positions": [],
+  "positions": [
+    {
+      "ticker": "LLY",
+      "shares": 0.0424,
+      "entry_price": 1153.744,
+      "current_price": 1159.36,
+      "market_value": 49.156864,
+      "pl_dollars": 0.238118,
+      "pl_pct": 0.48700000000000004,
+      "bucket": "core"
+    },
+    {
+      "ticker": "MDB",
+      "shares": 0.0642,
+      "entry_price": 352.264,
+      "current_price": 356.0,
+      "market_value": 22.8552,
+      "pl_dollars": 0.239851,
+      "pl_pct": 1.061,
+      "bucket": "swing"
+    },
+    {
+      "ticker": "ORCL",
+      "shares": 0.2246,
+      "entry_price": 217.95,
+      "current_price": 184.29,
+      "market_value": 41.391534,
+      "pl_dollars": -7.560036,
+      "pl_pct": -15.443999999999999,
+      "bucket": "core"
+    },
+    {
+      "ticker": "RGTI",
+      "shares": 0.3627,
+      "entry_price": 21.088,
+      "current_price": 20.97,
+      "market_value": 7.605819,
+      "pl_dollars": -0.042799,
+      "pl_pct": -0.5599999999999999,
+      "bucket": "lottery"
+    },
+    {
+      "ticker": "UNH",
+      "shares": 0.1202,
+      "entry_price": 396.688,
+      "current_price": 404.0,
+      "market_value": 48.5608,
+      "pl_dollars": 0.878902,
+      "pl_pct": 1.8429999999999997,
+      "bucket": "core"
+    },
+    {
+      "ticker": "WULF",
+      "shares": 0.3125,
+      "entry_price": 24.478,
+      "current_price": 25.26,
+      "market_value": 7.89375,
+      "pl_dollars": 0.244375,
+      "pl_pct": 3.195,
+      "bucket": "lottery"
+    }
+  ],
   "buckets": {
     "core": {
       "target_dollars": 240.0,
-      "deployed_cost_basis": 0,
-      "current_value": 0,
-      "unrealized_pl_dollars": 0,
-      "unrealized_pl_pct": 0,
+      "deployed_cost_basis": 145.55,
+      "current_value": 139.11,
+      "unrealized_pl_dollars": -6.44,
+      "unrealized_pl_pct": -4.43,
       "realized_pl_dollars": 0.0,
-      "position_count": 0
+      "position_count": 3
     },
     "swing": {
       "target_dollars": 45.0,
-      "deployed_cost_basis": 0,
-      "current_value": 0,
-      "unrealized_pl_dollars": 0,
-      "unrealized_pl_pct": 0,
+      "deployed_cost_basis": 22.62,
+      "current_value": 22.86,
+      "unrealized_pl_dollars": 0.24,
+      "unrealized_pl_pct": 1.06,
       "realized_pl_dollars": 0.0,
-      "position_count": 0
+      "position_count": 1
     },
     "lottery": {
       "target_dollars": 15.0,
-      "deployed_cost_basis": 0,
-      "current_value": 0,
-      "unrealized_pl_dollars": 0,
-      "unrealized_pl_pct": 0,
+      "deployed_cost_basis": 15.3,
+      "current_value": 15.5,
+      "unrealized_pl_dollars": 0.2,
+      "unrealized_pl_pct": 1.32,
       "realized_pl_dollars": 0.0,
-      "position_count": 0
+      "position_count": 2
     }
   },
-  "cash": 300.0,
-  "buying_power": 16.85,
-  "total_invested_value": 0.0,
-  "total_portfolio_value": 300.0,
-  "total_pl_dollars": 0.0,
-  "total_pl_pct": 0.0,
-  "summary": "Portfolio: $300 cash, 0% deployed. Waiting for next premarket cycle."
+  "cash": 116.52,
+  "buying_power": 116.52,
+  "total_invested_value": 177.46,
+  "total_portfolio_value": 293.98,
+  "total_pl_dollars": -6.02,
+  "total_pl_pct": -2.01,
+  "summary": "\ud83d\udcc9 Portfolio $293.98 (-2.01%, P/L $-6.02)\n  core   : 3 pos, $139.11 (-4.43%)\n  swing  : 1 pos, $22.86 (+1.06%)\n  lottery: 2 pos, $15.50 (+1.32%)\n  Best: WULF +3.19%  |  Worst: ORCL -15.44%"
 }
