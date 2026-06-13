@@ -167,5 +167,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "3a214802-f57a-4662-8eb5-39d5d89573ac",
+    "text": "Day 1: $301.17. Core bucket humming with AMD up 2.7% and JPM steady. Swing trades treading water (COIN -0.5%), but that's expected chop. Lottery ticket barely deployed. Still early, but the 3-bucket system is clicking. Small wins compound. Staying disciplined.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-06-13T20:30:37.627312+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2065894633842905343"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-06-13T20:30:37.627312+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
