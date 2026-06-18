@@ -283,5 +283,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "48e70029-7df0-4ba0-ade6-7a994196a460",
+    "text": "Day 3 and we're up 2.88% to $308.65. Core holding AMD is crushing it at +7.7%, swing trades ticking up, even the lottery ticket gained 13.8%. The system's working so far but staying disciplined with position sizing. Long road to 10k but patience beats panic.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-06-18T20:30:06.611427+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2067706443365532010"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-06-18T20:30:06.611427+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
