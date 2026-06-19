@@ -6,6 +6,7 @@ from datetime import datetime, timezone
 from dotenv import load_dotenv
 
 from agents import broker
+from agents._regime import current_regime
 from agents._state import (
     BUCKETS,
     PENDING_TRADES_FILE,
@@ -141,8 +142,11 @@ def _rotation_candidates(state: dict, watchlist: list[dict], positions: list[dic
     return actions, rot
 
 
-def bucket_remaining_budget(state: dict, current_positions: list[dict], bucket: str) -> float:
-    target = state["allocation_targets"][bucket]["target_dollars"]
+def bucket_remaining_budget(state: dict, current_positions: list[dict], bucket: str,
+                            exposure: float = 1.0) -> float:
+    # `exposure` (<=1.0) is the regime multiplier: it shrinks the effective target
+    # in downtrends so the book holds cash instead of deploying fully.
+    target = state["allocation_targets"][bucket]["target_dollars"] * exposure
     deployed = sum(
         p["shares"] * p["entry_price"]
         for p in current_positions
@@ -175,8 +179,13 @@ def run() -> dict:
     held_tickers = {p["ticker"] for p in positions}
     suggestions: list[dict] = []
 
+    # Regime filter: scale how much we deploy. risk_off -> hold more cash.
+    exposure, regime_label, regime_info = current_regime()
+    if simulating() or exposure < 1.0:
+        print(f"[allocator] regime={regime_label} exposure={exposure:.0%} {regime_info}")
+
     for bucket in BUCKETS:
-        remaining = bucket_remaining_budget(state, positions, bucket)
+        remaining = bucket_remaining_budget(state, positions, bucket, exposure)
         if remaining < 1.0:
             continue
 
@@ -228,7 +237,7 @@ def run() -> dict:
     for s in suggestions:
         if spent_total + s["estimated_cost"] > cash:
             continue
-        if spent_per_bucket[s["bucket"]] + s["estimated_cost"] > bucket_remaining_budget(state, positions, s["bucket"]):
+        if spent_per_bucket[s["bucket"]] + s["estimated_cost"] > bucket_remaining_budget(state, positions, s["bucket"], exposure):
             continue
         spent_per_bucket[s["bucket"]] += s["estimated_cost"]
         spent_total += s["estimated_cost"]
@@ -312,6 +321,8 @@ def run() -> dict:
         "placed_orders": placed,
         "suggestions": safe,
         "rotations": rotations,
+        "regime": regime_label,
+        "exposure": exposure,
         "autonomous": is_autonomous(state),
         "simulated": simulating(),
         "market_open": broker.is_market_open(),

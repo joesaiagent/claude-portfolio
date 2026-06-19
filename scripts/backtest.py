@@ -16,6 +16,9 @@ import numpy as np
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import yfinance as yf
+
+from agents._regime import exposure_from_signals
 from agents._screener import CORE_UNIVERSE, FACTOR_WEIGHTS, _zscore, fetch_history, raw_factors
 from agents.allocator.agent import _inverse_vol_budgets
 
@@ -83,7 +86,19 @@ def _exited(strategy, hist, ticker, i, entry, peak_px) -> bool:
     return bool(ma50 and (px / ma50 - 1) < TREND_BAND)
 
 
-def _simulate(strategy, hist, dates, spy_close, tickers) -> list[float]:
+def _breadth(hist, tickers, i) -> float:
+    n = ok = 0
+    for t in tickers:
+        c = hist[t]["Close"].iloc[:i + 1].dropna()
+        if len(c) < 50:
+            continue
+        n += 1
+        if c.iloc[-1] > c.rolling(50).mean().iloc[-1]:
+            ok += 1
+    return ok / n if n else 0.5
+
+
+def _simulate(strategy, hist, dates, spy_close, tickers, regime=False, vix=None) -> list[float]:
     cash, sleeves, curve = 1.0, [], []
     for i in range(WARMUP, len(dates)):
         # 1. mark-to-market + exits (skip the first day — no prior close yet)
@@ -104,13 +119,19 @@ def _simulate(strategy, hist, dates, spy_close, tickers) -> list[float]:
         # 2. weekly rebalance
         if (i - WARMUP) % REBAL_EVERY == 0:
             total = cash + sum(s["value"] for s in sleeves)
+            # regime filter scales how much we deploy (rest stays cash)
+            exposure = 1.0
+            if regime:
+                v = float(vix.iloc[i]) if (vix is not None and not pd.isna(vix.iloc[i])) else None
+                exposure, _ = exposure_from_signals(spy_close.iloc[:i + 1], _breadth(hist, tickers, i), v)
+            deploy = total * exposure
             picks = _rank(strategy, hist, tickers, i, spy_close)
             if picks:
                 if strategy == "new":
                     budgets = _inverse_vol_budgets(
-                        [{"ticker": t, "vol20": v} for (t, v) in picks], total, "core")
+                        [{"ticker": t, "vol20": v} for (t, v) in picks], deploy, "core")
                 else:
-                    budgets = [total / len(picks)] * len(picks)
+                    budgets = [deploy / len(picks)] * len(picks)
                 sleeves, spent = [], 0.0
                 for (t, _v), b in zip(picks, budgets):
                     px = hist[t]["Close"].iloc[i]
@@ -145,18 +166,25 @@ def main():
     for t in tickers + ["SPY"]:
         hist[t] = hist[t].reindex(dates).ffill()
     spy_close = hist["SPY"]["Close"]
+    try:
+        vix = yf.download("^VIX", period="2y", progress=False, auto_adjust=True)["Close"].reindex(dates).ffill()
+        if isinstance(vix, pd.DataFrame):
+            vix = vix.iloc[:, 0]
+    except Exception:
+        vix = None
 
     new_curve = _simulate("new", hist, dates, spy_close, tickers)
+    reg_curve = _simulate("new", hist, dates, spy_close, tickers, regime=True, vix=vix)
     old_curve = _simulate("old", hist, dates, spy_close, tickers)
     spy_curve = list((spy_close.iloc[WARMUP:] / spy_close.iloc[WARMUP]).values)
 
     span = (dates[-1] - dates[WARMUP]).days
     print(f"\nBacktest window: {dates[WARMUP].date()} -> {dates[-1].date()}  ({span} days, {len(tickers)} tickers)\n")
-    print(f"{'strategy':<8} {'total ret':>10} {'max DD':>9} {'Sharpe':>8}")
-    print("-" * 38)
-    for name, curve in (("NEW", new_curve), ("OLD", old_curve), ("SPY", spy_curve)):
+    print(f"{'strategy':<12} {'total ret':>10} {'max DD':>9} {'Sharpe':>8}")
+    print("-" * 42)
+    for name, curve in (("NEW", new_curve), ("NEW+REGIME", reg_curve), ("OLD", old_curve), ("SPY", spy_curve)):
         m = _metrics(curve)
-        print(f"{name:<8} {m['total_return_pct']:>9.1f}% {m['max_drawdown_pct']:>8.1f}% {m['sharpe']:>8.2f}")
+        print(f"{name:<12} {m['total_return_pct']:>9.1f}% {m['max_drawdown_pct']:>8.1f}% {m['sharpe']:>8.2f}")
     print("\nCaveats: daily-close resolution, weekly rebalance, core bucket only, no "
           "fees/slippage, single historical path. Indicative only — not a forecast.")
 

@@ -19,6 +19,7 @@ MODULES = [
     "tests.test_exits",
     "tests.test_sizing",
     "tests.test_rotation",
+    "tests.test_regime",
 ]
 
 
