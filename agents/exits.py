@@ -28,7 +28,10 @@ load_dotenv()
 
 RULES = {
     # hard_stop = floor vs entry; trail_pct = give-back from peak once armed at trail_arm_pct.
-    "core":    {"hard_stop_pct": -15.0, "trail_pct": 12.0, "trail_arm_pct": 8.0, "trend_break": True},
+    # Core is tuned to LET WINNERS RUN (wide trailing, no trend-break) — backtests
+    # showed that captures the bulk of momentum's upside; the -15 hard stop + a
+    # wide 25% give-back from peak still cap a blowup. (Goal: fastest survivable growth.)
+    "core":    {"hard_stop_pct": -15.0, "trail_pct": 25.0, "trail_arm_pct": 15.0, "trend_break": False},
     "swing":   {"hard_stop_pct": -8.0,  "trail_pct": 7.0,  "trail_arm_pct": 6.0,
                 "target_pct": 20.0, "max_hold_days": 10},
     "lottery": {"hard_stop_pct": -60.0, "trail_pct": 25.0, "trail_arm_pct": 60.0, "trim_pct": 50.0},

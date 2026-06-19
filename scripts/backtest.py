@@ -27,8 +27,9 @@ REBAL_EVERY = 5          # trading days (~weekly)
 TOP_N = 5
 WARMUP = 60              # need >=50 sessions for MA / Sharpe
 HARD_STOP = -15.0        # both strategies keep the -15 floor
-TRAIL_ARM, TRAIL = 8.0, 12.0  # NEW core trailing stop
-TREND_BAND = -0.02       # NEW core trend-break vs 50DMA
+TRAIL_ARM, TRAIL = 15.0, 25.0  # NEW core trailing stop (let winners run; matches exits.py)
+TREND_BAND = -0.02       # core trend-break vs 50DMA (disabled below)
+TREND_BREAK_ON = False   # core trend-break off — let winners run
 
 
 def _old_score(close: pd.Series, spy_close: pd.Series) -> float:
@@ -81,6 +82,8 @@ def _exited(strategy, hist, ticker, i, entry, peak_px) -> bool:
     peak_pl = (peak_px / entry - 1) * 100
     if peak_pl >= TRAIL_ARM and pl <= peak_pl - TRAIL:
         return True
+    if not TREND_BREAK_ON:
+        return False
     close = hist[ticker]["Close"].iloc[:i + 1]
     ma50 = close.rolling(50).mean().iloc[-1]
     return bool(ma50 and (px / ma50 - 1) < TREND_BAND)

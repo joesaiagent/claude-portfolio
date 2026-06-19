@@ -12,19 +12,19 @@ def test_hard_stop_floor():
 
 
 def test_trailing_fires_when_armed_and_given_back():
-    # Peak +25%, now +10% -> gave back >12 from peak after arming at +8 -> full exit.
-    d = _decide(_p(10), "core", 0, 25.0, False, False)
+    # Core arms at +15, trails 25 from peak. Peak +40%, now +10% (gave back 30) -> exit.
+    d = _decide(_p(10), "core", 0, 40.0, False, False)
     assert d and d[0] == 1.0 and "trailing" in d[1]
 
 
 def test_trailing_silent_below_arm():
-    # Peak +7% never armed (arm +8) -> hold.
-    assert _decide(_p(5), "core", 0, 7.0, False, False) is None
+    # Peak +10% never armed (core arm +15) -> hold.
+    assert _decide(_p(8), "core", 0, 10.0, False, False) is None
 
 
 def test_trailing_silent_near_peak():
-    # Still within 12 of the +25 peak -> hold.
-    assert _decide(_p(20), "core", 0, 25.0, False, False) is None
+    # Within 25 of the +30 peak -> let it run.
+    assert _decide(_p(10), "core", 0, 30.0, False, False) is None
 
 
 def test_swing_take_profit():
@@ -39,9 +39,9 @@ def test_lottery_trim_once_then_suppressed():
     assert _decide(_p(55), "lottery", 1, 55.0, False, True) is None
 
 
-def test_core_trend_break():
-    d = _decide(_p(2), "core", 0, 2.0, True, False)
-    assert d and d[0] == 1.0 and "trend break" in d[1]
+def test_core_trend_break_disabled():
+    # Core trend-break is intentionally OFF (let winners run) -> no exit on it alone.
+    assert _decide(_p(2), "core", 0, 2.0, True, False) is None
 
 
 def test_swing_max_hold():
@@ -60,6 +60,6 @@ def run():
     test_trailing_silent_near_peak()
     test_swing_take_profit()
     test_lottery_trim_once_then_suppressed()
-    test_core_trend_break()
+    test_core_trend_break_disabled()
     test_swing_max_hold()
     test_plain_hold()
