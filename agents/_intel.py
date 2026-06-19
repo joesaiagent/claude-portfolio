@@ -3,6 +3,7 @@ Free tier (AV allows 25 requests/day; research enriches max 15 tickers once dail
 Every source degrades to neutral on failure so screening never blocks."""
 import os
 import time
+from datetime import date, timedelta
 
 import requests
 import yfinance as yf
@@ -31,6 +32,28 @@ def finnhub_rec(ticker: str) -> float:
         if not total:
             return 0.0
         return (sb + 0.5 * b - 0.5 * s - ss) / total
+    except Exception:
+        return 0.0
+
+
+def finnhub_insider_sentiment(ticker: str) -> float:
+    """Finnhub insider MSPR (monthly share-purchase ratio), latest month, mapped
+    to [-1, 1]. Positive = insiders net buying (bullish 30-90d per Finnhub).
+    Free endpoint. Neutral 0.0 with no key or on failure."""
+    key = os.getenv("FINNHUB_KEY")
+    if not key:
+        return 0.0
+    try:
+        to = date.today()
+        frm = to - timedelta(days=180)
+        r = requests.get(f"{FINNHUB_URL}/stock/insider-sentiment",
+                         params={"symbol": ticker, "from": frm.isoformat(),
+                                 "to": to.isoformat(), "token": key}, timeout=15).json()
+        data = r.get("data", [])
+        if not data:
+            return 0.0
+        latest = max(data, key=lambda d: (d.get("year", 0), d.get("month", 0)))
+        return max(-1.0, min(1.0, latest.get("mspr", 0) / 100.0))
     except Exception:
         return 0.0
 
@@ -100,9 +123,11 @@ def enrich(candidates: list[dict]) -> list[dict]:
         c["sector"] = sector
         c["excluded"] = sector in EXCLUDED_SECTORS
         fin = finnhub_rec(t)
+        insider = finnhub_insider_sentiment(t)
         c["finnhub_rec"] = round(fin, 3)
+        c["insider_mspr"] = round(insider, 3)
         tilt = max(-NEWS_TILT_CAP, min(NEWS_TILT_CAP,
-                   sent * 6 + fin * 4 + min(upside, 40) * 0.15 + (3 - rec) * 2))
+                   sent * 6 + fin * 4 + insider * 5 + min(upside, 40) * 0.15 + (3 - rec) * 2))
         c["score"] = round(c["score"] + tilt, 2)
         c["conviction"] = min(5, max(1, int(round((c["score"] - 50) / 8 + 3))))
         c["thesis"] = (
