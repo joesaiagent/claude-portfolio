@@ -4,28 +4,38 @@ from __future__ import annotations
 import warnings
 from datetime import datetime, timedelta
 
+import numpy as np
 import pandas as pd
 import yfinance as yf
 
 warnings.filterwarnings("ignore", category=FutureWarning)
 
 
-# Curated universes — tweakable, no API cost to scan.
+# Curated universes — tweakable, no API cost to scan. Tech-forward by request;
+# NO healthcare/med names (also enforced live by the sector filter in _intel).
 CORE_UNIVERSE = [
-    "AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "META", "TSLA", "AMD", "AVGO", "ORCL",
-    "COST", "WMT", "JPM", "V", "MA", "LLY", "UNH", "JNJ", "PG", "HD",
-    "QQQ", "SPY", "SMH", "XLK", "XLF", "XLE", "XLV", "IWM", "SCHG", "VOOG",
+    # mega/large-cap tech core
+    "NVDA", "MSFT", "AAPL", "GOOGL", "AMZN", "META", "AVGO", "ORCL", "AMD", "MU",
+    "NOW", "CRM", "ADBE", "ACN", "CSCO", "QCOM", "TXN", "INTU", "PANW", "AMAT",
+    # non-health diversifiers (financials/consumer/auto) to avoid single-sector risk
+    "JPM", "V", "MA", "COST", "WMT", "HD", "TSLA",
+    # tech-tilted ETFs + benchmarks (SPY/QQQ also used for relative strength)
+    "QQQ", "SPY", "SMH", "XLK", "SCHG", "VOOG",
 ]
 
 SWING_UNIVERSE = [
-    "NVDA", "AMD", "PLTR", "SOFI", "RBLX", "COIN", "HOOD", "DIS", "NFLX",
+    "NVDA", "AMD", "MU", "PLTR", "SOFI", "RBLX", "COIN", "HOOD", "NFLX",
     "UBER", "ABNB", "SHOP", "CRWD", "SNOW", "DDOG", "ZS", "NET", "MDB", "OKTA",
 ]
 
 LOTTERY_UNIVERSE = [
+    # AI / quantum / space / crypto-mining asymmetric names (no cannabis/med)
     "SOUN", "BBAI", "RGTI", "QBTS", "IONQ", "ACHR", "JOBY", "ASTS", "RKLB",
-    "OPEN", "MARA", "RIOT", "CLSK", "WULF", "TLRY",
+    "OPEN", "MARA", "RIOT", "CLSK", "WULF",
 ]
+
+# Sectors we never hold, enforced live regardless of universe edits.
+EXCLUDED_SECTORS = {"Healthcare"}
 
 
 def fetch_history(tickers: list[str], days: int = 90) -> dict[str, pd.DataFrame]:
@@ -55,78 +65,105 @@ def fetch_history(tickers: list[str], days: int = 90) -> dict[str, pd.DataFrame]
     return out
 
 
-def score_momentum(df: pd.DataFrame, spy: pd.DataFrame | None = None) -> float:
-    """Composite momentum score:
-       above 50-day MA + 10-day return + relative strength vs SPY.
-       Higher = stronger trend."""
-    close = df["Close"]
-    if len(close) < 50:
-        return -999.0
-    ma50 = close.rolling(50).mean().iloc[-1]
-    last = close.iloc[-1]
-    ret10 = (close.iloc[-1] / close.iloc[-11] - 1) * 100 if len(close) > 11 else 0
-    above_ma = (last / ma50 - 1) * 100
-
-    rs = 0.0
-    if spy is not None and len(spy) > 11:
-        spy_ret10 = (spy["Close"].iloc[-1] / spy["Close"].iloc[-11] - 1) * 100
-        rs = ret10 - spy_ret10
-
-    return float(above_ma) + float(ret10) + float(rs)
+# Per-bucket factor weights (each set sums to 1.0). Scores are computed by
+# z-scoring each factor ACROSS the bucket universe, then weighting — so factors
+# on different scales (returns vs Sharpe vs volume) become comparable. Volatility
+# deliberately does NOT select here (it only sizes, in the allocator); lottery
+# now requires real volume + trend instead of just "most pumped + most volatile".
+FACTOR_WEIGHTS = {
+    "core":    {"ret10": 0.20, "above_ma50": 0.20, "rs10": 0.25, "sharpe": 0.25, "vol_confirm": 0.10},
+    "swing":   {"ret5": 0.30, "rs10": 0.15, "sharpe": 0.20, "vol_confirm": 0.25, "vol_expansion": 0.10},
+    "lottery": {"ret5": 0.30, "sharpe": 0.15, "vol_confirm": 0.30, "above_ma50": 0.10, "rs10": 0.15},
+}
 
 
-def score_swing(df: pd.DataFrame) -> float:
-    """Swing score: short-term momentum + recent volatility expansion (catalysts often
-    show as vol pickups). No earnings calendar dependency."""
-    close = df["Close"]
-    if len(close) < 20:
-        return -999.0
-    ret5 = (close.iloc[-1] / close.iloc[-6] - 1) * 100 if len(close) > 6 else 0
-    vol_recent = close.pct_change().tail(5).std() * 100
-    vol_long = close.pct_change().tail(30).std() * 100
-    vol_expansion = (vol_recent / vol_long - 1) * 100 if vol_long > 0 else 0
-    return float(ret5) + float(vol_expansion) * 0.5
+def _zscore(s: pd.Series) -> pd.Series:
+    """Cross-sectional z-score. Zero/degenerate variance -> all zeros."""
+    s = pd.to_numeric(s, errors="coerce").fillna(0.0)
+    sd = s.std(ddof=0)
+    if not np.isfinite(sd) or sd < 1e-9:
+        return s * 0.0
+    return (s - s.mean()) / sd
 
 
-def score_lottery(df: pd.DataFrame) -> float:
-    """Lottery score: high recent return + high volatility (asymmetric setups)."""
-    close = df["Close"]
-    if len(close) < 10:
-        return -999.0
-    ret5 = (close.iloc[-1] / close.iloc[-6] - 1) * 100 if len(close) > 6 else 0
-    vol = close.pct_change().tail(20).std() * 100
-    return float(ret5) + float(vol) * 2.0
+def _finite(x: float, default: float = 0.0) -> float:
+    return float(x) if x is not None and np.isfinite(x) else default
+
+
+def raw_factors(df: pd.DataFrame, spy_ret10: float) -> dict:
+    """Raw (un-normalized) factor values for one ticker. Normalization happens
+    cross-sectionally in screen_bucket. Returns include vol20 (for sizing)."""
+    close = df["Close"].dropna()
+    n = len(close)
+    last = float(close.iloc[-1])
+    ret5 = (close.iloc[-1] / close.iloc[-6] - 1) * 100 if n > 6 else 0.0
+    ret10 = (close.iloc[-1] / close.iloc[-11] - 1) * 100 if n > 11 else 0.0
+    ma50 = close.rolling(50).mean().iloc[-1] if n >= 50 else close.mean()
+    above_ma50 = (last / ma50 - 1) * 100 if ma50 else 0.0
+    dret = close.pct_change().dropna()
+    sd20 = dret.tail(20).std(ddof=0)
+    sharpe = (dret.tail(20).mean() / sd20) if sd20 and sd20 > 1e-9 else 0.0
+    vol20 = float(sd20) if sd20 and np.isfinite(sd20) else 0.02
+    vshort = dret.tail(5).std(ddof=0)
+    vlong = dret.tail(30).std(ddof=0)
+    vol_expansion = (vshort / vlong - 1) * 100 if vlong and vlong > 1e-9 else 0.0
+    vol_confirm = 0.0
+    if "Volume" in df.columns:
+        v5 = df["Volume"].tail(5).mean()
+        v20 = df["Volume"].tail(20).mean()
+        vol_confirm = (v5 / v20 - 1) * 100 if v20 and v20 > 0 and np.isfinite(v20) else 0.0
+    return {
+        "last_price": round(last, 2),
+        "ret5": _finite(ret5), "ret10": _finite(ret10), "above_ma50": _finite(above_ma50),
+        "rs10": _finite(ret10 - spy_ret10), "sharpe": _finite(sharpe),
+        "vol_confirm": _finite(vol_confirm), "vol_expansion": _finite(vol_expansion),
+        "vol20": round(vol20, 4),
+    }
 
 
 def screen_bucket(bucket: str, top_n: int = 5) -> list[dict]:
-    """Return ranked candidates for a bucket. No LLM calls."""
+    """Return ranked candidates for a bucket via normalized, weighted factor scoring.
+    No LLM calls. Output schema is back-compatible (ticker/bucket/score/last_price/
+    conviction/thesis) plus additive fields vol20/sharpe/vol_confirm used downstream."""
     universe_map = {
         "core": CORE_UNIVERSE,
         "swing": SWING_UNIVERSE,
         "lottery": LOTTERY_UNIVERSE,
     }
     universe = universe_map[bucket]
-    histories = fetch_history(universe + (["SPY"] if bucket == "core" else []), days=90)
-    spy = histories.get("SPY") if bucket == "core" else None
+    histories = fetch_history(universe + ["SPY"], days=90)  # SPY for RS in every bucket
+    spy = histories.get("SPY")
+    spy_ret10 = 0.0
+    if spy is not None and len(spy) > 11:
+        spy_ret10 = (spy["Close"].iloc[-1] / spy["Close"].iloc[-11] - 1) * 100
+
+    rows = {t: raw_factors(histories[t], spy_ret10) for t in universe if t in histories}
+    if not rows:
+        return []
+
+    weights = FACTOR_WEIGHTS[bucket]
+    fdf = pd.DataFrame(rows).T  # rows=tickers, cols=factors
+    if len(fdf) >= 3:
+        composite = sum(weights[f] * _zscore(fdf[f]) for f in weights)
+        scores = 50 + 10 * composite
+    else:
+        # Degenerate universe (data outage): can't normalize — rank by primary raw
+        # factor instead of dividing by a near-zero cross-sectional std.
+        primary = "ret10" if bucket == "core" else "ret5"
+        scores = 50 + pd.to_numeric(fdf[primary], errors="coerce").fillna(0.0).clip(-25, 25)
 
     ranked = []
-    for t in universe:
-        if t not in histories:
-            continue
-        df = histories[t]
-        if bucket == "core":
-            s = score_momentum(df, spy=spy)
-        elif bucket == "swing":
-            s = score_swing(df)
-        else:
-            s = score_lottery(df)
-        last_price = float(df["Close"].iloc[-1])
+    for t in fdf.index:
+        s = round(float(scores[t]), 2)
         ranked.append({
             "ticker": t,
             "bucket": bucket,
-            "score": round(s, 2),
-            "last_price": round(last_price, 2),
-            "conviction": min(5, max(1, int(round(s / 5 + 3)))),
+            "score": s,
+            "last_price": float(fdf.loc[t, "last_price"]),
+            "vol20": float(fdf.loc[t, "vol20"]),
+            "sharpe": round(float(fdf.loc[t, "sharpe"]), 3),
+            "vol_confirm": round(float(fdf.loc[t, "vol_confirm"]), 2),
+            "conviction": min(5, max(1, int(round((s - 50) / 8 + 3)))),
             "thesis": _make_thesis(bucket, t, s),
         })
     ranked.sort(key=lambda r: r["score"], reverse=True)

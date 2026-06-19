@@ -6,13 +6,15 @@ import shutil
 import subprocess
 from pathlib import Path
 
-from agents._state import POSTS_FILE, TRACKER_REPORT
+from agents._state import POSTS_FILE, TRACKER_REPORT, simulating
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 
 
 def run(push: bool = True) -> dict:
+    if simulating():
+        return {"pushed": False, "reason": "simulate — no publish"}
     DOCS.mkdir(exist_ok=True)
     status_dest = DOCS / "status.json"
     posts_dest = DOCS / "posts.json"

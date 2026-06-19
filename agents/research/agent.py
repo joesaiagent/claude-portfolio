@@ -23,6 +23,7 @@ def run(buckets: tuple[str, ...] = ("core", "swing", "lottery")) -> dict:
             print(f"[research] {bucket} screening failed: {e}")
             continue
         ranked = enrich(ranked)  # news sentiment + analyst consensus, re-ranks
+        ranked = [r for r in ranked if not r.get("excluded")]  # drop excluded sectors (healthcare)
         now = datetime.now(timezone.utc).isoformat()
         watchlist.extend({**r, "added_at": now} for r in ranked)
 

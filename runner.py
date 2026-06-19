@@ -1,5 +1,6 @@
 """Autonomous loop scheduler. Cost-optimized: 3 cycles/day with role-specific agents."""
 import argparse
+import os
 import time
 import traceback
 from datetime import datetime, timezone, timedelta
@@ -14,6 +15,14 @@ from agents.tracker import agent as tracker
 
 
 ET = ZoneInfo("America/New_York")
+
+
+def market_closed_today() -> bool:
+    """True on weekends and market holidays (Alpaca calendar). When closed we
+    skip the whole cycle — no trading and, importantly, no duplicate stale
+    post. Prices don't move on a closed day, so posting would just re-publish
+    the prior session's numbers as if they were new."""
+    return not broker.is_trading_day()
 
 
 def step(name: str, fn):
@@ -78,10 +87,22 @@ def next_cycle() -> tuple[str, datetime, callable]:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--once", choices=list(CYCLES.keys()), help="Run a single named cycle and exit")
-    parser.add_argument("--dry", action="store_true", help="Run all 3 cycles back-to-back for testing (uses tokens)")
+    parser.add_argument("--simulate", action="store_true",
+                        help="Compute a full premarket cycle's decisions against REAL positions but submit NO orders and write NO state (sets SIMULATE=1)")
+    parser.add_argument("--replay", "--dry", dest="replay", action="store_true",
+                        help="Run all 3 cycles back-to-back for testing. WARNING: places REAL orders unless combined with --simulate. Uses tokens.")
     args = parser.parse_args()
 
+    if args.simulate:
+        os.environ["SIMULATE"] = "1"
+        print(f"=== SIMULATE premarket @ {now_et().isoformat()} — NO orders will be submitted ===")
+        cycle_premarket()
+        return
+
     if args.once:
+        if market_closed_today():
+            print(f"=== SKIP {args.once} @ {now_et().isoformat()} — market closed (weekend/holiday) ===")
+            return
         print(f"=== ONCE: {args.once} @ {now_et().isoformat()} ===")
         _, _, fn = CYCLES["premarket"] if args.once == "premarket" else CYCLES[args.once]
         # Find the right fn
@@ -90,8 +111,8 @@ def main():
             fn()
         return
 
-    if args.dry:
-        print(f"=== DRY RUN — all 3 cycles back-to-back ===")
+    if args.replay:
+        print(f"=== REPLAY — all 3 cycles back-to-back ===")
         for name, (_, _, fn) in CYCLES.items():
             print(f"\n>>> Cycle: {name}")
             fn()
@@ -104,6 +125,9 @@ def main():
         print(f"\nNext cycle: {name} at {target.isoformat()} (sleeping {int(wait/60)}m)")
         time.sleep(max(1, wait))
         try:
+            if market_closed_today():
+                print(f"\n=== SKIP {name} @ {now_et().isoformat()} — market closed (weekend/holiday) ===")
+                continue
             print(f"\n=== RUNNING {name} @ {now_et().isoformat()} ===")
             fn()
         except Exception as e:

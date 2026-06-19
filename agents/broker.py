@@ -1,10 +1,14 @@
 """Alpaca broker wrapper — paper or live based on env var."""
 import os
 from dataclasses import dataclass
+from datetime import date, datetime
+from zoneinfo import ZoneInfo
 
 from alpaca.trading.client import TradingClient
 from alpaca.trading.enums import OrderSide, TimeInForce
-from alpaca.trading.requests import LimitOrderRequest, MarketOrderRequest
+from alpaca.trading.requests import GetCalendarRequest, LimitOrderRequest, MarketOrderRequest
+
+ET = ZoneInfo("America/New_York")
 from alpaca.data.historical import StockHistoricalDataClient
 from alpaca.data.requests import StockLatestQuoteRequest
 from dotenv import load_dotenv
@@ -108,3 +112,20 @@ def is_market_open() -> bool:
         return _client().get_clock().is_open
     except Exception:
         return False
+
+
+def is_trading_day(day: date | None = None) -> bool:
+    """True if `day` (default: today in ET) is a NYSE trading day.
+
+    Uses Alpaca's calendar, so it correctly excludes both weekends AND market
+    holidays (e.g. Juneteenth). Unlike is_market_open(), this is True for the
+    whole day — so it works for the 9:00 premarket and 16:30 post-close cycles
+    when the market isn't actively open. On a calendar API failure it falls
+    back to a Mon–Fri check so a transient outage can't halt a normal weekday.
+    """
+    day = day or datetime.now(ET).date()
+    try:
+        cal = _client().get_calendar(GetCalendarRequest(start=day, end=day))
+        return any(c.date == day for c in cal)
+    except Exception:
+        return day.weekday() < 5

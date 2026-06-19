@@ -57,7 +57,7 @@ def narrative_post(state: dict, tracker: dict) -> str | None:
                 "ONE post, ≤260 chars (leave room for safety). "
                 "Conversational, honest, no hashtags, no preamble, no quotes. "
                 "CRITICAL: do NOT include URLs, links, or 't.co' anywhere — X charges 13x more "
-                "for URL-containing tweets and we can't afford it. Mention the @claudinvesting "
+                "for URL-containing tweets and we can't afford it. Mention the @claudeinvesting "
                 "handle is allowed but no http/https links. "
                 "Output the post text directly."
             ),

@@ -5,9 +5,34 @@ from datetime import datetime, timezone
 from dotenv import load_dotenv
 
 from agents import broker
-from agents._state import BUCKETS, TRACKER_REPORT, load_state
+from agents._state import BUCKETS, TRACKER_REPORT, load_state, save_state, simulating
 
 load_dotenv()
+
+
+def update_position_highs(positions: list[dict], state: dict) -> dict:
+    """Maintain a per-position high-water-mark in state, used by the trailing-stop
+    exit logic. Tracker is the canonical writer because it runs every cycle
+    (including post-close, which captures the closing high) while exits do not.
+    Prunes tickers no longer held so a re-bought name starts a fresh peak."""
+    highs = state.get("position_highs", {})
+    held = set()
+    for p in positions:
+        t = p["ticker"]
+        held.add(t)
+        cur = float(p["current_price"])
+        entry = float(p["entry_price"])
+        high = max(highs.get(t, {}).get("high_price", 0.0), cur)
+        highs[t] = {
+            "high_price": round(high, 4),
+            "high_pl_pct": round((high / entry - 1) * 100, 3) if entry else 0.0,
+            "updated": datetime.now(timezone.utc).isoformat(),
+        }
+    for t in list(highs):
+        if t not in held:
+            del highs[t]
+    state["position_highs"] = highs
+    return highs
 
 
 def merge_positions_with_buckets(broker_positions: list[dict], state: dict) -> list[dict]:
@@ -62,6 +87,7 @@ def run() -> dict:
     state = load_state()
     account = broker.account_info()
     positions = merge_positions_with_buckets(broker.positions(), state)
+    update_position_highs(positions, state)  # persist high-water-marks for trailing stops
     buckets = compute_bucket_summary(positions, state)
 
     starting = state.get("starting_capital", 300.0)
@@ -82,7 +108,9 @@ def run() -> dict:
         "total_pl_pct": round(pl_pct, 2),
     }
     report["summary"] = template_summary(report)
-    TRACKER_REPORT.write_text(json.dumps(report, indent=2))
+    if not simulating():
+        save_state(state)  # persist position_highs
+        TRACKER_REPORT.write_text(json.dumps(report, indent=2))
     return report
 
 

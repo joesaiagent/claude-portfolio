@@ -21,10 +21,125 @@
     }
   },
   "realized_pnl": {
-    "core": 0.0,
+    "core": -3.77,
     "swing": 0.0,
     "lottery": 0.0
   },
-  "lottery_deployed_total": 0.0,
-  "order_log": []
+  "lottery_deployed_total": 7.5,
+  "order_log": [
+    {
+      "ts": "2026-06-12T13:00:35.516031+00:00",
+      "ticker": "LLY",
+      "bucket": "core",
+      "side": "buy",
+      "shares": 0.0413,
+      "limit_price": 1184.17,
+      "estimated_cost": 47.95,
+      "order_id": "efbd749e-bc3c-49d9-9849-6b0cc0ff1bba",
+      "status": "OrderStatus.ACCEPTED",
+      "rationale": "LLY: momentum 25, news sentiment +0.26 (50 articles), analyst upside +5% (rec 1.7)"
+    },
+    {
+      "ts": "2026-06-12T13:00:35.617583+00:00",
+      "ticker": "UNH",
+      "bucket": "core",
+      "side": "buy",
+      "shares": 0.1184,
+      "limit_price": 413.66,
+      "estimated_cost": 48.02,
+      "order_id": "4756a308-0433-4048-a5ab-470c2d1abd23",
+      "status": "OrderStatus.ACCEPTED",
+      "rationale": "UNH: momentum 27, news sentiment +0.23 (50 articles), analyst upside +0% (rec 1.6)"
+    },
+    {
+      "ts": "2026-06-12T13:00:35.713694+00:00",
+      "ticker": "AMD",
+      "bucket": "core",
+      "side": "buy",
+      "shares": 0.0983,
+      "limit_price": 498.22,
+      "estimated_cost": 48.01,
+      "order_id": "bf7ec6c3-7b6f-4875-b6c8-2766d59d8b02",
+      "status": "OrderStatus.ACCEPTED",
+      "rationale": "AMD: momentum 19, news sentiment +0.23 (50 articles), analyst upside -1% (rec 1.5)"
+    },
+    {
+      "ts": "2026-06-12T13:00:35.802457+00:00",
+      "ticker": "SMH",
+      "bucket": "core",
+      "side": "buy",
+      "shares": 0.0788,
+      "limit_price": 621.64,
+      "estimated_cost": 48.02,
+      "order_id": "322322a0-1033-4235-8868-e52ffa1632ac",
+      "status": "OrderStatus.ACCEPTED",
+      "rationale": "SMH: momentum 22, news sentiment +0.28 (50 articles), analyst upside +0% (rec 3.0)"
+    },
+    {
+      "ts": "2026-06-12T13:00:35.899333+00:00",
+      "ticker": "JPM",
+      "bucket": "core",
+      "side": "buy",
+      "shares": 0.1531,
+      "limit_price": 319.76,
+      "estimated_cost": 48.0,
+      "order_id": "2e234ae0-a098-445a-a3db-5809e7cdc67d",
+      "status": "OrderStatus.ACCEPTED",
+      "rationale": "JPM: momentum 16, news sentiment +0.15 (50 articles), analyst upside +9% (rec 3.0)"
+    },
+    {
+      "ts": "2026-06-12T13:00:36.000791+00:00",
+      "ticker": "COIN",
+      "bucket": "swing",
+      "side": "buy",
+      "shares": 0.1402,
+      "limit_price": 163.64,
+      "estimated_cost": 22.49,
+      "order_id": "a8da5f64-67c3-4edc-b610-abe2d590f3e6",
+      "status": "OrderStatus.ACCEPTED",
+      "rationale": "COIN: momentum 13, news sentiment +0.07 (50 articles), analyst upside +43% (rec 2.0)"
+    },
+    {
+      "ts": "2026-06-12T13:00:36.104266+00:00",
+      "ticker": "SOFI",
+      "bucket": "swing",
+      "side": "buy",
+      "shares": 1.3497,
+      "limit_price": 17.0,
+      "estimated_cost": 22.5,
+      "order_id": "87999f23-28e4-4a6c-a7b3-93b12809f821",
+      "status": "OrderStatus.PENDING_NEW",
+      "rationale": "SOFI: momentum 15, news sentiment +0.11 (50 articles), analyst upside +26% (rec 2.7)"
+    },
+    {
+      "ts": "2026-06-12T13:00:36.205810+00:00",
+      "ticker": "WULF",
+      "bucket": "lottery",
+      "side": "buy",
+      "shares": 0.2959,
+      "limit_price": 25.86,
+      "estimated_cost": 7.5,
+      "order_id": "a13907e4-cead-4454-9b36-371b035e5ef7",
+      "status": "OrderStatus.ACCEPTED",
+      "rationale": "WULF: momentum 8, news sentiment +0.00 (0 articles), analyst upside +44% (rec 1.4)"
+    },
+    {
+      "ts": "2026-06-19T04:51:55.289814+00:00",
+      "ticker": "LLY",
+      "bucket": "core",
+      "side": "sell",
+      "shares": 0.0413,
+      "reason": "manual divest \u2014 exit healthcare per user",
+      "realized_pl_dollars": -2.76
+    },
+    {
+      "ts": "2026-06-19T04:51:55.289814+00:00",
+      "ticker": "UNH",
+      "bucket": "core",
+      "side": "sell",
+      "shares": 0.1184,
+      "reason": "manual divest \u2014 exit healthcare per user",
+      "realized_pl_dollars": -1.01
+    }
+  ]
 }
