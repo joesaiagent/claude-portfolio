@@ -24,14 +24,15 @@ from agents._state import (
 load_dotenv()
 
 
-# Max position counts per bucket.
-BUCKET_MAX_POSITIONS = {"core": 5, "swing": 2, "lottery": 2}
+# Max position counts per bucket. Core concentrated (3) to let conviction bets
+# matter — aggressive growth tilt per user direction.
+BUCKET_MAX_POSITIONS = {"core": 3, "swing": 2, "lottery": 2}
 
 # Inverse-volatility sizing caps (as a fraction of a bucket's remaining budget),
 # so a steady low-vol name gets more capital but no single name dominates a tiny
 # account. Floors keep every position clear of Alpaca's $1 min notional.
-SIZING_MIN_FRAC = {"core": 0.15, "swing": 0.40, "lottery": 0.45}
-SIZING_MAX_FRAC = {"core": 0.35, "swing": 0.60, "lottery": 0.55}
+SIZING_MIN_FRAC = {"core": 0.25, "swing": 0.30, "lottery": 0.45}
+SIZING_MAX_FRAC = {"core": 0.55, "swing": 0.55, "lottery": 0.55}
 VOL_FLOOR = 0.005
 
 
@@ -75,7 +76,7 @@ def _inverse_vol_budgets(cands: list[dict], remaining: float, bucket: str) -> li
 def _bucket_target_positions(bucket: str, remaining: float) -> int:
     """How many positions to open in this bucket given remaining budget."""
     if bucket == "core":
-        return min(BUCKET_MAX_POSITIONS["core"], max(1, int(remaining // 40)))
+        return min(BUCKET_MAX_POSITIONS["core"], max(1, int(remaining // 70)))
     if bucket == "swing":
         return min(BUCKET_MAX_POSITIONS["swing"], max(1, int(remaining // 22)))
     return min(BUCKET_MAX_POSITIONS["lottery"], max(1, int(remaining // 7)))
