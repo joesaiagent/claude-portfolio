@@ -96,6 +96,7 @@ def _attach_bucket(positions: list[dict], state: dict) -> list[dict]:
 ROTATE_MARGIN = {"core": 12.0, "swing": 15.0, "lottery": 999.0}  # score points of edge required
 ROTATE_MIN_HOLD = {"core": 5.0, "swing": 3.0, "lottery": 9999.0}  # calendar days
 ROTATION_DAILY_CAP = 3  # max rotations per bucket per day
+ROTATION_WINNER_SHIELD_PCT = 5.0  # positions up >= this % are never rotated out
 # Cash account = T+1 settlement, so the freed cash isn't spendable this cycle.
 # Sell now, queue the replacement buy for the next premarket cycle.
 ROTATION_SAME_CYCLE_BUY = False
@@ -146,7 +147,11 @@ def _rotation_candidates(state: dict, watchlist: list[dict], positions: list[dic
             if not cands_available:
                 break
             best = max(cands_available, key=lambda c: c.get("score", 0.0))
-            weakest = min(held_available, key=lambda p: hscore(p["ticker"]))
+            rotatable = [p for p in held_available
+                         if p.get("pl_pct", 0.0) < ROTATION_WINNER_SHIELD_PCT]
+            if not rotatable:
+                break  # all held positions are winners — don't force a sell
+            weakest = min(rotatable, key=lambda p: hscore(p["ticker"]))
             margin = best.get("score", 0.0) - hscore(weakest["ticker"])
             if margin < ROTATE_MARGIN[bucket]:
                 break

@@ -12,8 +12,10 @@ from datetime import datetime, timezone
 
 from dotenv import load_dotenv
 
+import yfinance as yf
+
 from agents import broker
-from agents._screener import fetch_history
+from agents._screener import EXCLUDED_SECTORS, fetch_history
 from agents._state import (
     append_order_log,
     bucket_map_from_log,
@@ -38,6 +40,20 @@ RULES = {
 }
 
 TREND_BREAK_BAND = -0.02  # core: sell if price is >2% below its 50-day MA
+
+
+def _excluded_sector_tickers(tickers: list[str]) -> set[str]:
+    """Return tickers whose yfinance sector is in EXCLUDED_SECTORS.
+    Degrades to empty set on any data failure — never a spurious sell."""
+    out: set[str] = set()
+    for t in tickers:
+        try:
+            sector = yf.Ticker(t).info.get("sector", "")
+            if sector in EXCLUDED_SECTORS:
+                out.add(t)
+        except Exception:
+            pass
+    return out
 
 
 def _decide(pos: dict, bucket: str, held_days: float, high_pl_pct: float,
@@ -103,6 +119,37 @@ def run() -> dict:
     trend_broken = _core_trend_broken(positions, buckets)
     now = datetime.now(timezone.utc)
     exits = []
+
+    excluded = _excluded_sector_tickers([p["ticker"] for p in positions])
+
+    for pos in positions:
+        t = pos["ticker"]
+        if t in excluded:
+            bucket = buckets.get(t, "core")
+            shares = pos["shares"]
+            reason = "sector excluded (healthcare)"
+            record = {"ticker": t, "bucket": bucket, "shares": shares,
+                      "fraction": 1.0, "reason": reason, "pl_pct": pos["pl_pct"]}
+            if should_execute(state):
+                try:
+                    order = broker.submit_sell(t, shares)
+                    record["order_id"] = order["order_id"]
+                    record["status"] = order["status"]
+                    realized = pos["pl_dollars"]
+                    state.setdefault("realized_pnl", {}).setdefault(bucket, 0.0)
+                    state["realized_pnl"][bucket] = round(state["realized_pnl"][bucket] + realized, 2)
+                    append_order_log(state, {
+                        "ts": now.isoformat(), "ticker": t, "bucket": bucket, "side": "sell",
+                        "shares": shares, "reason": reason,
+                        "realized_pl_dollars": round(realized, 2),
+                    })
+                except Exception as e:
+                    record["error"] = str(e)[:200]
+            elif simulating():
+                print(f"  [SIM SELL] [{bucket:7s}] {t:5s} 100% x{shares} — {reason}")
+            exits.append(record)
+            print(f"[exits] {t} ({bucket}): SELL 100% — {reason}")
+            continue
 
     for pos in positions:
         t = pos["ticker"]
