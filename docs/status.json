@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-06-22T04:16:24.331749+00:00",
+  "timestamp": "2026-06-22T04:28:34.450744+00:00",
   "broker_mode": "LIVE",
   "positions": [
     {
       "ticker": "AMD",
       "shares": 0.0983,
       "entry_price": 498.176,
-      "current_price": 531.31,
-      "market_value": 52.227773,
-      "pl_dollars": 3.257072,
-      "pl_pct": 6.651,
+      "current_price": 531.01,
+      "market_value": 52.198283,
+      "pl_dollars": 3.227582,
+      "pl_pct": 6.590999999999999,
       "bucket": "core"
     },
     {
@@ -46,10 +46,10 @@
       "ticker": "SMH",
       "shares": 0.0788,
       "entry_price": 607.684,
-      "current_price": 656.5,
-      "market_value": 51.7322,
-      "pl_dollars": 3.846701,
-      "pl_pct": 8.033,
+      "current_price": 656.82,
+      "market_value": 51.757416,
+      "pl_dollars": 3.871917,
+      "pl_pct": 8.086,
       "bucket": "core"
     },
     {
@@ -88,9 +88,9 @@
       "target_dollars": 210.0,
       "deployed_cost_basis": 241.84,
       "current_value": 246.25,
-      "unrealized_pl_dollars": 4.42,
-      "unrealized_pl_pct": 1.83,
-      "realized_pl_dollars": -3.77,
+      "unrealized_pl_dollars": 4.41,
+      "unrealized_pl_pct": 1.82,
+      "realized_pl_dollars": -0.51,
       "position_count": 5
     },
     "swing": {
@@ -118,5 +118,5 @@
   "total_portfolio_value": 306.77,
   "total_pl_dollars": 6.77,
   "total_pl_pct": 2.26,
-  "summary": "\ud83d\udcc8 Portfolio $306.77 (+2.26%, P/L $+6.77)\n  core   : 5 pos, $246.25 (+1.83%)\n  swing  : 2 pos, $46.69 (+3.12%)\n  lottery: 1 pos, $8.55 (+12.65%)\n  Best: WULF +12.65%  |  Worst: LLY -5.75%"
+  "summary": "\ud83d\udcc8 Portfolio $306.77 (+2.26%, P/L $+6.77)\n  core   : 5 pos, $246.25 (+1.82%)\n  swing  : 2 pos, $46.69 (+3.12%)\n  lottery: 1 pos, $8.55 (+12.65%)\n  Best: WULF +12.65%  |  Worst: LLY -5.75%"
 }
