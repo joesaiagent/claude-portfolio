@@ -1,7 +1,7 @@
 """Offline tests for the rotation trigger and its guards."""
 from datetime import datetime, timedelta, timezone
 
-from agents.allocator.agent import _rotation_candidates
+from agents.allocator.agent import _rotation_candidates, ROTATION_DAILY_CAP
 
 
 def _now_minus(days):
@@ -58,7 +58,7 @@ def test_blocked_under_min_hold():
 def test_blocked_at_churn_cap():
     today = datetime.now(timezone.utc).date().isoformat()
     actions, _ = _rotation_candidates(
-        _state(rotations_today={"date": today, "swing": 1}), _watchlist(80.0), POSITIONS)
+        _state(rotations_today={"date": today, "swing": ROTATION_DAILY_CAP}), _watchlist(80.0), POSITIONS)
     assert actions == []
 
 

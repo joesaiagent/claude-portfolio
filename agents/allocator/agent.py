@@ -95,6 +95,7 @@ def _attach_bucket(positions: list[dict], state: dict) -> list[dict]:
 # rotation is disabled (999) — churning a buy-and-pray bucket just bleeds spread.
 ROTATE_MARGIN = {"core": 12.0, "swing": 15.0, "lottery": 999.0}  # score points of edge required
 ROTATE_MIN_HOLD = {"core": 5.0, "swing": 3.0, "lottery": 9999.0}  # calendar days
+ROTATION_DAILY_CAP = 3  # max rotations per bucket per day
 # Cash account = T+1 settlement, so the freed cash isn't spendable this cycle.
 # Sell now, queue the replacement buy for the next premarket cycle.
 ROTATION_SAME_CYCLE_BUY = False
@@ -118,27 +119,44 @@ def _rotation_candidates(state: dict, watchlist: list[dict], positions: list[dic
         held = [p for p in positions if p.get("bucket") == bucket]
         if len(held) < BUCKET_MAX_POSITIONS[bucket]:
             continue  # not full -> normal allocation has room, no need to rotate
-        if rot.get(bucket, 0) >= 1:
-            continue  # churn cap: at most one rotation per bucket per day
-        held_set = {p["ticker"] for p in held}
-        cands = [c for c in watchlist if c.get("bucket") == bucket and c["ticker"] not in held_set]
+        remaining_cap = ROTATION_DAILY_CAP - rot.get(bucket, 0)
+        if remaining_cap <= 0:
+            continue
+        cands = [c for c in watchlist if c.get("bucket") == bucket]
         if not cands:
             continue
-        best = max(cands, key=lambda c: c.get("score", 0.0))
         # Score held names from the fresh watchlist; unknowns fall back to the
         # bucket's candidate median (conservative — won't force a rotation).
         median = statistics.median([c.get("score", 50.0) for c in cands])
         def hscore(t):
             return score_by_ticker.get(t, median)
-        weakest = min(held, key=lambda p: hscore(p["ticker"]))
-        margin = best.get("score", 0.0) - hscore(weakest["ticker"])
-        if margin < ROTATE_MARGIN[bucket]:
-            continue
-        held_days = (now - dates[weakest["ticker"]]).total_seconds() / 86400 if weakest["ticker"] in dates else 0.0
-        if held_days < ROTATE_MIN_HOLD.get(bucket, 9999.0):
-            continue
-        actions.append({"bucket": bucket, "sell": weakest, "buy": best, "margin": round(margin, 2)})
-        rot[bucket] = rot.get(bucket, 0) + 1
+
+        queued_sells: set[str] = set()
+        queued_buys: set[str] = set()
+        for _ in range(remaining_cap):
+            held_available = [p for p in held if p["ticker"] not in queued_sells]
+            if len(held_available) < BUCKET_MAX_POSITIONS[bucket]:
+                break  # below target count, stop rotating
+            cands_available = [
+                c for c in cands
+                if c["ticker"] not in {p["ticker"] for p in held_available}
+                and c["ticker"] not in queued_buys
+                and c["ticker"] not in queued_sells
+            ]
+            if not cands_available:
+                break
+            best = max(cands_available, key=lambda c: c.get("score", 0.0))
+            weakest = min(held_available, key=lambda p: hscore(p["ticker"]))
+            margin = best.get("score", 0.0) - hscore(weakest["ticker"])
+            if margin < ROTATE_MARGIN[bucket]:
+                break
+            held_days = (now - dates[weakest["ticker"]]).total_seconds() / 86400 if weakest["ticker"] in dates else 0.0
+            if held_days < ROTATE_MIN_HOLD.get(bucket, 9999.0):
+                break
+            actions.append({"bucket": bucket, "sell": weakest, "buy": best, "margin": round(margin, 2)})
+            rot[bucket] = rot.get(bucket, 0) + 1
+            queued_sells.add(weakest["ticker"])
+            queued_buys.add(best["ticker"])
 
     return actions, rot
 
