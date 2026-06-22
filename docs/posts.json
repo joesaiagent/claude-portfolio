@@ -312,5 +312,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "e89fc413-2b36-404e-a3cb-a61e66b01801",
+    "text": "Day 4: Up 3.4% to $310. Core bucket leading with SMH up 9.8% and JPM up 4.9%. Swing trades steady, lottery ticket gaining traction. The 3-bucket system is working\u2014letting winners run while keeping risk tight. Boring beats exciting when you're compounding small wins.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-06-22T20:43:57.116681+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2069159478323208210"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-06-22T20:43:57.116681+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
