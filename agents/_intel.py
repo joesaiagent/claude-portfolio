@@ -13,7 +13,6 @@ from agents._screener import EXCLUDED_SECTORS
 
 AV_URL = "https://www.alphavantage.co/query"
 FINNHUB_URL = "https://finnhub.io/api/v1"
-QUIVER_URL = "https://api.quiverquant.com/beta"
 
 
 def finnhub_rec(ticker: str) -> float:
@@ -89,31 +88,10 @@ def finnhub_insider_transactions(ticker: str) -> float:
 
 
 def quiverquant_congressional(ticker: str) -> float:
-    """Net congressional trading signal (QuiverQuant free tier).
-    Counts purchase vs sale disclosures in the last 90 days.
-    Returns [-1, 1]: positive = net congressional buying."""
-    key = os.getenv("QUIVERQUANT_KEY")
-    if not key:
-        return 0.0
-    try:
-        r = requests.get(f"{QUIVER_URL}/historical/congresstrading/{ticker}",
-                         headers={"Authorization": f"Token {key}"}, timeout=15).json()
-        if not isinstance(r, list) or not r:
-            return 0.0
-        cutoff = (date.today() - timedelta(days=90)).isoformat()
-        recent = [t for t in r if (t.get("Date") or "") >= cutoff]
-        if not recent:
-            return 0.0
-        buys = sum(1 for t in recent
-                   if "purchase" in (t.get("Transaction") or "").lower())
-        sells = sum(1 for t in recent
-                    if "sale" in (t.get("Transaction") or "").lower())
-        total = buys + sells
-        if total == 0:
-            return 0.0
-        return (buys - sells) / total
-    except Exception:
-        return 0.0
+    """Net congressional trading signal (QuiverQuant paid API).
+    Disabled until revenue is flowing — returns 0.0 always.
+    Re-enable by setting QUIVERQUANT_KEY in .env once subscribed."""
+    return 0.0
 
 
 def options_pcr(ticker: str) -> float:
