@@ -1,122 +1,92 @@
 {
-  "timestamp": "2026-06-22T13:14:41.370250+00:00",
+  "timestamp": "2026-06-22T16:13:47.465142+00:00",
   "broker_mode": "LIVE",
   "positions": [
-    {
-      "ticker": "AMD",
-      "shares": 0.0983,
-      "entry_price": 498.176,
-      "current_price": 544.3294,
-      "market_value": 53.50758,
-      "pl_dollars": 4.536879,
-      "pl_pct": 9.264,
-      "bucket": "core"
-    },
     {
       "ticker": "COIN",
       "shares": 0.1402,
       "entry_price": 160.64,
-      "current_price": 165.4999,
-      "market_value": 23.203086,
-      "pl_dollars": 0.681358,
-      "pl_pct": 3.025,
+      "current_price": 166.065,
+      "market_value": 23.282313,
+      "pl_dollars": 0.760585,
+      "pl_pct": 3.3770000000000002,
       "bucket": "swing"
     },
     {
       "ticker": "JPM",
       "shares": 0.1531,
       "entry_price": 315.88,
-      "current_price": 326.6,
-      "market_value": 50.00246,
-      "pl_dollars": 1.641232,
-      "pl_pct": 3.3939999999999997,
-      "bucket": "core"
-    },
-    {
-      "ticker": "LLY",
-      "shares": 0.0413,
-      "entry_price": 1165.4,
-      "current_price": 1099.0,
-      "market_value": 45.3887,
-      "pl_dollars": -2.74232,
-      "pl_pct": -5.698,
+      "current_price": 331.48,
+      "market_value": 50.749588,
+      "pl_dollars": 2.38836,
+      "pl_pct": 4.939,
       "bucket": "core"
     },
     {
       "ticker": "SMH",
       "shares": 0.0788,
       "entry_price": 607.684,
-      "current_price": 670.24,
-      "market_value": 52.814912,
-      "pl_dollars": 4.929413,
-      "pl_pct": 10.294,
+      "current_price": 663.43,
+      "market_value": 52.278284,
+      "pl_dollars": 4.392785,
+      "pl_pct": 9.174,
       "bucket": "core"
     },
     {
       "ticker": "SOFI",
       "shares": 1.3497,
       "entry_price": 16.86,
-      "current_price": 17.6901,
-      "market_value": 23.876328,
-      "pl_dollars": 1.120386,
-      "pl_pct": 4.923,
+      "current_price": 17.285,
+      "market_value": 23.329565,
+      "pl_dollars": 0.573623,
+      "pl_pct": 2.521,
       "bucket": "swing"
-    },
-    {
-      "ticker": "UNH",
-      "shares": 0.1184,
-      "entry_price": 409.52,
-      "current_price": 400.57,
-      "market_value": 47.427488,
-      "pl_dollars": -1.05968,
-      "pl_pct": -2.185,
-      "bucket": "core"
     },
     {
       "ticker": "WULF",
       "shares": 0.2959,
       "entry_price": 25.654,
-      "current_price": 29.69,
-      "market_value": 8.785271,
-      "pl_dollars": 1.194252,
-      "pl_pct": 15.732,
+      "current_price": 28.42,
+      "market_value": 8.409478,
+      "pl_dollars": 0.818459,
+      "pl_pct": 10.782,
       "bucket": "lottery"
     }
   ],
   "buckets": {
     "core": {
       "target_dollars": 210.0,
-      "deployed_cost_basis": 241.84,
-      "current_value": 249.14,
-      "unrealized_pl_dollars": 7.31,
-      "unrealized_pl_pct": 3.02,
+      "deployed_cost_basis": 96.25,
+      "current_value": 103.03,
+      "unrealized_pl_dollars": 6.78,
+      "unrealized_pl_pct": 7.05,
       "realized_pl_dollars": -3.77,
-      "position_count": 5
+      "position_count": 2
     },
     "swing": {
       "target_dollars": 60.0,
       "deployed_cost_basis": 45.28,
-      "current_value": 47.08,
-      "unrealized_pl_dollars": 1.8,
-      "unrealized_pl_pct": 3.98,
+      "current_value": 46.61,
+      "unrealized_pl_dollars": 1.33,
+      "unrealized_pl_pct": 2.95,
       "realized_pl_dollars": 0.0,
       "position_count": 2
     },
     "lottery": {
       "target_dollars": 30.0,
       "deployed_cost_basis": 7.59,
-      "current_value": 8.79,
-      "unrealized_pl_dollars": 1.19,
-      "unrealized_pl_pct": 15.73,
+      "current_value": 8.41,
+      "unrealized_pl_dollars": 0.82,
+      "unrealized_pl_pct": 10.78,
       "realized_pl_dollars": 0.0,
       "position_count": 1
     }
   },
-  "cash": 5.28,
-  "buying_power": 5.28,
-  "total_invested_value": 305.01,
-  "total_portfolio_value": 310.29,
-  "total_pl_dollars": 10.29,
-  "total_pl_pct": 3.43,
-  "summary": "\ud83d\udcc8 Portfolio $310.29 (+3.43%, P/L $+10.29)\n  core   : 5 pos, $249.14 (+3.02%)\n  swing  : 2 pos, $47.08 (+3.98%)\n  lottery: 1 pos, $8.79 (+15.73%)\n  Best: WULF +15.73%  |  Worst: LLY -5.70%"
+  "cash": 152.32,
+  "buying_power": 152.32,
+  "total_invested_value": 158.05,
+  "total_portfolio_value": 310.37,
+  "total_pl_dollars": 10.37,
+  "total_pl_pct": 3.46,
+  "summary": "\ud83d\udcc8 Portfolio $310.37 (+3.46%, P/L $+10.37)\n  core   : 2 pos, $103.03 (+7.05%)\n  swing  : 2 pos, $46.61 (+2.95%)\n  lottery: 1 pos, $8.41 (+10.78%)\n  Best: WULF +10.78%  |  Worst: SOFI +2.52%"
 }
