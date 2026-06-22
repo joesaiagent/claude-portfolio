@@ -1,5 +1,5 @@
 """Extra intel sources — Alpha Vantage news sentiment, yfinance analyst consensus,
-Finnhub insider data, QuiverQuant congressional trades, and options put/call ratio.
+Finnhub insider data, congressional STOCK Act disclosures, and options put/call ratio.
 Free tier throughout. Every source degrades to neutral on failure so screening
 never blocks. Sources needing a key return 0.0 when the key is absent."""
 import os
@@ -13,6 +13,7 @@ from agents._screener import EXCLUDED_SECTORS
 
 AV_URL = "https://www.alphavantage.co/query"
 FINNHUB_URL = "https://finnhub.io/api/v1"
+
 
 
 def finnhub_rec(ticker: str) -> float:
@@ -87,10 +88,14 @@ def finnhub_insider_transactions(ticker: str) -> float:
         return 0.0
 
 
-def quiverquant_congressional(ticker: str) -> float:
-    """Net congressional trading signal (QuiverQuant paid API).
-    Disabled until revenue is flowing — returns 0.0 always.
-    Re-enable by setting QUIVERQUANT_KEY in .env once subscribed."""
+def congressional_trading(ticker: str) -> float:
+    """Net congressional trading signal — stubbed pending a working free source.
+
+    All community free APIs (housestockwatcher.com, senatestockwatcher.com,
+    their S3 buckets) went down in 2025-2026. Paid alternatives: QuiverQuant.
+    Wire in when QuiverQuant subscription is active or a new free source appears.
+    Signal weight in enrich(): ×4, contributes up to ±4 pts of the ±15 tilt cap.
+    """
     return 0.0
 
 
@@ -194,7 +199,7 @@ def enrich(candidates: list[dict]) -> list[dict]:
         fin = finnhub_rec(t)
         insider_mspr = finnhub_insider_sentiment(t)
         insider_txn = finnhub_insider_transactions(t)
-        congress = quiverquant_congressional(t)
+        congress = congressional_trading(t)
         pcr = options_pcr(t)
         c["finnhub_rec"] = round(fin, 3)
         c["insider_mspr"] = round(insider_mspr, 3)

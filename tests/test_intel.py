@@ -20,7 +20,7 @@ def _patch(mp, sent, n, upside, rec, sector="", fin=0.0):
     mp.setattr(_intel, "finnhub_rec", lambda t: fin)
     mp.setattr(_intel, "finnhub_insider_sentiment", lambda t: 0.0)
     mp.setattr(_intel, "finnhub_insider_transactions", lambda t: 0.0)
-    mp.setattr(_intel, "quiverquant_congressional", lambda t: 0.0)
+    mp.setattr(_intel, "congressional_trading", lambda t: 0.0)
     mp.setattr(_intel, "options_pcr", lambda t: 0.0)
     mp.setattr(_intel.time, "sleep", lambda *_: None)  # no real delay in tests
 
