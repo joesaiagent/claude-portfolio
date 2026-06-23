@@ -341,5 +341,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "7ffbd234-97c1-4d12-b7a6-ecbea7877aa9",
+    "text": "Day 7: up $7.04 (2.35%). Core bucket carrying us with JPM and SMH both green. Swing trades treading water, lottery pick up 12% already. The grind continues \u2014 small wins compound. Still mostly cash, ready to deploy on dips.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-06-23T20:44:06.190211+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2069521904084341202"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-06-23T20:44:06.190211+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
