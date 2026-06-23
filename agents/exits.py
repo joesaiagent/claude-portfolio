@@ -44,15 +44,27 @@ TREND_BREAK_BAND = -0.02  # core: sell if price is >2% below its 50-day MA
 
 def _excluded_sector_tickers(tickers: list[str]) -> set[str]:
     """Return tickers whose yfinance sector is in EXCLUDED_SECTORS.
-    Degrades to empty set on any data failure — never a spurious sell."""
+
+    Force-selling on a sector read is only as safe as the data behind it. yfinance
+    is flaky (and on 2026-06-22 a broken tz cache returned garbage, which sold a
+    healthy non-healthcare core name). So this is deliberately conservative:
+
+      - An *exception* on any lookup means the data layer is unreliable this cycle
+        -> return an empty set and force-sell NOTHING. A genuinely-excluded name
+        just gets sold on the next clean cycle; sector exclusion is not time
+        critical, and a false sell costs real money.
+      - An *empty* sector is treated as "no sector" (e.g. ETFs like SMH legitimately
+        report none) — skip the ticker, but don't consider the cycle degraded.
+      - Only a positively-confirmed excluded sector triggers a sell.
+    """
     out: set[str] = set()
     for t in tickers:
         try:
-            sector = yf.Ticker(t).info.get("sector", "")
-            if sector in EXCLUDED_SECTORS:
-                out.add(t)
+            sector = (yf.Ticker(t).info or {}).get("sector") or ""
         except Exception:
-            pass
+            return set()  # degraded data — do not force-sell on a guess this cycle
+        if sector in EXCLUDED_SECTORS:
+            out.add(t)
     return out
 
 
