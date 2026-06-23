@@ -1,5 +1,6 @@
 """Allocator: free-tier. Deterministic bucket-aware sizing. No LLM cost. Executes via Alpaca."""
 import json
+import math
 import statistics
 from datetime import datetime, timezone
 
@@ -200,7 +201,15 @@ def run() -> dict:
 
     account = broker.account_info()
     positions = _attach_bucket(broker.positions(), state)
-    held_tickers = {p["ticker"] for p in positions}
+    # Net out still-open buy orders (e.g. a prior cycle's DAY limit not yet
+    # filled): treat those tickers as already taken AND reserve their cash, so a
+    # later cycle in the same day never double-buys or over-spends. Alpaca's
+    # `cash` field doesn't drop until fill, so without this the cap is blind to
+    # pending orders. Idempotent allocation is essential for an unattended loop.
+    open_buys = [o for o in broker.open_orders() if o["side"] == "buy"]
+    open_buy_tickers = {o["ticker"] for o in open_buys}
+    reserved_cash = sum(o["notional"] for o in open_buys)
+    held_tickers = {p["ticker"] for p in positions} | open_buy_tickers
     suggestions: list[dict] = []
 
     # Regime filter: scale how much we deploy. risk_off -> hold more cash.
@@ -223,20 +232,40 @@ def run() -> dict:
         )
 
         n_pos = _bucket_target_positions(bucket, remaining)
-        chosen = bucket_candidates[:n_pos]
+        # Resolve a tradeable price for each candidate UP FRONT (watchlist
+        # last_price first, else Alpaca's reliable quote) and keep only the ones
+        # we can actually price, walking down the sorted list until we have n_pos.
+        # This is critical: previously `chosen = candidates[:n_pos]` then a price
+        # miss on a chosen name did `continue` with NO fallback, silently
+        # stranding the whole bucket budget as idle cash (the 6/23 failure). Now a
+        # flaky lookup just falls through to the next-best name.
+        priced: list[tuple[dict, float]] = []
+        for c in bucket_candidates:
+            price = c.get("last_price") or broker.latest_price(c["ticker"])
+            if price and price > 0:
+                priced.append((c, price))
+            if len(priced) >= n_pos:
+                break
+        if not priced:
+            continue
+        chosen = [c for c, _ in priced]
+        price_by_ticker = {c["ticker"]: p for c, p in priced}
         # Inverse-vol sizing needs vol20 on every candidate; a stale watchlist
         # without it degrades safely to equal weight.
-        if chosen and all(c.get("vol20") for c in chosen):
+        if all(c.get("vol20") for c in chosen):
             budgets = _inverse_vol_budgets(chosen, remaining, bucket)
         else:
-            budgets = [remaining / len(chosen)] * len(chosen) if chosen else []
+            budgets = [remaining / len(chosen)] * len(chosen)
         for cand, budget in zip(chosen, budgets):
-            price = cand.get("last_price") or broker.latest_price(cand["ticker"])
-            if not price or price <= 0:
-                continue
+            price = price_by_ticker[cand["ticker"]]
             if budget < 1.0:
                 continue
-            shares = round(budget / price, 4)
+            # Floor (not round) to 4 dp so est_cost can NEVER exceed `budget`.
+            # Rounding UP pushed a full-budget single-name core buy a few cents
+            # over its bucket cap, and the strict `>` hard-cap check below then
+            # rejected the WHOLE position — leaving core cash idle every cycle
+            # (the 6/23 "$113 undeployed" bug). Flooring keeps it just under cap.
+            shares = math.floor((budget / price) * 1e4) / 1e4
             if shares <= 0:
                 continue
             est_cost = round(shares * price, 2)
@@ -253,11 +282,13 @@ def run() -> dict:
             })
             held_tickers.add(cand["ticker"])
 
-    # Hard cap: don't exceed cash or per-bucket budgets.
+    # Hard cap: don't exceed cash or per-bucket budgets. Subtract cash already
+    # reserved by still-open buy orders so concurrent/same-day cycles can't
+    # collectively over-spend.
     safe = []
     spent_per_bucket = {b: 0.0 for b in BUCKETS}
     spent_total = 0.0
-    cash = account["cash"]
+    cash = max(0.0, account["cash"] - reserved_cash)
     for s in suggestions:
         if spent_total + s["estimated_cost"] > cash:
             continue

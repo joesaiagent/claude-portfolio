@@ -67,6 +67,31 @@ def latest_price(ticker: str) -> float | None:
         return None
 
 
+def open_orders() -> list[dict]:
+    """Currently-open (unfilled) orders. The allocator nets these out so a buy
+    queued by one cycle but not yet filled (e.g. a premarket DAY limit waiting
+    for the 9:30 open) is never re-issued by the next cycle — making allocation
+    idempotent across cycles. Degrades to [] on any API error."""
+    from alpaca.trading.requests import GetOrdersRequest
+    from alpaca.trading.enums import QueryOrderStatus
+    try:
+        orders = _client().get_orders(GetOrdersRequest(status=QueryOrderStatus.OPEN))
+    except Exception:
+        return []
+    out = []
+    for o in orders:
+        qty = float(o.qty) if o.qty is not None else 0.0
+        price = float(o.limit_price) if getattr(o, "limit_price", None) else None
+        out.append({
+            "ticker": o.symbol,
+            "side": "buy" if str(o.side).endswith("BUY") else "sell",
+            "shares": qty,
+            "limit_price": price,
+            "notional": (price or 0.0) * qty,
+        })
+    return out
+
+
 def submit_buy(ticker: str, shares: float, limit_price: float | None = None) -> dict:
     """Place a buy. Defaults to a limit order at limit_price, falls back to market."""
     client = _client()
