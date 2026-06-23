@@ -1,55 +1,55 @@
 {
-  "timestamp": "2026-06-22T20:43:54.903657+00:00",
+  "timestamp": "2026-06-23T16:14:18.818700+00:00",
   "broker_mode": "LIVE",
   "positions": [
     {
       "ticker": "COIN",
       "shares": 0.1402,
       "entry_price": 160.64,
-      "current_price": 164.9,
-      "market_value": 23.11898,
-      "pl_dollars": 0.597252,
-      "pl_pct": 2.6519999999999997,
+      "current_price": 160.315,
+      "market_value": 22.476163,
+      "pl_dollars": -0.045565,
+      "pl_pct": -0.202,
       "bucket": "swing"
     },
     {
       "ticker": "JPM",
       "shares": 0.1531,
       "entry_price": 315.88,
-      "current_price": 331.48,
-      "market_value": 50.749588,
-      "pl_dollars": 2.38836,
-      "pl_pct": 4.939,
+      "current_price": 334.21,
+      "market_value": 51.167551,
+      "pl_dollars": 2.806323,
+      "pl_pct": 5.803,
       "bucket": "core"
     },
     {
       "ticker": "SMH",
       "shares": 0.0788,
       "entry_price": 607.684,
-      "current_price": 667.52,
-      "market_value": 52.600576,
-      "pl_dollars": 4.715077,
-      "pl_pct": 9.847,
+      "current_price": 630.54,
+      "market_value": 49.686552,
+      "pl_dollars": 1.801053,
+      "pl_pct": 3.7609999999999997,
       "bucket": "core"
     },
     {
       "ticker": "SOFI",
       "shares": 1.3497,
       "entry_price": 16.86,
-      "current_price": 17.13,
-      "market_value": 23.120361,
-      "pl_dollars": 0.364419,
-      "pl_pct": 1.601,
+      "current_price": 17.595,
+      "market_value": 23.747972,
+      "pl_dollars": 0.99203,
+      "pl_pct": 4.359,
       "bucket": "swing"
     },
     {
       "ticker": "WULF",
       "shares": 0.2959,
       "entry_price": 25.654,
-      "current_price": 28.39,
-      "market_value": 8.400601,
-      "pl_dollars": 0.809582,
-      "pl_pct": 10.665,
+      "current_price": 29.095,
+      "market_value": 8.609211,
+      "pl_dollars": 1.018192,
+      "pl_pct": 13.413,
       "bucket": "lottery"
     }
   ],
@@ -57,36 +57,36 @@
     "core": {
       "target_dollars": 210.0,
       "deployed_cost_basis": 96.25,
-      "current_value": 103.35,
-      "unrealized_pl_dollars": 7.1,
-      "unrealized_pl_pct": 7.38,
+      "current_value": 100.85,
+      "unrealized_pl_dollars": 4.61,
+      "unrealized_pl_pct": 4.79,
       "realized_pl_dollars": -3.77,
       "position_count": 2
     },
     "swing": {
       "target_dollars": 60.0,
       "deployed_cost_basis": 45.28,
-      "current_value": 46.24,
-      "unrealized_pl_dollars": 0.96,
-      "unrealized_pl_pct": 2.12,
+      "current_value": 46.22,
+      "unrealized_pl_dollars": 0.95,
+      "unrealized_pl_pct": 2.09,
       "realized_pl_dollars": 0.0,
       "position_count": 2
     },
     "lottery": {
       "target_dollars": 30.0,
       "deployed_cost_basis": 7.59,
-      "current_value": 8.4,
-      "unrealized_pl_dollars": 0.81,
-      "unrealized_pl_pct": 10.67,
+      "current_value": 8.61,
+      "unrealized_pl_dollars": 1.02,
+      "unrealized_pl_pct": 13.41,
       "realized_pl_dollars": 0.0,
       "position_count": 1
     }
   },
   "cash": 152.32,
   "buying_power": 152.32,
-  "total_invested_value": 157.99,
-  "total_portfolio_value": 310.31,
-  "total_pl_dollars": 10.31,
-  "total_pl_pct": 3.44,
-  "summary": "\ud83d\udcc8 Portfolio $310.31 (+3.44%, P/L $+10.31)\n  core   : 2 pos, $103.35 (+7.38%)\n  swing  : 2 pos, $46.24 (+2.12%)\n  lottery: 1 pos, $8.40 (+10.67%)\n  Best: WULF +10.66%  |  Worst: SOFI +1.60%"
+  "total_invested_value": 155.69,
+  "total_portfolio_value": 308.01,
+  "total_pl_dollars": 8.01,
+  "total_pl_pct": 2.67,
+  "summary": "\ud83d\udcc8 Portfolio $308.01 (+2.67%, P/L $+8.01)\n  core   : 2 pos, $100.85 (+4.79%)\n  swing  : 2 pos, $46.22 (+2.09%)\n  lottery: 1 pos, $8.61 (+13.41%)\n  Best: WULF +13.41%  |  Worst: COIN -0.20%"
 }
