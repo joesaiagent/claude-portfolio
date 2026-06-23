@@ -20,6 +20,7 @@ MODULES = [
     "tests.test_sizing",
     "tests.test_rotation",
     "tests.test_regime",
+    "tests.test_health",
 ]
 
 

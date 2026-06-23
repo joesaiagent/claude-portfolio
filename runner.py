@@ -31,7 +31,7 @@ def _raise_fd_limit(target: int = 16384) -> None:
 
 _raise_fd_limit()
 
-from agents import broker, exits, publish
+from agents import broker, exits, publish, health
 from agents.analytics import agent as analytics
 from agents.content import agent as content
 from agents.allocator import agent as allocator
@@ -40,6 +40,9 @@ from agents.tracker import agent as tracker
 
 
 ET = ZoneInfo("America/New_York")
+
+# Per-cycle collector of agent failures (consumed by the health watchdog).
+_STEP_FAILURES: list[dict] = []
 
 
 def market_closed_today() -> bool:
@@ -50,14 +53,28 @@ def market_closed_today() -> bool:
     return not broker.is_trading_day()
 
 
+# Read-only steps are safe to retry on a transient (network/data) failure.
+# Order-PLACING steps (exits, allocator) are NOT retried — a retry after a
+# partial submit could double-place. Their resilience comes from preflight
+# (verify broker/data are healthy before we ever call them).
+_RETRYABLE = {"research": 2, "tracker": 2, "publish": 2, "content": 1, "analytics": 1}
+
+
 def step(name: str, fn):
     print(f"\n[{datetime.now(timezone.utc).isoformat()}] >>> {name}")
-    try:
-        return fn()
-    except Exception as e:
-        print(f"[{name}] FAILED: {e}")
-        traceback.print_exc()
-        return None
+    tries = _RETRYABLE.get(name, 0) + 1
+    last_exc = None
+    for attempt in range(tries):
+        try:
+            return fn()
+        except Exception as e:
+            last_exc = e
+            print(f"[{name}] FAILED (attempt {attempt + 1}/{tries}): {e}")
+            if attempt < tries - 1:
+                time.sleep(3)
+    traceback.print_exc()
+    _STEP_FAILURES.append({"name": name, "error": str(last_exc)[:300]})
+    return None
 
 
 def cycle_premarket():
@@ -90,6 +107,28 @@ CYCLES = {
     "midday": (12, 0, cycle_midday),
     "postclose": (16, 30, cycle_postclose),
 }
+
+
+def run_cycle(name: str, fn) -> None:
+    """Run one cycle wrapped by the health watchdog: preflight (env sanity +
+    self-heal) -> agents -> postflight (did they do their job?) -> alert on
+    anything unhealed. A fatal exception is caught and pushed, never silent."""
+    _STEP_FAILURES.clear()
+    started = datetime.now(timezone.utc).isoformat()
+    try:
+        pre = health.preflight()
+        health.report(f"{name}/preflight", pre)
+        # Abort trading if the environment is critically broken (e.g. broker
+        # down, keys missing) — better to skip a cycle than trade blind.
+        if any(i.severity == "critical" and not i.healed for i in pre):
+            print(f"=== ABORT {name}: critical preflight failure, skipping agents ===")
+            return
+        fn()
+        post = health.postflight(name, list(_STEP_FAILURES), started)
+        health.report(name, post)
+    except Exception as e:
+        health.notify_crash(name, e, traceback.format_exc())
+        raise
 
 
 def now_et() -> datetime:
@@ -129,18 +168,15 @@ def main():
             print(f"=== SKIP {args.once} @ {now_et().isoformat()} — market closed (weekend/holiday) ===")
             return
         print(f"=== ONCE: {args.once} @ {now_et().isoformat()} ===")
-        _, _, fn = CYCLES["premarket"] if args.once == "premarket" else CYCLES[args.once]
-        # Find the right fn
-        _, _, fn = next(((h, m, fn) for n, (h, m, fn) in CYCLES.items() if n == args.once), (None, None, None))
-        if fn:
-            fn()
+        _, _, fn = CYCLES[args.once]
+        run_cycle(args.once, fn)
         return
 
     if args.replay:
         print(f"=== REPLAY — all 3 cycles back-to-back ===")
         for name, (_, _, fn) in CYCLES.items():
             print(f"\n>>> Cycle: {name}")
-            fn()
+            run_cycle(name, fn)
         return
 
     print(f"Runner started. Cycles at 9:00 / 12:00 / 16:30 ET.")
@@ -154,7 +190,7 @@ def main():
                 print(f"\n=== SKIP {name} @ {now_et().isoformat()} — market closed (weekend/holiday) ===")
                 continue
             print(f"\n=== RUNNING {name} @ {now_et().isoformat()} ===")
-            fn()
+            run_cycle(name, fn)
         except Exception as e:
             print(f"Cycle {name} failed: {e}")
             traceback.print_exc()
