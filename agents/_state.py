@@ -1,11 +1,13 @@
 """Shared portfolio state helpers used by all agents."""
 import json
 import os
+import shutil
 from datetime import datetime
 from pathlib import Path
 
 DATA_DIR = Path(__file__).resolve().parents[1] / "data"
 STATE_FILE = DATA_DIR / "portfolio_state.json"
+STATE_BAK = DATA_DIR / "portfolio_state.json.bak"   # last known-good snapshot
 WATCHLIST_FILE = DATA_DIR / "watchlist.json"
 PENDING_TRADES_FILE = DATA_DIR / "pending_trades.json"
 POSTS_FILE = DATA_DIR / "posts_queue.json"
@@ -15,11 +17,31 @@ BUCKETS = ("core", "swing", "lottery")
 
 
 def load_state() -> dict:
-    return json.loads(STATE_FILE.read_text())
+    """Load portfolio state, self-healing from the last-good backup if the
+    primary file is missing or corrupt (e.g. a write interrupted by a process
+    kill). Every agent calls this, so a truncated state file would otherwise
+    crash every cycle until manually repaired."""
+    try:
+        return json.loads(STATE_FILE.read_text())
+    except (json.JSONDecodeError, FileNotFoundError, ValueError) as e:
+        if STATE_BAK.exists():
+            data = json.loads(STATE_BAK.read_text())  # if THIS fails too, truly unrecoverable -> raise
+            STATE_FILE.write_text(json.dumps(data, indent=2))
+            print(f"[state] primary state unreadable ({e}); recovered from backup")
+            return data
+        raise
 
 
 def save_state(state: dict) -> None:
-    STATE_FILE.write_text(json.dumps(state, indent=2))
+    """Atomic write: serialize to a temp file then os.replace() (atomic on
+    POSIX) so an interrupted write can never leave a truncated/corrupt state.
+    Snapshots the prior good file to .bak first, so load_state can self-heal."""
+    payload = json.dumps(state, indent=2)
+    tmp = DATA_DIR / (STATE_FILE.name + ".tmp")
+    tmp.write_text(payload)
+    if STATE_FILE.exists():
+        shutil.copy2(STATE_FILE, STATE_BAK)
+    os.replace(tmp, STATE_FILE)  # atomic rename
 
 
 def is_autonomous(state: dict | None = None) -> bool:

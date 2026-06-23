@@ -21,6 +21,7 @@ MODULES = [
     "tests.test_rotation",
     "tests.test_regime",
     "tests.test_health",
+    "tests.test_state",
 ]
 
 

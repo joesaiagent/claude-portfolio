@@ -25,7 +25,7 @@
     "swing": 0.0,
     "lottery": 0.0
   },
-  "lottery_deployed_total": 7.5,
+  "lottery_deployed_total": 19.33,
   "order_log": [
     {
       "ts": "2026-06-12T13:00:35.516031+00:00",
@@ -140,6 +140,69 @@
       "shares": 0.1184,
       "reason": "manual divest \u2014 exit healthcare per user",
       "realized_pl_dollars": -1.01
+    },
+    {
+      "ts": "2026-06-23T21:58:41.101457+00:00",
+      "ticker": "MU",
+      "bucket": "core",
+      "side": "buy",
+      "shares": 0.1081,
+      "limit_price": 1072.81,
+      "estimated_cost": 113.7,
+      "order_id": "6fa2bd3f-50ed-4989-abbe-e40b6162cf06",
+      "status": "OrderStatus.ACCEPTED",
+      "rationale": "MU: momentum 66, news +0.00 (0), insider txn +0.00, congress +0.00, options PCR -0.04, analyst -3% (rec 1.5)"
+    },
+    {
+      "ts": "2026-06-23T21:58:41.198508+00:00",
+      "ticker": "RBLX",
+      "bucket": "swing",
+      "side": "buy",
+      "shares": 0.3125,
+      "limit_price": 48.05,
+      "estimated_cost": 14.72,
+      "order_id": "32b7ca52-759f-4a47-baeb-9e8853f6ea20",
+      "status": "OrderStatus.ACCEPTED",
+      "rationale": "RBLX: momentum 63, news +0.00 (0), insider txn +0.00, congress +0.00, options PCR +0.45, analyst +38% (rec 1.9)"
+    },
+    {
+      "ts": "2026-06-23T21:58:41.296434+00:00",
+      "ticker": "RIOT",
+      "bucket": "lottery",
+      "side": "buy",
+      "shares": 0.4125,
+      "limit_price": 29.26,
+      "estimated_cost": 11.83,
+      "order_id": "cc56132c-a482-416f-87c7-092c704fe28b",
+      "status": "OrderStatus.ACCEPTED",
+      "rationale": "RIOT: momentum 60, news +0.12 (50), insider txn +0.00, congress +0.00, options PCR +0.18, analyst -0% (rec 1.4)"
     }
-  ]
+  ],
+  "position_highs": {
+    "COIN": {
+      "high_price": 166.065,
+      "high_pl_pct": 3.377,
+      "updated": "2026-06-23T22:33:12.240649+00:00"
+    },
+    "JPM": {
+      "high_price": 335.0,
+      "high_pl_pct": 6.053,
+      "updated": "2026-06-23T22:33:12.240688+00:00"
+    },
+    "SMH": {
+      "high_price": 670.24,
+      "high_pl_pct": 10.294,
+      "updated": "2026-06-23T22:33:12.240702+00:00"
+    },
+    "SOFI": {
+      "high_price": 17.6901,
+      "high_pl_pct": 4.923,
+      "updated": "2026-06-23T22:33:12.240720+00:00"
+    },
+    "WULF": {
+      "high_price": 29.69,
+      "high_pl_pct": 15.732,
+      "updated": "2026-06-23T22:33:12.240798+00:00"
+    }
+  }
 }

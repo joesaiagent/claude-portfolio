@@ -18,3 +18,5 @@ data/watchlist.json
 data/pending_trades.json
 data/posts_queue.json
 data/tracker_report.json
+data/*.tmp
+data/portfolio_state.json.bak

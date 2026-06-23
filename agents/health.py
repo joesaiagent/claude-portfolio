@@ -93,6 +93,14 @@ def preflight() -> list[Issue]:
     except Exception as e:
         issues.append(Issue("critical", "data_dir", f"not writable: {e}"))
 
+    # 4. Portfolio state loadable (load_state self-heals from .bak; only an
+    #    unrecoverable read reaches here — that's a hard stop, never trade blind).
+    from agents._state import load_state
+    try:
+        load_state()
+    except Exception as e:
+        issues.append(Issue("critical", "state_file", f"unrecoverable: {e}"))
+
     # 4. Broker reachable (retry transient outages — that IS the heal).
     acct, err = _retry(broker.account_info)
     if err:
