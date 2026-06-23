@@ -41,6 +41,12 @@
         <string>1</string>
     </dict>
 
+    <key>SoftResourceLimits</key>
+    <dict>
+        <key>NumberOfFiles</key>
+        <integer>16384</integer>
+    </dict>
+
     <key>ProcessType</key>
     <string>Background</string>
 </dict>

@@ -1,10 +1,35 @@
 """Autonomous loop scheduler. Cost-optimized: 3 cycles/day with role-specific agents."""
 import argparse
 import os
+import resource
 import time
 import traceback
 from datetime import datetime, timezone, timedelta
 from zoneinfo import ZoneInfo
+
+
+def _raise_fd_limit(target: int = 16384) -> None:
+    """Raise the open-file limit before anything touches the network.
+
+    Under launchd the soft RLIMIT_NOFILE is only 256. yfinance (threads=True,
+    ~66 tickers) opens enough concurrent connections to exhaust that, and FD
+    starvation surfaces as MISLEADING errors — sqlite "unable to open database
+    file", curl getaddrinfo/DNS failures — before finally erroring plainly with
+    Errno 24. (This, not the cache path, was the true cause of the 6/22 spurious
+    AMD sell and the 6/23 no-trade crash.) macOS caps a process at
+    kern.maxfilesperproc (61440), so a generous 16384 is safe and well clear of
+    real usage. Idempotent; never lowers the limit; swallows any failure.
+    """
+    try:
+        soft, hard = resource.getrlimit(resource.RLIMIT_NOFILE)
+        want = target if hard == resource.RLIM_INFINITY else min(target, hard)
+        if soft < want:
+            resource.setrlimit(resource.RLIMIT_NOFILE, (want, hard))
+    except Exception:
+        pass
+
+
+_raise_fd_limit()
 
 from agents import broker, exits, publish
 from agents.analytics import agent as analytics
