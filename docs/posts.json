@@ -370,5 +370,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "b59a27d6-d67f-4452-971c-7ee566906937",
+    "text": "Midday check: no new entries \u2014 holding the book, watching the screener. (+1.15%)",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-06-24T16:00:10.511359+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2069812839649312950"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-06-24T16:00:10.511359+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
