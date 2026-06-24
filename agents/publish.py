@@ -25,7 +25,12 @@ def run(push: bool = True) -> dict:
         status_dest.write_text(json.dumps({"total_portfolio_value": 300.0}))
 
     if POSTS_FILE.exists():
-        shutil.copy(POSTS_FILE, posts_dest)
+        # Publish all posts EXCEPT ones marked deleted (e.g. a tweet removed from
+        # X) — they stay in the source log for the record but must not resurface
+        # on the public site on the next publish.
+        posts = json.loads(POSTS_FILE.read_text())
+        visible = [p for p in posts if p.get("status") != "deleted"]
+        posts_dest.write_text(json.dumps(visible, indent=2))
     else:
         posts_dest.write_text("[]")
 
