@@ -140,7 +140,7 @@ def todays_trades(state: dict) -> list[dict]:
     return out
 
 
-def midday_narrative(state: dict, tracker: dict, day: int, trades: list[dict]) -> str | None:
+def midday_narrative(state: dict, tracker: dict, trades: list[dict]) -> str | None:
     """ONE Haiku call for the midday update: what we traded today, how much cash
     got deployed, and WHY (the factors behind the moves). Same voice as the daily
     post, no URLs. Returns None on failure so the caller can fall back."""
@@ -160,14 +160,14 @@ def midday_narrative(state: dict, tracker: dict, day: int, trades: list[dict]) -
                 "(momentum, news sentiment, analyst/insider signals, etc.). If there were no "
                 "new trades, give a brief 'holding, here's why' note instead. "
                 "ONE post, <=260 chars. Conversational, honest, no hashtags, no preamble, no "
-                "quotes. The day number is in the input as 'day' — use that EXACT number, "
-                "never invent one. CRITICAL: no URLs/links/'t.co' anywhere (X charges 13x more). "
+                "quotes. Do NOT include a day number or the word 'Day' followed by a number "
+                "anywhere — that's only for the end-of-day recap, not this midday post. "
+                "CRITICAL: no URLs/links/'t.co' anywhere (X charges 13x more). "
                 "The @claudeinvesting handle is fine but no http/https links. Output the post text directly."
             ),
             messages=[{
                 "role": "user",
                 "content": json.dumps({
-                    "day": day,
                     "portfolio_value": tracker.get("total_portfolio_value"),
                     "pl_pct": tracker.get("total_pl_pct"),
                     "cash_deployed_today": deployed,
@@ -189,13 +189,13 @@ def midday_narrative(state: dict, tracker: dict, day: int, trades: list[dict]) -
         return None
 
 
-def midday_fallback(state: dict, tracker: dict, day: int, trades: list[dict]) -> str:
-    """Factual midday post if the LLM call fails. No URLs."""
+def midday_fallback(state: dict, tracker: dict, trades: list[dict]) -> str:
+    """Factual midday post if the LLM call fails. No URLs, no day number."""
     buys = [t for t in trades if t.get("side") == "buy"]
     sells = [t for t in trades if t.get("side") == "sell"]
     pct = tracker.get("total_pl_pct", 0)
     if not buys and not sells:
-        return f"Day {day} midday: no new entries — holding the book, watching the screener. ({pct:+.2f}%)"
+        return f"Midday check: no new entries — holding the book, watching the screener. ({pct:+.2f}%)"
     deployed = round(sum(t.get("estimated_cost", 0) or 0 for t in buys), 2)
     names = ", ".join(f"{t['ticker']}" for t in buys[:3]) or "—"
     parts = []
@@ -203,7 +203,7 @@ def midday_fallback(state: dict, tracker: dict, day: int, trades: list[dict]) ->
         parts.append(f"deployed ${deployed:.0f} into {names}")
     if sells:
         parts.append(f"trimmed {', '.join(t['ticker'] for t in sells[:2])}")
-    return f"Day {day} midday: {'; '.join(parts)}. Book {pct:+.2f}%."
+    return f"Midday: {'; '.join(parts)}. Book {pct:+.2f}%."
 
 
 def _emit(state: dict, text: str, topic: str) -> dict:
@@ -243,12 +243,12 @@ def run() -> dict:
 
 
 def run_midday() -> dict:
-    """Midday: an update on today's trades, cash deployed, and the reasoning."""
+    """Midday: an update on today's trades, cash deployed, and the reasoning.
+    Deliberately has NO 'Day N' label — that's reserved for the post-close recap."""
     state = load_state()
     tracker = json.loads(TRACKER_REPORT.read_text()) if TRACKER_REPORT.exists() else {}
-    day = day_number()
     trades = todays_trades(state)
-    text = midday_narrative(state, tracker, day, trades) or midday_fallback(state, tracker, day, trades)
+    text = midday_narrative(state, tracker, trades) or midday_fallback(state, tracker, trades)
     return _emit(state, text, "midday_update")
 
 
