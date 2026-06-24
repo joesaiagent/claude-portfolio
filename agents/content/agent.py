@@ -25,11 +25,14 @@ load_dotenv()
 
 MODEL = "claude-haiku-4-5"
 
-# Real-money go-live date. The "Day N" counter = trading days since this date
-# (computed via the market calendar), so it increments by exactly 1 each posting
-# day with no skips/repeats. Previously the LLM invented this number, producing
-# nonsense like five different days all labelled "Day 1" then a 4->7 jump.
-LAUNCH_DATE = date(2026, 6, 12)
+# "Day 1" of the public challenge = 2026-06-16, fixed by the established post
+# history (the 6/17 post said "Day 2", 6/18 "Day 3", 6/22 "Day 4"; counting
+# trading days back from there lands Day 1 on Tue 6/16). NOT the 6/12 real-money
+# go-live — anchoring there over-counted by 2. The "Day N" counter = trading
+# days since this date (market calendar), so it steps by exactly 1 each posting
+# day: 6/22=4, 6/23=5, 6/24=6, 6/25=7, ... no skips/repeats. Previously the LLM
+# invented the number (five different days all "Day 1", then a 4->7 jump).
+LAUNCH_DATE = date(2026, 6, 16)
 
 
 def day_number() -> int:
