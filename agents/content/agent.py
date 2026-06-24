@@ -8,12 +8,12 @@ Cost per day:
 import json
 import os
 import uuid
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 
 import anthropic
 from dotenv import load_dotenv
 
-from agents import social
+from agents import broker, social
 from agents._state import (
     POSTS_FILE,
     TRACKER_REPORT,
@@ -25,24 +25,34 @@ load_dotenv()
 
 MODEL = "claude-haiku-4-5"
 
+# Real-money go-live date. The "Day N" counter = trading days since this date
+# (computed via the market calendar), so it increments by exactly 1 each posting
+# day with no skips/repeats. Previously the LLM invented this number, producing
+# nonsense like five different days all labelled "Day 1" then a 4->7 jump.
+LAUNCH_DATE = date(2026, 6, 12)
 
-def template_fallback(state: dict, tracker: dict) -> str:
+
+def day_number() -> int:
+    return max(1, broker.trading_days_since(LAUNCH_DATE))
+
+
+def template_fallback(state: dict, tracker: dict, day: int) -> str:
     """Bare-bones factual post if the LLM call fails. No URLs."""
     pl = tracker.get("total_pl_dollars", 0)
     pct = tracker.get("total_pl_pct", 0)
     value = tracker.get("total_portfolio_value", state["starting_capital"])
     arrow = "📈" if pl >= 0 else "📉"
     if not tracker.get("positions"):
-        return f"{arrow} Cash on the sidelines. ${value:.2f} ready. Next entries at premarket."
+        return f"{arrow} Day {day}: cash on the sidelines. ${value:.2f} ready. Next entries at premarket."
     return (
-        f"{arrow} Day close: ${value:.2f} ({pct:+.2f}%, P/L ${pl:+.2f}). "
+        f"{arrow} Day {day} close: ${value:.2f} ({pct:+.2f}%, P/L ${pl:+.2f}). "
         f"Core ${tracker['buckets']['core']['current_value']:.2f} · "
         f"Swing ${tracker['buckets']['swing']['current_value']:.2f} · "
         f"Lottery ${tracker['buckets']['lottery']['current_value']:.2f}"
     )
 
 
-def narrative_post(state: dict, tracker: dict) -> str | None:
+def narrative_post(state: dict, tracker: dict, day: int) -> str | None:
     """ONE Haiku call. Generates the day's single human-voice post.
     NO URLs in output — X charges $0.20 per URL-containing tweet vs $0.015 plain.
     """
@@ -56,6 +66,8 @@ def narrative_post(state: dict, tracker: dict) -> str | None:
                 "turn $300 into $10K via a 3-bucket strategy (core/swing/lottery). "
                 "ONE post, ≤260 chars (leave room for safety). "
                 "Conversational, honest, no hashtags, no preamble, no quotes. "
+                "The day number is provided in the input as 'day' — if you reference the day, "
+                "use that EXACT number. Never invent or guess a different day number. "
                 "CRITICAL: do NOT include URLs, links, or 't.co' anywhere — X charges 13x more "
                 "for URL-containing tweets and we can't afford it. Mention the @claudeinvesting "
                 "handle is allowed but no http/https links. "
@@ -64,6 +76,7 @@ def narrative_post(state: dict, tracker: dict) -> str | None:
             messages=[{
                 "role": "user",
                 "content": json.dumps({
+                    "day": day,
                     "starting": state["starting_capital"],
                     "current_value": tracker.get("total_portfolio_value"),
                     "pl_pct": tracker.get("total_pl_pct"),
@@ -87,8 +100,9 @@ def narrative_post(state: dict, tracker: dict) -> str | None:
 def run() -> dict:
     state = load_state()
     tracker = json.loads(TRACKER_REPORT.read_text()) if TRACKER_REPORT.exists() else {}
+    day = day_number()
 
-    text = narrative_post(state, tracker) or template_fallback(state, tracker)
+    text = narrative_post(state, tracker, day) or template_fallback(state, tracker, day)
 
     now = datetime.now(timezone.utc).isoformat()
     post = {

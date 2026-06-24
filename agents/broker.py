@@ -154,3 +154,24 @@ def is_trading_day(day: date | None = None) -> bool:
         return any(c.date == day for c in cal)
     except Exception:
         return day.weekday() < 5
+
+
+def trading_days_since(start: date, end: date | None = None) -> int:
+    """Count of NYSE trading days from `start` to `end` (default today), inclusive.
+    Used for the social 'Day N' counter so it's computed, never guessed. Falls
+    back to a weekday count (holidays uncounted) only if the calendar API fails."""
+    end = end or datetime.now(ET).date()
+    if end < start:
+        return 0
+    try:
+        cal = _client().get_calendar(GetCalendarRequest(start=start, end=end))
+        return sum(1 for c in cal if start <= c.date <= end)
+    except Exception:
+        # Approximate: inclusive weekday span (can't know holidays offline).
+        from datetime import timedelta
+        n, d = 0, start
+        while d <= end:
+            if d.weekday() < 5:
+                n += 1
+            d += timedelta(days=1)
+        return n
