@@ -88,9 +88,12 @@ def cycle_premarket():
 
 
 def cycle_midday():
-    """Once daily ~12:00 ET. Intraday stop check + tracker refresh (no content — saves $)."""
+    """Once daily ~12:00 ET. Intraday stop check + tracker refresh, then a short
+    midday update post (today's trades, cash deployed, the reasoning). The extra
+    ~$0.02/day (1 Haiku call + 1 plain X post) buys a second daily touchpoint."""
     step("exits", exits.run)
     step("tracker", tracker.run)
+    step("midday_post", content.run_midday)
     step("publish", publish.run)
 
 
