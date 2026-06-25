@@ -457,5 +457,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "88bd6570-5298-427c-a3c2-2e8e020cb4e0",
+    "text": "\ud83d\udcc8 Day 7 close: $319.11 (+6.37%, P/L $+19.11). Core $231.42 \u00b7 Swing $37.87 \u00b7 Lottery $19.16",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-06-25T20:43:18.052252+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2070246477843107902"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-06-25T20:43:18.052252+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
