@@ -428,5 +428,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "d80015ea-641f-44c1-b579-abe586289f14",
+    "text": "Midday: trimmed COIN. Book +7.13%.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-06-25T16:14:51.374706+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2070178921623028206"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-06-25T16:14:51.374706+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
