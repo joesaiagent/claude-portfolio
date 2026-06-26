@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 from agents._intel import enrich
 from agents._screener import screen_bucket
-from agents._state import WATCHLIST_FILE
+from agents._state import WATCHLIST_FILE, atomic_write_text
 
 load_dotenv()
 
@@ -28,7 +28,7 @@ def run(buckets: tuple[str, ...] = ("core", "swing", "lottery")) -> dict:
         watchlist.extend({**r, "added_at": now} for r in ranked)
 
     if watchlist:  # keep yesterday's list if every screen failed
-        WATCHLIST_FILE.write_text(json.dumps(watchlist, indent=2))
+        atomic_write_text(WATCHLIST_FILE, json.dumps(watchlist, indent=2))
     return {"added": watchlist, "total_watchlist": len(watchlist)}
 
 

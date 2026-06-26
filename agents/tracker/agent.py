@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 from dotenv import load_dotenv
 
 from agents import broker
-from agents._state import BUCKETS, TRACKER_REPORT, load_state, save_state, simulating
+from agents._state import BUCKETS, TRACKER_REPORT, atomic_write_text, load_state, save_state, simulating
 
 load_dotenv()
 
@@ -110,7 +110,7 @@ def run() -> dict:
     report["summary"] = template_summary(report)
     if not simulating():
         save_state(state)  # persist position_highs
-        TRACKER_REPORT.write_text(json.dumps(report, indent=2))
+        atomic_write_text(TRACKER_REPORT, json.dumps(report, indent=2))
     return report
 
 

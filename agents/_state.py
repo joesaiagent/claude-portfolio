@@ -32,6 +32,17 @@ def load_state() -> dict:
         raise
 
 
+def atomic_write_text(path: Path, text: str) -> None:
+    """Atomic write for any file: temp in the SAME dir + os.replace (atomic on
+    POSIX, same filesystem), so a process kill mid-write can never leave a
+    truncated file. Shared by agents that persist regenerable JSON (watchlist,
+    tracker report, posts queue, pending trades) — mirrors save_state's idiom
+    without the .bak snapshot (those files self-regenerate, state does not)."""
+    tmp = path.parent / (path.name + ".tmp")
+    tmp.write_text(text)
+    os.replace(tmp, path)
+
+
 def save_state(state: dict) -> None:
     """Atomic write: serialize to a temp file then os.replace() (atomic on
     POSIX) so an interrupted write can never leave a truncated/corrupt state.

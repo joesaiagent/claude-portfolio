@@ -20,6 +20,7 @@ from agents import broker, social
 from agents._state import (
     POSTS_FILE,
     TRACKER_REPORT,
+    atomic_write_text,
     is_autonomous,
     load_state,
 )
@@ -288,7 +289,7 @@ def _emit(state: dict, text: str, topic: str) -> dict:
             post["post_error"] = "no platform credentials configured"
 
     existing = json.loads(POSTS_FILE.read_text()) if POSTS_FILE.exists() else []
-    POSTS_FILE.write_text(json.dumps(existing + [post], indent=2))
+    atomic_write_text(POSTS_FILE, json.dumps(existing + [post], indent=2))
     return {"post": post, "autonomous": is_autonomous(state), "posted": post["status"] == "posted"}
 
 
