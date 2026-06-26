@@ -20,8 +20,14 @@ def _atomic_write_json(text: str, dest: Path) -> None:
     commit a truncated/corrupt JSON file to the public GitHub Pages site."""
     json.loads(text)  # round-trip validate; raises if the payload is not valid JSON
     tmp = dest.parent / (dest.name + ".tmp")
-    tmp.write_text(text)
-    os.replace(tmp, dest)  # atomic rename
+    try:
+        tmp.write_text(text)
+        os.replace(tmp, dest)  # atomic rename
+    except BaseException:
+        # A validation/write failure must never leave an orphan docs/*.tmp that
+        # the next cycle's `git add docs/` would stage and push to the public site.
+        tmp.unlink(missing_ok=True)
+        raise
 
 
 def run(push: bool = True) -> dict:
