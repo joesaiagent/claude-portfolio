@@ -2,7 +2,7 @@
 Then git commit + push so the public site updates.
 """
 import json
-import shutil
+import os
 import subprocess
 from pathlib import Path
 
@@ -13,6 +13,17 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 
 
+def _atomic_write_json(text: str, dest: Path) -> None:
+    """Atomic write mirroring _state.save_state: validate the payload parses as
+    JSON, write to a temp file in the SAME directory (docs/), then os.replace()
+    (atomic on POSIX, same filesystem). A process kill mid-write can then never
+    commit a truncated/corrupt JSON file to the public GitHub Pages site."""
+    json.loads(text)  # round-trip validate; raises if the payload is not valid JSON
+    tmp = dest.parent / (dest.name + ".tmp")
+    tmp.write_text(text)
+    os.replace(tmp, dest)  # atomic rename
+
+
 def run(push: bool = True) -> dict:
     if simulating():
         return {"pushed": False, "reason": "simulate — no publish"}
@@ -20,20 +31,27 @@ def run(push: bool = True) -> dict:
     status_dest = DOCS / "status.json"
     posts_dest = DOCS / "posts.json"
 
-    if TRACKER_REPORT.exists():
-        shutil.copy(TRACKER_REPORT, status_dest)
-    else:
-        status_dest.write_text(json.dumps({"total_portfolio_value": 300.0}))
+    try:
+        if TRACKER_REPORT.exists():
+            # Read the source and atomically replace the destination, so the
+            # published status.json is never left partially written.
+            _atomic_write_json(TRACKER_REPORT.read_text(), status_dest)
+        else:
+            _atomic_write_json(json.dumps({"total_portfolio_value": 300.0}), status_dest)
 
-    if POSTS_FILE.exists():
-        # Publish all posts EXCEPT ones marked deleted (e.g. a tweet removed from
-        # X) — they stay in the source log for the record but must not resurface
-        # on the public site on the next publish.
-        posts = json.loads(POSTS_FILE.read_text())
-        visible = [p for p in posts if p.get("status") != "deleted"]
-        posts_dest.write_text(json.dumps(visible, indent=2))
-    else:
-        posts_dest.write_text("[]")
+        if POSTS_FILE.exists():
+            # Publish all posts EXCEPT ones marked deleted (e.g. a tweet removed
+            # from X) — they stay in the source log for the record but must not
+            # resurface on the public site on the next publish.
+            posts = json.loads(POSTS_FILE.read_text())
+            visible = [p for p in posts if p.get("status") != "deleted"]
+            _atomic_write_json(json.dumps(visible, indent=2), posts_dest)
+        else:
+            _atomic_write_json("[]", posts_dest)
+    except (json.JSONDecodeError, ValueError) as e:
+        # A source file was itself corrupt/truncated; skip publishing garbage.
+        notify.send("publish: invalid JSON, skipping publish", str(e)[:300], level="warning")
+        return {"pushed": False, "reason": f"invalid JSON: {e}"}
 
     if not push:
         return {"pushed": False, "reason": "push=False"}
