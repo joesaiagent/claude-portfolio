@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<!--
+  Wake-schedule renewal job.
+
+  Re-runs scripts/schedule_wakes.sh to keep the rolling window of one-shot RTC
+  wakes (premarket 08:56 / midday 11:56 / postclose 16:26 ET) continuously
+  refreshed. This is REQUIRED because macOS `pmset repeat` can only register ONE
+  repeating wake time, so it cannot natively cover all three cycles; the only way
+  to wake for all three is finite one-shot `pmset schedule wake` events, which
+  must be re-laid before they expire.
+
+  Runs weekly (StartCalendarInterval) AND at load (RunAtLoad), so a fresh
+  30-day window is laid down long before the previous one lapses. schedule_wakes.sh
+  is idempotent (it cancels prior one-shots first), so frequent runs do not pile
+  up duplicate pmset entries.
+
+  NOTE: pmset schedule/repeat require root, so this MUST be installed as a SYSTEM
+  LaunchDaemon (loaded via sudo into /Library/LaunchDaemons), NOT a per-user
+  LaunchAgent. See report / load command.
+-->
+<dict>
+    <key>Label</key>
+    <string>com.aibia.claudeportfolio.wakerenew</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/joesaiagent/ai-portfolio/scripts/schedule_wakes.sh</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/joesaiagent/ai-portfolio</string>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Weekday</key>
+        <integer>0</integer>
+        <key>Hour</key>
+        <integer>3</integer>
+        <key>Minute</key>
+        <integer>30</integer>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/Users/joesaiagent/ai-portfolio/runner.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/joesaiagent/ai-portfolio/runner.log</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/Users/joesaiagent/ai-portfolio/.venv/bin:/usr/local/bin:/usr/bin:/bin</string>
+        <key>HOME</key>
+        <string>/Users/joesaiagent</string>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+    </dict>
+
+    <key>SoftResourceLimits</key>
+    <dict>
+        <key>NumberOfFiles</key>
+        <integer>16384</integer>
+    </dict>
+
+    <key>ProcessType</key>
+    <string>Background</string>
+</dict>
+</plist>
