@@ -34,6 +34,7 @@ def account_info() -> dict:
     return {
         "cash": float(a.cash),
         "buying_power": float(a.buying_power),
+        "non_marginable_buying_power": float(getattr(a, "non_marginable_buying_power", a.buying_power) or 0.0),
         "equity": float(a.equity),
         "portfolio_value": float(a.portfolio_value),
         "paper": os.getenv("ALPACA_PAPER", "true").lower() != "false",

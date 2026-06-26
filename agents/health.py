@@ -183,10 +183,16 @@ def postflight(cycle: str, step_failures: list[dict], started_iso: str) -> list[
             posts_path = pathlib.Path(_DD).parent / "docs" / "posts.json"
             posts = json.loads(posts_path.read_text())
             last = posts[-1] if posts else {}
+            # The daily post counts as done if it actually went out today on ANY
+            # platform — _emit sets status="posted", posted_at, and lists every
+            # platform that delivered in posted_platforms. Missing X (no creds /
+            # 403 dup) while Bluesky/Mastodon delivered is still a successful post,
+            # so only alarm when nothing went anywhere for today's ET date.
             posted_today = (last.get("posted_at", "")[:10] == today
-                            and "x" in (last.get("posted_platforms") or []))
+                            and last.get("status") == "posted"
+                            and bool(last.get("posted_platforms")))
             if not posted_today:
-                issues.append(Issue("warning", "content", "no X post recorded for today"))
+                issues.append(Issue("warning", "content", "no post delivered for today"))
         except Exception as e:
             issues.append(Issue("warning", "content", f"could not verify daily post: {e}"))
 
