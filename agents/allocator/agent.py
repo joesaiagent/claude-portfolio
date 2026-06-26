@@ -169,6 +169,54 @@ def _rotation_candidates(state: dict, watchlist: list[dict], positions: list[dic
     return actions, rot
 
 
+# Recorded buy statuses that mean "not yet known to have settled" — these get
+# re-queried against the broker each cycle until they reach a terminal state.
+# (Statuses are stored as str(OrderStatus.X), e.g. "OrderStatus.ACCEPTED".)
+def _status_is_terminal(status: str | None) -> bool:
+    if not status:
+        return False
+    return status.split(".")[-1].lower() in broker.TERMINAL_ORDER_STATUSES
+
+
+def reconcile_order_log(state: dict) -> int:
+    """Reconcile recent non-terminal buy orders in the log against the broker's
+    actual fills. MUST run early in the cycle, before any sizing/rotation helper
+    reads order_log — an unfilled/expired DAY limit otherwise lingers as a phantom
+    holding and corrupts bucket_map_from_log / buy_dates / bucket_remaining_budget.
+
+    For each buy entry whose recorded status is still non-terminal:
+      * filled            -> update status + record filled_qty/filled_avg_price.
+      * terminal, unfilled-> flip side to 'buy_unfilled' so bucket_map_from_log,
+                             buy_dates, and _attach_bucket (which all gate on
+                             side=='buy') stop treating it as a live holding, and
+                             revert a lottery cost basis via reduce_lottery_deployed.
+    Returns the number of entries changed; persists via save_state if anything did.
+    """
+    changed = 0
+    for e in state.get("order_log", []):
+        if e.get("side") != "buy" or not e.get("order_id"):
+            continue
+        if _status_is_terminal(e.get("status")):
+            continue
+        info = broker.order_status(e["order_id"])
+        if info is None or not info["terminal"]:
+            continue  # API hiccup or still working — leave it for a later cycle
+        e["status"] = info["status"]
+        e["reconciled"] = True
+        if info["status_value"] == "filled":
+            e["filled_qty"] = info["filled_qty"]
+            e["filled_avg_price"] = info["filled_avg_price"]
+        else:
+            # Terminal but never filled: stop downstream helpers from counting it.
+            e["side"] = "buy_unfilled"
+            if e.get("bucket") == "lottery":
+                reduce_lottery_deployed(state, e.get("estimated_cost", 0.0))
+        changed += 1
+    if changed:
+        save_state(state)
+    return changed
+
+
 def bucket_remaining_budget(state: dict, current_positions: list[dict], bucket: str,
                             exposure: float = 1.0) -> float:
     # `exposure` (<=1.0) is the regime multiplier: it shrinks the effective target
@@ -186,6 +234,16 @@ def bucket_remaining_budget(state: dict, current_positions: list[dict], bucket: 
 
 def run() -> dict:
     state = load_state()
+
+    # Reconcile the order log against actual broker fills FIRST, before any helper
+    # below reads order_log for sizing/attribution. An unfilled/expired DAY limit
+    # left at its submission-time status is a phantom holding that corrupts
+    # bucket_map_from_log, buy_dates and bucket_remaining_budget. Skip in SIMULATE
+    # (no live broker calls) — there are no real orders to reconcile there anyway.
+    if should_execute(state):
+        reconcile_order_log(state)
+        state = load_state()
+
     watchlist = json.loads(WATCHLIST_FILE.read_text()) if WATCHLIST_FILE.exists() else []
 
     # Consume any rotation buys queued by a prior cycle's sell (T+1 cash has now
@@ -347,6 +405,14 @@ def run() -> dict:
         weak, buy, bucket = a["sell"], a["buy"], a["bucket"]
         info = {"bucket": bucket, "sell": weak["ticker"], "buy": buy["ticker"], "margin": a["margin"]}
         if should_execute(state):
+            # Persist the rotation-count increment BEFORE attempting the sell, and
+            # independent of its outcome: a rotation slot is consumed the moment we
+            # try it. Otherwise a submit_sell exception would drop the increment and
+            # the ROTATION_DAILY_CAP churn guard would silently reset, letting
+            # same-day retries exceed the cap.
+            state = load_state()
+            state["rotations_today"] = rot
+            save_state(state)
             try:
                 order = broker.submit_sell(weak["ticker"], weak["shares"])
                 state = load_state()

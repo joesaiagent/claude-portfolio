@@ -92,6 +92,35 @@ def open_orders() -> list[dict]:
     return out
 
 
+# Order statuses Alpaca treats as final: the order will never fill further. A
+# DAY limit that never executed ends EXPIRED/CANCELED; a bad order REJECTED.
+TERMINAL_ORDER_STATUSES = {"filled", "canceled", "expired", "rejected", "done_for_day", "replaced"}
+
+
+def order_status(order_id: str) -> dict | None:
+    """Look up an order's current status by id, for reconciling the order log
+    against actual fills. Returns the raw status (matching submit_buy/submit_sell's
+    `str(placed.status)` form, e.g. 'OrderStatus.FILLED'), a normalized lowercase
+    `status_value`, a `terminal` flag, and the realized filled_qty/filled_avg_price.
+    Degrades to None on any API error (mirrors open_orders())."""
+    try:
+        o = _client().get_order_by_id(order_id)
+    except Exception:
+        return None
+    value = str(getattr(o.status, "value", o.status)).lower()
+    filled_qty = float(o.filled_qty) if getattr(o, "filled_qty", None) else 0.0
+    filled_avg = float(o.filled_avg_price) if getattr(o, "filled_avg_price", None) else None
+    return {
+        "order_id": str(o.id),
+        "ticker": o.symbol,
+        "status": str(o.status),
+        "status_value": value,
+        "terminal": value in TERMINAL_ORDER_STATUSES,
+        "filled_qty": filled_qty,
+        "filled_avg_price": filled_avg,
+    }
+
+
 def submit_buy(ticker: str, shares: float, limit_price: float | None = None) -> dict:
     """Place a buy. Defaults to a limit order at limit_price, falls back to market."""
     client = _client()
