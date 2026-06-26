@@ -21,6 +21,7 @@ from agents._state import (
     bucket_map_from_log,
     buy_dates,
     load_state,
+    reduce_lottery_deployed,
     save_state,
     should_execute,
     simulating,
@@ -150,6 +151,8 @@ def run() -> dict:
                     realized = pos["pl_dollars"]
                     state.setdefault("realized_pnl", {}).setdefault(bucket, 0.0)
                     state["realized_pnl"][bucket] = round(state["realized_pnl"][bucket] + realized, 2)
+                    if bucket == "lottery":
+                        reduce_lottery_deployed(state, shares * pos.get("entry_price", 0.0))
                     append_order_log(state, {
                         "ts": now.isoformat(), "ticker": t, "bucket": bucket, "side": "sell",
                         "shares": shares, "reason": reason,
@@ -197,6 +200,8 @@ def run() -> dict:
                 realized = pos["pl_dollars"] * fraction
                 state.setdefault("realized_pnl", {}).setdefault(bucket, 0.0)
                 state["realized_pnl"][bucket] = round(state["realized_pnl"][bucket] + realized, 2)
+                if bucket == "lottery":
+                    reduce_lottery_deployed(state, shares * pos.get("entry_price", 0.0))
                 if fraction < 1.0 and bucket == "lottery":
                     trimmed.add(t)
                     state["lottery_trimmed"] = sorted(trimmed)

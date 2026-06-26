@@ -12,11 +12,13 @@ from agents._state import (
     BUCKETS,
     PENDING_TRADES_FILE,
     WATCHLIST_FILE,
+    add_lottery_deployed,
     append_order_log,
     buy_dates,
     is_autonomous,
     load_state,
     lottery_remaining_budget,
+    reduce_lottery_deployed,
     save_state,
     should_execute,
     simulating,
@@ -319,9 +321,7 @@ def run() -> dict:
                     "rationale": s.get("rationale", ""),
                 }
                 if s["bucket"] == "lottery":
-                    state["lottery_deployed_total"] = round(
-                        state.get("lottery_deployed_total", 0) + s["estimated_cost"], 2
-                    )
+                    add_lottery_deployed(state, s["estimated_cost"])
                 append_order_log(state, entry)
                 state = load_state()
                 placed.append(entry)
@@ -353,6 +353,8 @@ def run() -> dict:
                 realized = weak.get("pl_dollars", 0.0)
                 state.setdefault("realized_pnl", {}).setdefault(bucket, 0.0)
                 state["realized_pnl"][bucket] = round(state["realized_pnl"][bucket] + realized, 2)
+                if bucket == "lottery":
+                    reduce_lottery_deployed(state, weak["shares"] * weak.get("entry_price", 0.0))
                 state["rotations_today"] = rot
                 if not ROTATION_SAME_CYCLE_BUY:
                     queued = {k: buy.get(k) for k in

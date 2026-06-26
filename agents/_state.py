@@ -88,6 +88,22 @@ def lottery_remaining_budget(state: dict) -> float:
     return max(0.0, cap - deployed)
 
 
+def add_lottery_deployed(state: dict, cost_basis: float) -> None:
+    """Raise cumulative lottery deployment when a lottery buy is placed."""
+    cur = state.get("lottery_deployed_total", 0.0)
+    state["lottery_deployed_total"] = round(cur + cost_basis, 2)
+
+
+def reduce_lottery_deployed(state: dict, cost_basis: float) -> None:
+    """Lower cumulative lottery deployment when a lottery position is sold, by the
+    sold shares' cost basis. Without this, lottery_deployed_total is a one-way
+    ratchet that counts gross dollars ever deployed (not live exposure), so normal
+    churn silently freezes the bucket at the cap. Clamped at 0 so float drift or a
+    partial fill can never drive it negative."""
+    cur = state.get("lottery_deployed_total", 0.0)
+    state["lottery_deployed_total"] = round(max(0.0, cur - cost_basis), 2)
+
+
 def append_order_log(state: dict, entry: dict) -> None:
     state.setdefault("order_log", []).append(entry)
     save_state(state)
