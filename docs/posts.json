@@ -515,5 +515,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "58648063-dd7e-42dd-b2be-6324711ef80d",
+    "text": "Day 8: up 3% to $309. Core bucket carrying the load with MU up 5.3% and JPM up 4.2%. Swing trades treading water, lottery still quiet. Portfolio climbing steady. The grind continues toward that 10K goal.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-06-26T20:45:16.641858+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2070609363308343658"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-06-26T20:45:16.641858+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
