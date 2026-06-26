@@ -47,9 +47,9 @@
     </dict>
 
     <key>StandardOutPath</key>
-    <string>/Users/joesaiagent/ai-portfolio/runner.log</string>
+    <string>/Users/joesaiagent/ai-portfolio/wakerenew.log</string>
     <key>StandardErrorPath</key>
-    <string>/Users/joesaiagent/ai-portfolio/runner.log</string>
+    <string>/Users/joesaiagent/ai-portfolio/wakerenew.log</string>
 
     <key>EnvironmentVariables</key>
     <dict>
