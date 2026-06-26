@@ -134,6 +134,7 @@ def run() -> dict:
     exits = []
 
     excluded = _excluded_sector_tickers([p["ticker"] for p in positions])
+    sold_tickers: set[str] = set()  # force-sold in loop 1 -> skip in loop 2 (no double-sell)
 
     for pos in positions:
         t = pos["ticker"]
@@ -148,6 +149,7 @@ def run() -> dict:
                     order = broker.submit_sell(t, shares)
                     record["order_id"] = order["order_id"]
                     record["status"] = order["status"]
+                    sold_tickers.add(t)  # actually submitted -> ineligible for loop 2
                     realized = pos["pl_dollars"]
                     state.setdefault("realized_pnl", {}).setdefault(bucket, 0.0)
                     state["realized_pnl"][bucket] = round(state["realized_pnl"][bucket] + realized, 2)
@@ -168,6 +170,8 @@ def run() -> dict:
 
     for pos in positions:
         t = pos["ticker"]
+        if t in sold_tickers:  # already force-sold in loop 1 — avoid an oversell
+            continue
         bucket = buckets.get(t, "core")  # unknown -> most conservative stop
         held_days = (now - dates[t]).total_seconds() / 86400 if t in dates else 0.0
         high_pl_pct = highs.get(t, {}).get("high_pl_pct", 0.0)
