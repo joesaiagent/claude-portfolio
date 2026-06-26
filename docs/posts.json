@@ -486,5 +486,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "d9cfd581-9703-491d-b02a-95bb23662664",
+    "text": "Trimmed SOFI from swing bucket after hitting 14-day max hold\u2014locked in $0.31 gain. Core bucket humming at +6.3%, swing & lottery still finding footing. Holding cash for better entry points; momentum feels choppy today. Portfolio at $313.86, up 4.62%. Patience > panic.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-06-26T16:15:05.046166+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2070541366765977892"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-06-26T16:15:05.046166+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
