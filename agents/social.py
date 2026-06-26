@@ -17,6 +17,16 @@ load_dotenv()
 
 # ---------- X / Twitter ----------
 
+def _safe_x_text(text: str) -> str:
+    """Final guard before hitting X: clip to the WEIGHTED limit (emoji=2) using
+    the content layer's authoritative _clip — never a raw text[:280] slice,
+    which mis-counts emoji and can cut mid-word. Local import avoids the
+    content<-social import cycle. Returns "" for empty/all-punctuation results
+    so the caller can skip posting rather than push junk."""
+    from agents.content.agent import _clip
+    return _clip(text)
+
+
 def _have_x() -> bool:
     return all(os.getenv(k) for k in (
         "X_API_KEY", "X_API_SECRET", "X_ACCESS_TOKEN", "X_ACCESS_TOKEN_SECRET",
@@ -26,6 +36,9 @@ def _have_x() -> bool:
 def post_x(text: str) -> dict:
     if not _have_x():
         return {"platform": "x", "posted": False, "reason": "creds missing"}
+    text = _safe_x_text(text)
+    if not text:
+        return {"platform": "x", "posted": False, "reason": "empty text"}
     try:
         import tweepy
         client = tweepy.Client(
@@ -34,7 +47,7 @@ def post_x(text: str) -> dict:
             access_token=os.environ["X_ACCESS_TOKEN"],
             access_token_secret=os.environ["X_ACCESS_TOKEN_SECRET"],
         )
-        resp = client.create_tweet(text=text[:280])
+        resp = client.create_tweet(text=text)
         return {"platform": "x", "posted": True, "id": resp.data["id"]}
     except Exception as e:
         return {"platform": "x", "posted": False, "reason": str(e)[:200]}

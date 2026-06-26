@@ -42,21 +42,43 @@ def day_number() -> int:
     return max(1, broker.trading_days_since(LAUNCH_DATE))
 
 
-def _clip(text: str, limit: int = 278) -> str:
-    """Trim to X's length budget without an ugly ending. Prefer cutting at the
-    last COMPLETE sentence; else fall back to a word boundary. Avoids the
-    dangling 'Portfolio up 2.41% to' mid-sentence cuts."""
+def weighted_len(text: str) -> int:
+    """X-style WEIGHTED character count. X bills 2 per emoji / CJK / non-Latin
+    char and 1 per normal char, so Python len() (code points) under-counts: a
+    279-codepoint post carrying one 📈 is 280 weighted and X can reject it.
+    Approximation: any non-ASCII code point (emoji, surrogate-range chars, CJK,
+    accents) counts as 2; plain ASCII counts as 1. Conservative on the safe
+    side, which is what we want for a hard platform limit."""
+    return sum(2 if ord(ch) > 0x7F else 1 for ch in (text or ""))
+
+
+def _clip(text: str, limit: int = 275) -> str:
+    """Trim to X's WEIGHTED length budget without an ugly ending. Prefer cutting
+    at the last COMPLETE sentence; else fall back to a word boundary, all
+    measured in weighted length (emoji=2) not code points. Avoids the dangling
+    'Portfolio up 2.41% to' mid-sentence cuts AND the emoji mis-count that let a
+    >280-weighted post through. This is the single authoritative clip — the
+    social layer no longer re-slices, so word/sentence boundaries are preserved."""
     text = (text or "").strip()
-    if len(text) <= limit:
+    if weighted_len(text) <= limit:
         return text
-    cut = text[:limit]
+    # Take the longest prefix that fits the weighted budget.
+    cut = ""
+    used = 0
+    for ch in text:
+        w = 2 if ord(ch) > 0x7F else 1
+        if used + w > limit:
+            break
+        cut += ch
+        used += w
     # Last sentence terminator (".", "!", "?") followed by a space — a real
-    # sentence end, not the "." in "$140.25" or "2.41%".
+    # sentence end, not the "." in "$140.25" or "2.41%". Boundary thresholds are
+    # in weighted units to stay consistent with the budget.
     end = max(cut.rfind(". "), cut.rfind("! "), cut.rfind("? "))
-    if end > limit * 0.5:
+    if end > 0 and weighted_len(cut[:end]) > limit * 0.5:
         return cut[:end + 1].strip()
     sp = cut.rfind(" ")
-    if sp > limit * 0.6:
+    if sp > 0 and weighted_len(cut[:sp]) > limit * 0.6:
         cut = cut[:sp]
     return cut.rstrip(" ,;:-—…")
 
@@ -206,9 +228,46 @@ def midday_fallback(state: dict, tracker: dict, trades: list[dict]) -> str:
     return f"Midday: {'; '.join(parts)}. Book {pct:+.2f}%."
 
 
+def _trading_day_key(ts: str | None) -> str | None:
+    """ET calendar date (YYYY-MM-DD) of a UTC ISO timestamp — our trading-day
+    bucket. created_at is stored in UTC, so an evening-ET post would otherwise
+    key to the next UTC date; convert to ET first."""
+    if not ts:
+        return None
+    try:
+        return datetime.fromisoformat(ts).astimezone(ET).date().isoformat()
+    except (ValueError, TypeError):
+        return None
+
+
+def _already_posted(topic: str) -> dict | None:
+    """Idempotency guard against launchd double-fires / manual re-runs: return an
+    existing posts-queue record with the same topic AND same ET trading day that
+    already reached status 'posted', else None. Without this, a re-invocation
+    re-fans-out to Bluesky/Mastodon (X may 403 the dup, the others won't),
+    producing duplicates — only X's id was ever tracked, never deduped."""
+    today = datetime.now(ET).date().isoformat()
+    try:
+        existing = json.loads(POSTS_FILE.read_text()) if POSTS_FILE.exists() else []
+    except (json.JSONDecodeError, ValueError):
+        return None
+    for p in existing:
+        if (p.get("topic") == topic
+                and p.get("status") == "posted"
+                and _trading_day_key(p.get("created_at")) == today):
+            return p
+    return None
+
+
 def _emit(state: dict, text: str, topic: str) -> dict:
     """Post `text` to every configured platform and append it to the post log.
-    Shared by the daily recap and the midday update."""
+    Shared by the daily recap and the midday update. Idempotent per
+    (topic, ET trading day): a re-run that finds an already-posted record for
+    today skips the fan-out and returns the existing record."""
+    if is_autonomous(state):
+        dup = _already_posted(topic)
+        if dup is not None:
+            return {"post": dup, "autonomous": True, "posted": True, "deduped": True}
     now = datetime.now(timezone.utc).isoformat()
     post = {
         "id": str(uuid.uuid4()),
