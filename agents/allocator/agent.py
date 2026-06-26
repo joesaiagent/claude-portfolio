@@ -14,6 +14,7 @@ from agents._state import (
     WATCHLIST_FILE,
     add_lottery_deployed,
     append_order_log,
+    atomic_write_text,
     buy_dates,
     is_autonomous,
     load_state,
@@ -185,11 +186,25 @@ def reconcile_order_log(state: dict) -> int:
     holding and corrupts bucket_map_from_log / buy_dates / bucket_remaining_budget.
 
     For each buy entry whose recorded status is still non-terminal:
-      * filled            -> update status + record filled_qty/filled_avg_price.
-      * terminal, unfilled-> flip side to 'buy_unfilled' so bucket_map_from_log,
-                             buy_dates, and _attach_bucket (which all gate on
-                             side=='buy') stop treating it as a live holding, and
-                             revert a lottery cost basis via reduce_lottery_deployed.
+      * any fill (filled_qty > 0) -> a real holding: record filled_qty/
+                             filled_avg_price and KEEP side=='buy'. A DAY order can
+                             go terminal as done_for_day/canceled/expired while
+                             still carrying a partial fill — those shares are held
+                             and must stay visible to bucket_map_from_log /
+                             buy_dates / _attach_bucket (else exits never sell them).
+                             For a lottery buy, also correct lottery_deployed_total
+                             from the estimate (shares*max_price ceiling) to the
+                             ACTUAL filled basis, so the deployed total is symmetric
+                             with the sell side (which reduces shares*entry_price).
+      * zero fill (filled_qty == 0) -> flip side to 'buy_unfilled' so
+                             bucket_map_from_log, buy_dates, and _attach_bucket
+                             (which all gate on side=='buy') stop treating it as a
+                             live holding, and revert the full lottery cost basis
+                             via reduce_lottery_deployed.
+    The lottery correction is idempotent: the loop skips entries whose recorded
+    status is already terminal (_status_is_terminal), and the status is set
+    terminal in the SAME pass that applies the correction, so a re-run can't
+    double-apply it.
     Returns the number of entries changed; persists via save_state if anything did.
     """
     changed = 0
@@ -203,11 +218,24 @@ def reconcile_order_log(state: dict) -> int:
             continue  # API hiccup or still working — leave it for a later cycle
         e["status"] = info["status"]
         e["reconciled"] = True
-        if info["status_value"] == "filled":
+        if info["filled_qty"] > 0:
+            # Any fill (full OR a terminal partial) is a real holding — keep
+            # side=='buy' so exits/attribution still see it.
             e["filled_qty"] = info["filled_qty"]
             e["filled_avg_price"] = info["filled_avg_price"]
+            if e.get("bucket") == "lottery":
+                # Correct lottery_deployed_total from the limit-ceiling estimate to
+                # the actual filled basis so round-trips don't ratchet the total up
+                # (the sell side reduces shares*entry_price = actual basis). Fires
+                # once: the loop skips already-terminal entries on a re-run.
+                actual_basis = info["filled_qty"] * (info["filled_avg_price"] or 0.0)
+                delta = actual_basis - e.get("estimated_cost", 0.0)
+                if delta > 0:
+                    add_lottery_deployed(state, delta)
+                elif delta < 0:
+                    reduce_lottery_deployed(state, -delta)
         else:
-            # Terminal but never filled: stop downstream helpers from counting it.
+            # Terminal with zero fill: stop downstream helpers from counting it.
             e["side"] = "buy_unfilled"
             if e.get("bucket") == "lottery":
                 reduce_lottery_deployed(state, e.get("estimated_cost", 0.0))
@@ -244,7 +272,14 @@ def run() -> dict:
         reconcile_order_log(state)
         state = load_state()
 
-    watchlist = json.loads(WATCHLIST_FILE.read_text()) if WATCHLIST_FILE.exists() else []
+    # research.run() writes the watchlist non-atomically, so a truncated read here
+    # would raise mid-write. Degrade to an empty watchlist (no buys this cycle)
+    # instead of killing the non-retryable buy phase.
+    try:
+        watchlist = json.loads(WATCHLIST_FILE.read_text()) if WATCHLIST_FILE.exists() else []
+    except (json.JSONDecodeError, ValueError, OSError) as e:
+        print(f"[allocator] watchlist unreadable ({e}); treating as empty")
+        watchlist = []
 
     # Consume any rotation buys queued by a prior cycle's sell (T+1 cash has now
     # settled). Prepend so they take priority; clear on disk so each is attempted
@@ -385,7 +420,7 @@ def run() -> dict:
                 placed.append(entry)
             except Exception as e:
                 placed.append({"ticker": s["ticker"], "error": str(e)})
-        PENDING_TRADES_FILE.write_text("[]")
+        atomic_write_text(PENDING_TRADES_FILE, "[]")
     elif simulating():
         print(f"=== SIMULATE: {len(safe)} buy order(s) NOT submitted ===")
         for s in safe:
@@ -394,7 +429,7 @@ def run() -> dict:
                 f"@ <=${s['max_price']:.2f} (~${s['estimated_cost']:.2f}) — {s['rationale'][:60]}"
             )
     else:
-        PENDING_TRADES_FILE.write_text(json.dumps(safe, indent=2))
+        atomic_write_text(PENDING_TRADES_FILE, json.dumps(safe, indent=2))
 
     # --- Rotation: sell the weakest holding in a full bucket to fund a much
     # stronger fresh name. Runs after exits (earlier in the cycle) have already
