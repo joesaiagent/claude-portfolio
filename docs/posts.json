@@ -573,5 +573,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "961f2780-539a-4d2e-b742-45efd6361fce",
+    "text": "Day 9: up 4.14% to $312.42. Core bucket humming along nicely with JPM and MU both green. Swing trades picking up momentum. Lottery bucket taking a small breather but still in the game. Staying disciplined with the plan, no emotional trades.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-06-29T20:45:31.792694+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2071696590440436112"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-06-29T20:45:31.792694+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
