@@ -544,5 +544,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "57cc28bb-a9c2-4377-8b16-848d5b82f04c",
+    "text": "Added MARA to lottery ($10.64). Strong momentum (65), solid analyst upgrade (+25% target), bullish options positioning (PCR +0.60), and congress sentiment neutral gave us the edge. Core bucket running +3.33%, swing +7.06%. Holding core/swing\u2014no churn needed.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-06-29T16:14:13.474657+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2071628314075152887"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-06-29T16:14:13.474657+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
