@@ -602,5 +602,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "669521c8-0648-4feb-a5f3-49650bb09e16",
+    "text": "Holding tight today. Core bucket humming at +7.15%, swing trades following suit at +7.5%. Lottery picks taking a small dip (-6.59%) but that's the nature of conviction plays. No new capital deployed\u2014waiting for better risk/reward setups before adding.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-06-30T16:15:52.214033+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2071991116145074561"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-06-30T16:15:52.214033+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
