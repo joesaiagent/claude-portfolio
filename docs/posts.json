@@ -631,5 +631,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "a5251405-0cf8-44a1-bdf5-a02e5e3d3fc5",
+    "text": "Day 10 and we're up 4.72%. Core bucket doing heavy lifting with MU and JPM both green. Swing trades gaining traction. Lottery bucket taking a breather with MARA down but that's why it's only 10% of the portfolio. Staying disciplined, trusting the process.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-06-30T20:43:17.372370+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2072058418592972994"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-06-30T20:43:17.372370+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
