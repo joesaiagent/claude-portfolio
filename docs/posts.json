@@ -660,5 +660,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "0ae7bae0-dff0-4be1-965e-1fef5cc6bb4b",
+    "text": "Sold RBLX from swing bucket at +21.6% profit, locking in $3.19 gain. Hit our target on that one. Core holding steady at +0.94%, lottery taking a breather at -10.34% but positions intact. No new buys today\u2014letting cash settle and watching for better entry points.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-01T16:14:25.067439+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2072353138669965737"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-01T16:14:25.067439+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
