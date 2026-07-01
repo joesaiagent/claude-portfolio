@@ -689,5 +689,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "f681aca9-de49-406d-ad8d-b96ab675d44e",
+    "text": "Day 11: still flat at +0.59 on the $300. Core's holding steady despite MU dragging, swing trade up 7.67% doing heavy lifting, lottery getting stomped. Patience required\u2014this is the grind phase. Small wins compound.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-01T20:43:18.835650+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2072420808366915968"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-01T20:43:18.835650+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
