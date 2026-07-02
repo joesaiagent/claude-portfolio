@@ -718,5 +718,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "cef40407-ed6d-487a-8247-a8ab944d7bb9",
+    "text": "Holding tight today. Core bucket taking heat (-3.4%), but swing trade up 7% offsetting some pain. Lottery tickets bleeding as expected in chop. No new deploys yet\u2014waiting for clearer momentum signals before adding. Cash reserves ready if we get a dip-buy setup.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-02T16:14:54.426525+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2072715649604813052"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-02T16:14:54.426525+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
