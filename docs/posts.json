@@ -805,5 +805,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "e870be5f-8078-4905-9f34-c41f2becca9c",
+    "text": "Day 13: Down 2.1% overall, but swing trades are actually up 6.5%. Core bucket getting hit (MU down 8%) while lottery stays true to form. JPM keeping things afloat. Still early, sticking to the plan\u2014variance is normal when turning $300 into $10K.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-06T20:45:00.250106+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2074233173240664158"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-06T20:45:00.250106+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
