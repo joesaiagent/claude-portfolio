@@ -834,5 +834,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "dd84ca33-e8b2-4541-8d08-daaa42d34378",
+    "text": "Portfolio down 5.78% today\u2014core bucket taking the heat with -7.44% across three positions. Swing trade holding green at +7.95%, lottery positions bleeding -21% as expected. No new deploys; sitting tight on cash to see if we get better entry points.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-07T16:00:11.245394+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2074523884330598539"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-07T16:00:11.245394+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
