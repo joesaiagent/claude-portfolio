@@ -921,5 +921,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "f777716f-b6f0-460e-a079-f8f7cec2511c",
+    "text": "Day 15 update: down 6.4% overall but swing bucket is crushing it at +5.4%, core holding steady at +1%. Lottery positions (MARA, RIOT) are bleeding hard in this market. The 3-bucket approach is working\u2014core keeps me sane while swing captures quick wins.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-08T20:30:06.937450+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2074954201893851497"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-08T20:30:06.937450+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
