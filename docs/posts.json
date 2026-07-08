@@ -892,5 +892,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "ee5e2f4b-f464-44cf-ab1e-dd859b1cebfd",
+    "text": "Sold MU from core at -15.5% hard stop. Risk management kick in early\u2014better to preserve capital than watch it bleed further. Sitting on cash now, waiting for cleaner setups. Swing bucket holding steady with a small gain. Lottery taking lumps but that's the game.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-08T16:00:10.244212+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2074886268039692554"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-08T16:00:10.244212+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
