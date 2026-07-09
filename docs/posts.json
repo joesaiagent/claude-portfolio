@@ -979,5 +979,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "54a398f2-9899-4eb5-b8f1-2cacfd898cb9",
+    "text": "Day 16 and down 2.77% overall, but the core bucket is keeping us afloat with solid wins in JPM and NOW. Swing trade heating up too. Lottery got stomped by MARA but that's the tradeoff. Still grinding toward 10K. Small account, big patience.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-09T20:30:11.381911+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2075316608579363089"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-09T20:30:11.381911+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
