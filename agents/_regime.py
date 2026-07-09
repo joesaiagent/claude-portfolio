@@ -62,7 +62,18 @@ def breadth_above_ma(closes: dict[str, pd.Series], window: int = 50) -> float:
 def _latest_vix() -> float | None:
     try:
         df = yf.download("^VIX", period="2mo", progress=False, auto_adjust=True)
-        return float(df["Close"].iloc[-1]) if not df.empty else None
+        if df.empty:
+            return None
+        # Modern yfinance returns MultiIndex columns ("Close", "^VIX") even for a
+        # single ticker, so df["Close"] is a DataFrame, not a Series — float() on
+        # its last row raised and was silently swallowed, permanently blinding the
+        # regime filter to VIX. Collapse to a 1-D series before taking the last
+        # non-null value.
+        close = df["Close"]
+        if hasattr(close, "columns"):
+            close = close.iloc[:, 0]
+        close = close.dropna()
+        return float(close.iloc[-1]) if not close.empty else None
     except Exception:
         return None
 

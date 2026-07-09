@@ -28,9 +28,18 @@ from agents._state import (
 load_dotenv()
 
 
-# Max position counts per bucket. Core concentrated (3) to let conviction bets
-# matter — aggressive growth tilt per user direction.
-BUCKET_MAX_POSITIONS = {"core": 3, "swing": 2, "lottery": 2}
+# Max position counts per bucket. Core holds up to 4 names so the bucket budget
+# can always be spread under the per-position account cap below (a single core
+# name capped at ~20% of a ~$300 account is ~$60, and $210/$60 -> 4 names). Swing
+# and lottery stay at 2 (their budgets fit under the cap in 2 names).
+BUCKET_MAX_POSITIONS = {"core": 4, "swing": 2, "lottery": 2}
+
+# Hard cap on any single position as a fraction of TOTAL account equity — the
+# guardrail against the concentration that drove the book's whole loss (a single
+# core name that grew to ~38% of the account, then stopped out for ~-$18). This
+# is an account-level cap, distinct from the per-bucket SIZING_MAX_FRAC below:
+# even a low-vol name that inverse-vol wants to over-fund can never exceed this.
+MAX_POSITION_ACCOUNT_FRAC = 0.20
 
 # Inverse-volatility sizing caps (as a fraction of a bucket's remaining budget),
 # so a steady low-vol name gets more capital but no single name dominates a tiny
@@ -40,14 +49,20 @@ SIZING_MAX_FRAC = {"core": 0.55, "swing": 0.55, "lottery": 0.55}
 VOL_FLOOR = 0.005
 
 
-def _inverse_vol_budgets(cands: list[dict], remaining: float, bucket: str) -> list[float]:
+def _inverse_vol_budgets(cands: list[dict], remaining: float, bucket: str,
+                         max_dollars: float | None = None) -> list[float]:
     """Dollar budget per candidate via inverse-vol weighting, clamped to per-bucket
-    min/max fractions and water-fill renormalized to sum to `remaining`."""
+    min/max fractions and water-fill renormalized to sum to `remaining`.
+
+    `max_dollars` (the account-level per-position cap) tightens the upper bound so
+    no single name exceeds it. If the cap is so tight that n names can't absorb
+    `remaining` (n * max_dollars < remaining), water-fill deploys what it can and
+    leaves the remainder as cash — conservative, never over-concentrates."""
     n = len(cands)
     if n == 0:
         return []
     if n == 1:
-        return [remaining]
+        return [remaining if max_dollars is None else min(remaining, max_dollars)]
     inv = [1.0 / max(c.get("vol20") or 0.02, VOL_FLOOR) for c in cands]
     tot = sum(inv)
     budgets = [remaining * x / tot for x in inv]
@@ -56,6 +71,9 @@ def _inverse_vol_budgets(cands: list[dict], remaining: float, bucket: str) -> li
     # part of the bucket undeployed (e.g. 2 core names capped at 0.35 = only 70%).
     lo = min(SIZING_MIN_FRAC.get(bucket, 0.0), 1.0 / n) * remaining
     hi = max(SIZING_MAX_FRAC.get(bucket, 1.0), 1.0 / n) * remaining
+    if max_dollars is not None:
+        hi = min(hi, max_dollars)
+        lo = min(lo, hi)  # a tight account cap can push hi below the usual floor
     # Iterative water-filling: clamp to [lo, hi], then push the residual onto the
     # names that can still move in its direction. Converges to sum==remaining
     # whenever feasible; if the caps make full deployment impossible it leaves the
@@ -295,6 +313,11 @@ def run() -> dict:
         return {"placed_orders": [], "suggestions": [], "note": "Watchlist empty."}
 
     account = broker.account_info()
+    # Account equity anchors the per-position hard cap (MAX_POSITION_ACCOUNT_FRAC).
+    # Fall back through equity/cash if portfolio_value is missing so the cap is
+    # never silently disabled (which would re-open the concentration hole).
+    equity = account.get("portfolio_value") or account.get("equity") or account.get("cash") or 0.0
+    max_per_pos = MAX_POSITION_ACCOUNT_FRAC * equity if equity > 0 else None
     positions = _attach_bucket(broker.positions(), state)
     # Net out still-open buy orders (e.g. a prior cycle's DAY limit not yet
     # filled): treat those tickers as already taken AND reserve their cash, so a
@@ -327,6 +350,22 @@ def run() -> dict:
         )
 
         n_pos = _bucket_target_positions(bucket, remaining)
+        # Spread across enough names that the bucket budget can fully deploy
+        # WITHOUT any single position breaching the account-level cap. Without
+        # this, a bucket with a large remaining budget but a low base position
+        # count (e.g. remaining $114 -> base 1 name) dumped the whole budget into
+        # one name — exactly the 38%-of-account MU bet that stopped out. Bounded
+        # by the bucket's max positions and (later) the count of priceable names.
+        if max_per_pos and max_per_pos > 0:
+            n_pos = max(n_pos, math.ceil(remaining / max_per_pos))
+        # Cap NEW buys by the bucket's open slots (max positions minus what's
+        # already held), so adding to a partly-filled bucket can't push it past
+        # BUCKET_MAX_POSITIONS. A bucket already at its max is left to rotation.
+        held_in_bucket = sum(1 for p in positions if p.get("bucket") == bucket)
+        open_slots = BUCKET_MAX_POSITIONS[bucket] - held_in_bucket
+        if open_slots <= 0:
+            continue
+        n_pos = min(n_pos, open_slots)
         # Resolve a tradeable price for each candidate UP FRONT (watchlist
         # last_price first, else Alpaca's reliable quote) and keep only the ones
         # we can actually price, walking down the sorted list until we have n_pos.
@@ -348,9 +387,12 @@ def run() -> dict:
         # Inverse-vol sizing needs vol20 on every candidate; a stale watchlist
         # without it degrades safely to equal weight.
         if all(c.get("vol20") for c in chosen):
-            budgets = _inverse_vol_budgets(chosen, remaining, bucket)
+            budgets = _inverse_vol_budgets(chosen, remaining, bucket, max_per_pos)
         else:
-            budgets = [remaining / len(chosen)] * len(chosen)
+            equal = remaining / len(chosen)
+            if max_per_pos:
+                equal = min(equal, max_per_pos)  # cap the equal-weight fallback too
+            budgets = [equal] * len(chosen)
         for cand, budget in zip(chosen, budgets):
             price = price_by_ticker[cand["ticker"]]
             if budget < 1.0:

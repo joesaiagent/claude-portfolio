@@ -6,6 +6,7 @@ __pycache__/
 venv/
 .DS_Store
 runner.log
+wakerenew.log
 .cache/
 
 # Editor / IDE / tool-local config

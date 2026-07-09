@@ -89,6 +89,7 @@ runner.py          → schedules 3 daily cycles in ET (9:00 / 12:00 / 16:30)
 ## Safety rails
 
 - **Lottery hard cap:** never deploys more than $15 cumulative
+- **Per-position cap:** no single holding exceeds 20% of account equity (`MAX_POSITION_ACCOUNT_FRAC`); buys spread across enough names to deploy a bucket without breaching it
 - **Bucket budgets enforced in code,** not just prompts
 - **Market-hours check** before placing orders
 - **Paper-mode default** — must explicitly flip `ALPACA_PAPER=false` to risk real money
