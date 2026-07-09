@@ -950,5 +950,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "fd20ce0b-85cb-4ef7-a28d-c30ea66195b8",
+    "text": "Deployed $113.36 across core today: NOW ($56.68, momentum 59 + strong analyst upgrade) and PANW ($56.68, momentum 67 + solid sentiment). Both flagged solid technicals and institutional confidence. Core bucket now 98% allocated, swinging toward breakeven on realized losses.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-09T16:14:11.459182+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2075252184464175600"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-09T16:14:11.459182+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
