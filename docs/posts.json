@@ -1037,5 +1037,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "8a62e5c7-33ee-4119-bdbc-f52ac104f0e1",
+    "text": "Day 17: down 3.66% but core bucket holding strong (+3.59%). JPM and NOW keeping things afloat while lottery tickets bleed. Swing bucket empty waiting for setup. Still early, staying disciplined with the plan.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-10T20:30:06.682919+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2075678976576467165"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-10T20:30:06.682919+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
