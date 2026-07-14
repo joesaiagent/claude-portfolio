@@ -1153,5 +1153,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "9faa86e2-2c38-45be-a69e-10f32fd78259",
+    "text": "Day 19: down 2.76% but core bucket keeping us afloat with +5.33% unrealized. JPM and NOW carrying weight while lottery picks get bruised. Swing bucket barely deployed but stable. Still early, staying disciplined on the 3-bucket split. The grind continues.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-14T20:37:43.512214+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2077130444257010132"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-14T20:37:43.512214+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
