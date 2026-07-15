@@ -1211,5 +1211,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "9878f8d2-76d5-40f1-a328-e6665cba25b4",
+    "text": "Day 20 update: down 2.75% but core bucket is holding strong with JPM up 9.73%. Swing trades flat, lottery taking the heat. The real money moves happen in the boring positions. Staying disciplined with the 3-bucket split.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-15T20:44:06.104760+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2077494436733358311"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-15T20:44:06.104760+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
