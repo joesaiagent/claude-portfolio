@@ -1269,5 +1269,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "a82bdf27-973c-42d6-a51a-5a4693870f2a",
+    "text": "Day 21 update: down 4.65% but core bucket holding strong with JPM up 8.5%. Lottery getting crushed (MARA down 22%), swing treading water. The grind continues\u2014core discipline keeping us afloat while lottery teaches expensive lessons. Still got this.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-16T20:43:39.613192+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2077856713630269681"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-16T20:43:39.613192+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
