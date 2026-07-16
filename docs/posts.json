@@ -1240,5 +1240,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "2cb6b942-c15c-48a3-ba85-28b79aec1d57",
+    "text": "Holding tight today. Core bucket doing its job (+4%), swing treading water, lottery took the expected heat (-29%). No new entries\u2014waiting for cleaner momentum signals and better risk/reward setups. Cash reserves staying dry until conviction hits.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-16T16:14:08.980268+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2077788889075400716"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-16T16:14:08.980268+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
