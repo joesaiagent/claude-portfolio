@@ -72,12 +72,16 @@ python runner.py --dry
 ```
 runner.py          → schedules 3 daily cycles in ET (9:00 / 12:00 / 16:30)
   premarket (9:00 ET):
+    exits          → stops / trailing / time-stop sells for the open
     research       → yfinance screens → watchlist.json
     tracker        → refresh state
     allocator      → places Alpaca orders for the open
     publish        → update GitHub Pages
   midday (12:00 ET):
+    exits          → intraday stop check
     tracker        → refresh state
+    allocator      → second-chance deploy of idle/just-settled cash (skips under $25)
+    midday post    → what traded today and why
     publish        → update GitHub Pages
   postclose (16:30 ET):
     tracker        → final state

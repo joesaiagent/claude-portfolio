@@ -87,12 +87,35 @@ def cycle_premarket():
     step("publish", publish.run)
 
 
+def midday_redeploy():
+    """Second-chance allocator: deploy cash that the 9:00 pass couldn't touch —
+    sale proceeds that filled at 9:30 (spendable immediately on a margin
+    account), or a bucket that had no priceable candidates premarket. Gated on
+    SPENDABLE (settled, non-marginable) cash so a cash-account T+1 hold just
+    skips quietly instead of submitting buys Alpaca would reject. Threshold is
+    health.IDLE_CASH_ALERT so "worth redeploying" and "worth alerting about"
+    stay the same number. Reuses the morning watchlist (no extra research run);
+    the allocator is idempotent (nets out open orders, reserves their cash), so
+    running it a second time in the day can never double-buy."""
+    acct = broker.account_info()
+    spendable = acct.get("non_marginable_buying_power")
+    if spendable is None:
+        spendable = acct.get("buying_power", 0.0)
+    if spendable < health.IDLE_CASH_ALERT:
+        print(f"[midday] spendable ${spendable:.2f} < ${health.IDLE_CASH_ALERT:.0f} — no redeploy needed")
+        return {"skipped": True, "spendable": spendable}
+    print(f"[midday] ${spendable:.2f} spendable — running second-chance allocation")
+    return allocator.run()
+
+
 def cycle_midday():
-    """Once daily ~12:00 ET. Intraday stop check + tracker refresh, then a short
+    """Once daily ~12:00 ET. Intraday stop check + tracker refresh, a
+    second-chance allocator pass for idle/just-settled cash, then a short
     midday update post (today's trades, cash deployed, the reasoning). The extra
     ~$0.02/day (1 Haiku call + 1 plain X post) buys a second daily touchpoint."""
     step("exits", exits.run)
     step("tracker", tracker.run)
+    step("allocator", midday_redeploy)  # before the post, so it can mention the buys
     step("midday_post", content.run_midday)
     step("publish", publish.run)
 
