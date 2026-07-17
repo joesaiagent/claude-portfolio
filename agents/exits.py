@@ -15,6 +15,7 @@ from dotenv import load_dotenv
 import yfinance as yf
 
 from agents import broker
+from agents._intel import EARNINGS_EXIT_DAYS, earnings_within
 from agents._screener import EXCLUDED_SECTORS, fetch_history
 from agents._state import (
     append_order_log,
@@ -147,15 +148,25 @@ def run() -> dict:
     now = datetime.now(timezone.utc)
     exits = []
 
-    excluded = _excluded_sector_tickers([p["ticker"] for p in positions])
+    # Force-sell map: ticker -> reason. Sector exclusion applies to everything;
+    # pre-earnings de-risk applies to SWING only (an earnings gap blows straight
+    # through the -8% stop; core's wide stops ride the print by design). Both
+    # rules act only on positively-confirmed data — earnings_within(None) holds.
+    force_sell = {t: "sector excluded (healthcare)"
+                  for t in _excluded_sector_tickers([p["ticker"] for p in positions])}
+    for pos in positions:
+        t = pos["ticker"]
+        if t not in force_sell and buckets.get(t) == "swing" and earnings_within(t, EARNINGS_EXIT_DAYS):
+            force_sell[t] = f"pre-earnings de-risk (report within {EARNINGS_EXIT_DAYS}d)"
+
     sold_tickers: set[str] = set()  # force-sold in loop 1 -> skip in loop 2 (no double-sell)
 
     for pos in positions:
         t = pos["ticker"]
-        if t in excluded:
+        if t in force_sell:
             bucket = buckets.get(t, "core")
             shares = pos["shares"]
-            reason = "sector excluded (healthcare)"
+            reason = force_sell[t]
             record = {"ticker": t, "bucket": bucket, "shares": shares,
                       "fraction": 1.0, "reason": reason, "pl_pct": pos["pl_pct"]}
             if should_execute(state):

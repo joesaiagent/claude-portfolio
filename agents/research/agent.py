@@ -5,11 +5,25 @@ from datetime import datetime, timezone
 
 from dotenv import load_dotenv
 
-from agents._intel import enrich
+from agents._intel import EARNINGS_ENTRY_BLOCK_DAYS, earnings_within, enrich
 from agents._screener import screen_bucket
 from agents._state import WATCHLIST_FILE, atomic_write_text
 
 load_dotenv()
+
+
+def _drop_pre_earnings_swing(ranked: list[dict]) -> list[dict]:
+    """Drop SWING candidates with a confirmed earnings report inside the hold
+    window — the bucket plays earnings REACTIONS (post-print momentum), it does
+    not gamble the print against an -8% stop. Unknown (None) passes through:
+    only a positively-confirmed date blocks an entry."""
+    out = []
+    for c in ranked:
+        if c["bucket"] == "swing" and earnings_within(c["ticker"], EARNINGS_ENTRY_BLOCK_DAYS):
+            print(f"[research] {c['ticker']}: earnings within {EARNINGS_ENTRY_BLOCK_DAYS}d — skipping swing entry")
+            continue
+        out.append(c)
+    return out
 
 
 def run(buckets: tuple[str, ...] = ("core", "swing", "lottery")) -> dict:
@@ -24,6 +38,7 @@ def run(buckets: tuple[str, ...] = ("core", "swing", "lottery")) -> dict:
             continue
         ranked = enrich(ranked)  # news sentiment + analyst consensus, re-ranks
         ranked = [r for r in ranked if not r.get("excluded")]  # drop excluded sectors (healthcare)
+        ranked = _drop_pre_earnings_swing(ranked)
         now = datetime.now(timezone.utc).isoformat()
         watchlist.extend({**r, "added_at": now} for r in ranked)
 

@@ -88,6 +88,33 @@ def finnhub_insider_transactions(ticker: str) -> float:
         return 0.0
 
 
+# Swing is a days-to-weeks momentum book with an -8% stop — an earnings gap can
+# blow straight through that. Entries are blocked when a report lands inside the
+# typical hold window; holdings are de-risked right before the print.
+EARNINGS_ENTRY_BLOCK_DAYS = 10
+EARNINGS_EXIT_DAYS = 2
+
+
+def earnings_within(ticker: str, days: int) -> bool | None:
+    """True if a confirmed earnings report is scheduled within the next `days`
+    calendar days, False if the calendar positively shows none, None if UNKNOWN
+    (no key / API failure). Callers must fail-safe on None: allow the entry and
+    never force an exit — acting on missing data is how the 6/22 spurious sell
+    happened."""
+    key = os.getenv("FINNHUB_KEY")
+    if not key:
+        return None
+    try:
+        frm = date.today()
+        to = frm + timedelta(days=days)
+        r = requests.get(f"{FINNHUB_URL}/calendar/earnings",
+                         params={"from": frm.isoformat(), "to": to.isoformat(),
+                                 "symbol": ticker, "token": key}, timeout=15).json()
+        return bool(r.get("earningsCalendar"))
+    except Exception:
+        return None
+
+
 def congressional_trading(ticker: str) -> float:
     """Net congressional trading signal — stubbed pending a working free source.
 

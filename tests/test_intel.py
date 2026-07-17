@@ -58,9 +58,51 @@ def test_healthcare_flagged_excluded(mp):
     assert c2["excluded"] is False
 
 
+class _FakeResp:
+    def __init__(self, payload): self._p = payload
+    def json(self): return self._p
+
+
+def test_earnings_within_confirmed(mp):
+    mp.setattr(_intel.os, "environ", dict(_intel.os.environ, FINNHUB_KEY="x"))
+    mp.setattr(_intel.requests, "get",
+               lambda *a, **k: _FakeResp({"earningsCalendar": [{"symbol": "NVDA", "date": "2026-07-20"}]}))
+    assert _intel.earnings_within("NVDA", 10) is True
+
+
+def test_earnings_within_none_scheduled(mp):
+    mp.setattr(_intel.os, "environ", dict(_intel.os.environ, FINNHUB_KEY="x"))
+    mp.setattr(_intel.requests, "get", lambda *a, **k: _FakeResp({"earningsCalendar": []}))
+    assert _intel.earnings_within("NVDA", 10) is False
+
+
+def test_earnings_within_unknown_on_failure(mp):
+    mp.setattr(_intel.os, "environ", dict(_intel.os.environ, FINNHUB_KEY="x"))
+    def _boom(*a, **k): raise ConnectionError("down")
+    mp.setattr(_intel.requests, "get", _boom)
+    assert _intel.earnings_within("NVDA", 10) is None  # unknown, NOT False
+
+
+def test_swing_entry_filter(mp):
+    from agents.research import agent as research
+    # AAA (swing) has earnings inside the window -> dropped; unknown (None) and
+    # core names pass through untouched.
+    fake = {"AAA": True, "BBB": None}
+    mp.setattr(research, "earnings_within", lambda t, d: fake.get(t))
+    ranked = [
+        {"ticker": "AAA", "bucket": "swing"},
+        {"ticker": "BBB", "bucket": "swing"},
+        {"ticker": "CCC", "bucket": "core"},
+    ]
+    out = research._drop_pre_earnings_swing(ranked)
+    assert [c["ticker"] for c in out] == ["BBB", "CCC"]
+
+
 def run():
     for fn in (test_tilt_capped_positive, test_tilt_capped_negative,
-               test_tilt_modest_when_mild, test_healthcare_flagged_excluded):
+               test_tilt_modest_when_mild, test_healthcare_flagged_excluded,
+               test_earnings_within_confirmed, test_earnings_within_none_scheduled,
+               test_earnings_within_unknown_on_failure, test_swing_entry_filter):
         mp = _MP()
         try:
             fn(mp)
