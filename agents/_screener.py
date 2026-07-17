@@ -1,6 +1,10 @@
-"""Free-tier screening helpers — yfinance + Python rules, no LLM."""
+"""Free-tier screening helpers — Alpaca bars + Python rules, no LLM.
+yfinance is the FALLBACK price source only (it caused the 6/22 spurious sell,
+the tz-cache incident, and repeated flaky-fetch warnings); Alpaca's data API is
+keyed anyway, first-party, and returns split/dividend-adjusted daily bars."""
 from __future__ import annotations
 
+import os
 import warnings
 from datetime import datetime, timedelta
 
@@ -53,20 +57,76 @@ THEMES = {
 THEME_OF = {t: theme for theme, members in THEMES.items() for t in members}
 
 
+def _alpaca_history(tickers: list[str], days: int) -> dict[str, pd.DataFrame]:
+    """Daily OHLCV from Alpaca's data API (one batched request, ALL-adjusted so
+    prices match yfinance's auto_adjust). Frames use yfinance's column names and
+    a tz-naive midnight index so every downstream consumer (factors, MAs,
+    backtest reindexing against yf's VIX) sees the same shape either way."""
+    client = _bars_client()
+    req = StockBarsRequest(
+        symbol_or_symbols=list(tickers),
+        timeframe=TimeFrame.Day,
+        start=datetime.now() - timedelta(days=days),
+        adjustment=Adjustment.ALL,
+    )
+    data = client.get_stock_bars(req).df
+    out: dict[str, pd.DataFrame] = {}
+    if data is None or data.empty:
+        return out
+    for t in tickers:
+        try:
+            df = data.loc[t]
+        except KeyError:
+            continue  # symbol Alpaca doesn't cover — yfinance fallback picks it up
+        df = df.rename(columns={"open": "Open", "high": "High", "low": "Low",
+                                "close": "Close", "volume": "Volume"})
+        idx = pd.DatetimeIndex(df.index).tz_convert("America/New_York").tz_localize(None).normalize()
+        df = df[["Open", "High", "Low", "Close", "Volume"]].set_axis(idx, axis=0).dropna()
+        if len(df) >= 30:
+            out[t] = df
+    return out
+
+
+def _bars_client():
+    from alpaca.data.historical import StockHistoricalDataClient
+    return StockHistoricalDataClient(
+        os.environ["ALPACA_API_KEY"], os.environ["ALPACA_SECRET_KEY"]
+    )
+
+
+try:
+    from alpaca.data.requests import StockBarsRequest
+    from alpaca.data.timeframe import TimeFrame
+    from alpaca.data.enums import Adjustment
+except Exception:  # pragma: no cover — alpaca-py is a hard dep, but stay importable
+    StockBarsRequest = None
+
+
 def fetch_history(tickers: list[str], days: int = 90) -> dict[str, pd.DataFrame]:
-    """Pull OHLCV history for a list of tickers. Returns {ticker: dataframe}."""
+    """Pull OHLCV history for a list of tickers. Returns {ticker: dataframe}.
+    Alpaca first; any tickers it can't serve (or a full outage) fall back to
+    yfinance, so one degraded source can't blind the screeners/regime/exits."""
+    out: dict[str, pd.DataFrame] = {}
+    if StockBarsRequest is not None:
+        try:
+            out = _alpaca_history(tickers, days)
+        except Exception as e:
+            print(f"[screener] alpaca bars failed ({str(e)[:120]}); falling back to yfinance")
+    missing = [t for t in tickers if t not in out]
+    if not missing:
+        return out
+
     end = datetime.now()
     start = end - timedelta(days=days)
     try:
         data = yf.download(
-            tickers, start=start, end=end, group_by="ticker", auto_adjust=True,
+            missing, start=start, end=end, group_by="ticker", auto_adjust=True,
             progress=False, threads=True,
         )
     except Exception:
-        return {}
+        return out
 
-    out: dict[str, pd.DataFrame] = {}
-    for t in tickers:
+    for t in missing:
         try:
             df = data[t] if isinstance(data.columns, pd.MultiIndex) else data
             if df.empty or "Close" not in df.columns:

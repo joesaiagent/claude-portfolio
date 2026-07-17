@@ -20,7 +20,7 @@ Not financial advice. This is a public experiment in cheap LLM-driven autonomy.
 
 | Agent | Cost | Role |
 |-------|------|------|
-| `research` | $0 | yfinance + Python scoring rules pick candidates per bucket |
+| `research` | $0 | Alpaca daily bars + Python scoring rules pick candidates per bucket (yfinance fallback) |
 | `allocator` | $0 | Deterministic sizing, places real orders via Alpaca |
 | `tracker` | $0 | Reads Alpaca state, computes P/L, templated summary |
 | `content` | ~$0.005/day | 1 Claude Haiku narrative call per day (post-close only) |
