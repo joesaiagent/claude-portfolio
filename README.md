@@ -97,6 +97,8 @@ runner.py          → schedules 3 daily cycles in ET (9:00 / 12:00 / 16:30)
 - **Theme cap:** at most ONE name per correlated theme cluster (BTC miners/crypto, quantum, space, small-cap AI) per bucket — a momentum run in one theme can't stack a bucket into a single bet
 - **Lottery time stop:** a lottery name that never reaches +20% within ~15 trading days is sold — the thesis is a fast asymmetric pop, and a name that hasn't popped is dead capital
 - **Lottery trailing stop arms at +15%** (give-back 25% from peak) with a **-40% hard floor**, so a runup can't silently round-trip to a deep loss
+- **Broker-side stops:** every position carries a stop-loss order AT ALPACA (re-laid each cycle; fractional orders must be DAY), so the floor is enforced continuously during market hours, not just at the 3 daily checkpoints
+- **Pre-earnings de-risk:** swing never enters within 10 days of a confirmed earnings report and exits 2 days before one — the bucket plays post-print reactions, it doesn't gamble prints
 - **Bucket budgets enforced in code,** not just prompts
 - **Market-hours check** before placing orders
 - **Paper-mode default** — must explicitly flip `ALPACA_PAPER=false` to risk real money

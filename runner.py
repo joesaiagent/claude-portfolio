@@ -31,7 +31,7 @@ def _raise_fd_limit(target: int = 16384) -> None:
 
 _raise_fd_limit()
 
-from agents import broker, exits, publish, health
+from agents import broker, exits, publish, health, stops
 from agents.analytics import agent as analytics
 from agents.content import agent as content
 from agents.allocator import agent as allocator
@@ -84,6 +84,7 @@ def cycle_premarket():
     step("research", research.run)
     step("tracker", tracker.run)
     step("allocator", allocator.run)
+    step("stops", stops.sync)  # after exits/allocator so sold names are skipped
     step("publish", publish.run)
 
 
@@ -116,6 +117,7 @@ def cycle_midday():
     step("exits", exits.run)
     step("tracker", tracker.run)
     step("allocator", midday_redeploy)  # before the post, so it can mention the buys
+    step("stops", stops.sync)  # covers the morning's 9:30 fills for the rest of the day
     step("midday_post", content.run_midday)
     step("publish", publish.run)
 
@@ -123,6 +125,7 @@ def cycle_midday():
 def cycle_postclose():
     """Once daily ~16:30 ET. Final tracker + the ONE daily X post + analytics."""
     step("tracker", tracker.run)
+    step("stops", stops.sync)  # DAY orders laid after the close cover the next session from its open
     step("content", content.run)  # generates and posts the 1 daily summary
     step("analytics", analytics.run)
     step("publish", publish.run)

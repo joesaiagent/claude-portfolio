@@ -148,7 +148,31 @@ def submit_buy(ticker: str, shares: float, limit_price: float | None = None) -> 
     }
 
 
+def cancel_open_sells(ticker: str) -> int:
+    """Cancel any open sell orders for `ticker` (e.g. a protective stop laid by
+    stops.sync). Alpaca rejects a sell whose shares are already committed to
+    another open sell, so every agent-initiated sell clears the way first.
+    Returns the number canceled; degrades to 0 on API errors."""
+    from alpaca.trading.requests import GetOrdersRequest
+    from alpaca.trading.enums import QueryOrderStatus
+    client = _client()
+    try:
+        orders = client.get_orders(GetOrdersRequest(status=QueryOrderStatus.OPEN, symbols=[ticker]))
+    except Exception:
+        return 0
+    n = 0
+    for o in orders:
+        if str(o.side).endswith("SELL"):
+            try:
+                client.cancel_order_by_id(o.id)
+                n += 1
+            except Exception:
+                pass
+    return n
+
+
 def submit_sell(ticker: str, shares: float) -> dict:
+    cancel_open_sells(ticker)  # free the shares from any protective stop first
     order = MarketOrderRequest(
         symbol=ticker, qty=shares, side=OrderSide.SELL, time_in_force=TimeInForce.DAY
     )
@@ -159,6 +183,27 @@ def submit_sell(ticker: str, shares: float) -> dict:
         "shares": float(placed.qty),
         "side": "sell",
         "status": str(placed.status),
+    }
+
+
+def submit_stop_sell(ticker: str, shares: float, stop_price: float) -> dict:
+    """Protective stop-loss sell living AT THE BROKER. Fractional orders must be
+    DAY (Alpaca rejects GTC on fractional qty — probed live 2026-07-16), so
+    stops.sync re-lays these every cycle; submitted after hours a DAY order
+    covers the whole next session."""
+    from alpaca.trading.requests import StopOrderRequest
+    order = StopOrderRequest(
+        symbol=ticker, qty=shares, side=OrderSide.SELL,
+        time_in_force=TimeInForce.DAY, stop_price=round(stop_price, 2),
+    )
+    placed = _client().submit_order(order)
+    return {
+        "order_id": str(placed.id),
+        "ticker": placed.symbol,
+        "shares": float(placed.qty),
+        "side": "sell",
+        "status": str(placed.status),
+        "stop_price": round(stop_price, 2),
     }
 
 

@@ -405,5 +405,47 @@
       "high_pl_pct": 1.765,
       "updated": "2026-07-16T20:43:37.436688+00:00"
     }
+  },
+  "protective_stops": {
+    "JPM": {
+      "order_id": "128a377c-fa1b-454d-b998-98be84550593",
+      "stop_price": 268.5,
+      "shares": 0.1531,
+      "entry_price": 315.88,
+      "bucket": "core",
+      "placed_at": "2026-07-17T03:24:18.586166+00:00"
+    },
+    "NOW": {
+      "order_id": "357f0e7c-354d-4be2-ab6b-d4932673340f",
+      "stop_price": 86.88,
+      "shares": 0.5259,
+      "entry_price": 102.216,
+      "bucket": "core",
+      "placed_at": "2026-07-17T03:24:18.755572+00:00"
+    },
+    "NVDA": {
+      "order_id": "8e72b7bf-b0ec-4b5a-99f2-3ff1d0549c20",
+      "stop_price": 192.02,
+      "shares": 0.1564,
+      "entry_price": 208.716,
+      "bucket": "swing",
+      "placed_at": "2026-07-17T03:24:18.921236+00:00"
+    },
+    "PANW": {
+      "order_id": "d3f3252b-990c-45fe-808d-a7dc687ed280",
+      "stop_price": 271.31,
+      "shares": 0.1768,
+      "entry_price": 319.184,
+      "bucket": "core",
+      "placed_at": "2026-07-17T03:24:19.096550+00:00"
+    },
+    "SMH": {
+      "order_id": "b1a78001-198d-4ca1-a5ab-c53580bf678f",
+      "stop_price": 516.53,
+      "shares": 0.0788,
+      "entry_price": 607.684,
+      "bucket": "core",
+      "placed_at": "2026-07-17T03:24:19.269481+00:00"
+    }
   }
 }
