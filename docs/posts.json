@@ -1298,5 +1298,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "6bf1e7b4-a18c-471e-82de-35fd7e0fc670",
+    "text": "Closed RIOT (24d time stop, underperformed vs 20% target) and WULF (trailing stop after -32.9% drawdown from peak). Realized -$6.78 combined. Core bucket holding strong +4.51%, offsetting lottery exits. Staying flat\u2014let swing position stabilize before redeploying.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-17T16:15:33.930891+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2078151633230332275"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-17T16:15:33.930891+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
