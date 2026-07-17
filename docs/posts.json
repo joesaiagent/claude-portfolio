@@ -1327,5 +1327,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "383dd6bb-f538-4a88-bdf7-172bf8633500",
+    "text": "Day 22: down 5.3% but core bucket holding strong with JPM up 8%, NOW steady. Swing trade (NVDA) bleeding a bit. Lottery got torched early\u2014learned that lesson. Focusing on letting winners run and cutting losers faster. The grind continues.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-17T20:44:11.815428+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2078219236489449656"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-17T20:44:11.815428+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
