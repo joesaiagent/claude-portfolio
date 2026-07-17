@@ -12,9 +12,9 @@ Not financial advice. This is a public experiment in cheap LLM-driven autonomy.
 
 | Bucket | Allocation | Capital | Strategy |
 |--------|-----------|---------|----------|
-| **Core** | 80% | $240 | Momentum + technical setups on large/mid-cap. Beat the S&P. |
-| **Swing** | 15% | $45 | Earnings + catalyst plays. Days-to-weeks. |
-| **Lottery** | 5% | $15 | Asymmetric upside. **Hard-capped — never deploys >$15 cumulative.** |
+| **Core** | 70% | $210 | Momentum + technical setups on large/mid-cap. Beat the S&P. |
+| **Swing** | 20% | $60 | Earnings + catalyst plays. Days-to-weeks. |
+| **Lottery** | 10% | $30 | Asymmetric upside. **Hard-capped — never holds >$30 of cost basis.** |
 
 ## Agents
 
@@ -88,8 +88,11 @@ runner.py          → schedules 3 daily cycles in ET (9:00 / 12:00 / 16:30)
 
 ## Safety rails
 
-- **Lottery hard cap:** never deploys more than $15 cumulative
+- **Lottery hard cap:** never holds more than $30 of cost basis at once
 - **Per-position cap:** no single holding exceeds 20% of account equity (`MAX_POSITION_ACCOUNT_FRAC`); buys spread across enough names to deploy a bucket without breaching it
+- **Theme cap:** at most ONE name per correlated theme cluster (BTC miners/crypto, quantum, space, small-cap AI) per bucket — a momentum run in one theme can't stack a bucket into a single bet
+- **Lottery time stop:** a lottery name that never reaches +20% within ~15 trading days is sold — the thesis is a fast asymmetric pop, and a name that hasn't popped is dead capital
+- **Lottery trailing stop arms at +15%** (give-back 25% from peak) with a **-40% hard floor**, so a runup can't silently round-trip to a deep loss
 - **Bucket budgets enforced in code,** not just prompts
 - **Market-hours check** before placing orders
 - **Paper-mode default** — must explicitly flip `ALPACA_PAPER=false` to risk real money

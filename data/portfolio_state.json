@@ -21,11 +21,11 @@
     }
   },
   "realized_pnl": {
-    "core": -3.77,
-    "swing": 0.0,
-    "lottery": 0.0
+    "core": -21.74,
+    "swing": 4.25,
+    "lottery": -9.18
   },
-  "lottery_deployed_total": 19.33,
+  "lottery_deployed_total": 0.0,
   "order_log": [
     {
       "ts": "2026-06-12T13:00:35.516031+00:00",
@@ -36,8 +36,11 @@
       "limit_price": 1184.17,
       "estimated_cost": 47.95,
       "order_id": "efbd749e-bc3c-49d9-9849-6b0cc0ff1bba",
-      "status": "OrderStatus.ACCEPTED",
-      "rationale": "LLY: momentum 25, news sentiment +0.26 (50 articles), analyst upside +5% (rec 1.7)"
+      "status": "OrderStatus.FILLED",
+      "rationale": "LLY: momentum 25, news sentiment +0.26 (50 articles), analyst upside +5% (rec 1.7)",
+      "reconciled": true,
+      "filled_qty": 0.0413,
+      "filled_avg_price": 1165.4
     },
     {
       "ts": "2026-06-12T13:00:35.617583+00:00",
@@ -48,8 +51,11 @@
       "limit_price": 413.66,
       "estimated_cost": 48.02,
       "order_id": "4756a308-0433-4048-a5ab-470c2d1abd23",
-      "status": "OrderStatus.ACCEPTED",
-      "rationale": "UNH: momentum 27, news sentiment +0.23 (50 articles), analyst upside +0% (rec 1.6)"
+      "status": "OrderStatus.FILLED",
+      "rationale": "UNH: momentum 27, news sentiment +0.23 (50 articles), analyst upside +0% (rec 1.6)",
+      "reconciled": true,
+      "filled_qty": 0.1184,
+      "filled_avg_price": 409.52
     },
     {
       "ts": "2026-06-12T13:00:35.713694+00:00",
@@ -60,8 +66,11 @@
       "limit_price": 498.22,
       "estimated_cost": 48.01,
       "order_id": "bf7ec6c3-7b6f-4875-b6c8-2766d59d8b02",
-      "status": "OrderStatus.ACCEPTED",
-      "rationale": "AMD: momentum 19, news sentiment +0.23 (50 articles), analyst upside -1% (rec 1.5)"
+      "status": "OrderStatus.FILLED",
+      "rationale": "AMD: momentum 19, news sentiment +0.23 (50 articles), analyst upside -1% (rec 1.5)",
+      "reconciled": true,
+      "filled_qty": 0.0983,
+      "filled_avg_price": 498.176
     },
     {
       "ts": "2026-06-12T13:00:35.802457+00:00",
@@ -72,8 +81,11 @@
       "limit_price": 621.64,
       "estimated_cost": 48.02,
       "order_id": "322322a0-1033-4235-8868-e52ffa1632ac",
-      "status": "OrderStatus.ACCEPTED",
-      "rationale": "SMH: momentum 22, news sentiment +0.28 (50 articles), analyst upside +0% (rec 3.0)"
+      "status": "OrderStatus.FILLED",
+      "rationale": "SMH: momentum 22, news sentiment +0.28 (50 articles), analyst upside +0% (rec 3.0)",
+      "reconciled": true,
+      "filled_qty": 0.0788,
+      "filled_avg_price": 607.684
     },
     {
       "ts": "2026-06-12T13:00:35.899333+00:00",
@@ -84,8 +96,11 @@
       "limit_price": 319.76,
       "estimated_cost": 48.0,
       "order_id": "2e234ae0-a098-445a-a3db-5809e7cdc67d",
-      "status": "OrderStatus.ACCEPTED",
-      "rationale": "JPM: momentum 16, news sentiment +0.15 (50 articles), analyst upside +9% (rec 3.0)"
+      "status": "OrderStatus.FILLED",
+      "rationale": "JPM: momentum 16, news sentiment +0.15 (50 articles), analyst upside +9% (rec 3.0)",
+      "reconciled": true,
+      "filled_qty": 0.1531,
+      "filled_avg_price": 315.88
     },
     {
       "ts": "2026-06-12T13:00:36.000791+00:00",
@@ -96,8 +111,11 @@
       "limit_price": 163.64,
       "estimated_cost": 22.49,
       "order_id": "a8da5f64-67c3-4edc-b610-abe2d590f3e6",
-      "status": "OrderStatus.ACCEPTED",
-      "rationale": "COIN: momentum 13, news sentiment +0.07 (50 articles), analyst upside +43% (rec 2.0)"
+      "status": "OrderStatus.FILLED",
+      "rationale": "COIN: momentum 13, news sentiment +0.07 (50 articles), analyst upside +43% (rec 2.0)",
+      "reconciled": true,
+      "filled_qty": 0.1402,
+      "filled_avg_price": 160.64
     },
     {
       "ts": "2026-06-12T13:00:36.104266+00:00",
@@ -108,8 +126,11 @@
       "limit_price": 17.0,
       "estimated_cost": 22.5,
       "order_id": "87999f23-28e4-4a6c-a7b3-93b12809f821",
-      "status": "OrderStatus.PENDING_NEW",
-      "rationale": "SOFI: momentum 15, news sentiment +0.11 (50 articles), analyst upside +26% (rec 2.7)"
+      "status": "OrderStatus.FILLED",
+      "rationale": "SOFI: momentum 15, news sentiment +0.11 (50 articles), analyst upside +26% (rec 2.7)",
+      "reconciled": true,
+      "filled_qty": 1.3497,
+      "filled_avg_price": 16.86
     },
     {
       "ts": "2026-06-12T13:00:36.205810+00:00",
@@ -120,8 +141,11 @@
       "limit_price": 25.86,
       "estimated_cost": 7.5,
       "order_id": "a13907e4-cead-4454-9b36-371b035e5ef7",
-      "status": "OrderStatus.ACCEPTED",
-      "rationale": "WULF: momentum 8, news sentiment +0.00 (0 articles), analyst upside +44% (rec 1.4)"
+      "status": "OrderStatus.FILLED",
+      "rationale": "WULF: momentum 8, news sentiment +0.00 (0 articles), analyst upside +44% (rec 1.4)",
+      "reconciled": true,
+      "filled_qty": 0.2959,
+      "filled_avg_price": 25.654
     },
     {
       "ts": "2026-06-19T04:51:55.289814+00:00",
@@ -150,8 +174,11 @@
       "limit_price": 1072.81,
       "estimated_cost": 113.7,
       "order_id": "6fa2bd3f-50ed-4989-abbe-e40b6162cf06",
-      "status": "OrderStatus.ACCEPTED",
-      "rationale": "MU: momentum 66, news +0.00 (0), insider txn +0.00, congress +0.00, options PCR -0.04, analyst -3% (rec 1.5)"
+      "status": "OrderStatus.FILLED",
+      "rationale": "MU: momentum 66, news +0.00 (0), insider txn +0.00, congress +0.00, options PCR -0.04, analyst -3% (rec 1.5)",
+      "reconciled": true,
+      "filled_qty": 0.1081,
+      "filled_avg_price": 1072.788
     },
     {
       "ts": "2026-06-23T21:58:41.198508+00:00",
@@ -162,8 +189,11 @@
       "limit_price": 48.05,
       "estimated_cost": 14.72,
       "order_id": "32b7ca52-759f-4a47-baeb-9e8853f6ea20",
-      "status": "OrderStatus.ACCEPTED",
-      "rationale": "RBLX: momentum 63, news +0.00 (0), insider txn +0.00, congress +0.00, options PCR +0.45, analyst +38% (rec 1.9)"
+      "status": "OrderStatus.FILLED",
+      "rationale": "RBLX: momentum 63, news +0.00 (0), insider txn +0.00, congress +0.00, options PCR +0.45, analyst +38% (rec 1.9)",
+      "reconciled": true,
+      "filled_qty": 0.3125,
+      "filled_avg_price": 47.226
     },
     {
       "ts": "2026-06-23T21:58:41.296434+00:00",
@@ -174,35 +204,206 @@
       "limit_price": 29.26,
       "estimated_cost": 11.83,
       "order_id": "cc56132c-a482-416f-87c7-092c704fe28b",
+      "status": "OrderStatus.FILLED",
+      "rationale": "RIOT: momentum 60, news +0.12 (50), insider txn +0.00, congress +0.00, options PCR +0.18, analyst -0% (rec 1.4)",
+      "reconciled": true,
+      "filled_qty": 0.4125,
+      "filled_avg_price": 28.53
+    },
+    {
+      "ts": "2026-06-25T16:14:48.694191+00:00",
+      "ticker": "COIN",
+      "bucket": "swing",
+      "side": "sell",
+      "shares": 0.1402,
+      "reason": "hard stop (-8.3%)",
+      "realized_pl_dollars": -1.88
+    },
+    {
+      "ts": "2026-06-26T02:23:04.900234+00:00",
+      "ticker": "SHOP",
+      "bucket": "swing",
+      "side": "buy",
+      "shares": 0.2014,
+      "limit_price": 113.85,
+      "estimated_cost": 22.48,
+      "order_id": "ae3ffcd8-d556-43b6-a950-7fe469c66710",
+      "status": "OrderStatus.FILLED",
+      "rationale": "SHOP: momentum 56, news +0.11 (50), insider txn +0.00, congress +0.00, options PCR -0.33, analyst +33% (rec 1.7)",
+      "reconciled": true,
+      "filled_qty": 0.2014,
+      "filled_avg_price": 112.832
+    },
+    {
+      "ts": "2026-06-26T13:15:01.695273+00:00",
+      "ticker": "SOFI",
+      "bucket": "swing",
+      "side": "sell",
+      "shares": 1.3497,
+      "reason": "max hold exceeded (14d, +1.4%)",
+      "realized_pl_dollars": 0.31
+    },
+    {
+      "ts": "2026-06-29T13:01:28.659589+00:00",
+      "ticker": "MARA",
+      "bucket": "lottery",
+      "side": "buy",
+      "shares": 0.7317,
+      "limit_price": 14.83,
+      "estimated_cost": 10.64,
+      "order_id": "a7da3236-d1ca-4d31-ba69-fd85c19eba0b",
+      "status": "OrderStatus.FILLED",
+      "rationale": "MARA: momentum 65, news -0.13 (50), insider txn +0.00, congress +0.00, options PCR +0.60, analyst +25% (rec 2.2)",
+      "reconciled": true,
+      "filled_qty": 0.7317,
+      "filled_avg_price": 14.78
+    },
+    {
+      "ts": "2026-07-01T16:14:18.535717+00:00",
+      "ticker": "RBLX",
+      "bucket": "swing",
+      "side": "sell",
+      "shares": 0.3125,
+      "reason": "profit target (+21.6%)",
+      "realized_pl_dollars": 3.19
+    },
+    {
+      "ts": "2026-07-08T13:00:05.632164+00:00",
+      "ticker": "MU",
+      "bucket": "core",
+      "side": "sell",
+      "shares": 0.1081,
+      "reason": "hard stop (-15.5%)",
+      "realized_pl_dollars": -17.97
+    },
+    {
+      "ts": "2026-07-09T13:14:33.248060+00:00",
+      "ticker": "NOW",
+      "bucket": "core",
+      "side": "buy",
+      "shares": 0.5259,
+      "limit_price": 109.94,
+      "estimated_cost": 56.68,
+      "order_id": "6a8d3bc7-6b13-4921-a3d9-dac6e26caef8",
+      "status": "OrderStatus.FILLED",
+      "rationale": "NOW: momentum 59, news +0.23 (50), insider txn +0.00, congress +0.00, options PCR +0.44, analyst +31% (rec 1.4)",
+      "reconciled": true,
+      "filled_qty": 0.5259,
+      "filled_avg_price": 102.216
+    },
+    {
+      "ts": "2026-07-09T13:14:33.361656+00:00",
+      "ticker": "PANW",
+      "bucket": "core",
+      "side": "buy",
+      "shares": 0.1768,
+      "limit_price": 327.0,
+      "estimated_cost": 56.68,
+      "order_id": "d5d12d23-6875-467f-a862-4a04eb31823c",
+      "status": "OrderStatus.FILLED",
+      "rationale": "PANW: momentum 67, news +0.18 (50), insider txn +0.00, congress +0.00, options PCR -0.18, analyst +1% (rec 1.6)",
+      "reconciled": true,
+      "filled_qty": 0.1768,
+      "filled_avg_price": 319.184
+    },
+    {
+      "ts": "2026-07-10T13:13:49.078968+00:00",
+      "ticker": "SHOP",
+      "bucket": "swing",
+      "side": "sell",
+      "shares": 0.2014,
+      "reason": "max hold exceeded (14d, +11.6%)",
+      "realized_pl_dollars": 2.63
+    },
+    {
+      "ts": "2026-07-13T13:16:06.892159+00:00",
+      "ticker": "NVDA",
+      "bucket": "swing",
+      "side": "buy",
+      "shares": 0.1564,
+      "limit_price": 215.18,
+      "estimated_cost": 32.99,
+      "order_id": "9fd5bc0b-e423-45c0-bb46-43627e4a957b",
+      "status": "OrderStatus.FILLED",
+      "rationale": "NVDA: momentum 56, news +0.23 (50), insider txn +0.00, congress +0.00, options PCR +0.35, analyst +43% (rec 1.3)",
+      "reconciled": true,
+      "filled_qty": 0.1564,
+      "filled_avg_price": 208.716
+    },
+    {
+      "ts": "2026-07-17T02:50:45.139704+00:00",
+      "ticker": "MARA",
+      "bucket": "lottery",
+      "side": "sell",
+      "shares": 0.7317,
+      "reason": "manual divest \u2014 flush correlated BTC miners per user (superseded by new theme cap + time stop rules)",
+      "order_id": "99a55b0e-dfdd-48cb-928c-d28a74e692de",
       "status": "OrderStatus.ACCEPTED",
-      "rationale": "RIOT: momentum 60, news +0.12 (50), insider txn +0.00, congress +0.00, options PCR +0.18, analyst -0% (rec 1.4)"
+      "realized_pl_dollars": -2.58
+    },
+    {
+      "ts": "2026-07-17T02:50:45.236082+00:00",
+      "ticker": "RIOT",
+      "bucket": "lottery",
+      "side": "sell",
+      "shares": 0.4125,
+      "reason": "manual divest \u2014 flush correlated BTC miners per user (superseded by new theme cap + time stop rules)",
+      "order_id": "1dbc538e-edb2-4744-b7d9-1e99cf9a0fe1",
+      "status": "OrderStatus.ACCEPTED",
+      "realized_pl_dollars": -4.14
+    },
+    {
+      "ts": "2026-07-17T02:50:45.335701+00:00",
+      "ticker": "WULF",
+      "bucket": "lottery",
+      "side": "sell",
+      "shares": 0.2959,
+      "reason": "manual divest \u2014 flush correlated BTC miners per user (superseded by new theme cap + time stop rules)",
+      "order_id": "9db366f4-3812-4fef-bf3c-a1b9f2339430",
+      "status": "OrderStatus.ACCEPTED",
+      "realized_pl_dollars": -2.46
     }
   ],
   "position_highs": {
-    "COIN": {
-      "high_price": 166.065,
-      "high_pl_pct": 3.377,
-      "updated": "2026-06-23T22:33:12.240649+00:00"
-    },
     "JPM": {
-      "high_price": 335.0,
-      "high_pl_pct": 6.053,
-      "updated": "2026-06-23T22:33:12.240688+00:00"
+      "high_price": 348.865,
+      "high_pl_pct": 10.442,
+      "updated": "2026-07-16T20:43:37.436625+00:00"
     },
     "SMH": {
       "high_price": 670.24,
       "high_pl_pct": 10.294,
-      "updated": "2026-06-23T22:33:12.240702+00:00"
-    },
-    "SOFI": {
-      "high_price": 17.6901,
-      "high_pl_pct": 4.923,
-      "updated": "2026-06-23T22:33:12.240720+00:00"
+      "updated": "2026-07-16T20:43:37.436717+00:00"
     },
     "WULF": {
       "high_price": 29.69,
       "high_pl_pct": 15.732,
-      "updated": "2026-06-23T22:33:12.240798+00:00"
+      "updated": "2026-07-16T20:43:37.436726+00:00"
+    },
+    "RIOT": {
+      "high_price": 28.94,
+      "high_pl_pct": 1.437,
+      "updated": "2026-07-16T20:43:37.436708+00:00"
+    },
+    "MARA": {
+      "high_price": 14.0184,
+      "high_pl_pct": -5.153,
+      "updated": "2026-07-16T20:43:37.436663+00:00"
+    },
+    "NOW": {
+      "high_price": 112.295,
+      "high_pl_pct": 9.86,
+      "updated": "2026-07-16T20:43:37.436678+00:00"
+    },
+    "PANW": {
+      "high_price": 358.09,
+      "high_pl_pct": 12.189,
+      "updated": "2026-07-16T20:43:37.436698+00:00"
+    },
+    "NVDA": {
+      "high_price": 212.4,
+      "high_pl_pct": 1.765,
+      "updated": "2026-07-16T20:43:37.436688+00:00"
     }
   }
 }

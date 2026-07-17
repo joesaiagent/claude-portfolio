@@ -2,11 +2,11 @@
 -break / max-hold rules. Runs before the allocator so freed cash is redeployable.
 No LLM cost.
 
-Design invariant: the original hard stops (-15 / -8 / -60) are preserved as
-floors. Trailing stops, trend-break and the take-profit only ADD sell triggers —
-they never loosen the worst-case behavior. Trailing stops are measured against
-each position's HIGH-WATER-MARK (persisted by the tracker), not just entry, so
-winners are protected after a runup.
+Design invariant: hard stops only ever TIGHTEN (-15 / -8 / -40; lottery was -60
+until 2026-07-16). Trailing stops, trend-break, take-profit and the lottery time
+stop only ADD sell triggers — they never loosen the worst-case behavior.
+Trailing stops are measured against each position's HIGH-WATER-MARK (persisted
+by the tracker), not just entry, so winners are protected after a runup.
 """
 from datetime import datetime, timezone
 
@@ -37,7 +37,15 @@ RULES = {
     "core":    {"hard_stop_pct": -15.0, "trail_pct": 25.0, "trail_arm_pct": 15.0, "trend_break": False},
     "swing":   {"hard_stop_pct": -8.0,  "trail_pct": 7.0,  "trail_arm_pct": 6.0,
                 "target_pct": 20.0, "max_hold_days": 10},
-    "lottery": {"hard_stop_pct": -60.0, "trail_pct": 25.0, "trail_arm_pct": 60.0, "trim_pct": 50.0},
+    # Lottery re-tuned 2026-07-16 after WULF/RIOT/MARA sat at -23..-34% untouchable:
+    # the old -60 floor + a +60 trail arm meant a +15.7% peak (WULF) round-tripped
+    # to -30% with no trigger anywhere in between. Now: arm the trail at +15 like
+    # core, tighten the floor to -40, and add a TIME stop (flat_days trading days
+    # without ever reaching flat_peak_pct) — the lottery thesis is a fast
+    # asymmetric pop, so a name that hasn't popped is dead capital, doubly so
+    # because the $30 cumulative cap freezes the bucket while it sits.
+    "lottery": {"hard_stop_pct": -40.0, "trail_pct": 25.0, "trail_arm_pct": 15.0, "trim_pct": 50.0,
+                "flat_days": 15, "flat_peak_pct": 20.0},
 }
 
 TREND_BREAK_BAND = -0.02  # core: sell if price is >2% below its 50-day MA
@@ -97,6 +105,12 @@ def _decide(pos: dict, bucket: str, held_days: float, high_pl_pct: float,
     # 6. Swing max-hold (it's a 2-10 day book; *1.4 ~ trading->calendar days).
     if "max_hold_days" in rules and held_days > rules["max_hold_days"] * 1.4:
         return 1.0, f"max hold exceeded ({held_days:.0f}d, {pl:+.1f}%)"
+    # 7. Lottery time stop: held flat_days trading days (*1.4 -> calendar) without
+    #    ever reaching flat_peak_pct -> the pop didn't come; free the capital.
+    #    Peak-based, so a name that DID pop is governed by the trailing stop instead.
+    if ("flat_days" in rules and held_days > rules["flat_days"] * 1.4
+            and peak < rules["flat_peak_pct"]):
+        return 1.0, f"time stop ({held_days:.0f}d held, peak {peak:+.1f}% < +{rules['flat_peak_pct']:.0f}%)"
     return None
 
 

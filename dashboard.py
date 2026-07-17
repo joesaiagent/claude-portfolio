@@ -48,7 +48,7 @@ mode = report.get("broker_mode", "—")
 mode_color = "🟢 LIVE" if mode == "LIVE" else ("🟡 PAPER" if mode == "paper" else "⚪ no data")
 autonomous = "🤖 AUTONOMOUS" if state.get("autonomous_mode") else "👤 MANUAL"
 st.title(f"📈 AI Portfolio — $300 → $10K")
-st.caption(f"{mode_color}  •  {autonomous}  •  core 80% / swing 15% / lottery 5% (capped at $15)")
+st.caption(f"{mode_color}  •  {autonomous}  •  core 70% / swing 20% / lottery 10% (capped at $30)")
 
 # ---- Sidebar ----
 with st.sidebar:

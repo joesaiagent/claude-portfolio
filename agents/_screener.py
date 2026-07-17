@@ -37,6 +37,21 @@ LOTTERY_UNIVERSE = [
 # Sectors we never hold, enforced live regardless of universe edits.
 EXCLUDED_SECTORS = {"Healthcare"}
 
+# Correlated theme clusters. The allocator holds at most ONE name per theme per
+# bucket, so a momentum run in a single theme can't stack a bucket into one
+# correlated bet — on 2026-07-16 the lottery book was WULF+RIOT+MARA, three BTC
+# miners that drew down -23..-34% together as one trade. Names outside any
+# cluster are unconstrained. Add clusters here as universes evolve.
+THEMES = {
+    "crypto": {"MARA", "RIOT", "CLSK", "WULF", "COIN", "HOOD"},
+    "quantum": {"RGTI", "QBTS", "IONQ"},
+    "space": {"ACHR", "JOBY", "ASTS", "RKLB"},
+    "ai-smallcap": {"SOUN", "BBAI"},
+}
+
+# Flat ticker -> theme lookup derived from THEMES.
+THEME_OF = {t: theme for theme, members in THEMES.items() for t in members}
+
 
 def fetch_history(tickers: list[str], days: int = 90) -> dict[str, pd.DataFrame]:
     """Pull OHLCV history for a list of tickers. Returns {ticker: dataframe}."""

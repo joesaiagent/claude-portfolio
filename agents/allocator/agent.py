@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 
 from agents import broker
 from agents._regime import current_regime
+from agents._screener import THEME_OF
 from agents._state import (
     BUCKETS,
     PENDING_TRADES_FILE,
@@ -95,6 +96,37 @@ def _inverse_vol_budgets(cands: list[dict], remaining: float, bucket: str,
     return budgets
 
 
+def _themes_held(tickers) -> set[str]:
+    """Theme labels represented in a set of tickers (unthemed names contribute none)."""
+    return {THEME_OF[t] for t in tickers if t in THEME_OF}
+
+
+def _pick_candidates(bucket_candidates: list[dict], n_pos: int, used_themes: set[str],
+                     price_lookup) -> list[tuple[dict, float]]:
+    """Walk the sorted candidates and return up to n_pos (candidate, price) pairs.
+
+    Skips any candidate whose THEME_OF cluster is already represented — either by
+    a held position (used_themes at call time) or by an earlier pick this cycle —
+    so a bucket can never hold two names from one correlated theme (the 7/16
+    3-BTC-miner lottery book). A candidate that can't be priced just falls
+    through to the next-best name (the 6/23 stranded-budget fix, preserved).
+    Mutates used_themes with the themes of the picks so the caller's later
+    buckets see them too."""
+    priced: list[tuple[dict, float]] = []
+    for c in bucket_candidates:
+        theme = THEME_OF.get(c["ticker"])
+        if theme and theme in used_themes:
+            continue
+        price = price_lookup(c)
+        if price and price > 0:
+            priced.append((c, price))
+            if theme:
+                used_themes.add(theme)
+        if len(priced) >= n_pos:
+            break
+    return priced
+
+
 def _bucket_target_positions(bucket: str, remaining: float) -> int:
     """How many positions to open in this bucket given remaining budget."""
     if bucket == "core":
@@ -174,6 +206,15 @@ def _rotation_candidates(state: dict, watchlist: list[dict], positions: list[dic
             if not rotatable:
                 break  # all held positions are winners — don't force a sell
             weakest = min(rotatable, key=lambda p: hscore(p["ticker"]))
+            # Theme cap: the buy must not share a correlated theme with anything
+            # that REMAINS after the sell (held minus weakest, plus queued buys).
+            # Conservative on collision: stop rotating this bucket for the cycle.
+            best_theme = THEME_OF.get(best["ticker"])
+            remaining_themes = _themes_held(
+                [p["ticker"] for p in held_available if p["ticker"] != weakest["ticker"]]
+            ) | _themes_held(queued_buys)
+            if best_theme and best_theme in remaining_themes:
+                break
             margin = best.get("score", 0.0) - hscore(weakest["ticker"])
             if margin < ROTATE_MARGIN[bucket]:
                 break
@@ -368,18 +409,18 @@ def run() -> dict:
         n_pos = min(n_pos, open_slots)
         # Resolve a tradeable price for each candidate UP FRONT (watchlist
         # last_price first, else Alpaca's reliable quote) and keep only the ones
-        # we can actually price, walking down the sorted list until we have n_pos.
-        # This is critical: previously `chosen = candidates[:n_pos]` then a price
-        # miss on a chosen name did `continue` with NO fallback, silently
-        # stranding the whole bucket budget as idle cash (the 6/23 failure). Now a
-        # flaky lookup just falls through to the next-best name.
-        priced: list[tuple[dict, float]] = []
-        for c in bucket_candidates:
-            price = c.get("last_price") or broker.latest_price(c["ticker"])
-            if price and price > 0:
-                priced.append((c, price))
-            if len(priced) >= n_pos:
-                break
+        # we can actually price, walking down the sorted list until we have n_pos,
+        # skipping candidates whose correlated theme (THEME_OF) is already held
+        # in this bucket or reserved by an open buy. Seed used_themes fresh per
+        # bucket: the cap is per-bucket, but open buys have no bucket info so
+        # they block conservatively everywhere.
+        used_themes = _themes_held(
+            [p["ticker"] for p in positions if p.get("bucket") == bucket]
+        ) | _themes_held(open_buy_tickers)
+        priced = _pick_candidates(
+            bucket_candidates, n_pos, used_themes,
+            lambda c: c.get("last_price") or broker.latest_price(c["ticker"]),
+        )
         if not priced:
             continue
         chosen = [c for c, _ in priced]

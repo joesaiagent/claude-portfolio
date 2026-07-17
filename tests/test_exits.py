@@ -35,8 +35,35 @@ def test_swing_take_profit():
 def test_lottery_trim_once_then_suppressed():
     first = _decide(_p(55), "lottery", 1, 55.0, False, False)
     assert first and first[0] == 0.5 and "trim" in first[1]
-    # Already trimmed and below the +60 trail arm -> no further action.
+    # Already trimmed, still within 25 of the +55 peak -> no further action.
     assert _decide(_p(55), "lottery", 1, 55.0, False, True) is None
+
+
+def test_lottery_hard_stop_tightened():
+    # -41% trips the new -40 lottery floor (was -60).
+    d = _decide(_p(-41), "lottery", 1, 0.0, False, False)
+    assert d and d[0] == 1.0 and "hard stop" in d[1]
+    # -34% alone (young position, no peak) does NOT trip the floor.
+    assert _decide(_p(-34), "lottery", 1, 0.0, False, False) is None
+
+
+def test_lottery_trail_arms_at_15():
+    # Peak +16 arms the trail; -10 now is >25 below peak -> exit (the WULF
+    # round-trip: +15.7 peak to -30 with the old +60 arm never triggered).
+    d = _decide(_p(-10), "lottery", 1, 16.0, False, False)
+    assert d and d[0] == 1.0 and "trailing" in d[1]
+    # Peak +10 never armed -> hold.
+    assert _decide(_p(-10), "lottery", 1, 10.0, False, False) is None
+
+
+def test_lottery_time_stop():
+    # 22 calendar days (> 15 trading * 1.4) and never reached +20 -> exit.
+    d = _decide(_p(-5), "lottery", 22, 5.0, False, False)
+    assert d and d[0] == 1.0 and "time stop" in d[1]
+    # Same age but it DID pop (+25 peak) -> the trailing stop governs, not time.
+    assert _decide(_p(5), "lottery", 22, 25.0, False, False) is None
+    # Young position, hasn't popped yet -> hold.
+    assert _decide(_p(-5), "lottery", 10, 5.0, False, False) is None
 
 
 def test_core_trend_break_disabled():
@@ -60,6 +87,9 @@ def run():
     test_trailing_silent_near_peak()
     test_swing_take_profit()
     test_lottery_trim_once_then_suppressed()
+    test_lottery_hard_stop_tightened()
+    test_lottery_trail_arms_at_15()
+    test_lottery_time_stop()
     test_core_trend_break_disabled()
     test_swing_max_hold()
     test_plain_hold()
