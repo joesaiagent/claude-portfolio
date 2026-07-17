@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 
 from dotenv import load_dotenv
 
+from agents._analyst import enrich_with_analyst
 from agents._intel import EARNINGS_ENTRY_BLOCK_DAYS, earnings_within, enrich
 from agents._screener import screen_bucket
 from agents._state import WATCHLIST_FILE, atomic_write_text
@@ -30,6 +31,7 @@ def run(buckets: tuple[str, ...] = ("core", "swing", "lottery")) -> dict:
     """Rebuild the watchlist fresh every run. (Previously skipped re-screening once
     the list hit 15 entries, so the allocator bought off multi-day-old scores.)"""
     watchlist = []
+    now = datetime.now(timezone.utc).isoformat()
     for bucket in buckets:
         try:
             ranked = screen_bucket(bucket, top_n=5)
@@ -39,8 +41,13 @@ def run(buckets: tuple[str, ...] = ("core", "swing", "lottery")) -> dict:
         ranked = enrich(ranked)  # news sentiment + analyst consensus, re-ranks
         ranked = [r for r in ranked if not r.get("excluded")]  # drop excluded sectors (healthcare)
         ranked = _drop_pre_earnings_swing(ranked)
-        now = datetime.now(timezone.utc).isoformat()
         watchlist.extend({**r, "added_at": now} for r in ranked)
+
+    # ONE batched Claude (Haiku) call over the whole watchlist — headline
+    # judgment the quant factors can't see, applied as a bounded score tilt.
+    # Runs after all buckets so it's a single ~$0.005 call, not three, and
+    # degrades to a no-op on any failure.
+    watchlist = enrich_with_analyst(watchlist)
 
     if watchlist:  # keep yesterday's list if every screen failed
         atomic_write_text(WATCHLIST_FILE, json.dumps(watchlist, indent=2))

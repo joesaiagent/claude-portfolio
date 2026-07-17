@@ -21,6 +21,7 @@ Not financial advice. This is a public experiment in cheap LLM-driven autonomy.
 | Agent | Cost | Role |
 |-------|------|------|
 | `research` | $0 | Alpaca daily bars + Python scoring rules pick candidates per bucket (yfinance fallback) |
+| `analyst` | ~$0.006/day | 1 batched Haiku call reads candidates' headlines → bounded score tilt (±6) |
 | `allocator` | $0 | Deterministic sizing, places real orders via Alpaca |
 | `tracker` | $0 | Reads Alpaca state, computes P/L, templated summary |
 | `content` | ~$0.005/day | 1 Claude Haiku narrative call per day (post-close only) |
@@ -28,7 +29,7 @@ Not financial advice. This is a public experiment in cheap LLM-driven autonomy.
 | `publish` | $0 | Pushes status JSON to GitHub Pages |
 
 **Total cost breakdown (per month):**
-- Anthropic API (1 Haiku call/day): **~$0.15**
+- Anthropic API (3 Haiku calls/day: analyst + midday post + daily post): **~$0.35**
 - X API (Pay Per Use, 1 plain-text post/day, no URLs): **~$0.45**
 - Alpaca, yfinance, GitHub Pages, Bluesky, Mastodon: **$0**
 - **Grand total: ~$0.60/month**

@@ -16,6 +16,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 MODULES = [
     "tests.test_screener",
     "tests.test_intel",
+    "tests.test_analyst",
     "tests.test_exits",
     "tests.test_sizing",
     "tests.test_rotation",
