@@ -1356,5 +1356,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "602f92da-ffaa-4e87-a2ca-d24b9033ad9d",
+    "text": "Grabbed $27.35 for CRWD swing trade\u2014momentum's hot at 60, two analyst upgrades with price target raises just hit, and options flow looks constructive. Core bucket holding steady +4.16%, overall down 4.66% but defensive positioning intact.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-20T16:14:45.354247+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2079238593034203500"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-20T16:14:45.354247+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
