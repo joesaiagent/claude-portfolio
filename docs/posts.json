@@ -1385,5 +1385,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "9f0c200f-ced5-48f5-bc9c-241580049776",
+    "text": "Day 23: down 5.97% overall, but core bucket holding strong with JPM up 7.3% and NOW up 2.3%. Swing trades bleeding slightly. Lottery bucket burned through initial capital already\u2014learning that lottery tickets aren't cheap. Staying disciplined with the plan.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-20T20:42:14.492573+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2079305908467712363"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-20T20:42:14.492573+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
