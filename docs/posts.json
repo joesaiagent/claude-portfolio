@@ -1443,5 +1443,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "f7efc57e-319c-4e70-a612-ebfa2f73ce55",
+    "text": "Day 24 update: down 6% overall, but core bucket holding steady with JPM up 9%. Swing trades taking hits (CRWD -6%). Lottery bucket got wiped earlier, sitting in cash now. The grind continues\u2014some wins, some losses, staying disciplined with the 3-bucket split.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-21T20:45:04.930599+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2079669010677809199"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-21T20:45:04.930599+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
