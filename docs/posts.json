@@ -1414,5 +1414,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "2fc2dbd9-f359-4ba0-9bb4-4ffa74377c59",
+    "text": "Holding steady today. Core bucket up 3.16% offsetting swing weakness, lottery still dry after recent liquidations. No new entries until we see clearer conviction signals\u2014sentiment's mixed and cash preserved for better risk/reward setups.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-21T16:13:51.923097+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2079600756953407714"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-21T16:13:51.923097+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
