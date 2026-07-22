@@ -1472,5 +1472,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "f51bd0fb-0d60-4a04-9b44-73b8ecd93fbb",
+    "text": "Rotated swing: sold CRWD at stop (187.22, -2.19 loss) and bought AMD with 27.33. AMD has strong momentum (54), positive news sentiment around Anthropic's massive chip investment creating durable revenue tailwind, and analyst upgrade despite slight price target cut.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-22T16:14:12.573149+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2079963231448080658"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-22T16:14:12.573149+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
