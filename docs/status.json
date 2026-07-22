@@ -1,65 +1,55 @@
 {
-  "timestamp": "2026-07-21T20:45:00.202204+00:00",
+  "timestamp": "2026-07-22T13:51:11.668521+00:00",
   "broker_mode": "LIVE",
   "positions": [
-    {
-      "ticker": "CRWD",
-      "shares": 0.1347,
-      "entry_price": 203.496,
-      "current_price": 191.2,
-      "market_value": 25.75464,
-      "pl_dollars": -1.656271,
-      "pl_pct": -6.042,
-      "bucket": "swing"
-    },
     {
       "ticker": "JPM",
       "shares": 0.1531,
       "entry_price": 315.88,
-      "current_price": 345.23,
-      "market_value": 52.854713,
-      "pl_dollars": 4.493485,
-      "pl_pct": 9.292,
+      "current_price": 346.15,
+      "market_value": 52.995565,
+      "pl_dollars": 4.634337,
+      "pl_pct": 9.583,
       "bucket": "core"
     },
     {
       "ticker": "NOW",
       "shares": 0.5259,
       "entry_price": 102.216,
-      "current_price": 101.3,
-      "market_value": 53.27367,
-      "pl_dollars": -0.481724,
-      "pl_pct": -0.8959999999999999,
+      "current_price": 98.065,
+      "market_value": 51.572384,
+      "pl_dollars": -2.18301,
+      "pl_pct": -4.061,
       "bucket": "core"
     },
     {
       "ticker": "NVDA",
       "shares": 0.1564,
       "entry_price": 208.716,
-      "current_price": 206.83,
-      "market_value": 32.348212,
-      "pl_dollars": -0.29497,
-      "pl_pct": -0.9039999999999999,
+      "current_price": 207.3,
+      "market_value": 32.42172,
+      "pl_dollars": -0.221462,
+      "pl_pct": -0.6779999999999999,
       "bucket": "swing"
     },
     {
       "ticker": "PANW",
       "shares": 0.1768,
       "entry_price": 319.184,
-      "current_price": 341.68,
-      "market_value": 60.409024,
-      "pl_dollars": 3.977293,
-      "pl_pct": 7.048,
+      "current_price": 332.57,
+      "market_value": 58.798376,
+      "pl_dollars": 2.366645,
+      "pl_pct": 4.194,
       "bucket": "core"
     },
     {
       "ticker": "SMH",
       "shares": 0.0788,
       "entry_price": 607.684,
-      "current_price": 584.08,
-      "market_value": 46.025504,
-      "pl_dollars": -1.859995,
-      "pl_pct": -3.884,
+      "current_price": 581.4,
+      "market_value": 45.81432,
+      "pl_dollars": -2.071179,
+      "pl_pct": -4.324999999999999,
       "bucket": "core"
     }
   ],
@@ -67,20 +57,20 @@
     "core": {
       "target_dollars": 210.0,
       "deployed_cost_basis": 206.43,
-      "current_value": 212.56,
-      "unrealized_pl_dollars": 6.13,
-      "unrealized_pl_pct": 2.97,
+      "current_value": 209.18,
+      "unrealized_pl_dollars": 2.75,
+      "unrealized_pl_pct": 1.33,
       "realized_pl_dollars": -21.74,
       "position_count": 4
     },
     "swing": {
       "target_dollars": 60.0,
-      "deployed_cost_basis": 60.05,
-      "current_value": 58.1,
-      "unrealized_pl_dollars": -1.95,
-      "unrealized_pl_pct": -3.25,
+      "deployed_cost_basis": 32.64,
+      "current_value": 32.42,
+      "unrealized_pl_dollars": -0.22,
+      "unrealized_pl_pct": -0.68,
       "realized_pl_dollars": 4.25,
-      "position_count": 2
+      "position_count": 1
     },
     "lottery": {
       "target_dollars": 30.0,
@@ -92,11 +82,11 @@
       "position_count": 0
     }
   },
-  "cash": 11.25,
-  "buying_power": 11.25,
-  "total_invested_value": 270.67,
-  "total_portfolio_value": 281.92,
-  "total_pl_dollars": -18.08,
-  "total_pl_pct": -6.03,
-  "summary": "\ud83d\udcc9 Portfolio $281.92 (-6.03%, P/L $-18.08)\n  core   : 4 pos, $212.56 (+2.97%)\n  swing  : 2 pos, $58.10 (-3.25%)\n  Best: JPM +9.29%  |  Worst: CRWD -6.04%"
+  "cash": 36.44,
+  "buying_power": 36.44,
+  "total_invested_value": 241.6,
+  "total_portfolio_value": 278.04,
+  "total_pl_dollars": -21.96,
+  "total_pl_pct": -7.32,
+  "summary": "\ud83d\udcc9 Portfolio $278.04 (-7.32%, P/L $-21.96)\n  core   : 4 pos, $209.18 (+1.33%)\n  swing  : 1 pos, $32.42 (-0.68%)\n  Best: JPM +9.58%  |  Worst: SMH -4.32%"
 }
