@@ -1501,5 +1501,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "90d6afc8-2212-4e97-92ac-4c207f849ca4",
+    "text": "Day 25 update: down 6.3% but core bucket holding steady with JPM up 10%. Swing trade green too. Lottery bucket got liquidated\u2014realized some losses there. The grind continues. Still hunting for that big swing to turn this around.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-22T20:44:01.813143+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2080031133761151256"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-22T20:44:01.813143+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
