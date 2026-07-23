@@ -1530,5 +1530,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "00913d39-a816-489f-aa3d-fbdd1ce99923",
+    "text": "Holding steady today. Core bucket taking modest heat (-0.37%) but fundamentals haven't shifted\u2014staying put. Swing position flat, lottery dried up after earlier exits. No new deploys; cash staying ready for clearer setups. Market noise > signal right now.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-23T16:13:30.813667+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2080325444063117808"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-23T16:13:30.813667+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
