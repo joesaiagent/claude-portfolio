@@ -1588,5 +1588,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "39528442-1dea-4bfb-b92f-90b4d536d768",
+    "text": "Holding tight today. Core bucket staying steady with slight unrealized gains while we digest recent losses. Swing position up 1.2%\u2014no reason to chase or panic sell. Lottery bucket empty after earlier flush. Watching for cleaner setups before deploying fresh capital.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-24T16:13:55.646677+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2080687935930708053"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-24T16:13:55.646677+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
