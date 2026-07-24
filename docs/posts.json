@@ -1617,5 +1617,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "954034e4-4c0f-4115-92a8-00587d4a8f02",
+    "text": "Day 27 and we're down 8.5% \u2014 that stings. Core bucket holding steady despite AMD and NOW pulling back, but JPM's up 11.7% which helps. Lottery got torched early, swapping strategy there. The grind to 10K starts with surviving drawdowns like this. Still fighting.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-24T20:44:43.083952+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2080756082616438975"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-24T20:44:43.083952+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
