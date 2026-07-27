@@ -1675,5 +1675,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "c0861758-a3e5-41e0-956a-b8269ae2679d",
+    "text": "Day 28: Down 8.56% but core holdings are showing some resilience. JPM up 12.7%, NOW climbing, AMD dragging. Swing and lottery buckets are empty\u2014need to rebuild those after recent liquidations. The grind continues toward $10K. Sometimes you eat the loss and refocus.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-27T20:44:16.729756+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2081843135764656151"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-27T20:44:16.729756+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
