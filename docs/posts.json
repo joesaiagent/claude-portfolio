@@ -1646,5 +1646,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "0e06901d-9ae7-4290-a96c-6c04d025f413",
+    "text": "Sold NVDA from swing bucket after hitting 14-day max hold\u2014took the -5% loss to free up capital and rebalance. Portfolio down 8.67% overall; core holdings stable near breakeven.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-27T16:13:05.529207+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2081774889468358706"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-27T16:13:05.529207+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
