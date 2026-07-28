@@ -1,55 +1,55 @@
 {
-  "timestamp": "2026-07-27T20:44:12.751268+00:00",
+  "timestamp": "2026-07-28T13:16:10.684951+00:00",
   "broker_mode": "LIVE",
   "positions": [
     {
       "ticker": "AMD",
       "shares": 0.0502,
       "entry_price": 548.448,
-      "current_price": 494.6247,
-      "market_value": 24.83016,
-      "pl_dollars": -2.70193,
-      "pl_pct": -9.814,
+      "current_price": 474.27,
+      "market_value": 23.808354,
+      "pl_dollars": -3.723736,
+      "pl_pct": -13.525,
       "bucket": "core"
     },
     {
       "ticker": "JPM",
       "shares": 0.1531,
       "entry_price": 315.88,
-      "current_price": 356.07,
-      "market_value": 54.514317,
-      "pl_dollars": 6.153089,
-      "pl_pct": 12.723,
+      "current_price": 357.71,
+      "market_value": 54.765401,
+      "pl_dollars": 6.404173,
+      "pl_pct": 13.242,
       "bucket": "core"
     },
     {
       "ticker": "NOW",
       "shares": 0.5259,
       "entry_price": 102.216,
-      "current_price": 106.0,
-      "market_value": 55.7454,
-      "pl_dollars": 1.990006,
-      "pl_pct": 3.702,
+      "current_price": 107.51,
+      "market_value": 56.539509,
+      "pl_dollars": 2.784115,
+      "pl_pct": 5.179,
       "bucket": "core"
     },
     {
       "ticker": "PANW",
       "shares": 0.1768,
       "entry_price": 319.184,
-      "current_price": 317.1,
-      "market_value": 56.06328,
-      "pl_dollars": -0.368451,
-      "pl_pct": -0.653,
+      "current_price": 319.0002,
+      "market_value": 56.399235,
+      "pl_dollars": -0.032496,
+      "pl_pct": -0.058,
       "bucket": "core"
     },
     {
       "ticker": "SMH",
       "shares": 0.0788,
       "entry_price": 607.684,
-      "current_price": 549.5,
-      "market_value": 43.3006,
-      "pl_dollars": -4.584899,
-      "pl_pct": -9.575,
+      "current_price": 533.25,
+      "market_value": 42.0201,
+      "pl_dollars": -5.865399,
+      "pl_pct": -12.249,
       "bucket": "core"
     }
   ],
@@ -57,9 +57,9 @@
     "core": {
       "target_dollars": 210.0,
       "deployed_cost_basis": 233.97,
-      "current_value": 234.45,
-      "unrealized_pl_dollars": 0.49,
-      "unrealized_pl_pct": 0.21,
+      "current_value": 233.53,
+      "unrealized_pl_dollars": -0.43,
+      "unrealized_pl_pct": -0.19,
       "realized_pl_dollars": -21.74,
       "position_count": 5
     },
@@ -84,9 +84,9 @@
   },
   "cash": 39.88,
   "buying_power": 39.88,
-  "total_invested_value": 234.45,
-  "total_portfolio_value": 274.33,
-  "total_pl_dollars": -25.67,
-  "total_pl_pct": -8.56,
-  "summary": "\ud83d\udcc9 Portfolio $274.33 (-8.56%, P/L $-25.67)\n  core   : 5 pos, $234.45 (+0.21%)\n  Best: JPM +12.72%  |  Worst: AMD -9.81%"
+  "total_invested_value": 233.53,
+  "total_portfolio_value": 273.41,
+  "total_pl_dollars": -26.59,
+  "total_pl_pct": -8.86,
+  "summary": "\ud83d\udcc9 Portfolio $273.41 (-8.86%, P/L $-26.59)\n  core   : 5 pos, $233.53 (-0.19%)\n  Best: JPM +13.24%  |  Worst: AMD -13.53%"
 }
