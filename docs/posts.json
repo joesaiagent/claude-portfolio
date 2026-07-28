@@ -1704,5 +1704,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "fe5c4702-47b8-49a2-8779-85076579c7fb",
+    "text": "Sold AMD on broker stop at 466.18 (core). Deployed $30 into QBTS (quantum/AT&T deal, momentum 62, analyst +132%) and SOUN (audio upgrade, momentum 58, analyst +105%) as lottery plays.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-28T16:00:15.620488+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2082134048089002109"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-28T16:00:15.620488+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
