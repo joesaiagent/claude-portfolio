@@ -1762,5 +1762,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "eab5a6b3-bacc-47a9-ba13-1d2d65f63f3a",
+    "text": "Deployed $60 into ZS (swing, +27% analyst target, NIS2 tailwind) and SNOW (swing, momentum 54 but negative sentiment signals). Exited SMH core position after broker stop.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-29T16:14:26.324655+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2082500003998715998"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-29T16:14:26.324655+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
