@@ -1,65 +1,65 @@
 {
-  "timestamp": "2026-07-28T20:30:05.899558+00:00",
+  "timestamp": "2026-07-29T13:14:22.446277+00:00",
   "broker_mode": "LIVE",
   "positions": [
     {
       "ticker": "JPM",
       "shares": 0.1531,
       "entry_price": 315.88,
-      "current_price": 357.53,
-      "market_value": 54.737843,
-      "pl_dollars": 6.376615,
-      "pl_pct": 13.184999999999999,
+      "current_price": 356.5,
+      "market_value": 54.58015,
+      "pl_dollars": 6.218922,
+      "pl_pct": 12.859000000000002,
       "bucket": "core"
     },
     {
       "ticker": "NOW",
       "shares": 0.5259,
       "entry_price": 102.216,
-      "current_price": 110.2,
-      "market_value": 57.95418,
-      "pl_dollars": 4.198786,
-      "pl_pct": 7.811,
+      "current_price": 109.87,
+      "market_value": 57.780633,
+      "pl_dollars": 4.025239,
+      "pl_pct": 7.488,
       "bucket": "core"
     },
     {
       "ticker": "PANW",
       "shares": 0.1768,
       "entry_price": 319.184,
-      "current_price": 320.34,
-      "market_value": 56.636112,
-      "pl_dollars": 0.204381,
-      "pl_pct": 0.362,
+      "current_price": 321.5,
+      "market_value": 56.8412,
+      "pl_dollars": 0.409469,
+      "pl_pct": 0.726,
       "bucket": "core"
     },
     {
       "ticker": "QBTS",
       "shares": 0.6919,
       "entry_price": 18.764,
-      "current_price": 17.56,
-      "market_value": 12.149764,
-      "pl_dollars": -0.833048,
-      "pl_pct": -6.417000000000001,
+      "current_price": 17.42,
+      "market_value": 12.052898,
+      "pl_dollars": -0.929914,
+      "pl_pct": -7.163,
       "bucket": "lottery"
     },
     {
       "ticker": "SMH",
       "shares": 0.0788,
       "entry_price": 607.684,
-      "current_price": 528.45,
-      "market_value": 41.64186,
-      "pl_dollars": -6.243639,
-      "pl_pct": -13.039000000000001,
+      "current_price": 524.5075,
+      "market_value": 41.331191,
+      "pl_dollars": -6.554308,
+      "pl_pct": -13.687,
       "bucket": "core"
     },
     {
       "ticker": "SOUN",
       "shares": 2.5741,
       "entry_price": 6.29,
-      "current_price": 6.25,
-      "market_value": 16.088125,
-      "pl_dollars": -0.102964,
-      "pl_pct": -0.636,
+      "current_price": 6.21,
+      "market_value": 15.985161,
+      "pl_dollars": -0.205928,
+      "pl_pct": -1.272,
       "bucket": "lottery"
     }
   ],
@@ -67,9 +67,9 @@
     "core": {
       "target_dollars": 210.0,
       "deployed_cost_basis": 206.43,
-      "current_value": 210.97,
-      "unrealized_pl_dollars": 4.54,
-      "unrealized_pl_pct": 2.2,
+      "current_value": 210.53,
+      "unrealized_pl_dollars": 4.1,
+      "unrealized_pl_pct": 1.99,
       "realized_pl_dollars": -25.9,
       "position_count": 4
     },
@@ -85,18 +85,18 @@
     "lottery": {
       "target_dollars": 30.0,
       "deployed_cost_basis": 29.17,
-      "current_value": 28.24,
-      "unrealized_pl_dollars": -0.94,
-      "unrealized_pl_pct": -3.21,
+      "current_value": 28.04,
+      "unrealized_pl_dollars": -1.14,
+      "unrealized_pl_pct": -3.89,
       "realized_pl_dollars": -15.96,
       "position_count": 2
     }
   },
   "cash": 34.05,
   "buying_power": 34.05,
-  "total_invested_value": 239.21,
-  "total_portfolio_value": 273.26,
-  "total_pl_dollars": -26.74,
-  "total_pl_pct": -8.91,
-  "summary": "\ud83d\udcc9 Portfolio $273.26 (-8.91%, P/L $-26.74)\n  core   : 4 pos, $210.97 (+2.20%)\n  lottery: 2 pos, $28.24 (-3.21%)\n  Best: JPM +13.18%  |  Worst: SMH -13.04%"
+  "total_invested_value": 238.57,
+  "total_portfolio_value": 272.62,
+  "total_pl_dollars": -27.38,
+  "total_pl_pct": -9.13,
+  "summary": "\ud83d\udcc9 Portfolio $272.62 (-9.13%, P/L $-27.38)\n  core   : 4 pos, $210.53 (+1.99%)\n  lottery: 2 pos, $28.04 (-3.89%)\n  Best: JPM +12.86%  |  Worst: SMH -13.69%"
 }
