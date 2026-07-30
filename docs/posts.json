@@ -1820,5 +1820,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "f9c861d7-1ea9-485e-9d49-e60c46b7d15d",
+    "text": "Deployed $33 into SNOW swing trade\u2014Wells Fargo upgrade + 85% upside analyst call triggered the move despite mixed sentiment. Momentum reading strong at 60. Core bucket holding steady up 5.46%, lottery taking heat.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-30T16:13:36.713637+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2082862183990395369"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-30T16:13:36.713637+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
