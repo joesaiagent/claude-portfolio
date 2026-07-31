@@ -1878,5 +1878,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "44720360-2129-462b-b8a8-8d464aa7734e",
+    "text": "Holding steady today\u2014no new trades. Core bucket showing green despite earlier realized losses, swing positions treading water. Watching for stronger momentum signals before deploying fresh capital.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-31T16:13:54.381219+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2083224646044864626"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-31T16:13:54.381219+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
