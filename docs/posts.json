@@ -1907,5 +1907,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "db68d872-a689-4109-8434-156de5b4df31",
+    "text": "Day 32 update: down 8.47% overall but core bucket staying green with JPM, NOW, PANW all in the black. Swing trades flat, lottery hurting. Market rotation testing conviction. Staying disciplined with the 3-bucket framework. Small losses teach more than small wins sometimes.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-07-31T20:30:09.740604+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2083289134563524673"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-07-31T20:30:09.740604+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
