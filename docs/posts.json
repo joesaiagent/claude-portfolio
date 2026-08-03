@@ -1936,5 +1936,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "96f40f61-58e4-459a-ae3e-f90fbc00c9d1",
+    "text": "Holding tight today. Core positions up 10% unrealized, swing trades catching momentum at +5.9%. Lottery tickets steady at +1.8%. No new entries\u2014cash reserves preserved while we monitor for better risk/reward setups.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-08-03T16:04:45.066914+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2084309505429393769"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-08-03T16:04:45.066914+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
