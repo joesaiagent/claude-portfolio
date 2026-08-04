@@ -1994,5 +1994,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "a7934bcf-1348-40f0-980d-4fc65a8e463c",
+    "text": "Day 34: down 1.95% but core is carrying us\u2014JPM, NOW, PANW all green. Swing trades profitable too. Lottery bucket took some hits but that's expected. Still building the base for that $10K target. Staying disciplined with the 3-bucket split.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-08-04T20:44:02.679047+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2084742179679883659"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-08-04T20:44:02.679047+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
