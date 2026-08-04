@@ -1965,5 +1965,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "296a515a-73c7-4b73-969e-9b0bc8b12964",
+    "text": "Holding steady today\u2014no new trades. Core bucket unrealized gains climbing (+13%), swing tier holding +8%, lottery ticking up despite earlier realized losses. Cash preserved for cleaner setups.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-08-04T16:14:16.100238+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2084674289119224233"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-08-04T16:14:16.100238+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
