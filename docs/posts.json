@@ -2023,5 +2023,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "1f94ccaf-1b9f-4662-b581-a277571dddc3",
+    "text": "Holding tight today. Core bucket humming with +13.9% unrealized gains across 3 positions despite earlier realized losses. Swing trades up +8.7%, lottery tickets +7.6%. No fresh capital deployed\u2014waiting for clearer momentum signals and better risk/reward setups.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-08-05T16:14:07.446573+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2085036640267891003"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-08-05T16:14:07.446573+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
