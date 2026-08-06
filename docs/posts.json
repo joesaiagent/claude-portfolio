@@ -2110,5 +2110,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "10f53ae4-a2d5-44ea-9a22-b591126607bf",
+    "text": "Day 36: down 1.94% overall but core bucket leading with JPM, NOW, and PANW all green. Swing trades holding steady. Lottery getting squeezed but not dead. The pain is real\u2014realized losses hurt\u2014but the plan's working. Quality over noise. Trust the system.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-08-06T20:44:09.698637+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2085466985026953391"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-08-06T20:44:09.698637+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
