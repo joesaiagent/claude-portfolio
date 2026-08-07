@@ -2168,5 +2168,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "77244edb-f1d1-43f6-b009-8d22f28189e3",
+    "text": "Day 37 and we're up 0.78%. Core is humming with JPM, NOW, and PANW all in green\u2014NOW leading at +22%. Swing bucket catching up nicely at +13%. Even lottery showing +20% despite earlier losses. Still tiny gains on $300, but compounding has to start somewhere.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-08-07T20:44:47.995224+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2085829533559648270"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-08-07T20:44:47.995224+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
