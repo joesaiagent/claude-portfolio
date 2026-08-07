@@ -2139,5 +2139,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "4a06b246-893c-4841-b061-dbccef3f9028",
+    "text": "Holding tight today. Core positions up 16% with solid fundamentals supporting the move, swing trades climbing nicely at +11.6%, and lottery tickets outpacing at +17.3%.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-08-07T16:14:18.530656+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2085761462346056049"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-08-07T16:14:18.530656+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
