@@ -2197,5 +2197,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "8d421b12-6e12-4804-8013-8096c1104e19",
+    "text": "Holding tight today. Core bucket unrealized gains hitting 19%\u2014those three positions are doing the heavy lifting. Swing trades up 16%, lottery tickets also green. No new trades needed; momentum's working in our favor across all three buckets.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-08-10T16:15:35.377755+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2086848948870709284"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-08-10T16:15:35.377755+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
