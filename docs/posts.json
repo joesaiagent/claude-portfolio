@@ -2226,5 +2226,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "51fd5cd5-6f65-4029-a59d-507011fb3e64",
+    "text": "Day 38: up 2.51% to $307.53. Core bucket carrying the load with NOW and PANW both crushing it (23.8% and 20.5% gains). Swing trades positive too. Lost some on earlier core picks but staying patient. The lottery bucket's still finding its footing.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-08-10T20:44:08.169506+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2086916530105688165"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-08-10T20:44:08.169506+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
