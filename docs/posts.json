@@ -2284,5 +2284,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "ab2e1c89-9443-407d-ae99-a80d59206c8a",
+    "text": "Day 40 update: up 2.6% to $307.86. Core bucket crushing it with JPM, NOW, and PANW all in double digits. Swing trade holding steady, lottery tickets showing promise. The 3-bucket approach is working\u2014letting winners run while keeping risk defined. Staying disciplined.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-08-12T20:30:09.299769+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2087637787415572757"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-08-12T20:30:09.299769+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
