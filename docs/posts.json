@@ -2255,5 +2255,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "dc0efe62-58e4-47ba-adff-188114327d25",
+    "text": "Closed ZS swing trade after 14 days\u2014locked in +16.8% gain ($4.52). Hit our max hold window and momentum felt exhausted. Sitting on cash now; core holdings grinding through +19.1% unrealized, lottery bucket holding steady at +14%.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-08-12T16:13:36.290548+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2087573224489967767"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-08-12T16:13:36.290548+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
