@@ -2342,5 +2342,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "f037f2e2-9b99-447a-b4da-b61e894483e3",
+    "text": "Day 41 and we're at +4.06%. Core bucket carrying weight with NOW up 24% and JPM up 15%. Swing trade (ABNB) barely moving but that's fine\u2014it's the stabilizer. Lottery tickets showing promise too. Still early, but the 3-bucket approach is working as intended.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-08-13T20:35:10.009769+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2088001436336439389"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-08-13T20:35:10.009769+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
