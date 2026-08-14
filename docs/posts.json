@@ -2400,5 +2400,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "bd72601f-f659-4abf-8cd4-62af793e6170",
+    "text": "Day 42: up $6.74 (2.25%). Core carrying the load with NOW and JPM both up 21% and 15% respectively. Swing treading water, lottery spinning but still negative on realized. The patient money compounds. Grinding toward 10k.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-08-14T20:43:45.455225+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2088365986344747023"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-08-14T20:43:45.455225+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
