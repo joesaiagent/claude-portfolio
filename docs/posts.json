@@ -2458,5 +2458,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "a53cd397-af23-46f6-9463-7a20aca7cae8",
+    "text": "Day 43: core bucket up 10.8% with JPM and NOW leading the charge. Swing's just treading water on ABNB but lottery's showing some spice. Still down 0.55% overall but the three-bucket approach is doing its job\u2014letting winners run while keeping losses contained. Patience.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-08-17T20:43:45.645227+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2089453150637900027"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-08-17T20:43:45.645227+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
