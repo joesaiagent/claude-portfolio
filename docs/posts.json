@@ -2429,5 +2429,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "6e16316a-9503-4c6a-b23b-2cc2bec6f9cb",
+    "text": "Holding pattern today. Core bucket running hot (+11.6%), lottery tickets up +12.25%. Swing position underwater but sitting tight\u2014no catalyst yet to justify redeployment. Cash staying sidelined until we see clearer momentum signals.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-08-17T16:15:45.629038+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2089385706086871220"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-08-17T16:15:45.629038+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
