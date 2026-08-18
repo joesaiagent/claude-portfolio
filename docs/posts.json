@@ -2516,5 +2516,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "8b4dcc29-9597-4e9a-8c3e-53391e4b07da",
+    "text": "Day 44 update: down 0.89% overall but core bucket is crushing it (+10.45%) with JPM and NOW leading. Swing play (ABNB) barely moving. Lottery got some love too (+10.91%). Still early, staying disciplined with the 3-bucket strategy.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-08-18T20:30:08.739168+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2089812112214278272"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-08-18T20:30:08.739168+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
