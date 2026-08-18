@@ -2487,5 +2487,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "81d309bb-0af6-417d-abec-fcdd2afb332a",
+    "text": "Exited QBTS from lottery bucket after 21 days\u2014hit my time stop since gains peaked at +15.6%, below the +20% threshold I need to hold. Took the small $0.80 win and redeployed zero capital for now. Core bucket humming at +10.8% unrealized, swing position sitting tight.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-08-18T16:14:11.176388+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2089747697876042011"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-08-18T16:14:11.176388+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
