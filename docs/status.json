@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-18T20:30:04.429452+00:00",
+  "timestamp": "2026-08-19T13:14:13.189153+00:00",
   "broker_mode": "LIVE",
   "positions": [
     {
@@ -16,50 +16,50 @@
       "ticker": "JPM",
       "shares": 0.1531,
       "entry_price": 315.88,
-      "current_price": 363.47,
-      "market_value": 55.647257,
-      "pl_dollars": 7.286029,
-      "pl_pct": 15.065999999999999,
+      "current_price": 363.61,
+      "market_value": 55.668691,
+      "pl_dollars": 7.307463,
+      "pl_pct": 15.110000000000001,
       "bucket": "core"
     },
     {
       "ticker": "NOW",
       "shares": 0.5259,
       "entry_price": 102.216,
-      "current_price": 119.14,
-      "market_value": 62.655726,
-      "pl_dollars": 8.900332,
-      "pl_pct": 16.557,
+      "current_price": 118.1,
+      "market_value": 62.10879,
+      "pl_dollars": 8.353396,
+      "pl_pct": 15.540000000000001,
       "bucket": "core"
     },
     {
       "ticker": "ORCL",
       "shares": 0.3356,
       "entry_price": 153.654,
-      "current_price": 142.4995,
-      "market_value": 47.822832,
-      "pl_dollars": -3.74345,
-      "pl_pct": -7.259,
+      "current_price": 142.13,
+      "market_value": 47.698828,
+      "pl_dollars": -3.867454,
+      "pl_pct": -7.5,
       "bucket": "core"
     },
     {
       "ticker": "PANW",
       "shares": 0.1768,
       "entry_price": 319.184,
-      "current_price": 373.0,
-      "market_value": 65.9464,
-      "pl_dollars": 9.514669,
-      "pl_pct": 16.86,
+      "current_price": 372.75,
+      "market_value": 65.9022,
+      "pl_dollars": 9.470469,
+      "pl_pct": 16.782,
       "bucket": "core"
     },
     {
       "ticker": "SOUN",
       "shares": 2.5741,
       "entry_price": 6.29,
-      "current_price": 6.976,
-      "market_value": 17.956922,
-      "pl_dollars": 1.765833,
-      "pl_pct": 10.906,
+      "current_price": 7.01,
+      "market_value": 18.044441,
+      "pl_dollars": 1.853352,
+      "pl_pct": 11.447000000000001,
       "bucket": "lottery"
     }
   ],
@@ -67,9 +67,9 @@
     "core": {
       "target_dollars": 210.0,
       "deployed_cost_basis": 210.11,
-      "current_value": 232.07,
-      "unrealized_pl_dollars": 21.96,
-      "unrealized_pl_pct": 10.45,
+      "current_value": 231.38,
+      "unrealized_pl_dollars": 21.26,
+      "unrealized_pl_pct": 10.12,
       "realized_pl_dollars": -33.09,
       "position_count": 4
     },
@@ -85,18 +85,18 @@
     "lottery": {
       "target_dollars": 30.0,
       "deployed_cost_basis": 16.19,
-      "current_value": 17.96,
-      "unrealized_pl_dollars": 1.77,
-      "unrealized_pl_pct": 10.91,
+      "current_value": 18.04,
+      "unrealized_pl_dollars": 1.85,
+      "unrealized_pl_pct": 11.45,
       "realized_pl_dollars": -15.16,
       "position_count": 1
     }
   },
   "cash": 20.37,
   "buying_power": 20.37,
-  "total_invested_value": 276.95,
-  "total_portfolio_value": 297.32,
-  "total_pl_dollars": -2.68,
-  "total_pl_pct": -0.89,
-  "summary": "\ud83d\udcc9 Portfolio $297.32 (-0.89%, P/L $-2.68)\n  core   : 4 pos, $232.07 (+10.45%)\n  swing  : 1 pos, $26.92 (+0.92%)\n  lottery: 1 pos, $17.96 (+10.91%)\n  Best: PANW +16.86%  |  Worst: ORCL -7.26%"
+  "total_invested_value": 276.34,
+  "total_portfolio_value": 296.71,
+  "total_pl_dollars": -3.29,
+  "total_pl_pct": -1.1,
+  "summary": "\ud83d\udcc9 Portfolio $296.71 (-1.10%, P/L $-3.29)\n  core   : 4 pos, $231.38 (+10.12%)\n  swing  : 1 pos, $26.92 (+0.92%)\n  lottery: 1 pos, $18.04 (+11.45%)\n  Best: PANW +16.78%  |  Worst: ORCL -7.50%"
 }
