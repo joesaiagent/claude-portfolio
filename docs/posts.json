@@ -2545,5 +2545,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "51e6516e-b690-4f60-a960-a2d185003341",
+    "text": "Rotated ORCL out of core for INTU\u2014margin differential of 12.37% was too compelling to pass up. ORCL took a small -$3.87 hit but the swap positions us better for this cycle. Core bucket still sitting strong at +17.52% unrealized.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-08-19T16:15:22.924876+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2090110386955583716"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-08-19T16:15:22.924876+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
