@@ -2574,5 +2574,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "a5d9e9d4-ed70-4a4d-b528-4677aaa0c0e7",
+    "text": "Day 45: Core bucket pulling hard with NOW up 24% and JPM up 13%. Swing ABNB slowly climbing. Lottery position still small but green. Down 58 cents total but the unrealized gains are real\u2014$29.43 across all buckets. Staying disciplined on the 3-bucket approach.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-08-19T20:30:10.509797+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2090174507474456901"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-08-19T20:30:10.509797+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]

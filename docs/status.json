@@ -1,55 +1,55 @@
 {
-  "timestamp": "2026-08-19T16:15:19.135321+00:00",
+  "timestamp": "2026-08-19T20:30:06.155715+00:00",
   "broker_mode": "LIVE",
   "positions": [
     {
       "ticker": "ABNB",
       "shares": 0.1469,
       "entry_price": 181.586,
-      "current_price": 187.6,
-      "market_value": 27.55844,
-      "pl_dollars": 0.883457,
-      "pl_pct": 3.312,
+      "current_price": 186.7,
+      "market_value": 27.42623,
+      "pl_dollars": 0.751247,
+      "pl_pct": 2.8160000000000003,
       "bucket": "swing"
     },
     {
       "ticker": "JPM",
       "shares": 0.1531,
       "entry_price": 315.88,
-      "current_price": 358.98,
-      "market_value": 54.959838,
-      "pl_dollars": 6.59861,
-      "pl_pct": 13.644,
+      "current_price": 357.5237,
+      "market_value": 54.736878,
+      "pl_dollars": 6.37565,
+      "pl_pct": 13.183,
       "bucket": "core"
     },
     {
       "ticker": "NOW",
       "shares": 0.5259,
       "entry_price": 102.216,
-      "current_price": 129.175,
-      "market_value": 67.933133,
-      "pl_dollars": 14.177739,
-      "pl_pct": 26.375,
+      "current_price": 127.0,
+      "market_value": 66.7893,
+      "pl_dollars": 13.033906,
+      "pl_pct": 24.247,
       "bucket": "core"
     },
     {
       "ticker": "PANW",
       "shares": 0.1768,
       "entry_price": 319.184,
-      "current_price": 358.78,
-      "market_value": 63.432304,
-      "pl_dollars": 7.000573,
-      "pl_pct": 12.405,
+      "current_price": 359.5,
+      "market_value": 63.5596,
+      "pl_dollars": 7.127869,
+      "pl_pct": 12.631,
       "bucket": "core"
     },
     {
       "ticker": "SOUN",
       "shares": 2.5741,
       "entry_price": 6.29,
-      "current_price": 7.175,
-      "market_value": 18.469168,
-      "pl_dollars": 2.278079,
-      "pl_pct": 14.069999999999999,
+      "current_price": 7.12,
+      "market_value": 18.327592,
+      "pl_dollars": 2.136503,
+      "pl_pct": 13.196,
       "bucket": "lottery"
     }
   ],
@@ -57,36 +57,36 @@
     "core": {
       "target_dollars": 210.0,
       "deployed_cost_basis": 158.55,
-      "current_value": 186.33,
-      "unrealized_pl_dollars": 27.78,
-      "unrealized_pl_pct": 17.52,
+      "current_value": 185.09,
+      "unrealized_pl_dollars": 26.54,
+      "unrealized_pl_pct": 16.74,
       "realized_pl_dollars": -36.96,
       "position_count": 3
     },
     "swing": {
       "target_dollars": 60.0,
       "deployed_cost_basis": 26.67,
-      "current_value": 27.56,
-      "unrealized_pl_dollars": 0.88,
-      "unrealized_pl_pct": 3.31,
+      "current_value": 27.43,
+      "unrealized_pl_dollars": 0.75,
+      "unrealized_pl_pct": 2.82,
       "realized_pl_dollars": 10.43,
       "position_count": 1
     },
     "lottery": {
       "target_dollars": 30.0,
       "deployed_cost_basis": 16.19,
-      "current_value": 18.47,
-      "unrealized_pl_dollars": 2.28,
-      "unrealized_pl_pct": 14.07,
+      "current_value": 18.33,
+      "unrealized_pl_dollars": 2.14,
+      "unrealized_pl_pct": 13.2,
       "realized_pl_dollars": -15.16,
       "position_count": 1
     }
   },
   "cash": 68.58,
   "buying_power": 68.58,
-  "total_invested_value": 232.35,
-  "total_portfolio_value": 300.93,
-  "total_pl_dollars": 0.93,
-  "total_pl_pct": 0.31,
-  "summary": "\ud83d\udcc8 Portfolio $300.93 (+0.31%, P/L $+0.93)\n  core   : 3 pos, $186.33 (+17.52%)\n  swing  : 1 pos, $27.56 (+3.31%)\n  lottery: 1 pos, $18.47 (+14.07%)\n  Best: NOW +26.38%  |  Worst: ABNB +3.31%"
+  "total_invested_value": 230.84,
+  "total_portfolio_value": 299.42,
+  "total_pl_dollars": -0.58,
+  "total_pl_pct": -0.19,
+  "summary": "\ud83d\udcc9 Portfolio $299.42 (-0.19%, P/L $-0.58)\n  core   : 3 pos, $185.09 (+16.74%)\n  swing  : 1 pos, $27.43 (+2.82%)\n  lottery: 1 pos, $18.33 (+13.20%)\n  Best: NOW +24.25%  |  Worst: ABNB +2.82%"
 }
