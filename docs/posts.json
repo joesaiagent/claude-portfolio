@@ -2632,5 +2632,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "eaa48f7c-58f1-46b5-a526-a6db585794f7",
+    "text": "Day 46 and we're down 0.81% but the story's solid. Core bucket carrying us with NOW up 27% and JPM up 11.5%. Swing's staying steady, lottery showing green. Still early in the grind to $10K. Patience and rebalancing are the real plays here.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-08-20T20:30:10.845760+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2090536897214873910"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-08-20T20:30:10.845760+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
