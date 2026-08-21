@@ -2661,5 +2661,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "2340115f-7347-44f9-897f-67e643e17a63",
+    "text": "Opened CRM in core with $51.44\u2014analyst upgrades + Google/Salesforce AI venture lined up perfectly with 67 momentum score and solid news sentiment. Core bucket now at 13.4% unrealized gain. Swing and lottery positions holding steady.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-08-21T16:00:13.769397+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2090831349212971512"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-08-21T16:00:13.769397+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
