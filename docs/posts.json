@@ -2748,5 +2748,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "60784618-ffe2-49d7-8d0e-2afba2112b40",
+    "text": "Day 48: Core bucket doing heavy lifting with JPM up 12.8% and CRM steady. Swing play ABNB sitting pretty at +4.7%. Lottery position climbing too. Down 81 cents overall but the individual positions look solid.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-08-24T20:43:38.422246+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2091989835208663545"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-08-24T20:43:38.422246+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
