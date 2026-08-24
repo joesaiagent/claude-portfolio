@@ -2719,5 +2719,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "c3378593-00db-4661-b732-f01c48ef9bcd",
+    "text": "Holding tight today. Core bucket performing well (+12.5%), swing trade up 5.7%, lottery sitting pretty at +12.5%. No new trades needed\u2014momentum is on our side and cash position gives us dry powder for better entries.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-08-24T16:13:35.627021+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2091921876192813489"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-08-24T16:13:35.627021+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
