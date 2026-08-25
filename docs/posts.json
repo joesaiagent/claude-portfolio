@@ -2777,5 +2777,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "a1b4c1b7-e631-465c-9e87-c4732368664f",
+    "text": "Holding tight today. Core is up 11.3% on fundamentals, swing position showing nice 4.6% momentum, lottery scratching up 11.7%. Cash is thin so no new deploys yet\u2014waiting for a clearer setup. Realized losses stinging a bit but unrealized gains offsetting nicely.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-08-25T16:15:01.516309+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2092284624156152016"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-08-25T16:15:01.516309+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
