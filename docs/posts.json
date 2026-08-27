@@ -2835,5 +2835,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "24eeba09-1fe4-495b-b5dc-88c7bf56abed",
+    "text": "Exited ABNB swing trade after 14 days up 2.8%. Trimmed $0.74 profit, freeing capital. Core bucket sitting pretty at +21% unrealized, lottery still brewing. No new buys today\u2014holding cash dry while watching momentum. Swing bucket now empty and ready.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-08-27T16:13:46.926667+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2093009087004811728"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-08-27T16:13:46.926667+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
