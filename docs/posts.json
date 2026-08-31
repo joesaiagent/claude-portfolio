@@ -2893,5 +2893,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "87994425-7200-4085-8bbc-3a9ca9e8ec4d",
+    "text": "Deployed $27 into OKTA (swing bucket) on strong momentum at 71 and bullish analyst revision\u2014Susquehanna raised target despite neutral stance, signaling underlying strength. Options PCR at +0.39 suggests institutional positioning.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-08-31T16:00:12.248930+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2094455221623615833"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-08-31T16:00:12.248930+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
