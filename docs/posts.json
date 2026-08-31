@@ -2922,5 +2922,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "f1d9c0f8-4d27-4794-b192-2677200bedd0",
+    "text": "Day 53: up 9.43% to $328. Core bucket carrying the load with NOW up 44% and CRM up 25%. Swing and lottery still finding their footing. The 3-bucket approach is working\u2014letting winners run while keeping dry powder ready.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-08-31T20:30:16.245947+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2094523195348996483"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-08-31T20:30:16.245947+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
