@@ -21,11 +21,11 @@
     }
   },
   "realized_pnl": {
-    "core": -21.74,
-    "swing": 4.25,
-    "lottery": -9.18
+    "core": -36.96,
+    "swing": 11.17,
+    "lottery": -15.16
   },
-  "lottery_deployed_total": 0.0,
+  "lottery_deployed_total": 16.19,
   "order_log": [
     {
       "ts": "2026-06-12T13:00:35.516031+00:00",
@@ -362,90 +362,365 @@
       "order_id": "9db366f4-3812-4fef-bf3c-a1b9f2339430",
       "status": "OrderStatus.ACCEPTED",
       "realized_pl_dollars": -2.46
+    },
+    {
+      "ts": "2026-07-17T13:14:37.427355+00:00",
+      "ticker": "RIOT",
+      "bucket": "lottery",
+      "side": "sell",
+      "shares": 0.4125,
+      "reason": "time stop (24d held, peak +1.4% < +20%)",
+      "realized_pl_dollars": -4.29
+    },
+    {
+      "ts": "2026-07-17T13:14:37.427355+00:00",
+      "ticker": "WULF",
+      "bucket": "lottery",
+      "side": "sell",
+      "shares": 0.2959,
+      "reason": "trailing stop (peak +15.7%, now -32.9%)",
+      "realized_pl_dollars": -2.49
+    },
+    {
+      "ts": "2026-07-20T13:16:12.465368+00:00",
+      "ticker": "CRWD",
+      "bucket": "swing",
+      "side": "buy",
+      "shares": 0.1347,
+      "limit_price": 207.14,
+      "estimated_cost": 27.35,
+      "order_id": "4241003d-fa26-4a57-8fae-7494e69cc476",
+      "status": "OrderStatus.FILLED",
+      "rationale": "CRWD: momentum 60, news +0.20 (50), insider txn +0.00, congress +0.00, options PCR +0.08, analyst -7% (rec 1.7) | analyst: Two analyst upgrades with price target raises signal genuine institutional confidence.",
+      "reconciled": true,
+      "filled_qty": 0.1347,
+      "filled_avg_price": 203.496
+    },
+    {
+      "ts": "2026-07-22T13:51:14.669191+00:00",
+      "ticker": "AMD",
+      "bucket": "swing",
+      "side": "buy",
+      "shares": 0.0502,
+      "limit_price": 555.32,
+      "estimated_cost": 27.33,
+      "order_id": "43382f1a-b471-40e6-bca9-3fddda326da8",
+      "status": "OrderStatus.FILLED",
+      "rationale": "AMD: momentum 54, news +0.21 (50), insider txn +0.00, congress +0.00, options PCR +0.26, analyst -1% (rec 1.5) | analyst: Anthropic megadeal ($5B investment, tens of billions chips) is material durable revenue tailwind.",
+      "reconciled": true,
+      "filled_qty": 0.0502,
+      "filled_avg_price": 548.448
+    },
+    {
+      "ts": "2026-07-22T13:51:14.947636+00:00",
+      "ticker": "CRWD",
+      "bucket": "swing",
+      "side": "sell",
+      "shares": 0.1347,
+      "reason": "broker-side stop triggered @ 187.22",
+      "realized_pl_dollars": -2.19
+    },
+    {
+      "ts": "2026-07-27T16:12:58.883183+00:00",
+      "ticker": "NVDA",
+      "bucket": "swing",
+      "side": "sell",
+      "shares": 0.1564,
+      "reason": "max hold exceeded (14d, -5.0%)",
+      "realized_pl_dollars": -1.65
+    },
+    {
+      "ts": "2026-07-28T13:16:12.061108+00:00",
+      "ticker": "QBTS",
+      "bucket": "lottery",
+      "side": "buy",
+      "shares": 0.6919,
+      "limit_price": 19.9,
+      "estimated_cost": 13.5,
+      "order_id": "ef3c8759-5327-4e8a-9448-f3be2bd22694",
+      "status": "OrderStatus.FILLED",
+      "rationale": "QBTS: momentum 62, news +0.20 (50), insider txn +0.00, congress +0.00, options PCR +0.47, analyst +132% (rec 1.2) | analyst: AT&T deal real; Benchmark Buy credible, but quantum hype bubble risk.",
+      "reconciled": true,
+      "filled_qty": 0.6919,
+      "filled_avg_price": 18.764
+    },
+    {
+      "ts": "2026-07-28T13:16:12.155573+00:00",
+      "ticker": "SOUN",
+      "bucket": "lottery",
+      "side": "buy",
+      "shares": 2.5741,
+      "limit_price": 6.54,
+      "estimated_cost": 16.5,
+      "order_id": "2790659c-673a-420f-a6f9-605f70e84894",
+      "status": "OrderStatus.FILLED",
+      "rationale": "SOUN: momentum 58, news -0.05 (50), insider txn +0.00, congress +0.00, options PCR +0.49, analyst +105% (rec 1.3) | analyst: No headlines; analyst upgrade unmoored to disclosed catalyst or news.",
+      "reconciled": true,
+      "filled_qty": 2.5741,
+      "filled_avg_price": 6.29
+    },
+    {
+      "ts": "2026-07-28T16:00:11.864104+00:00",
+      "ticker": "AMD",
+      "bucket": "core",
+      "side": "sell",
+      "shares": 0.0502,
+      "reason": "broker-side stop triggered @ 466.18",
+      "realized_pl_dollars": -4.16
+    },
+    {
+      "ts": "2026-07-29T13:14:24.109041+00:00",
+      "ticker": "ZS",
+      "bucket": "swing",
+      "side": "buy",
+      "shares": 0.178,
+      "limit_price": 154.66,
+      "estimated_cost": 26.99,
+      "order_id": "17ae3822-b7ac-41f6-84f8-aff89097b2fe",
+      "status": "OrderStatus.FILLED",
+      "rationale": "ZS: momentum 54, news +0.15 (50), insider txn +0.00, congress +0.00, options PCR +0.05, analyst +27% (rec 1.5) | analyst: NIS2 regulatory tailwind and partnership signal genuine cybersecurity tailwinds.",
+      "reconciled": true,
+      "filled_qty": 0.178,
+      "filled_avg_price": 151.48
+    },
+    {
+      "ts": "2026-07-29T16:14:22.302536+00:00",
+      "ticker": "SNOW",
+      "bucket": "swing",
+      "side": "buy_unfilled",
+      "shares": 0.1221,
+      "limit_price": 275.77,
+      "estimated_cost": 33.01,
+      "order_id": "3141fb03-f6e0-4bc3-a135-38bb4a5ef16a",
+      "status": "OrderStatus.EXPIRED",
+      "rationale": "SNOW: momentum 54, news -0.53 (50), insider txn +0.00, congress +0.00, options PCR +0.17, analyst +10% (rec 1.5) | analyst: Negative news sentiment with neutral momentum suggests deteriorating fundamentals.",
+      "reconciled": true
+    },
+    {
+      "ts": "2026-07-29T16:14:23.048768+00:00",
+      "ticker": "SMH",
+      "bucket": "core",
+      "side": "sell",
+      "shares": 0.0788,
+      "reason": "broker-side stop triggered @ 516.53",
+      "realized_pl_dollars": -7.19
+    },
+    {
+      "ts": "2026-07-30T13:16:10.849446+00:00",
+      "ticker": "SNOW",
+      "bucket": "swing",
+      "side": "buy",
+      "shares": 0.1167,
+      "limit_price": 288.56,
+      "estimated_cost": 33.01,
+      "order_id": "8b139d41-62ba-412d-9e2b-396af4d5d4a6",
+      "status": "OrderStatus.FILLED",
+      "rationale": "SNOW: momentum 60, news -0.54 (50), insider txn +0.00, congress +0.00, options PCR +0.37, analyst +5% (rec 1.5) | analyst: Wells Fargo upgrade and analyst 85% upside call reflect substantive view shift.",
+      "reconciled": true,
+      "filled_qty": 0.1167,
+      "filled_avg_price": 287.4
+    },
+    {
+      "ts": "2026-08-12T16:13:29.439420+00:00",
+      "ticker": "ZS",
+      "bucket": "swing",
+      "side": "sell",
+      "shares": 0.178,
+      "reason": "max hold exceeded (14d, +16.8%)",
+      "realized_pl_dollars": 4.52
+    },
+    {
+      "ts": "2026-08-13T13:15:28.352477+00:00",
+      "ticker": "ABNB",
+      "bucket": "swing",
+      "side": "buy",
+      "shares": 0.1469,
+      "limit_price": 183.69,
+      "estimated_cost": 26.46,
+      "order_id": "2b678ee2-e228-43c9-b6a2-313486075abc",
+      "status": "OrderStatus.FILLED",
+      "rationale": "ABNB: momentum 67, news +0.14 (50), insider txn +0.00, congress +0.00, options PCR +0.16, analyst -4% (rec 2.1) | analyst: CEO commentary on AI generic; no concrete business catalyst in headlines.",
+      "reconciled": true,
+      "filled_qty": 0.1469,
+      "filled_avg_price": 181.586
+    },
+    {
+      "ts": "2026-08-13T16:14:56.585159+00:00",
+      "ticker": "SNOW",
+      "bucket": "swing",
+      "side": "sell",
+      "shares": 0.1167,
+      "reason": "max hold exceeded (14d, +16.4%)",
+      "realized_pl_dollars": 5.5
+    },
+    {
+      "ts": "2026-08-13T16:15:03.287824+00:00",
+      "ticker": "ORCL",
+      "bucket": "core",
+      "side": "buy",
+      "shares": 0.3356,
+      "limit_price": 156.35,
+      "estimated_cost": 51.44,
+      "order_id": "1613c8af-0576-431e-8f2a-a5756abbddf6",
+      "status": "OrderStatus.FILLED",
+      "rationale": "ORCL: momentum 61, news +0.07 (50), insider txn +0.00, congress +0.00, options PCR +0.45, analyst +61% (rec 1.5) | analyst: AWS partnership + Exadata launch tangible; job cuts offset by infrastructure strength.",
+      "reconciled": true,
+      "filled_qty": 0.3356,
+      "filled_avg_price": 153.654
+    },
+    {
+      "ts": "2026-08-18T16:14:02.927698+00:00",
+      "ticker": "QBTS",
+      "bucket": "lottery",
+      "side": "sell",
+      "shares": 0.6919,
+      "reason": "time stop (21d held, peak +15.6% < +20%)",
+      "realized_pl_dollars": 0.8
+    },
+    {
+      "ts": "2026-08-19T13:14:15.025930+00:00",
+      "ticker": "ORCL",
+      "bucket": "core",
+      "side": "sell",
+      "shares": 0.3356,
+      "reason": "rotation -> INTU (margin 12.37)",
+      "realized_pl_dollars": -3.87
+    },
+    {
+      "ts": "2026-08-20T13:01:40.531882+00:00",
+      "ticker": "INTU",
+      "bucket": "core",
+      "side": "buy_unfilled",
+      "shares": 0.1468,
+      "limit_price": 357.42,
+      "estimated_cost": 51.44,
+      "order_id": "d52bfba3-afdb-4422-aa30-a4dbb5ee451f",
+      "status": "OrderStatus.EXPIRED",
+      "rationale": "INTU: momentum 69, news -0.06 (50), insider txn +0.00, congress +0.00, options PCR +0.29, analyst +28% (rec 1.9) | analyst: Piper Sandler underweight negates momentum; lacks substantive tailwinds.",
+      "reconciled": true
+    },
+    {
+      "ts": "2026-08-21T13:16:37.138623+00:00",
+      "ticker": "CRM",
+      "bucket": "core",
+      "side": "buy",
+      "shares": 0.2504,
+      "limit_price": 209.54,
+      "estimated_cost": 51.44,
+      "order_id": "17ad879e-86f5-489f-8023-5cb7e82170fe",
+      "status": "OrderStatus.FILLED",
+      "rationale": "CRM: momentum 67, news +0.27 (50), insider txn +0.00, congress +0.00, options PCR +0.08, analyst +18% (rec 1.7) | analyst: Multiple analyst upgrades + Google/Salesforce AI venture signal genuine momentum.",
+      "reconciled": true,
+      "filled_qty": 0.2504,
+      "filled_avg_price": 205.832
+    },
+    {
+      "ts": "2026-08-27T16:13:40.915875+00:00",
+      "ticker": "ABNB",
+      "bucket": "swing",
+      "side": "sell",
+      "shares": 0.1469,
+      "reason": "max hold exceeded (14d, +2.8%)",
+      "realized_pl_dollars": 0.74
+    },
+    {
+      "ts": "2026-08-31T13:01:13.216883+00:00",
+      "ticker": "OKTA",
+      "bucket": "swing",
+      "side": "buy",
+      "shares": 0.1624,
+      "limit_price": 169.55,
+      "estimated_cost": 27.0,
+      "order_id": "f31fda5b-48c0-4f05-85c2-38164cf6f514",
+      "status": "OrderStatus.ACCEPTED",
+      "rationale": "OKTA: momentum 71, news +0.12 (50), insider txn +0.00, congress +0.00, options PCR +0.39, analyst +9% (rec 1.6) | analyst: Susquehanna maintains neutral despite target raise\u2014tepid endorsement."
     }
   ],
   "position_highs": {
     "JPM": {
-      "high_price": 348.865,
-      "high_pl_pct": 10.442,
-      "updated": "2026-07-16T20:43:37.436625+00:00"
-    },
-    "SMH": {
-      "high_price": 670.24,
-      "high_pl_pct": 10.294,
-      "updated": "2026-07-16T20:43:37.436717+00:00"
-    },
-    "WULF": {
-      "high_price": 29.69,
-      "high_pl_pct": 15.732,
-      "updated": "2026-07-16T20:43:37.436726+00:00"
-    },
-    "RIOT": {
-      "high_price": 28.94,
-      "high_pl_pct": 1.437,
-      "updated": "2026-07-16T20:43:37.436708+00:00"
-    },
-    "MARA": {
-      "high_price": 14.0184,
-      "high_pl_pct": -5.153,
-      "updated": "2026-07-16T20:43:37.436663+00:00"
+      "high_price": 368.1,
+      "high_pl_pct": 16.532,
+      "updated": "2026-08-31T20:30:11.563178+00:00"
     },
     "NOW": {
-      "high_price": 112.295,
-      "high_pl_pct": 9.86,
-      "updated": "2026-07-16T20:43:37.436678+00:00"
+      "high_price": 147.95,
+      "high_pl_pct": 44.743,
+      "updated": "2026-08-31T20:30:11.563192+00:00"
     },
     "PANW": {
-      "high_price": 358.09,
-      "high_pl_pct": 12.189,
-      "updated": "2026-07-16T20:43:37.436698+00:00"
+      "high_price": 398.6,
+      "high_pl_pct": 24.881,
+      "updated": "2026-08-31T20:30:11.563215+00:00"
     },
-    "NVDA": {
-      "high_price": 212.4,
-      "high_pl_pct": 1.765,
-      "updated": "2026-07-16T20:43:37.436688+00:00"
+    "SOUN": {
+      "high_price": 8.1303,
+      "high_pl_pct": 29.258,
+      "updated": "2026-08-31T20:30:11.563224+00:00"
+    },
+    "CRM": {
+      "high_price": 261.5,
+      "high_pl_pct": 27.045,
+      "updated": "2026-08-31T20:30:11.563145+00:00"
+    },
+    "OKTA": {
+      "high_price": 173.162,
+      "high_pl_pct": 4.503,
+      "updated": "2026-08-31T20:30:11.563204+00:00"
     }
   },
   "protective_stops": {
+    "CRM": {
+      "order_id": "eeb26c47-67dd-4174-bcd3-6c0ee56cf1f0",
+      "stop_price": 210.04,
+      "shares": 0.2504,
+      "entry_price": 205.832,
+      "bucket": "core",
+      "placed_at": "2026-08-31T20:30:13.130011+00:00"
+    },
     "JPM": {
-      "order_id": "128a377c-fa1b-454d-b998-98be84550593",
-      "stop_price": 268.5,
+      "order_id": "a931185c-cd20-40a9-9024-ab124dc8579d",
+      "stop_price": 289.13,
       "shares": 0.1531,
       "entry_price": 315.88,
       "bucket": "core",
-      "placed_at": "2026-07-17T03:24:18.586166+00:00"
+      "placed_at": "2026-08-31T20:30:13.316109+00:00"
     },
     "NOW": {
-      "order_id": "357f0e7c-354d-4be2-ab6b-d4932673340f",
-      "stop_price": 86.88,
+      "order_id": "1764ea40-f3b0-4fad-9ba8-210ae243a378",
+      "stop_price": 122.4,
       "shares": 0.5259,
       "entry_price": 102.216,
       "bucket": "core",
-      "placed_at": "2026-07-17T03:24:18.755572+00:00"
+      "placed_at": "2026-08-31T20:30:13.522658+00:00"
     },
-    "NVDA": {
-      "order_id": "8e72b7bf-b0ec-4b5a-99f2-3ff1d0549c20",
-      "stop_price": 192.02,
-      "shares": 0.1564,
-      "entry_price": 208.716,
+    "OKTA": {
+      "order_id": "ccd31c55-5743-4de6-a579-3fc793cace94",
+      "stop_price": 152.44,
+      "shares": 0.1624,
+      "entry_price": 165.7,
       "bucket": "swing",
-      "placed_at": "2026-07-17T03:24:18.921236+00:00"
+      "placed_at": "2026-08-31T20:30:13.702406+00:00"
     },
     "PANW": {
-      "order_id": "d3f3252b-990c-45fe-808d-a7dc687ed280",
-      "stop_price": 271.31,
+      "order_id": "26764dff-f773-4fb5-8597-c84e0140c9cc",
+      "stop_price": 318.8,
       "shares": 0.1768,
       "entry_price": 319.184,
       "bucket": "core",
-      "placed_at": "2026-07-17T03:24:19.096550+00:00"
+      "placed_at": "2026-08-31T20:30:13.888918+00:00"
     },
-    "SMH": {
-      "order_id": "b1a78001-198d-4ca1-a5ab-c53580bf678f",
-      "stop_price": 516.53,
-      "shares": 0.0788,
-      "entry_price": 607.684,
-      "bucket": "core",
-      "placed_at": "2026-07-17T03:24:19.269481+00:00"
+    "SOUN": {
+      "order_id": "9adcf2be-f633-4a36-9246-baa4c736bf17",
+      "stop_price": 6.56,
+      "shares": 2.5741,
+      "entry_price": 6.29,
+      "bucket": "lottery",
+      "placed_at": "2026-08-31T20:30:14.255612+00:00"
     }
-  }
+  },
+  "rotations_today": {
+    "date": "2026-08-19",
+    "core": 1
+  },
+  "pending_rotation": []
 }
