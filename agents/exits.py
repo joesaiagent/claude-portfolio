@@ -34,9 +34,12 @@ load_dotenv()
 RULES = {
     # hard_stop = floor vs entry; trail_pct = give-back from peak once armed at trail_arm_pct.
     # Core is tuned to LET WINNERS RUN (wide trailing, no trend-break) — backtests
-    # showed that captures the bulk of momentum's upside; the -15 hard stop + a
+    # showed that captures the bulk of momentum's upside; the hard stop + a
     # wide 25% give-back from peak still cap a blowup. (Goal: fastest survivable growth.)
-    "core":    {"hard_stop_pct": -15.0, "trail_pct": 25.0, "trail_arm_pct": 15.0, "trend_break": False},
+    # Hard stop tightened -15 -> -10 on 2026-09-01: scripts/sweep.py found the whole
+    # -10 hard-stop family beat -15 on the 2y core path (Sharpe 1.84 vs 1.79, ~same
+    # max drawdown). ATR tightening still pulls calmer names tighter than this floor.
+    "core":    {"hard_stop_pct": -10.0, "trail_pct": 25.0, "trail_arm_pct": 15.0, "trend_break": False},
     # Swing max-hold re-tuned 2026-09-01: the old rule 6 force-sold EVERYTHING at
     # 10 days, and "max hold exceeded" was the book's single most profitable exit
     # reason (+$12.05) — i.e. it was systematically cutting winners that wanted to

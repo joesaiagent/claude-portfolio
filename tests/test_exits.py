@@ -14,11 +14,11 @@ def test_hard_stop_floor():
 
 def test_atr_stop_only_tightens():
     # Calm name (ATR 3%): stop tightens to -7.5 (2.5×3). Wild name (ATR 10%):
-    # 2.5×10 = -25 would LOOSEN past the -15 floor -> floor holds.
+    # 2.5×10 = -25 would LOOSEN past the -10 core floor -> floor holds.
     assert effective_hard_stop_pct("core", 3.0) == -7.5
-    assert effective_hard_stop_pct("core", 10.0) == -15.0
+    assert effective_hard_stop_pct("core", 10.0) == -10.0
     # No recorded ATR (legacy position) -> flat bucket stop, unchanged behavior.
-    assert effective_hard_stop_pct("core", None) == -15.0
+    assert effective_hard_stop_pct("core", None) == -10.0
 
 
 def test_atr_stop_in_decide():

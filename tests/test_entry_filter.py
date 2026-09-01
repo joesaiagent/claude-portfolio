@@ -50,9 +50,9 @@ def test_atr_risk_cap_scales_inverse_to_atr():
 
 
 def test_atr_risk_cap_uses_effective_stop():
-    # ATR 10% on core: stop distance clamps at the -15 bucket floor, not 25%.
+    # ATR 10% on core: stop distance clamps at the -10 bucket floor, not 25%.
     cap = _atr_risk_cap({"atr_pct": 10.0}, 300.0, "core")
-    assert round(cap, 2) == round(3.0 / 0.15, 2) == 20.0
+    assert round(cap, 2) == round(3.0 / 0.10, 2) == 30.0
 
 
 def test_atr_risk_cap_absent_without_atr():

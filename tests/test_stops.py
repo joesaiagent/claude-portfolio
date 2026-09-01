@@ -3,8 +3,8 @@ from agents.stops import protective_stop_price
 
 
 def test_core_hard_floor():
-    # Core -15%: entry 100, never armed -> stop at 85.
-    assert protective_stop_price("core", 100.0, 0.0) == 85.0
+    # Core -10%: entry 100, never armed -> stop at 90.
+    assert protective_stop_price("core", 100.0, 0.0) == 90.0
 
 
 def test_core_trailing_raises_floor():
@@ -15,7 +15,7 @@ def test_core_trailing_raises_floor():
 
 def test_core_below_arm_keeps_hard_floor():
     # Peak +10 hasn't armed the +15 trail -> plain hard floor.
-    assert protective_stop_price("core", 100.0, 10.0) == 85.0
+    assert protective_stop_price("core", 100.0, 10.0) == 90.0
 
 
 def test_swing_floor_and_trail():
@@ -37,10 +37,10 @@ def test_unknown_bucket_or_bad_entry():
 
 
 def test_atr_tightens_broker_floor():
-    # Calm core name (ATR 3%): floor tightens to -7.5% -> 92.5 (was 85).
+    # Calm core name (ATR 3%): floor tightens to -7.5% -> 92.5 (below the -10 floor).
     assert protective_stop_price("core", 100.0, 0.0, atr_pct=3.0) == 92.5
-    # Wild name (ATR 10%): -25 would loosen past -15 -> floor holds at 85.
-    assert protective_stop_price("core", 100.0, 0.0, atr_pct=10.0) == 85.0
+    # Wild name (ATR 10%): -25 would loosen past the -10 floor -> floor holds at 90.
+    assert protective_stop_price("core", 100.0, 0.0, atr_pct=10.0) == 90.0
     # Armed trail still wins when higher than the ATR floor.
     assert protective_stop_price("core", 100.0, 30.0, atr_pct=3.0) == 105.0
 

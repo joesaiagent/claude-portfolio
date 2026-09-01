@@ -26,7 +26,7 @@ LOOKBACK_DAYS = 500
 REBAL_EVERY = 5          # trading days (~weekly)
 TOP_N = 5
 WARMUP = 60              # need >=50 sessions for MA / Sharpe
-HARD_STOP = -15.0        # both strategies keep the -15 floor
+HARD_STOP = -10.0        # mirrors live exits.RULES["core"] (tightened -15 -> -10, 2026-09-01)
 TRAIL_ARM, TRAIL = 15.0, 25.0  # NEW core trailing stop (let winners run; matches exits.py)
 TREND_BAND = -0.02       # core trend-break vs 50DMA (disabled below)
 TREND_BREAK_ON = False   # core trend-break off — let winners run
