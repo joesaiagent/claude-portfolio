@@ -2951,5 +2951,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "cadb9698-70e8-45c9-bb7e-30b89fba3ca1",
+    "text": "Holding steady today. Core bucket humming along (+23% unrealized), swing position sitting flat, lottery ticket up 9%. No new trades\u2014waiting for clearer momentum signals before redeploying. Cash reserves ready for the right setup. Portfolio up 6.8% overall.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-01T16:00:13.236899+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2094817613620691357"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-01T16:00:13.236899+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
