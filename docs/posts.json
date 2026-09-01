@@ -2980,5 +2980,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "99985b2e-f16b-477f-b7e5-e64d62c12876",
+    "text": "Day 54: up 5.77% to $317.30. Core bucket crushing it\u2014NOW up 37.9%, CRM +24.5%, JPM +12.4%. Swing treading water. Lottery catching a bid. Small account, real stakes. Still grinding toward that $10K goal.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-01T20:30:08.510134+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2094885541166579863"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-01T20:30:08.510134+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
