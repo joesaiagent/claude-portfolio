@@ -93,6 +93,18 @@ def buy_dates(state: dict) -> dict[str, datetime]:
     return out
 
 
+def atr_map_from_log(state: dict) -> dict[str, float]:
+    """ticker -> atr_pct stamped on its most recent buy (the allocator records
+    it at entry so stops stay anchored to entry-time volatility). Names bought
+    before 2026-09-01 carry none — callers fall back to the bucket's flat stop,
+    so legacy positions keep the risk contract they were opened under."""
+    out: dict[str, float] = {}
+    for e in state.get("order_log", []):
+        if e.get("side") == "buy" and e.get("ticker") and e.get("atr_pct"):
+            out[e["ticker"]] = float(e["atr_pct"])  # later buys overwrite
+    return out
+
+
 def lottery_remaining_budget(state: dict) -> float:
     cap = state["allocation_targets"]["lottery"]["max_loss_dollars"]
     deployed = state.get("lottery_deployed_total", 0.0)

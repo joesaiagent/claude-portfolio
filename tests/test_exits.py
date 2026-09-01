@@ -1,5 +1,5 @@
 """Offline truth-table tests for the exit decision logic."""
-from agents.exits import _decide
+from agents.exits import _decide, effective_hard_stop_pct
 
 
 def _p(pl):
@@ -8,7 +8,24 @@ def _p(pl):
 
 def test_hard_stop_floor():
     # Core -16% trips the -15 hard stop regardless of peak.
-    assert _decide(_p(-16), "core", 0, 0.0, False, False) == (1.0, "hard stop (-16.0%)")
+    d = _decide(_p(-16), "core", 0, 0.0, False, False)
+    assert d and d[0] == 1.0 and "hard stop" in d[1]
+
+
+def test_atr_stop_only_tightens():
+    # Calm name (ATR 3%): stop tightens to -7.5 (2.5×3). Wild name (ATR 10%):
+    # 2.5×10 = -25 would LOOSEN past the -15 floor -> floor holds.
+    assert effective_hard_stop_pct("core", 3.0) == -7.5
+    assert effective_hard_stop_pct("core", 10.0) == -15.0
+    # No recorded ATR (legacy position) -> flat bucket stop, unchanged behavior.
+    assert effective_hard_stop_pct("core", None) == -15.0
+
+
+def test_atr_stop_in_decide():
+    # -9% on a calm core name (ATR 3% -> stop -7.5) sells; without ATR it holds.
+    d = _decide(_p(-9), "core", 0, 0.0, False, False, atr_pct=3.0)
+    assert d and d[0] == 1.0 and "hard stop" in d[1]
+    assert _decide(_p(-9), "core", 0, 0.0, False, False) is None
 
 
 def test_trailing_fires_when_armed_and_given_back():
@@ -71,9 +88,22 @@ def test_core_trend_break_disabled():
     assert _decide(_p(2), "core", 0, 2.0, True, False) is None
 
 
-def test_swing_max_hold():
-    d = _decide(_p(3), "swing", 15, 3.0, False, False)
+def test_swing_max_hold_flat_sells():
+    # Past max hold and flat (<= +1) -> dead capital, sell.
+    d = _decide(_p(0.5), "swing", 15, 2.0, False, False)
     assert d and d[0] == 1.0 and "max hold" in d[1]
+
+
+def test_swing_max_hold_winner_rides():
+    # Past max hold but a WINNER near its peak -> no force-sell anymore
+    # (the old rule 6 systematically cut the book's best trades here).
+    assert _decide(_p(12), "swing", 15, 13.0, False, False) is None
+
+
+def test_swing_stale_trail():
+    # Past max hold, winner gave back >= 5 from peak -> stale trail exits.
+    d = _decide(_p(7), "swing", 15, 13.0, False, False)
+    assert d and d[0] == 1.0 and "stale trail" in d[1]
 
 
 def test_plain_hold():
@@ -82,6 +112,8 @@ def test_plain_hold():
 
 def run():
     test_hard_stop_floor()
+    test_atr_stop_only_tightens()
+    test_atr_stop_in_decide()
     test_trailing_fires_when_armed_and_given_back()
     test_trailing_silent_below_arm()
     test_trailing_silent_near_peak()
@@ -91,5 +123,7 @@ def run():
     test_lottery_trail_arms_at_15()
     test_lottery_time_stop()
     test_core_trend_break_disabled()
-    test_swing_max_hold()
+    test_swing_max_hold_flat_sells()
+    test_swing_max_hold_winner_rides()
+    test_swing_stale_trail()
     test_plain_hold()

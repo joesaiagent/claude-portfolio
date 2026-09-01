@@ -4,9 +4,9 @@
   "broker_source_of_truth": true,
   "allocation_targets": {
     "core": {
-      "target_pct": 0.7,
-      "target_dollars": 210.0,
-      "strategy": "concentrated momentum, large/mid-cap tech"
+      "target_pct": 0.8,
+      "target_dollars": 240.0,
+      "strategy": "concentrated momentum, large/mid-cap tech; spare budget pyramids proven winners"
     },
     "swing": {
       "target_pct": 0.2,
@@ -14,9 +14,9 @@
       "strategy": "earnings reactions + catalyst-driven"
     },
     "lottery": {
-      "target_pct": 0.1,
-      "target_dollars": 30.0,
-      "strategy": "high-vol asymmetric upside; expect total loss",
+      "target_pct": 0.0,
+      "target_dollars": 0.0,
+      "strategy": "RETIRED 2026-09-01 (-$15.16 realized, 0 wins); sleeve moved to core pyramiding",
       "max_loss_dollars": 30.0
     }
   },

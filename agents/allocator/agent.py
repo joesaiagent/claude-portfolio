@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 from agents import broker
 from agents._regime import current_regime
 from agents._screener import THEME_OF
+from agents.exits import ATR_STOP_MULT, RULES
 from agents._state import (
     BUCKETS,
     PENDING_TRADES_FILE,
@@ -48,6 +49,49 @@ MAX_POSITION_ACCOUNT_FRAC = 0.20
 SIZING_MIN_FRAC = {"core": 0.25, "swing": 0.30, "lottery": 0.45}
 SIZING_MAX_FRAC = {"core": 0.55, "swing": 0.55, "lottery": 0.55}
 VOL_FLOOR = 0.005
+
+# ATR risk parity: cap each entry's dollars so a stop-out at the position's
+# actual stop distance (ATR_STOP_MULT × entry ATR%, floored by the bucket hard
+# stop — exits.effective_hard_stop_pct) loses ~RISK_PER_TRADE_FRAC of account
+# equity. Equal-dollar sizing with a flat -15% stop let one high-ATR name (MU)
+# risk 3× what a calm name did — one stop-out cost -$17.97, 6% of the account.
+RISK_PER_TRADE_FRAC = 0.01
+
+# Structured signal snapshot copied from the enriched candidate into each buy's
+# order-log entry, so attribution can regress signals against forward returns
+# without parsing thesis strings (pre-2026-09-01 buys need the regex fallback).
+SIGNAL_FIELDS = (
+    "score", "momentum_score", "news_sentiment", "finnhub_rec", "insider_mspr",
+    "insider_transactions", "congressional", "options_pcr_signal",
+    "analyst_upside_pct", "analyst_rec", "vol20", "atr_pct", "rsi14",
+    "above_ma50", "conviction",
+)
+
+# Pyramiding (funded by the retired lottery sleeve): spare CORE budget adds to
+# the strongest PROVEN winner instead of buying a fresh long-shot. Guardrails:
+# only after +PYRAMID_MIN_GAIN_PCT (the add rides an already-armed trailing
+# stop), one add per name per PYRAMID_COOLDOWN_DAYS (no compounding every
+# cycle), and always under MAX_POSITION_ACCOUNT_FRAC like any other buy.
+PYRAMID_MIN_GAIN_PCT = 15.0
+PYRAMID_COOLDOWN_DAYS = 7
+PYRAMID_MIN_DOLLARS = 5.0
+
+
+def _atr_risk_cap(cand: dict, equity: float, bucket: str) -> float | None:
+    """Max dollars for this entry so a stop-out loses ~RISK_PER_TRADE_FRAC of
+    equity at the position's effective stop distance. None (no cap) when the
+    candidate predates atr_pct in the watchlist — degrades to prior sizing."""
+    atr = cand.get("atr_pct")
+    if not atr or atr <= 0 or equity <= 0:
+        return None
+    stop_frac = min(ATR_STOP_MULT * atr, -RULES[bucket]["hard_stop_pct"]) / 100.0
+    if stop_frac <= 0:
+        return None
+    return (RISK_PER_TRADE_FRAC * equity) / stop_frac
+
+
+def _signals_from_candidate(cand: dict) -> dict:
+    return {k: cand[k] for k in SIGNAL_FIELDS if cand.get(k) is not None}
 
 
 def _inverse_vol_budgets(cands: list[dict], remaining: float, bucket: str,
@@ -94,6 +138,19 @@ def _inverse_vol_budgets(cands: list[dict], remaining: float, bucket: str,
         for i in free:
             budgets[i] += add
     return budgets
+
+
+def _latest_buy_dates(state: dict) -> dict[str, datetime]:
+    """MOST RECENT buy timestamp per ticker (buy_dates gives the earliest —
+    right for hold-time rules, wrong for the pyramid cooldown, which must key
+    off the last add or it would re-add every cycle)."""
+    out: dict[str, datetime] = {}
+    for e in state.get("order_log", []):
+        if e.get("side") == "buy" and e.get("ticker") and e.get("ts"):
+            ts = datetime.fromisoformat(e["ts"])
+            if e["ticker"] not in out or ts > out[e["ticker"]]:
+                out[e["ticker"]] = ts
+    return out
 
 
 def _themes_held(tickers) -> set[str]:
@@ -434,6 +491,19 @@ def run() -> dict:
             if max_per_pos:
                 equal = min(equal, max_per_pos)  # cap the equal-weight fallback too
             budgets = [equal] * len(chosen)
+        # ATR risk-parity cap on top: a high-ATR name whose stop sits far from
+        # entry gets fewer dollars, so every position risks the same ~1% of
+        # equity at its stop. Trimmed dollars stay cash (never redistributed
+        # onto other names — that would just re-concentrate the risk).
+        capped_budgets = []
+        for cand, budget in zip(chosen, budgets):
+            cap = _atr_risk_cap(cand, equity, bucket)
+            if cap is not None and cap < budget:
+                print(f"[allocator] {cand['ticker']}: ATR risk cap trims "
+                      f"${budget:.2f} -> ${cap:.2f} (ATR {cand['atr_pct']:.1f}%)")
+                budget = cap
+            capped_budgets.append(budget)
+        budgets = capped_budgets
         for cand, budget in zip(chosen, budgets):
             price = price_by_ticker[cand["ticker"]]
             if budget < 1.0:
@@ -457,8 +527,51 @@ def run() -> dict:
                 "max_price": limit_price,
                 "estimated_cost": est_cost,
                 "rationale": cand.get("thesis", ""),
+                "atr_pct": cand.get("atr_pct"),
+                "signals": _signals_from_candidate(cand),
             })
             held_tickers.add(cand["ticker"])
+
+    # --- Pyramid: spare CORE budget (freed by the retired lottery sleeve, or by
+    # an exit) adds to the strongest PROVEN winner rather than a fresh name.
+    # "Add to NOW at +15% beats a fresh WULF": the add rides a trailing stop
+    # that's already armed, so its downside is the give-back, not a fresh -15%.
+    planned_core = sum(s["estimated_cost"] for s in suggestions if s["bucket"] == "core")
+    spare = bucket_remaining_budget(state, positions, "core", exposure) - planned_core
+    if spare >= PYRAMID_MIN_DOLLARS:
+        last_buys = _latest_buy_dates(state)
+        now_utc = datetime.now(timezone.utc)
+        winners = [
+            p for p in positions
+            if p.get("bucket") == "core"
+            and p.get("pl_pct", 0.0) >= PYRAMID_MIN_GAIN_PCT
+            and p["ticker"] not in open_buy_tickers
+            and (p["ticker"] not in last_buys
+                 or (now_utc - last_buys[p["ticker"]]).days >= PYRAMID_COOLDOWN_DAYS)
+        ]
+        if winners:
+            best = max(winners, key=lambda p: p.get("pl_pct", 0.0))
+            price = broker.latest_price(best["ticker"]) or best.get("current_price")
+            add = spare
+            if max_per_pos:
+                # Account-level cap counts what's already in the position.
+                add = min(add, max_per_pos - best.get("market_value", 0.0))
+            if price and price > 0 and add >= PYRAMID_MIN_DOLLARS:
+                shares = math.floor((add / price) * 1e4) / 1e4
+                est_cost = round(shares * price, 2)
+                if shares > 0 and est_cost >= 1.0:
+                    suggestions.append({
+                        "ticker": best["ticker"],
+                        "bucket": "core",
+                        "shares": shares,
+                        "max_price": round(price * 1.02, 2),
+                        "estimated_cost": est_cost,
+                        "rationale": f"pyramid: adding to winner at {best['pl_pct']:+.1f}%",
+                        "signals": {"pyramid": True,
+                                    "pl_pct_at_add": round(best.get("pl_pct", 0.0), 2)},
+                    })
+                    print(f"[allocator] pyramid: +${est_cost:.2f} {best['ticker']} "
+                          f"(winner {best['pl_pct']:+.1f}%, spare core ${spare:.2f})")
 
     # Hard cap: don't exceed cash or per-bucket budgets. Subtract cash already
     # reserved by still-open buy orders so concurrent/same-day cycles can't
@@ -495,6 +608,8 @@ def run() -> dict:
                     "order_id": order["order_id"],
                     "status": order["status"],
                     "rationale": s.get("rationale", ""),
+                    "atr_pct": s.get("atr_pct"),
+                    "signals": s.get("signals", {}),
                 }
                 if s["bucket"] == "lottery":
                     add_lottery_deployed(state, s["estimated_cost"])
@@ -542,7 +657,8 @@ def run() -> dict:
                 state["rotations_today"] = rot
                 if not ROTATION_SAME_CYCLE_BUY:
                     queued = {k: buy.get(k) for k in
-                              ("ticker", "bucket", "score", "conviction", "last_price", "vol20", "thesis")}
+                              ("ticker", "bucket", "score", "conviction", "last_price",
+                               "vol20", "atr_pct", "rsi14", "above_ma50", "thesis")}
                     state.setdefault("pending_rotation", []).append(queued)
                 append_order_log(state, {
                     "ts": datetime.now(timezone.utc).isoformat(), "ticker": weak["ticker"],

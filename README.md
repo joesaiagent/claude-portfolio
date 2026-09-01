@@ -79,6 +79,7 @@ runner.py          → schedules 3 daily cycles in ET (9:00 / 12:00 / 16:30)
     allocator      → places Alpaca orders for the open
     publish        → update GitHub Pages
   midday (12:00 ET):
+    intraday       → real-time IEX prices refresh high-water-marks + breach alarm
     exits          → intraday stop check
     tracker        → refresh state
     allocator      → second-chance deploy of idle/just-settled cash (skips under $25)
@@ -87,13 +88,17 @@ runner.py          → schedules 3 daily cycles in ET (9:00 / 12:00 / 16:30)
   postclose (16:30 ET):
     tracker        → final state
     content        → ONE Haiku narrative call → post to X (no URLs)
-    analytics      → count post KPIs
+    analytics      → count post KPIs + signal attribution (which entry signals predict forward returns)
     publish        → update GitHub Pages
 ```
 
 ## Safety rails
 
-- **Lottery hard cap:** never holds more than $30 of cost basis at once
+- **ATR risk parity (2026-09-01):** each entry is sized so a stop-out at its ATR-scaled stop (2.5×ATR, floored by the bucket hard stop) loses ~1% of equity — a high-ATR name gets fewer dollars, not the same bet with more risk
+- **Entry-extension filter (2026-09-01):** candidates too far above their 50DMA (core >12% / swing >18%) or with RSI>75 are skipped — momentum is bought, never chased
+- **Swing stale trail (2026-09-01):** past max hold, only flat/losing swings are dumped; winners ride a tight 5% give-back trail instead of being force-sold
+- **Lottery bucket RETIRED (2026-09-01):** −$15.16 realized, zero wins; its sleeve moved to core, where spare budget pyramids the strongest proven winner (+15%+, 7-day cooldown, account cap enforced)
+- **Lottery hard cap:** never holds more than $30 of cost basis at once (residual protection; bucket no longer buys)
 - **Per-position cap:** no single holding exceeds 20% of account equity (`MAX_POSITION_ACCOUNT_FRAC`); buys spread across enough names to deploy a bucket without breaching it
 - **Theme cap:** at most ONE name per correlated theme cluster (BTC miners/crypto, quantum, space, small-cap AI) per bucket — a momentum run in one theme can't stack a bucket into a single bet
 - **Lottery time stop:** a lottery name that never reaches +20% within ~15 trading days is sold — the thesis is a fast asymmetric pop, and a name that hasn't popped is dead capital

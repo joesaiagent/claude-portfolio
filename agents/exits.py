@@ -19,6 +19,7 @@ from agents._intel import EARNINGS_EXIT_DAYS, earnings_within
 from agents._screener import EXCLUDED_SECTORS, fetch_history
 from agents._state import (
     append_order_log,
+    atr_map_from_log,
     bucket_map_from_log,
     buy_dates,
     load_state,
@@ -36,8 +37,14 @@ RULES = {
     # showed that captures the bulk of momentum's upside; the -15 hard stop + a
     # wide 25% give-back from peak still cap a blowup. (Goal: fastest survivable growth.)
     "core":    {"hard_stop_pct": -15.0, "trail_pct": 25.0, "trail_arm_pct": 15.0, "trend_break": False},
+    # Swing max-hold re-tuned 2026-09-01: the old rule 6 force-sold EVERYTHING at
+    # 10 days, and "max hold exceeded" was the book's single most profitable exit
+    # reason (+$12.05) — i.e. it was systematically cutting winners that wanted to
+    # run. Now only flat/losing positions are dumped at max hold; a winner past
+    # max hold rides on with a tight stale_trail give-back from peak instead.
     "swing":   {"hard_stop_pct": -8.0,  "trail_pct": 7.0,  "trail_arm_pct": 6.0,
-                "target_pct": 20.0, "max_hold_days": 10},
+                "target_pct": 20.0, "max_hold_days": 10,
+                "stale_flat_pl_pct": 1.0, "stale_trail_pct": 5.0},
     # Lottery re-tuned 2026-07-16 after WULF/RIOT/MARA sat at -23..-34% untouchable:
     # the old -60 floor + a +60 trail arm meant a +15.7% peak (WULF) round-tripped
     # to -30% with no trigger anywhere in between. Now: arm the trail at +15 like
@@ -50,6 +57,25 @@ RULES = {
 }
 
 TREND_BREAK_BAND = -0.02  # core: sell if price is >2% below its 50-day MA
+
+# ATR-scaled stop distance: a position's hard stop sits ATR_STOP_MULT ATRs below
+# entry, but only ever TIGHTENS the bucket floor above (a calm name stops at
+# -2.5×ATR instead of riding all the way to -15; a wild one still can't loosen
+# past the bucket floor). Shared with the allocator, whose ATR risk cap sizes
+# each entry so a stop-out at this distance loses the same ~1% of equity — the
+# fix for MU-style losses where a fixed -15% on a high-vol name cost 3× the
+# risk a low-vol name carried. Positions bought before atr_pct was stamped in
+# the order log (pre-2026-09-01) have no ATR and keep the flat bucket stop.
+ATR_STOP_MULT = 2.5
+
+
+def effective_hard_stop_pct(bucket: str, atr_pct: float | None) -> float:
+    """The bucket hard stop, tightened (never loosened) to -ATR_STOP_MULT×ATR%
+    when the position's entry-time ATR is known. Pure function (unit-tested)."""
+    floor = RULES[bucket]["hard_stop_pct"]
+    if not atr_pct or atr_pct <= 0:
+        return floor
+    return max(floor, -(ATR_STOP_MULT * atr_pct))
 
 
 def _excluded_sector_tickers(tickers: list[str]) -> set[str]:
@@ -79,7 +105,8 @@ def _excluded_sector_tickers(tickers: list[str]) -> set[str]:
 
 
 def _decide(pos: dict, bucket: str, held_days: float, high_pl_pct: float,
-            trend_broken: bool, already_trimmed: bool) -> tuple[float, str] | None:
+            trend_broken: bool, already_trimmed: bool,
+            atr_pct: float | None = None) -> tuple[float, str] | None:
     """Return (fraction_to_sell, reason) or None to hold. Priority order matters."""
     rules = RULES.get(bucket)
     if not rules:
@@ -87,9 +114,11 @@ def _decide(pos: dict, bucket: str, held_days: float, high_pl_pct: float,
     pl = pos["pl_pct"]
     peak = max(high_pl_pct, pl)  # fold live gain into the peak so an intra-cycle spike trails
 
-    # 1. Hard stop vs entry — the preserved safety floor.
-    if pl <= rules["hard_stop_pct"]:
-        return 1.0, f"hard stop ({pl:+.1f}%)"
+    # 1. Hard stop vs entry — the preserved safety floor, ATR-tightened when the
+    #    entry-time ATR is on record (invariant intact: only ever tightens).
+    hard_stop = effective_hard_stop_pct(bucket, atr_pct)
+    if pl <= hard_stop:
+        return 1.0, f"hard stop ({pl:+.1f}% <= {hard_stop:.1f}%)"
     # 2. Trailing stop vs peak, only once armed (avoids stopping out barely-green noise).
     arm, trail = rules.get("trail_arm_pct"), rules.get("trail_pct")
     if arm is not None and trail is not None and peak >= arm and pl <= peak - trail:
@@ -104,8 +133,15 @@ def _decide(pos: dict, bucket: str, held_days: float, high_pl_pct: float,
     if rules.get("trend_break") and trend_broken:
         return 1.0, f"trend break (<50DMA, {pl:+.1f}%)"
     # 6. Swing max-hold (it's a 2-10 day book; *1.4 ~ trading->calendar days).
+    #    Flat/losing past max hold = dead capital -> sell. A WINNER past max hold
+    #    is no longer force-sold (that exit was cutting the book's best trades);
+    #    it rides with a tightened stale trail from peak instead.
     if "max_hold_days" in rules and held_days > rules["max_hold_days"] * 1.4:
-        return 1.0, f"max hold exceeded ({held_days:.0f}d, {pl:+.1f}%)"
+        if pl <= rules.get("stale_flat_pl_pct", 0.0):
+            return 1.0, f"max hold exceeded flat ({held_days:.0f}d, {pl:+.1f}%)"
+        stale_trail = rules.get("stale_trail_pct")
+        if stale_trail is not None and pl <= peak - stale_trail:
+            return 1.0, f"stale trail ({held_days:.0f}d, peak {peak:+.1f}%, now {pl:+.1f}%)"
     # 7. Lottery time stop: held flat_days trading days (*1.4 -> calendar) without
     #    ever reaching flat_peak_pct -> the pop didn't come; free the capital.
     #    Peak-based, so a name that DID pop is governed by the trailing stop instead.
@@ -142,6 +178,7 @@ def run() -> dict:
 
     buckets = bucket_map_from_log(state)
     dates = buy_dates(state)
+    atrs = atr_map_from_log(state)
     highs = state.get("position_highs", {})
     trimmed = set(state.get("lottery_trimmed", []))
     trend_broken = _core_trend_broken(positions, buckets)
@@ -201,7 +238,8 @@ def run() -> dict:
         held_days = (now - dates[t]).total_seconds() / 86400 if t in dates else 0.0
         high_pl_pct = highs.get(t, {}).get("high_pl_pct", 0.0)
         decision = _decide(pos, bucket, held_days, high_pl_pct,
-                           trend_broken.get(t, False), t in trimmed)
+                           trend_broken.get(t, False), t in trimmed,
+                           atr_pct=atrs.get(t))
         if not decision:
             continue
         fraction, reason = decision

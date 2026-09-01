@@ -22,6 +22,8 @@ MODULES = [
     "tests.test_rotation",
     "tests.test_theme",
     "tests.test_stops",
+    "tests.test_entry_filter",
+    "tests.test_attribution",
     "tests.test_regime",
     "tests.test_health",
     "tests.test_state",

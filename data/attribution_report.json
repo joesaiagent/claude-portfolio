@@ -1,0 +1,72 @@
+{
+  "generated": "2026-09-01T04:46:17.138749+00:00",
+  "n_trades": 26,
+  "low_sample": false,
+  "horizons": {
+    "10": {
+      "momentum_score": {
+        "spearman": -0.158,
+        "n": 24,
+        "top_half_mean_fwd_pct": -0.53,
+        "bottom_half_mean_fwd_pct": 2.56
+      },
+      "news_sentiment": {
+        "spearman": -0.286,
+        "n": 16,
+        "top_half_mean_fwd_pct": -0.47,
+        "bottom_half_mean_fwd_pct": 0.42
+      },
+      "options_pcr_signal": {
+        "spearman": 0.128,
+        "n": 16,
+        "top_half_mean_fwd_pct": 3.58,
+        "bottom_half_mean_fwd_pct": -3.63
+      },
+      "analyst_upside_pct": {
+        "spearman": 0.441,
+        "n": 16,
+        "top_half_mean_fwd_pct": 6.35,
+        "bottom_half_mean_fwd_pct": -6.41
+      },
+      "analyst_rec": {
+        "spearman": 0.038,
+        "n": 24,
+        "top_half_mean_fwd_pct": 2.46,
+        "bottom_half_mean_fwd_pct": -0.43
+      }
+    },
+    "20": {
+      "momentum_score": {
+        "spearman": 0.02,
+        "n": 22,
+        "top_half_mean_fwd_pct": 1.91,
+        "bottom_half_mean_fwd_pct": 0.82
+      },
+      "news_sentiment": {
+        "spearman": -0.033,
+        "n": 14,
+        "top_half_mean_fwd_pct": 4.81,
+        "bottom_half_mean_fwd_pct": -1.26
+      },
+      "options_pcr_signal": {
+        "spearman": 0.037,
+        "n": 14,
+        "top_half_mean_fwd_pct": 4.9,
+        "bottom_half_mean_fwd_pct": -1.35
+      },
+      "analyst_upside_pct": {
+        "spearman": 0.503,
+        "n": 14,
+        "top_half_mean_fwd_pct": 8.87,
+        "bottom_half_mean_fwd_pct": -5.33
+      },
+      "analyst_rec": {
+        "spearman": -0.141,
+        "n": 22,
+        "top_half_mean_fwd_pct": 2.97,
+        "bottom_half_mean_fwd_pct": -0.24
+      }
+    }
+  },
+  "summary": "Signal attribution over 26 buys:\n  fwd10d: best analyst_upside_pct \u03c1=+0.44, worst news_sentiment \u03c1=-0.29 (n\u224816)\n  fwd20d: best analyst_upside_pct \u03c1=+0.50, worst analyst_rec \u03c1=-0.14 (n\u224814)"
+}

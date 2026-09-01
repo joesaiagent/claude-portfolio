@@ -31,7 +31,7 @@ def _raise_fd_limit(target: int = 16384) -> None:
 
 _raise_fd_limit()
 
-from agents import broker, exits, publish, health, stops
+from agents import broker, exits, intraday, publish, health, stops
 from agents.analytics import agent as analytics
 from agents.content import agent as content
 from agents.allocator import agent as allocator
@@ -114,6 +114,7 @@ def cycle_midday():
     second-chance allocator pass for idle/just-settled cash, then a short
     midday update post (today's trades, cash deployed, the reasoning). The extra
     ~$0.02/day (1 Haiku call + 1 plain X post) buys a second daily touchpoint."""
+    step("intraday", intraday.run)  # real-time IEX highs BEFORE exits/stops read them
     step("exits", exits.run)
     step("tracker", tracker.run)
     step("allocator", midday_redeploy)  # before the post, so it can mention the buys

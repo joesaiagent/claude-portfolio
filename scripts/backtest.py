@@ -72,17 +72,23 @@ def _rank(strategy, hist, tickers, upto, spy_close):
     return [(t, v) for (t, s, v) in ranked[:TOP_N]]
 
 
-def _exited(strategy, hist, ticker, i, entry, peak_px) -> bool:
+def _exited(strategy, hist, ticker, i, entry, peak_px, params=None) -> bool:
+    # `params` overrides the module-level exit constants (used by scripts/sweep.py
+    # to grid-search stop levels without touching the defaults).
+    p = params or {}
+    hard_stop = p.get("hard_stop", HARD_STOP)
+    trail_arm = p.get("trail_arm", TRAIL_ARM)
+    trail = p.get("trail", TRAIL)
     px = hist[ticker]["Close"].iloc[i]
     pl = (px / entry - 1) * 100
-    if pl <= HARD_STOP:
+    if pl <= hard_stop:
         return True
     if strategy != "new":
         return False
     peak_pl = (peak_px / entry - 1) * 100
-    if peak_pl >= TRAIL_ARM and pl <= peak_pl - TRAIL:
+    if peak_pl >= trail_arm and pl <= peak_pl - trail:
         return True
-    if not TREND_BREAK_ON:
+    if not p.get("trend_break_on", TREND_BREAK_ON):
         return False
     close = hist[ticker]["Close"].iloc[:i + 1]
     ma50 = close.rolling(50).mean().iloc[-1]
@@ -101,7 +107,8 @@ def _breadth(hist, tickers, i) -> float:
     return ok / n if n else 0.5
 
 
-def _simulate(strategy, hist, dates, spy_close, tickers, regime=False, vix=None) -> list[float]:
+def _simulate(strategy, hist, dates, spy_close, tickers, regime=False, vix=None,
+              params=None) -> list[float]:
     cash, sleeves, curve = 1.0, [], []
     for i in range(WARMUP, len(dates)):
         # 1. mark-to-market + exits (skip the first day — no prior close yet)
@@ -114,7 +121,7 @@ def _simulate(strategy, hist, dates, spy_close, tickers, regime=False, vix=None)
                     continue
                 s["value"] *= px / ppx
                 s["peak"] = max(s["peak"], px)
-                if _exited(strategy, hist, s["ticker"], i, s["entry"], s["peak"]):
+                if _exited(strategy, hist, s["ticker"], i, s["entry"], s["peak"], params):
                     cash += s["value"]          # exit to cash until next rebalance
                 else:
                     survivors.append(s)

@@ -165,6 +165,47 @@ def _finite(x: float, default: float = 0.0) -> float:
     return float(x) if x is not None and np.isfinite(x) else default
 
 
+def atr_pct_from_history(df: pd.DataFrame, period: int = 14) -> float:
+    """14-day ATR as a PERCENT of the last close (sizing/stops both want the
+    relative number, not dollars). True range uses High/Low when present;
+    degrades to close-to-close absolute moves when a source omits them.
+    Falls back to 2.0 (a middling large-cap ATR%) if there's no usable data,
+    so callers can rely on a sane positive value."""
+    close = df["Close"].dropna()
+    if len(close) < period + 1:
+        return 2.0
+    if "High" in df.columns and "Low" in df.columns and df["High"].notna().all():
+        prev_close = close.shift(1)
+        tr = pd.concat([
+            df["High"] - df["Low"],
+            (df["High"] - prev_close).abs(),
+            (df["Low"] - prev_close).abs(),
+        ], axis=1).max(axis=1)
+    else:
+        tr = close.diff().abs()
+    atr = tr.tail(period).mean()
+    last = float(close.iloc[-1])
+    if not last or not np.isfinite(atr) or atr <= 0:
+        return 2.0
+    return float(atr / last * 100)
+
+
+def rsi14(close: pd.Series, period: int = 14) -> float:
+    """Wilder RSI. Neutral 50.0 on insufficient/degenerate data."""
+    close = close.dropna()
+    if len(close) < period + 1:
+        return 50.0
+    delta = close.diff().dropna()
+    gain = delta.clip(lower=0).ewm(alpha=1 / period, adjust=False).mean().iloc[-1]
+    loss = (-delta.clip(upper=0)).ewm(alpha=1 / period, adjust=False).mean().iloc[-1]
+    if not np.isfinite(gain) or not np.isfinite(loss):
+        return 50.0
+    if loss < 1e-12:
+        return 100.0
+    rs = gain / loss
+    return float(100 - 100 / (1 + rs))
+
+
 def raw_factors(df: pd.DataFrame, spy_ret10: float) -> dict:
     """Raw (un-normalized) factor values for one ticker. Normalization happens
     cross-sectionally in screen_bucket. Returns include vol20 (for sizing)."""
@@ -193,6 +234,10 @@ def raw_factors(df: pd.DataFrame, spy_ret10: float) -> dict:
         "rs10": _finite(ret10 - spy_ret10), "sharpe": _finite(sharpe),
         "vol_confirm": _finite(vol_confirm), "vol_expansion": _finite(vol_expansion),
         "vol20": round(vol20, 4),
+        # Not scoring factors — carried through for entry filters (rsi14, above_ma50)
+        # and ATR-risk sizing/stops (atr_pct) downstream.
+        "atr_pct": round(atr_pct_from_history(df), 3),
+        "rsi14": round(rsi14(close), 2),
     }
 
 
@@ -236,6 +281,9 @@ def screen_bucket(bucket: str, top_n: int = 5) -> list[dict]:
             "score": s,
             "last_price": float(fdf.loc[t, "last_price"]),
             "vol20": float(fdf.loc[t, "vol20"]),
+            "atr_pct": round(float(fdf.loc[t, "atr_pct"]), 3),
+            "rsi14": round(float(fdf.loc[t, "rsi14"]), 2),
+            "above_ma50": round(float(fdf.loc[t, "above_ma50"]), 2),
             "sharpe": round(float(fdf.loc[t, "sharpe"]), 3),
             "vol_confirm": round(float(fdf.loc[t, "vol_confirm"]), 2),
             "conviction": min(5, max(1, int(round((s - 50) / 8 + 3)))),

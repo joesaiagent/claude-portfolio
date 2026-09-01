@@ -56,6 +56,23 @@ def positions() -> list[dict]:
     return out
 
 
+def latest_trades(tickers: list[str]) -> dict[str, float]:
+    """Real-time last-trade price per ticker via Alpaca's free IEX feed, one
+    batched request. Tickers that fail to resolve are simply absent — callers
+    fall back to whatever price they already had. Never raises."""
+    if not tickers:
+        return {}
+    try:
+        from alpaca.data.requests import StockLatestTradeRequest
+        req = StockLatestTradeRequest(symbol_or_symbols=list(tickers))
+        trades = _data_client().get_stock_latest_trade(req)
+        return {t: float(tr.price) for t, tr in trades.items()
+                if tr is not None and tr.price}
+    except Exception as e:
+        print(f"[broker] latest_trades failed: {str(e)[:120]}")
+        return {}
+
+
 def latest_price(ticker: str) -> float | None:
     try:
         req = StockLatestQuoteRequest(symbol_or_symbols=ticker)

@@ -27,9 +27,10 @@ from datetime import datetime, timezone
 from dotenv import load_dotenv
 
 from agents import broker
-from agents.exits import RULES
+from agents.exits import RULES, effective_hard_stop_pct
 from agents._state import (
     append_order_log,
+    atr_map_from_log,
     bucket_map_from_log,
     load_state,
     reduce_lottery_deployed,
@@ -41,14 +42,16 @@ from agents._state import (
 load_dotenv()
 
 
-def protective_stop_price(bucket: str, entry_price: float, peak_pl_pct: float) -> float | None:
-    """The broker-side floor for a position: bucket hard stop vs entry, raised
+def protective_stop_price(bucket: str, entry_price: float, peak_pl_pct: float,
+                          atr_pct: float | None = None) -> float | None:
+    """The broker-side floor for a position: bucket hard stop vs entry (ATR-
+    tightened when the entry-time ATR is known — mirrors exits exactly), raised
     to the trailing give-back level once the high-water-mark has armed it.
     Pure function (unit-tested). None for an unknown bucket."""
     rules = RULES.get(bucket)
     if not rules or entry_price <= 0:
         return None
-    stop = entry_price * (1 + rules["hard_stop_pct"] / 100.0)
+    stop = entry_price * (1 + effective_hard_stop_pct(bucket, atr_pct) / 100.0)
     arm, trail = rules.get("trail_arm_pct"), rules.get("trail_pct")
     if arm is not None and trail is not None and peak_pl_pct >= arm:
         stop = max(stop, entry_price * (1 + (peak_pl_pct - trail) / 100.0))
@@ -95,6 +98,7 @@ def sync() -> dict:
     state = load_state()
     positions = broker.positions()
     buckets = bucket_map_from_log(state)
+    atrs = atr_map_from_log(state)
     highs = state.get("position_highs", {})
 
     if simulating() or not should_execute(state):
@@ -102,7 +106,8 @@ def sync() -> dict:
         for pos in positions:
             sp = protective_stop_price(buckets.get(pos["ticker"], "core"),
                                        pos["entry_price"],
-                                       highs.get(pos["ticker"], {}).get("high_pl_pct", 0.0))
+                                       highs.get(pos["ticker"], {}).get("high_pl_pct", 0.0),
+                                       atr_pct=atrs.get(pos["ticker"]))
             if sp and sp < pos["current_price"]:
                 planned.append({"ticker": pos["ticker"], "stop_price": sp})
                 print(f"  [SIM STOP] {pos['ticker']:5s} stop @ ${sp:.2f} (now ${pos['current_price']:.2f})")
@@ -130,7 +135,8 @@ def sync() -> dict:
             continue
         bucket = buckets.get(t, "core")
         stop_price = protective_stop_price(
-            bucket, pos["entry_price"], highs.get(t, {}).get("high_pl_pct", 0.0))
+            bucket, pos["entry_price"], highs.get(t, {}).get("high_pl_pct", 0.0),
+            atr_pct=atrs.get(t))
         if stop_price is None:
             continue
         # Already below the floor (overnight gap): a stop would trigger the
