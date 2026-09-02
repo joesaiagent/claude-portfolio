@@ -3038,5 +3038,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "ab00a883-4022-4234-8c86-a2957172e190",
+    "text": "Day 55 and up 3.91%. Core bucket is carrying hard\u2014NOW up 35%, CRM up 25%, JPM up 12%. Swing trade treading water but locked in some gains already. Lottery ticket gaining traction too. Still lean on dry powder but the positions that matter are working. One step closer.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-02T20:45:13.897635+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2095251726697730434"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-02T20:45:13.897635+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
