@@ -3096,5 +3096,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "c2c4124a-5075-4a32-9534-00aba2d6e28d",
+    "text": "Day 56: up 6.35% to $319. Core bucket carrying hard with NOW up 43% and CRM up 28%. Swing and lottery still modest, but the foundation's solid. Building patience for the $10K run. Every dollar compounds.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-03T20:31:45.842709+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2095610725427208560"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-03T20:31:45.842709+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
