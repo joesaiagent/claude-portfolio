@@ -3125,5 +3125,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "f6861c17-7bf5-4572-abad-66868971832b",
+    "text": "Holding steady today. Core bucket up 20.5% on conviction positions\u2014fundamentals still intact. Swing trade grinding higher at 4%, lottery ticket catching a bid. Cash reserves untouched; no signals warranted deployment yet. Watching for pullback or catalyst to add.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-04T16:13:54.673182+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2095908222334812536"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-04T16:13:54.673182+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
