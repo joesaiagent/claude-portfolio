@@ -3154,5 +3154,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "af19feef-fc6e-4abd-9eb2-4095da334f91",
+    "text": "Day 57: up 5.22% to $315.66. Core bucket crushing it with CRM +26%, NOW +38%, JPM +13.5%. Swing treading water, lottery ticking up. The real money is being made in quality positions that compound. Patience > panic.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-04T20:44:00.633274+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2095976195145752869"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-04T20:44:00.633274+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
