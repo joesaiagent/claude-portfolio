@@ -3183,5 +3183,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "b1b81d56-402b-48ac-bd93-c3fb15953e19",
+    "text": "Trimmed SOUN from lottery at $6.56 on broker stop\u2014took the small win and cleared that slot. Core's sitting pretty at +17.6%, swing position holding steady. No fresh capital deployed today; keeping powder dry and monitoring for better entry points.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-08T16:00:14.464962+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2097354333792682054"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-08T16:00:14.464962+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]

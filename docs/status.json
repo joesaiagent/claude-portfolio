@@ -1,102 +1,92 @@
 {
-  "timestamp": "2026-09-08T13:00:40.505386+00:00",
+  "timestamp": "2026-09-08T16:00:10.712425+00:00",
   "broker_mode": "LIVE",
   "positions": [
     {
       "ticker": "CRM",
       "shares": 0.2504,
       "entry_price": 205.832,
-      "current_price": 256.25,
-      "market_value": 64.165,
-      "pl_dollars": 12.624667,
-      "pl_pct": 24.495,
+      "current_price": 250.22,
+      "market_value": 62.655088,
+      "pl_dollars": 11.114755,
+      "pl_pct": 21.565,
       "bucket": "core"
     },
     {
       "ticker": "JPM",
       "shares": 0.1531,
       "entry_price": 315.88,
-      "current_price": 356.4,
-      "market_value": 54.56484,
-      "pl_dollars": 6.203612,
-      "pl_pct": 12.828000000000001,
+      "current_price": 355.4175,
+      "market_value": 54.414419,
+      "pl_dollars": 6.053191,
+      "pl_pct": 12.517,
       "bucket": "core"
     },
     {
       "ticker": "NOW",
       "shares": 0.5259,
       "entry_price": 102.216,
-      "current_price": 138.2575,
-      "market_value": 72.709619,
-      "pl_dollars": 18.954225,
-      "pl_pct": 35.260000000000005,
+      "current_price": 134.575,
+      "market_value": 70.772993,
+      "pl_dollars": 17.017599,
+      "pl_pct": 31.657000000000004,
       "bucket": "core"
     },
     {
       "ticker": "OKTA",
       "shares": 0.1624,
       "entry_price": 165.7,
-      "current_price": 168.95,
-      "market_value": 27.43748,
-      "pl_dollars": 0.5278,
-      "pl_pct": 1.9609999999999999,
+      "current_price": 167.3,
+      "market_value": 27.16952,
+      "pl_dollars": 0.25984,
+      "pl_pct": 0.966,
       "bucket": "swing"
     },
     {
       "ticker": "PANW",
       "shares": 0.1768,
       "entry_price": 319.184,
-      "current_price": 330.8614,
-      "market_value": 58.496296,
-      "pl_dollars": 2.064565,
-      "pl_pct": 3.659,
+      "current_price": 334.865,
+      "market_value": 59.204132,
+      "pl_dollars": 2.772401,
+      "pl_pct": 4.913,
       "bucket": "core"
-    },
-    {
-      "ticker": "SOUN",
-      "shares": 2.5741,
-      "entry_price": 6.29,
-      "current_price": 6.7607,
-      "market_value": 17.402718,
-      "pl_dollars": 1.211629,
-      "pl_pct": 7.483,
-      "bucket": "lottery"
     }
   ],
   "buckets": {
     "core": {
       "target_dollars": 240.0,
       "deployed_cost_basis": 210.09,
-      "current_value": 249.94,
-      "unrealized_pl_dollars": 39.85,
-      "unrealized_pl_pct": 18.97,
+      "current_value": 247.05,
+      "unrealized_pl_dollars": 36.96,
+      "unrealized_pl_pct": 17.59,
       "realized_pl_dollars": -36.96,
       "position_count": 4
     },
     "swing": {
       "target_dollars": 60.0,
       "deployed_cost_basis": 26.91,
-      "current_value": 27.44,
-      "unrealized_pl_dollars": 0.53,
-      "unrealized_pl_pct": 1.96,
+      "current_value": 27.17,
+      "unrealized_pl_dollars": 0.26,
+      "unrealized_pl_pct": 0.97,
       "realized_pl_dollars": 11.17,
       "position_count": 1
     },
     "lottery": {
       "target_dollars": 0.0,
-      "deployed_cost_basis": 16.19,
-      "current_value": 17.4,
-      "unrealized_pl_dollars": 1.21,
-      "unrealized_pl_pct": 7.48,
+      "deployed_cost_basis": 0,
+      "current_value": 0,
+      "unrealized_pl_dollars": 0,
+      "unrealized_pl_pct": 0,
       "realized_pl_dollars": -15.16,
-      "position_count": 1
+      "position_count": 0
     }
   },
-  "cash": 17.48,
-  "buying_power": 17.48,
-  "total_invested_value": 294.78,
-  "total_portfolio_value": 312.26,
-  "total_pl_dollars": 12.26,
-  "total_pl_pct": 4.09,
-  "summary": "\ud83d\udcc8 Portfolio $312.26 (+4.09%, P/L $+12.26)\n  core   : 4 pos, $249.94 (+18.97%)\n  swing  : 1 pos, $27.44 (+1.96%)\n  lottery: 1 pos, $17.40 (+7.48%)\n  Best: NOW +35.26%  |  Worst: OKTA +1.96%"
+  "cash": 34.34,
+  "buying_power": 34.34,
+  "total_invested_value": 274.21,
+  "total_portfolio_value": 308.55,
+  "total_pl_dollars": 8.55,
+  "total_pl_pct": 2.85,
+  "summary": "\ud83d\udcc8 Portfolio $308.55 (+2.85%, P/L $+8.55)\n  core   : 4 pos, $247.05 (+17.59%)\n  swing  : 1 pos, $27.17 (+0.97%)\n  Best: NOW +31.66%  |  Worst: OKTA +0.97%"
 }
