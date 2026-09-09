@@ -3270,5 +3270,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "83344b6e-20c0-44b4-a708-b3a2f189346b",
+    "text": "Day 59: up $4.58, sitting at 1.53%. Core bucket doing real work with CRM and JPM both green. Swing trades treading water. Lottery took hits early but we're learning. Slow and steady. Still got 9,695 to go but the machine's working.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-09T20:30:10.910384+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2097784654241710271"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-09T20:30:10.910384+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
