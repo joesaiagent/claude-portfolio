@@ -3328,5 +3328,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "a6c52749-1f56-460c-9ece-994fdacd5f6a",
+    "text": "Day 60: up 1.37% to $304. Core bucket carrying the weight with CRM up 18% and JPM up 12%. Swing trades treading water but locked in gains. Lottery bucket dry after taking some L's early. Grinding toward that 10k goal. Slow and steady wins the race.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-10T20:30:09.638433+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2098147036675686741"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-10T20:30:09.638433+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
