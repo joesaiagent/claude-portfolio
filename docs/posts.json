@@ -3299,5 +3299,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "2e92236c-aca2-4fff-aefa-820e281522a6",
+    "text": "Holding tight today. Core bucket's cruising up 17% unrealized\u2014fundamentals still solid on those four positions. Swing trades flat but collected $11 in realized gains this week, so the strategy's grinding.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-10T16:00:13.192629+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2098079104218128475"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-10T16:00:13.192629+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
