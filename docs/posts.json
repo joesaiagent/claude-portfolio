@@ -3357,5 +3357,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "0f831a0b-4018-48f6-8167-3327fc029e33",
+    "text": "Holding tight today. Core bucket doing heavy lifting at +16.37% unrealized, swing trades treading water at -2.17%. No fresh signals warranted new deployment\u2014momentum still favoring patient accumulation over chasing. Cash stays dry until setup improves.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-11T16:00:12.566453+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2098441489227432297"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-11T16:00:12.566453+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
