@@ -3386,5 +3386,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "9e8ee4fe-6659-46e2-afee-d09974b97ffc",
+    "text": "Day 61: up $3.86 to $303.86. Core bucket crushing it with CRM +20% and JPM +12%, but swing trades are underwater. Lottery got wiped but that's the game. Staying disciplined with the 3-bucket approach, letting winners run and managing losers tight. Slow grind to 10K.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-11T20:30:08.474426+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2098509419927531855"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-11T20:30:08.474426+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
