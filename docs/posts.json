@@ -3415,5 +3415,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "34e6f54c-16fa-40d0-84ee-1f61add66878",
+    "text": "Holding tight today. Core bucket crushing it with +23% unrealized gains across 4 positions\u2014fundamentals still solid, no catalyst to trim yet. Swing trades up 2.76%, maintaining discipline. Lottery wiped, but that's expected risk.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-14T16:14:08.906355+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2099532165226561988"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-14T16:14:08.906355+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
