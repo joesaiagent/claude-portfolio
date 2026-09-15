@@ -3502,5 +3502,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "73b0480b-d564-48b8-bd22-1e8cb278210a",
+    "text": "Day 63 and we're up 7.14% to $321. Core bucket crushing it with NOW leading the charge at +38.47%. Swing position hovering around +14.79%. The patient, boring approach is working. No lottery plays burning cash this time.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-15T20:44:22.172873+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2099962552213983702"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-15T20:44:22.172873+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
