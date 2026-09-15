@@ -3473,5 +3473,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "54a60f97-9279-4481-a17f-b047473212e6",
+    "text": "Sold HOOD from swing bucket\u2014stop triggered at 110.11, took a small 2.71 loss. Core bucket humming along +24% unrealized, so staying disciplined with the system. Cash reserves building back up to redeploy on next setup. Portfolio up 7.59% overall, sitting at 323.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-15T16:13:17.939537+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2099894334736732332"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-15T16:13:17.939537+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
