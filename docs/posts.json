@@ -3531,5 +3531,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "deb0e42d-1a43-4c87-ab20-3ef46bc01f9c",
+    "text": "Holding tight today. Core bucket's up 22.7% on conviction positions\u2014fundamentals still solid. Swing trade grinding +13.74%, no catalyst to exit yet. Cash sitting ready for dips. Lottery wiped but that's the game. Portfolio +6.66% overall. Patience beats panic.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-16T16:15:46.271070+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2100257344781226292"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-16T16:15:46.271070+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
