@@ -3560,5 +3560,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "9ed16917-b8d2-4dc1-bb89-59b81dd1f803",
+    "text": "Day 64: up $18.39, sitting at $318.39. Core bucket doing heavy lifting with NOW and CRM running hot. Swing trade ticking up steady. Lottery's been a learning experience\u2014sometimes you eat the loss and move forward. Still grinding toward 10K.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-16T20:43:47.466401+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2100324794038161709"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-16T20:43:47.466401+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
