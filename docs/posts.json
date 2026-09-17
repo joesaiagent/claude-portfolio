@@ -3618,5 +3618,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "1d88e12d-c28e-4c3f-aaa3-d3ee1e93f02e",
+    "text": "Day 65, up 5.33% to $316. Core bucket heating up\u2014NOW sitting at +35.85%, CRM at +18.2%, JPM +10.5%. Swing trade holding steady. Lottery took some heat but we're still moving the needle. Steady hands on the wheel.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-17T20:45:43.335757+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2100687668090724516"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-17T20:45:43.335757+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
