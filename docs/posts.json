@@ -3589,5 +3589,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "6a0d0202-d1d7-4dca-aa13-90d33c25e48b",
+    "text": "Holding tight today. Core bucket humming at +20.9% unrealized (4 positions), swing trade sitting pretty at +14.6%. No cash deployed\u2014watching for pullbacks to add. Lottery stays dormant after earlier wash. Net portfolio +5.47% from the $300 start.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-17T16:14:10.099845+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2100619329343553714"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-17T16:14:10.099845+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
