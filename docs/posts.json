@@ -3676,5 +3676,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "93c3c898-0942-485e-b0e3-73687a0e23da",
+    "text": "Day 66 update: portfolio at $310.53, up 3.51%. Core bucket is carrying the weight with NOW up 33%, CRM up 16%, JPM up 11%. Swing trade sitting at +10%. Lottery bucket got wiped but we learned expensive lessons. Staying disciplined with the 3-bucket approach.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-18T20:44:23.115429+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2101049719791198565"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-18T20:44:23.115429+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
