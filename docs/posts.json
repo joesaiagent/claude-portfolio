@@ -3647,5 +3647,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "00f4d1c3-de08-418b-af84-07f3454c6025",
+    "text": "Holding tight today. Core bucket humming at +18.45% unrealized, swing position up 11%. No new entries\u2014waiting for cleaner setups. Cash reserves ready if momentum shifts or analyst sentiment flips. Staying disciplined on entry signals rather than chasing.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-18T16:15:34.449468+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2100982071338340400"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-18T16:15:34.449468+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
