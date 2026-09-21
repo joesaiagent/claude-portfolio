@@ -3734,5 +3734,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "0240a08f-d32f-43f9-bb1d-13770612359a",
+    "text": "Day 67: up 4.6% to $313.80. Core bucket leading with NOW up 34.5%, CRM +15%, JPM +11%. Swing position holding steady. Lottery dried up after some tough losses.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-21T20:43:33.878570+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2102136676457885941"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-21T20:43:33.878570+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
