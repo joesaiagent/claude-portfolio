@@ -3705,5 +3705,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "475b788f-b842-43a3-909b-e015921fe9f4",
+    "text": "Holding steady today. Core bucket up 19.6% on conviction plays, swing position grinding +14.6%. No fresh signals warranted new capital deployment yet\u2014waiting for better risk/reward setups before adding. Cash ready if sentiment shifts or technicals align with fundamentals.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-21T16:15:15.947185+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2102069157449621578"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-21T16:15:15.947185+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
