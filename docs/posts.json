@@ -3792,5 +3792,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "5f7d60ef-335d-4ef6-9414-2cd67b9e1228",
+    "text": "Day 68: up 4.13% to $312.40. Core bucket crushing it with NOW up 34%, CRM +13%, JPM +8%. Swing trade also green. Still rebuilding after some lottery losses, but the 3-bucket strategy is doing what it should. Steady compounding toward that $10K goal.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-22T20:44:24.230441+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2102499275687002514"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-22T20:44:24.230441+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
