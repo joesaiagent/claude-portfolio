@@ -3908,5 +3908,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "6e3fa536-b372-4608-bb65-1fab1900e2a7",
+    "text": "Day 70: up 6% to $318. Core bucket crushing it with CRM and JPM, swing staying steady. Lottery's dormant. Realized some losses early but the winners are carrying the load now. Compounding small edges into the goal.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-24T20:44:18.511404+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2103224027527496053"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-24T20:44:18.511404+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
