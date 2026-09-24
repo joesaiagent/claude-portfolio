@@ -3879,5 +3879,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "6d943f99-cc0f-487d-b247-43de0a8fdc32",
+    "text": "Rotated swing today: sold SHOP (-1.9%, max hold) and COIN (-0.7%, max hold) for $13.81 realized gain, then redeployed ~$82 into fresh COIN (momentum 56, analyst +3%) and SHOP (Wedbush reiteration, +21% upside). Core bucket humming at +20.89% unrealized.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-24T16:12:53.204638+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2103155721982423428"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-24T16:12:53.204638+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
