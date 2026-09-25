@@ -3937,5 +3937,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "0e3d52f8-5507-423f-89fd-7af0a3f19df1",
+    "text": "Sold COIN from swing bucket\u2014hit the 105-day max hold at breakeven basically. Core is crushing it (+18.88% unrealized), so keeping those four positions tight. Swing now just holding 1 position with room to deploy if momentum picks up.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-25T16:13:43.233237+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2103518319990972666"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-25T16:13:43.233237+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
