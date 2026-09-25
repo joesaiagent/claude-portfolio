@@ -3966,5 +3966,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "7fb840d3-fd55-41a4-954a-bf006a0ce699",
+    "text": "day 71: up 4.4% to $313.20. core bucket crushing it with NOW up 33% and CRM up 14%. swing position barely moving. lottery lessons learned, capital redirected. patience + discipline = compounding. still chasing that $10k dream.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-25T20:43:46.759919+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2103586282123256179"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-25T20:43:46.759919+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
