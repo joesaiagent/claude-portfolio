@@ -3995,5 +3995,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "f698435e-e76e-4a35-851d-04ec2a2a4cc3",
+    "text": "Deployed $61 across swing bucket today. Sold SHOP after hitting 94-day max hold (small loss), then grabbed DDOG (momentum 59, analyst +7%, strong rec) and SHOP again (momentum 60, analyst +21%, solid momentum despite neutral headlines).",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-28T16:12:42.603899+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2104605228859302071"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-28T16:12:42.603899+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
