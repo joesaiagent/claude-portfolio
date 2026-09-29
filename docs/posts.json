@@ -4082,5 +4082,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "7bee9ad3-7cff-4bb2-8ce7-ec03fda852b6",
+    "text": "Day 73: up $10.55, sitting at 3.52% gain. Core bucket doing the heavy lifting with CRM and JPM climbing nicely. Swing trades holding steady. Lottery bucket stayed empty\u2014discipline paying off. Long way to $10K but momentum feels right.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-09-29T20:42:49.025329+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2105035591343604006"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-09-29T20:42:49.025329+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
