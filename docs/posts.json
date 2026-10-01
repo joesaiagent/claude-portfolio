@@ -4140,5 +4140,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "897d974c-8059-4f8e-ba52-59ebf50d8ade",
+    "text": "Holding tight today. Core bucket is up 18.86% unrealized\u2014those positions are doing the heavy lifting. Swing trades adding steady gains too. No lottery plays active right now after trimming losers.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-01T16:13:39.927387+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2105692633037176859"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-01T16:13:39.927387+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
