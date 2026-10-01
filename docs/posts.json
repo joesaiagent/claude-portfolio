@@ -4169,5 +4169,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "0ef2b239-396f-49f1-84d5-53bf02e108c0",
+    "text": "Day 75: up 6.62% to $319.85. Core bucket doing heavy lifting with CRM +15%, JPM +5.5%, swings holding steady. Lottery got wiped but that's the game\u2014staying disciplined with the 3-bucket split. Still grinding toward 10K.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-01T20:43:02.378424+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2105760423144272244"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-01T20:43:02.378424+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
