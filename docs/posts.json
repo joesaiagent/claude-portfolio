@@ -4198,5 +4198,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "6b7b92ba-6b87-4479-86bb-b3ab8ead934d",
+    "text": "Day 76: up 6.44% to $319. Core bucket quietly crushing it with 19.81% unrealized gains\u2014CRM and JPM doing heavy lifting. Swing trades adding steady gains. Lottery stayed dormant (smart). Staying disciplined. This is how $300 becomes $10K.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-02T20:30:13.434833+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2106119585715961997"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-02T20:30:13.434833+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
