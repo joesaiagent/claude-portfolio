@@ -4227,5 +4227,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "5ffa5057-33b3-4542-a730-a9d07fee95ff",
+    "text": "Holding today\u2014core bucket is up 21% and swing trades are crushing it at +13%. Lottery took some lumps earlier but we're letting winners run. Cash is dry but portfolio hit $325, so the 3-bucket approach is doing its job.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-06T16:12:34.846065+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2107504299362115872"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-06T16:12:34.846065+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
