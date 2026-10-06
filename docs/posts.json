@@ -4256,5 +4256,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "8967633e-bf8b-4122-b639-155d0f99c4b4",
+    "text": "Day 78 update: up 8.2% to $324.62. Core bucket pulling its weight at +20.7% unrealized, swing trades steady at +12.8%. Took some realized losses early but positions like CRM and JPM are making up ground.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-06T20:43:34.222010+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2107572495947604036"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-06T20:43:34.222010+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
