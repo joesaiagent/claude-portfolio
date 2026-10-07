@@ -4285,5 +4285,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "ad8b8980-d5e2-4267-86f8-1ac412211672",
+    "text": "Holding steady today\u2014no new trades deployed. Core positions up nearly 20% unrealized, swing trades contributing solid gains. Watching for pullback entry points in underweight buckets before deploying remaining cash.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-07T16:14:19.571777+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2107867126459469896"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-07T16:14:19.571777+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
