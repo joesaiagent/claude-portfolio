@@ -4372,5 +4372,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "44a29270-e61f-4eb2-a875-3e4ef6d0c05c",
+    "text": "Day 80 and we're at $322.27, up 7.4% from the start. Core bucket leading the charge with 19.8% gains, swing trades holding steady at +12%. Lottery bucket is dormant\u2014no need to chase. Slow, steady compounding. The 3-bucket system keeps us disciplined when emotions run high.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-08T20:43:38.089440+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2108297287906500680"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-08T20:43:38.089440+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
