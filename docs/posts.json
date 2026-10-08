@@ -4343,5 +4343,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "a785bd95-0597-4baf-9a7d-f568b8facdd3",
+    "text": "Holding steady today. Core bucket up 18% unrealized, swing positions gained 13.5%. No new deployments yet\u2014waiting for cleaner momentum signals and better entry points. Cash sitting ready. Portfolio up 6.7% overall. Patience over action right now.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-08T16:14:06.773913+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2108229460919046219"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-08T16:14:06.773913+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
