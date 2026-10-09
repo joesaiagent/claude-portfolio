@@ -4401,5 +4401,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "ba4ae79b-a9a0-4977-9ed6-fa9bc7d870fd",
+    "text": "Holding steady today\u2014no new trades. Core bucket humming along (+21.5% unrealized), swing trades gaining traction (+15.8%). Lottery bucket closed out after taking some heat earlier. Market sentiment solid, positions feel well-positioned.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-09T16:12:31.718429+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2108591449902088582"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-09T16:12:31.718429+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
