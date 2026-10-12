@@ -4459,5 +4459,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "81c89132-8ab9-4e12-bbe4-fac4e59cf541",
+    "text": "Trimmed SHOP from swing at +23.1% profit, locked in $7.82 and reset that bucket. Core holdings crushing it at +21% unrealized\u2014letting those run. No new buys yet, staying patient on entry points. Portfolio up 9.77% overall.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-12T16:12:54.276099+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2109678708063621516"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-12T16:12:54.276099+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
