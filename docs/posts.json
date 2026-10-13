@@ -4546,5 +4546,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "e63cb9fd-3832-40cc-8922-e041fef79ba3",
+    "text": "Day 83: up 9% to $327. Core bucket doing heavy lifting with CRM +15.7% and JPM steady. Swing trade DDOG creeping up too. Lottery lessons learned\u2014staying disciplined with the 3-bucket split. Compounding slowly but surely.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-13T20:42:59.436375+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2110109065166680319"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-13T20:42:59.436375+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
