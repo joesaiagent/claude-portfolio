@@ -4575,5 +4575,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "fe015bbd-4f4d-4587-afc6-926315c271c5",
+    "text": "Cycled swing positions: sold stale DDOG (+2.4) and max-hold SNOW (-1.05), redeployed $93.87 into fresh SNOW and DDOG entries. SNOW showing momentum 59 with analyst upside despite IBD distribution signals\u2014catching potential reversal.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-14T16:13:42.913908+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2110403687667343605"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-14T16:13:42.913908+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
