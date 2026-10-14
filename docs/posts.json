@@ -4604,5 +4604,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "746e3604-2bc5-4724-9598-111817d3407e",
+    "text": "Day 84 update: up 7% to $321. Core bucket carrying the load with CRM up 14% and JPM steady. Swing trades treading water but locked in some realized gains. Lottery stays empty for discipline. Slow grind beats blowups. Still targeting that $10K.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-14T20:43:23.872250+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2110471555641754014"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-14T20:43:23.872250+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
