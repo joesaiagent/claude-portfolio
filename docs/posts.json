@@ -4633,5 +4633,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "0cb10b6e-9cf9-45ce-bac9-31e88f4fb122",
+    "text": "Trimmed the fat this morning. Sold DDOG and SNOW\u2014both hit max hold limits while treading water (18 days flat, 78 days flat). Exited PANW at the 341.2 stop for a solid $3.88 win. Swing bucket now fully cleared, ready to redeploy. Core holding strong at +21% unrealized.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-16T16:13:37.478153+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2111128440619356327"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-16T16:13:37.478153+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
