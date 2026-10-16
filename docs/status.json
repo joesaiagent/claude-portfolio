@@ -1,35 +1,35 @@
 {
-  "timestamp": "2026-10-16T16:13:33.769008+00:00",
+  "timestamp": "2026-10-16T20:44:27.305728+00:00",
   "broker_mode": "LIVE",
   "positions": [
     {
       "ticker": "CRM",
       "shares": 0.2504,
       "entry_price": 205.832,
-      "current_price": 239.93,
-      "market_value": 60.078472,
-      "pl_dollars": 8.538139,
-      "pl_pct": 16.566,
+      "current_price": 240.7,
+      "market_value": 60.27128,
+      "pl_dollars": 8.730947,
+      "pl_pct": 16.939999999999998,
       "bucket": "core"
     },
     {
       "ticker": "JPM",
       "shares": 0.1531,
       "entry_price": 315.88,
-      "current_price": 340.96,
-      "market_value": 52.200976,
-      "pl_dollars": 3.839748,
-      "pl_pct": 7.9399999999999995,
+      "current_price": 339.5822,
+      "market_value": 51.990035,
+      "pl_dollars": 3.628807,
+      "pl_pct": 7.504,
       "bucket": "core"
     },
     {
       "ticker": "NOW",
       "shares": 0.5259,
       "entry_price": 102.216,
-      "current_price": 140.86,
-      "market_value": 74.078274,
-      "pl_dollars": 20.32288,
-      "pl_pct": 37.806,
+      "current_price": 141.7198,
+      "market_value": 74.530443,
+      "pl_dollars": 20.775049,
+      "pl_pct": 38.647,
       "bucket": "core"
     }
   ],
@@ -37,10 +37,10 @@
     "core": {
       "target_dollars": 240.0,
       "deployed_cost_basis": 153.66,
-      "current_value": 186.36,
-      "unrealized_pl_dollars": 32.7,
-      "unrealized_pl_pct": 21.28,
-      "realized_pl_dollars": -36.96,
+      "current_value": 186.79,
+      "unrealized_pl_dollars": 33.13,
+      "unrealized_pl_pct": 21.56,
+      "realized_pl_dollars": -33.08,
       "position_count": 3
     },
     "swing": {
@@ -64,9 +64,9 @@
   },
   "cash": 131.83,
   "buying_power": 131.83,
-  "total_invested_value": 186.36,
-  "total_portfolio_value": 318.19,
-  "total_pl_dollars": 18.19,
-  "total_pl_pct": 6.06,
-  "summary": "\ud83d\udcc8 Portfolio $318.19 (+6.06%, P/L $+18.19)\n  core   : 3 pos, $186.36 (+21.28%)\n  Best: NOW +37.81%  |  Worst: JPM +7.94%"
+  "total_invested_value": 186.79,
+  "total_portfolio_value": 318.62,
+  "total_pl_dollars": 18.62,
+  "total_pl_pct": 6.21,
+  "summary": "\ud83d\udcc8 Portfolio $318.62 (+6.21%, P/L $+18.62)\n  core   : 3 pos, $186.79 (+21.56%)\n  Best: NOW +38.65%  |  Worst: JPM +7.50%"
 }
