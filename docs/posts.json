@@ -4691,5 +4691,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "5f60884a-92f5-4e4f-8cc6-bc9c2b9a8299",
+    "text": "Deployed $150.2 today across core & swing. Added V (payments/AI traction, analyst +5%), PLTR (FedRAMP AI expansion, +11% upside), and SHOP twice (pricing power, multiple upgrades). Sold aged SHOP swing for realized gains. Core up 15.7%, swing steady at 4.8%.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-19T16:14:47.096777+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2112215896185864470"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-19T16:14:47.096777+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
