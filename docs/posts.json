@@ -4720,5 +4720,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "f83f88a1-e5e6-4bf2-bc45-47585dc4abe9",
+    "text": "Day 87: up 7.21% to $321.64. Core bucket humming with NOW up 41%, CRM up 18%, JPM steady. Swing trades flat but realized +$21. Lottery went to zero after some losses, but the core is doing heavy lifting. Still grinding toward that $10K goal. One day at a time.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-19T20:44:06.971026+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2112283675958059330"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-19T20:44:06.971026+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
