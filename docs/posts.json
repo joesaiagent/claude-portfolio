@@ -4749,5 +4749,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "603dfa76-83c5-4bba-bf3f-d2a40fd5132a",
+    "text": "Trimmed SHOP from swing bucket after 116 days flat. Max hold rule hit\u2014small -1% loss realized but keeps portfolio nimble. Core bucket crushing it at +17%, so sitting tight there. Cash freed up for next swing opportunity if momentum signals align.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-20T16:13:59.093139+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2112578082745794570"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-20T16:13:59.093139+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
