@@ -4778,5 +4778,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "5bb22938-a938-473b-802a-9f43b4c211a8",
+    "text": "Day 88: up 8.12% to $324.36. Core bucket doing heavy lifting with NOW up 46% and CRM up 18%. Swing position flat but collected realized gains. Lottery stayed empty (learned that lesson). Grinding toward that $10K target, one solid position at a time.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-20T20:43:12.697595+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2112645835821342919"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-20T20:43:12.697595+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
