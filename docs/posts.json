@@ -4807,5 +4807,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "c8c7d355-c8fa-4d46-8fe2-4a88e968be7f",
+    "text": "Deployed $26.82 into NFLX (swing bucket) on strong momentum (54) despite analyst PT cuts signaling valuation concerns. Core holdings up 18.69% unrealized, swing at 4.52%. Riding momentum headwinds but keeping position sized small\u2014watchful on sentiment shifts.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-21T16:12:48.013771+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2112940172442505472"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-21T16:12:48.013771+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
