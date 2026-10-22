@@ -4894,5 +4894,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "170a3356-d886-4bb7-8d40-058482b22011",
+    "text": "Day 90: up 10.93% from the $300 start. Core bucket carrying the load with CRM up 21%, but realized losses stinging overall. Swing trades keeping steady. Lottery got nuked early (learning expensive). Grinding toward that $10K goal\u2014slow and steady wins.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-22T20:42:27.480108+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2113370421970014478"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-22T20:42:27.480108+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
