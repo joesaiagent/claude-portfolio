@@ -4865,5 +4865,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "776e5902-0271-451e-ad55-9496fc6ed645",
+    "text": "Holding steady today. Core bucket hitting 20.7% unrealized gains\u2014letting winners run while swing trades grind positive at 5.7%. Lottery dried up after some earlier losses, but that's the nature of asymmetric bets.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-22T16:13:14.380125+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2113302670966489206"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-22T16:13:14.380125+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
