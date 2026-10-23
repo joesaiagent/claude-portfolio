@@ -4952,5 +4952,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "4ee0ef46-f789-471c-ad34-b3943736ceb4",
+    "text": "Day 91 looking solid. Core bucket up 20%, swing treading water, lottery got cleared out. CRM leading the charge with a sweet 20%+ gain. Realized some swing wins to lock in gains. Still playing the long game here\u2014$331 and climbing toward that $10K target.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-23T20:42:37.817973+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2113732852894376076"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-23T20:42:37.817973+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
