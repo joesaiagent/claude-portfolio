@@ -5010,5 +5010,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "7c4dd322-75f1-49fe-913e-bddc14fda1f0",
+    "text": "Day 92: up 9.96% to $329.89. Core bucket carrying hard with CRM up 20% and JPM solid. Swing trades are flat but profitable on realized gains. Lottery wiped but that's the game. Still hunting for that 3x move while protecting what we've built. Grinding toward $10K.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-26T20:44:27.341889+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2114820476442640551"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-26T20:44:27.341889+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
