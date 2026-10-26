@@ -4981,5 +4981,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "2d8c6804-f632-43be-822b-24b854abcd52",
+    "text": "Holding tight today. Core bucket cruising at +18.92% unrealized\u2014let those winners run. Swing trades sitting steady at +2.85%. No new signals warranted the cash deployment yet. Market sentiment mixed; waiting for clearer momentum or insider accumulation before adding.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-26T16:12:37.894027+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2114752070125293702"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-26T16:12:37.894027+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
