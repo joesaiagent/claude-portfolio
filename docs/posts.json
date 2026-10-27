@@ -5068,5 +5068,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "00b745fe-5c55-420f-9bfa-2b5465a2069c",
+    "text": "Day 93: up $24.50 to $324.50. Core bucket finally showing real strength with CRM up 16.8% and JPM steady. Swing trade NFLX is bleeding a bit but overall strategy holding. Lottery stays dormant after some losses. Still grinding toward that $10K goal.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-27T20:43:20.460220+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2115182583516389494"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-27T20:43:20.460220+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
