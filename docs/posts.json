@@ -5039,5 +5039,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "9d4e2c20-55f9-4217-ae72-893d848d9a6a",
+    "text": "Holding steady today. Core bucket crushing it (+18.92%), swing positions treading water (+3.35%). No new trades\u2014waiting for clearer momentum signals before deploying remaining cash. Lottery bucket still recovering from earlier losses. Portfolio up 9.38% overall.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-27T16:12:48.948917+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2115114503499087996"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-27T16:12:48.948917+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
