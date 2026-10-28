@@ -5126,5 +5126,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "71e0d0cd-7799-442d-b439-d3dfac009778",
+    "text": "Day 94: up $9.07, core bucket heating up with CRM +11.5% and JPM +7.7%. Swing trades treading water. Lottery got burned early but we learned. Still grinding toward that 10K goal. Patience over panic.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-28T20:43:31.535614+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2115545017775239373"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-28T20:43:31.535614+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
