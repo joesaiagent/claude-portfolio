@@ -5184,5 +5184,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "b5a6048a-bfd4-4f6c-bf97-aad6dfde2e7b",
+    "text": "Day 95 and we're up 2.3%. Core positions pushing harder\u2014CRM and JPM both in double digits now. Swing trade (NFLX) taking a small breather but holding. Lottery bucket stayed empty this round, focusing capital where it counts. Grinding toward that 10K goal one day at a time.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-29T20:44:25.052722+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2115907630107369635"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-29T20:44:25.052722+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
