@@ -5242,5 +5242,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "0db62db0-ee83-41e9-8f35-e192420d6675",
+    "text": "Day 96 and we're up 1.72%. Core bucket pulling weight with CRM up 11% and JPM strong at 7%. MA's taking a breather but that's fine, we're diversified. Swing trade holding steady. Sometimes the grind pays off even when it doesn't feel flashy.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-10-30T20:43:39.729516+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2116269827920642500"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-10-30T20:43:39.729516+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
