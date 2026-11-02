@@ -1,55 +1,55 @@
 {
-  "timestamp": "2026-10-30T20:43:34.554542+00:00",
+  "timestamp": "2026-11-02T14:13:20.266975+00:00",
   "broker_mode": "LIVE",
   "positions": [
     {
       "ticker": "CRM",
       "shares": 0.2504,
       "entry_price": 205.832,
-      "current_price": 229.3,
-      "market_value": 57.41672,
-      "pl_dollars": 5.876387,
-      "pl_pct": 11.402,
+      "current_price": 228.335,
+      "market_value": 57.175084,
+      "pl_dollars": 5.634751,
+      "pl_pct": 10.933,
       "bucket": "core"
     },
     {
       "ticker": "JPM",
       "shares": 0.1531,
       "entry_price": 315.88,
-      "current_price": 337.94,
-      "market_value": 51.738614,
-      "pl_dollars": 3.377386,
-      "pl_pct": 6.984,
+      "current_price": 339.91,
+      "market_value": 52.040221,
+      "pl_dollars": 3.678993,
+      "pl_pct": 7.607,
       "bucket": "core"
     },
     {
       "ticker": "MA",
       "shares": 0.0969,
       "entry_price": 645.042,
-      "current_price": 638.01,
-      "market_value": 61.823169,
-      "pl_dollars": -0.681401,
-      "pl_pct": -1.09,
+      "current_price": 640.0,
+      "market_value": 62.016,
+      "pl_dollars": -0.48857,
+      "pl_pct": -0.782,
       "bucket": "core"
     },
     {
       "ticker": "SOFI",
       "shares": 3.407,
       "entry_price": 16.71775,
-      "current_price": 16.75,
-      "market_value": 57.06725,
-      "pl_dollars": 0.109876,
-      "pl_pct": 0.193,
+      "current_price": 16.9964,
+      "market_value": 57.906735,
+      "pl_dollars": 0.949361,
+      "pl_pct": 1.667,
       "bucket": "swing"
     },
     {
       "ticker": "V",
       "shares": 0.1575,
       "entry_price": 398.866,
-      "current_price": 413.2,
-      "market_value": 65.079,
-      "pl_dollars": 2.257605,
-      "pl_pct": 3.594,
+      "current_price": 414.4,
+      "market_value": 65.268,
+      "pl_dollars": 2.446605,
+      "pl_pct": 3.895,
       "bucket": "core"
     }
   ],
@@ -57,18 +57,18 @@
     "core": {
       "target_dollars": 240.0,
       "deployed_cost_basis": 225.23,
-      "current_value": 236.06,
-      "unrealized_pl_dollars": 10.83,
-      "unrealized_pl_pct": 4.81,
+      "current_value": 236.5,
+      "unrealized_pl_dollars": 11.27,
+      "unrealized_pl_pct": 5.0,
       "realized_pl_dollars": -23.36,
       "position_count": 4
     },
     "swing": {
       "target_dollars": 60.0,
       "deployed_cost_basis": 56.96,
-      "current_value": 57.07,
-      "unrealized_pl_dollars": 0.11,
-      "unrealized_pl_pct": 0.19,
+      "current_value": 57.91,
+      "unrealized_pl_dollars": 0.95,
+      "unrealized_pl_pct": 1.67,
       "realized_pl_dollars": 20.74,
       "position_count": 1
     },
@@ -84,9 +84,9 @@
   },
   "cash": 12.04,
   "buying_power": 12.04,
-  "total_invested_value": 293.12,
-  "total_portfolio_value": 305.16,
-  "total_pl_dollars": 5.16,
-  "total_pl_pct": 1.72,
-  "summary": "\ud83d\udcc8 Portfolio $305.16 (+1.72%, P/L $+5.16)\n  core   : 4 pos, $236.06 (+4.81%)\n  swing  : 1 pos, $57.07 (+0.19%)\n  Best: CRM +11.40%  |  Worst: MA -1.09%"
+  "total_invested_value": 294.41,
+  "total_portfolio_value": 306.45,
+  "total_pl_dollars": 6.45,
+  "total_pl_pct": 2.15,
+  "summary": "\ud83d\udcc8 Portfolio $306.45 (+2.15%, P/L $+6.45)\n  core   : 4 pos, $236.50 (+5.00%)\n  swing  : 1 pos, $57.91 (+1.67%)\n  Best: CRM +10.93%  |  Worst: MA -0.78%"
 }
