@@ -5329,5 +5329,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "f69296b5-40cf-478d-98e9-81292b047171",
+    "text": "Trimmed three swing/core positions today (SOFI, old CRWD, CRM) after max holds or stop triggers, realizing $2.49 net. Redeployed $3.02 into fresh CRWD on strong momentum (51), analyst upgrade (+3% revision, 1.7 rating), and strategic M&A tailwinds in AI/cloud security.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-11-03T17:13:01.831895+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2117666372180156619"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-11-03T17:13:01.831895+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
