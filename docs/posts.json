@@ -5358,5 +5358,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "ea66ad77-d29c-419c-9eff-d0eb13fa1dc0",
+    "text": "Day 98: up 1.14% ($3.42). Core bucket carrying the weight with JPM up 7% and MA steady. Swing trades locked in $21 profit but sitting empty now. Lottery took heat early\u2014that's the price of asymmetric bets. Building patiently toward $10K. One trade at a time.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-11-03T21:42:51.428792+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2117734276267422032"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-11-03T21:42:51.428792+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
