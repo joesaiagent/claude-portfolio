@@ -1,45 +1,45 @@
 {
-  "timestamp": "2026-11-03T21:42:48.175282+00:00",
+  "timestamp": "2026-11-04T14:13:54.116757+00:00",
   "broker_mode": "LIVE",
   "positions": [
     {
       "ticker": "JPM",
       "shares": 0.1531,
       "entry_price": 315.88,
-      "current_price": 337.98,
-      "market_value": 51.744738,
-      "pl_dollars": 3.38351,
-      "pl_pct": 6.9959999999999996,
+      "current_price": 345.5,
+      "market_value": 52.89605,
+      "pl_dollars": 4.534822,
+      "pl_pct": 9.377,
       "bucket": "core"
     },
     {
       "ticker": "MA",
       "shares": 0.0969,
       "entry_price": 645.042,
-      "current_price": 647.1,
-      "market_value": 62.70399,
-      "pl_dollars": 0.19942,
-      "pl_pct": 0.319,
+      "current_price": 660.4,
+      "market_value": 63.99276,
+      "pl_dollars": 1.48819,
+      "pl_pct": 2.3810000000000002,
       "bucket": "core"
     },
     {
       "ticker": "MU",
       "shares": 0.0034,
       "entry_price": 890.74,
-      "current_price": 873.71,
-      "market_value": 2.970614,
-      "pl_dollars": -0.057902,
-      "pl_pct": -1.9120000000000001,
+      "current_price": 828.1662,
+      "market_value": 2.815765,
+      "pl_dollars": -0.212751,
+      "pl_pct": -7.025,
       "bucket": "core"
     },
     {
       "ticker": "V",
       "shares": 0.1575,
       "entry_price": 398.866,
-      "current_price": 419.5,
-      "market_value": 66.07125,
-      "pl_dollars": 3.249855,
-      "pl_pct": 5.173,
+      "current_price": 430.08,
+      "market_value": 67.7376,
+      "pl_dollars": 4.916205,
+      "pl_pct": 7.826,
       "bucket": "core"
     }
   ],
@@ -47,9 +47,9 @@
     "core": {
       "target_dollars": 240.0,
       "deployed_cost_basis": 176.72,
-      "current_value": 183.49,
-      "unrealized_pl_dollars": 6.77,
-      "unrealized_pl_pct": 3.83,
+      "current_value": 187.44,
+      "unrealized_pl_dollars": 10.73,
+      "unrealized_pl_pct": 6.07,
       "realized_pl_dollars": -21.14,
       "position_count": 4
     },
@@ -74,9 +74,9 @@
   },
   "cash": 119.93,
   "buying_power": 119.93,
-  "total_invested_value": 183.49,
-  "total_portfolio_value": 303.42,
-  "total_pl_dollars": 3.42,
-  "total_pl_pct": 1.14,
-  "summary": "\ud83d\udcc8 Portfolio $303.42 (+1.14%, P/L $+3.42)\n  core   : 4 pos, $183.49 (+3.83%)\n  Best: JPM +7.00%  |  Worst: MU -1.91%"
+  "total_invested_value": 187.44,
+  "total_portfolio_value": 307.37,
+  "total_pl_dollars": 7.37,
+  "total_pl_pct": 2.46,
+  "summary": "\ud83d\udcc8 Portfolio $307.37 (+2.46%, P/L $+7.37)\n  core   : 4 pos, $187.44 (+6.07%)\n  Best: JPM +9.38%  |  Worst: MU -7.03%"
 }
