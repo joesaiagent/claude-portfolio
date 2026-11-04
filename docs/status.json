@@ -1,66 +1,66 @@
 {
-  "timestamp": "2026-11-04T14:13:54.116757+00:00",
+  "timestamp": "2026-11-04T17:14:50.649914+00:00",
   "broker_mode": "LIVE",
   "positions": [
     {
       "ticker": "JPM",
       "shares": 0.1531,
       "entry_price": 315.88,
-      "current_price": 345.5,
-      "market_value": 52.89605,
-      "pl_dollars": 4.534822,
-      "pl_pct": 9.377,
+      "current_price": 351.47,
+      "market_value": 53.810057,
+      "pl_dollars": 5.448829,
+      "pl_pct": 11.267000000000001,
       "bucket": "core"
     },
     {
       "ticker": "MA",
       "shares": 0.0969,
       "entry_price": 645.042,
-      "current_price": 660.4,
-      "market_value": 63.99276,
-      "pl_dollars": 1.48819,
-      "pl_pct": 2.3810000000000002,
+      "current_price": 668.995,
+      "market_value": 64.825616,
+      "pl_dollars": 2.321046,
+      "pl_pct": 3.7130000000000005,
       "bucket": "core"
     },
     {
-      "ticker": "MU",
-      "shares": 0.0034,
-      "entry_price": 890.74,
-      "current_price": 828.1662,
-      "market_value": 2.815765,
-      "pl_dollars": -0.212751,
-      "pl_pct": -7.025,
-      "bucket": "core"
+      "ticker": "SOFI",
+      "shares": 1.9207,
+      "entry_price": 17.0,
+      "current_price": 17.395,
+      "market_value": 33.410577,
+      "pl_dollars": 0.758677,
+      "pl_pct": 2.324,
+      "bucket": "swing"
     },
     {
       "ticker": "V",
       "shares": 0.1575,
       "entry_price": 398.866,
-      "current_price": 430.08,
-      "market_value": 67.7376,
-      "pl_dollars": 4.916205,
-      "pl_pct": 7.826,
+      "current_price": 432.4,
+      "market_value": 68.103,
+      "pl_dollars": 5.281605,
+      "pl_pct": 8.407,
       "bucket": "core"
     }
   ],
   "buckets": {
     "core": {
       "target_dollars": 240.0,
-      "deployed_cost_basis": 176.72,
-      "current_value": 187.44,
-      "unrealized_pl_dollars": 10.73,
-      "unrealized_pl_pct": 6.07,
+      "deployed_cost_basis": 173.69,
+      "current_value": 186.74,
+      "unrealized_pl_dollars": 13.05,
+      "unrealized_pl_pct": 7.51,
       "realized_pl_dollars": -21.14,
-      "position_count": 4
+      "position_count": 3
     },
     "swing": {
       "target_dollars": 60.0,
-      "deployed_cost_basis": 0,
-      "current_value": 0,
-      "unrealized_pl_dollars": 0,
-      "unrealized_pl_pct": 0,
-      "realized_pl_dollars": 21.01,
-      "position_count": 0
+      "deployed_cost_basis": 32.65,
+      "current_value": 33.41,
+      "unrealized_pl_dollars": 0.76,
+      "unrealized_pl_pct": 2.32,
+      "realized_pl_dollars": 20.42,
+      "position_count": 1
     },
     "lottery": {
       "target_dollars": 0.0,
@@ -72,11 +72,11 @@
       "position_count": 0
     }
   },
-  "cash": 119.93,
-  "buying_power": 119.93,
-  "total_invested_value": 187.44,
-  "total_portfolio_value": 307.37,
-  "total_pl_dollars": 7.37,
-  "total_pl_pct": 2.46,
-  "summary": "\ud83d\udcc8 Portfolio $307.37 (+2.46%, P/L $+7.37)\n  core   : 4 pos, $187.44 (+6.07%)\n  Best: JPM +9.38%  |  Worst: MU -7.03%"
+  "cash": 89.39,
+  "buying_power": 89.39,
+  "total_invested_value": 220.15,
+  "total_portfolio_value": 309.54,
+  "total_pl_dollars": 9.54,
+  "total_pl_pct": 3.18,
+  "summary": "\ud83d\udcc8 Portfolio $309.54 (+3.18%, P/L $+9.54)\n  core   : 3 pos, $186.74 (+7.51%)\n  swing  : 1 pos, $33.41 (+2.32%)\n  Best: JPM +11.27%  |  Worst: SOFI +2.32%"
 }
