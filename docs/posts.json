@@ -5416,5 +5416,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "afd0d0d2-2552-4b72-8bd3-521292f016d9",
+    "text": "Day 99: Up 3.74% to $311.23. Core bucket doing heavy lifting with JPM up 11.5% and MA up 4.3%. Swing trades treading water but realized gains there offset early lottery losses. Still need 32x return to hit $10K goal. Staying disciplined with the allocation.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-11-04T21:43:36.417546+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2118096852948037886"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-11-04T21:43:36.417546+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
