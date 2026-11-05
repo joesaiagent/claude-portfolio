@@ -1,55 +1,55 @@
 {
-  "timestamp": "2026-11-04T21:43:32.968784+00:00",
+  "timestamp": "2026-11-05T14:13:57.640578+00:00",
   "broker_mode": "LIVE",
   "positions": [
     {
       "ticker": "JPM",
       "shares": 0.1531,
       "entry_price": 315.88,
-      "current_price": 352.1,
-      "market_value": 53.90651,
-      "pl_dollars": 5.545282,
-      "pl_pct": 11.466,
+      "current_price": 357.38,
+      "market_value": 54.714878,
+      "pl_dollars": 6.35365,
+      "pl_pct": 13.138,
       "bucket": "core"
     },
     {
       "ticker": "MA",
       "shares": 0.0969,
       "entry_price": 645.042,
-      "current_price": 672.68,
-      "market_value": 65.182692,
-      "pl_dollars": 2.678122,
-      "pl_pct": 4.285,
+      "current_price": 679.0,
+      "market_value": 65.7951,
+      "pl_dollars": 3.29053,
+      "pl_pct": 5.264,
       "bucket": "core"
     },
     {
       "ticker": "OKTA",
       "shares": 0.1441,
-      "entry_price": 186.564,
-      "current_price": 190.51,
-      "market_value": 27.452491,
-      "pl_dollars": 0.568619,
-      "pl_pct": 2.1149999999999998,
+      "entry_price": 188.528088,
+      "current_price": 184.53,
+      "market_value": 26.590773,
+      "pl_dollars": -0.576124,
+      "pl_pct": -2.121,
       "bucket": "swing"
     },
     {
       "ticker": "SOFI",
       "shares": 1.9207,
       "entry_price": 17.0,
-      "current_price": 17.3985,
-      "market_value": 33.417299,
-      "pl_dollars": 0.765399,
-      "pl_pct": 2.344,
+      "current_price": 17.1778,
+      "market_value": 32.9934,
+      "pl_dollars": 0.3415,
+      "pl_pct": 1.046,
       "bucket": "swing"
     },
     {
       "ticker": "V",
       "shares": 0.1575,
       "entry_price": 398.866,
-      "current_price": 436.57,
-      "market_value": 68.759775,
-      "pl_dollars": 5.93838,
-      "pl_pct": 9.453,
+      "current_price": 440.04,
+      "market_value": 69.3063,
+      "pl_dollars": 6.484905,
+      "pl_pct": 10.323,
       "bucket": "core"
     }
   ],
@@ -57,19 +57,19 @@
     "core": {
       "target_dollars": 240.0,
       "deployed_cost_basis": 173.69,
-      "current_value": 187.85,
-      "unrealized_pl_dollars": 14.16,
-      "unrealized_pl_pct": 8.15,
+      "current_value": 189.82,
+      "unrealized_pl_dollars": 16.13,
+      "unrealized_pl_pct": 9.29,
       "realized_pl_dollars": -21.44,
       "position_count": 3
     },
     "swing": {
       "target_dollars": 60.0,
-      "deployed_cost_basis": 59.54,
-      "current_value": 60.87,
-      "unrealized_pl_dollars": 1.33,
-      "unrealized_pl_pct": 2.24,
-      "realized_pl_dollars": 20.42,
+      "deployed_cost_basis": 59.82,
+      "current_value": 59.58,
+      "unrealized_pl_dollars": -0.23,
+      "unrealized_pl_pct": -0.39,
+      "realized_pl_dollars": 19.84,
       "position_count": 2
     },
     "lottery": {
@@ -84,9 +84,9 @@
   },
   "cash": 62.51,
   "buying_power": 62.51,
-  "total_invested_value": 248.72,
-  "total_portfolio_value": 311.23,
-  "total_pl_dollars": 11.23,
-  "total_pl_pct": 3.74,
-  "summary": "\ud83d\udcc8 Portfolio $311.23 (+3.74%, P/L $+11.23)\n  core   : 3 pos, $187.85 (+8.15%)\n  swing  : 2 pos, $60.87 (+2.24%)\n  Best: JPM +11.47%  |  Worst: OKTA +2.11%"
+  "total_invested_value": 249.4,
+  "total_portfolio_value": 311.91,
+  "total_pl_dollars": 11.91,
+  "total_pl_pct": 3.97,
+  "summary": "\ud83d\udcc8 Portfolio $311.91 (+3.97%, P/L $+11.91)\n  core   : 3 pos, $189.82 (+9.29%)\n  swing  : 2 pos, $59.58 (-0.39%)\n  Best: JPM +13.14%  |  Worst: OKTA -2.12%"
 }
