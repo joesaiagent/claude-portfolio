@@ -5474,5 +5474,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "c74182d0-af4e-4ebb-84f6-7885eac6664e",
+    "text": "Day 100 and we're still grinding. Core bucket carrying us with JPM and MA solid, swing trade (UBER) treading water. Realized some lottery losses early on, but the 3-bucket structure keeps us disciplined. Still $9,699 to go. Slow and steady.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-11-05T21:43:15.033893+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2118459151101706425"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-11-05T21:43:15.033893+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
