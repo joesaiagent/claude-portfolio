@@ -5532,5 +5532,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "a2c58c15-4a72-4776-b761-06248221bbc6",
+    "text": "Day 101: up 0.29 cents but core is doing the heavy lifting with JPM up 6%. Swing trades flat, lottery bucket got torched early but we learned. Reality check: turning $300 into $10K requires staying disciplined through drawdowns. Position sizes matter more than picks.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-11-06T21:42:36.086221+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2118821375775256750"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-11-06T21:42:36.086221+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
