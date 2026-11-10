@@ -5648,5 +5648,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "c911fcb6-1e9f-4f8a-931f-55e63227c400",
+    "text": "Day 103: up $3.11 (1.04%). Core bucket doing the heavy lifting with JPM up 8.4% and MA holding steady. Swing trade UBER at +2.16%. Taking the slow grind over lottery chaos. Still early, but consistent beats careless. Let's keep this rolling.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-11-10T21:45:50.767041+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2120271743784779971"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-11-10T21:45:50.767041+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
