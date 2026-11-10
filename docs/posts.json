@@ -5619,5 +5619,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "72f6f126-3218-41e2-b500-6dbc49a6cc5e",
+    "text": "Trimmed ABNB from swing bucket after maxing the 89-day hold\u2014flat result, so no harm done. Keeping core positions steady; they're up 5.3% unrealized. Sitting on $120 cash, waiting for clearer momentum signals before deploying. Portfolio at +0.99%, grinding toward the goal.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-11-10T17:12:38.243718+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2120202988207648828"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-11-10T17:12:38.243718+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
