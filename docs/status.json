@@ -1,55 +1,55 @@
 {
-  "timestamp": "2026-11-11T21:37:30.232751+00:00",
+  "timestamp": "2026-11-12T14:12:55.820427+00:00",
   "broker_mode": "LIVE",
   "positions": [
     {
       "ticker": "ABNB",
       "shares": 0.0062,
       "entry_price": 181.572,
-      "current_price": 182.0,
-      "market_value": 1.1284,
-      "pl_dollars": 0.002654,
-      "pl_pct": 0.23600000000000002,
+      "current_price": 181.24,
+      "market_value": 1.123688,
+      "pl_dollars": -0.002058,
+      "pl_pct": -0.183,
       "bucket": "swing"
     },
     {
       "ticker": "JPM",
       "shares": 0.1531,
       "entry_price": 315.88,
-      "current_price": 343.39,
-      "market_value": 52.573009,
-      "pl_dollars": 4.211781,
-      "pl_pct": 8.709,
+      "current_price": 344.5,
+      "market_value": 52.74295,
+      "pl_dollars": 4.381722,
+      "pl_pct": 9.06,
       "bucket": "core"
     },
     {
       "ticker": "MA",
       "shares": 0.0969,
       "entry_price": 645.042,
-      "current_price": 659.55,
-      "market_value": 63.910395,
-      "pl_dollars": 1.405825,
-      "pl_pct": 2.249,
+      "current_price": 664.0,
+      "market_value": 64.3416,
+      "pl_dollars": 1.83703,
+      "pl_pct": 2.939,
       "bucket": "core"
     },
     {
       "ticker": "UBER",
       "shares": 0.8586,
       "entry_price": 68.518,
-      "current_price": 70.57,
-      "market_value": 60.591402,
-      "pl_dollars": 1.761847,
-      "pl_pct": 2.995,
+      "current_price": 70.0,
+      "market_value": 60.102,
+      "pl_dollars": 1.272445,
+      "pl_pct": 2.163,
       "bucket": "swing"
     },
     {
       "ticker": "V",
       "shares": 0.1575,
       "entry_price": 398.866,
-      "current_price": 425.55,
-      "market_value": 67.024125,
-      "pl_dollars": 4.20273,
-      "pl_pct": 6.69,
+      "current_price": 427.88,
+      "market_value": 67.3911,
+      "pl_dollars": 4.569705,
+      "pl_pct": 7.274,
       "bucket": "core"
     }
   ],
@@ -57,18 +57,18 @@
     "core": {
       "target_dollars": 240.0,
       "deployed_cost_basis": 173.69,
-      "current_value": 183.51,
-      "unrealized_pl_dollars": 9.82,
-      "unrealized_pl_pct": 5.65,
+      "current_value": 184.48,
+      "unrealized_pl_dollars": 10.79,
+      "unrealized_pl_pct": 6.21,
       "realized_pl_dollars": -21.44,
       "position_count": 3
     },
     "swing": {
       "target_dollars": 60.0,
       "deployed_cost_basis": 59.96,
-      "current_value": 61.72,
-      "unrealized_pl_dollars": 1.76,
-      "unrealized_pl_pct": 2.94,
+      "current_value": 61.23,
+      "unrealized_pl_dollars": 1.27,
+      "unrealized_pl_pct": 2.12,
       "realized_pl_dollars": 16.61,
       "position_count": 2
     },
@@ -84,9 +84,9 @@
   },
   "cash": 59.05,
   "buying_power": 59.05,
-  "total_invested_value": 245.23,
-  "total_portfolio_value": 304.28,
-  "total_pl_dollars": 4.28,
-  "total_pl_pct": 1.43,
-  "summary": "\ud83d\udcc8 Portfolio $304.28 (+1.43%, P/L $+4.28)\n  core   : 3 pos, $183.51 (+5.65%)\n  swing  : 2 pos, $61.72 (+2.94%)\n  Best: JPM +8.71%  |  Worst: ABNB +0.24%"
+  "total_invested_value": 245.7,
+  "total_portfolio_value": 304.75,
+  "total_pl_dollars": 4.75,
+  "total_pl_pct": 1.58,
+  "summary": "\ud83d\udcc8 Portfolio $304.75 (+1.58%, P/L $+4.75)\n  core   : 3 pos, $184.48 (+6.21%)\n  swing  : 2 pos, $61.23 (+2.12%)\n  Best: JPM +9.06%  |  Worst: ABNB -0.18%"
 }
