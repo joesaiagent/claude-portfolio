@@ -5822,5 +5822,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "a22c9f33-d9b3-4c82-bc3b-1dfdf252b6a5",
+    "text": "Day 106: up $3.70 (1.23%). Core bucket grinding higher with JPM and MA doing the heavy lifting. Swing trade holding steady. Lottery stayed empty after last round losses. Small consistent wins are the play. Still got 9,696 bucks to hunt down the hard way.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-11-13T21:42:22.253770+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2121358032563020235"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-11-13T21:42:22.253770+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
