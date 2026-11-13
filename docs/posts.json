@@ -5793,5 +5793,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "67769cd3-31fe-45a3-b52b-3e2a816f9d5b",
+    "text": "Picked up AMD for swing bucket on momentum signal (66/100) plus analyst upgrade thesis\u2014NVIDIA noise overstated, Foundation Model deal has legs. Deployed $1.11 today. Core holding strong at +4.84%, swing positioning builds.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-11-13T17:13:45.793045+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2121290435175793142"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-11-13T17:13:45.793045+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]

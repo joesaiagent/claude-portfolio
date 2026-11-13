@@ -1,74 +1,84 @@
 {
-  "timestamp": "2026-11-13T14:13:04.725953+00:00",
+  "timestamp": "2026-11-13T17:13:42.449784+00:00",
   "broker_mode": "LIVE",
   "positions": [
+    {
+      "ticker": "AMD",
+      "shares": 0.0019,
+      "entry_price": 566.914,
+      "current_price": 522.6589,
+      "market_value": 0.993052,
+      "pl_dollars": -0.084085,
+      "pl_pct": -7.806,
+      "bucket": "core"
+    },
     {
       "ticker": "JPM",
       "shares": 0.1531,
       "entry_price": 315.88,
-      "current_price": 346.0,
-      "market_value": 52.9726,
-      "pl_dollars": 4.611372,
-      "pl_pct": 9.535,
+      "current_price": 344.545,
+      "market_value": 52.74984,
+      "pl_dollars": 4.388612,
+      "pl_pct": 9.075,
       "bucket": "core"
     },
     {
       "ticker": "MA",
       "shares": 0.0969,
       "entry_price": 645.042,
-      "current_price": 656.0,
-      "market_value": 63.5664,
-      "pl_dollars": 1.06183,
-      "pl_pct": 1.699,
+      "current_price": 661.965,
+      "market_value": 64.144409,
+      "pl_dollars": 1.639839,
+      "pl_pct": 2.624,
       "bucket": "core"
     },
     {
       "ticker": "UBER",
       "shares": 0.8586,
       "entry_price": 68.518,
-      "current_price": 69.4999,
-      "market_value": 59.672614,
-      "pl_dollars": 0.843059,
-      "pl_pct": 1.433,
+      "current_price": 69.61,
+      "market_value": 59.767146,
+      "pl_dollars": 0.937591,
+      "pl_pct": 1.5939999999999999,
       "bucket": "swing"
     },
     {
       "ticker": "V",
       "shares": 0.1575,
       "entry_price": 398.866,
-      "current_price": 423.0,
-      "market_value": 66.6225,
-      "pl_dollars": 3.801105,
-      "pl_pct": 6.051,
+      "current_price": 426.87,
+      "market_value": 67.232025,
+      "pl_dollars": 4.41063,
+      "pl_pct": 7.020999999999999,
       "bucket": "core"
     },
     {
       "ticker": "WMT",
       "shares": 0.3916,
       "entry_price": 126.88,
-      "current_price": 126.6163,
-      "market_value": 49.582943,
-      "pl_dollars": -0.103265,
-      "pl_pct": -0.208,
+      "current_price": 128.165,
+      "market_value": 50.189414,
+      "pl_dollars": 0.503206,
+      "pl_pct": 1.013,
       "bucket": "core"
     }
   ],
   "buckets": {
     "core": {
       "target_dollars": 240.0,
-      "deployed_cost_basis": 223.37,
-      "current_value": 232.74,
-      "unrealized_pl_dollars": 9.37,
-      "unrealized_pl_pct": 4.2,
+      "deployed_cost_basis": 224.45,
+      "current_value": 235.31,
+      "unrealized_pl_dollars": 10.86,
+      "unrealized_pl_pct": 4.84,
       "realized_pl_dollars": -21.44,
-      "position_count": 4
+      "position_count": 5
     },
     "swing": {
       "target_dollars": 60.0,
       "deployed_cost_basis": 58.83,
-      "current_value": 59.67,
-      "unrealized_pl_dollars": 0.84,
-      "unrealized_pl_pct": 1.43,
+      "current_value": 59.77,
+      "unrealized_pl_dollars": 0.94,
+      "unrealized_pl_pct": 1.59,
       "realized_pl_dollars": 16.61,
       "position_count": 1
     },
@@ -82,11 +92,11 @@
       "position_count": 0
     }
   },
-  "cash": 10.45,
-  "buying_power": 10.45,
-  "total_invested_value": 292.42,
-  "total_portfolio_value": 302.87,
-  "total_pl_dollars": 2.87,
-  "total_pl_pct": 0.96,
-  "summary": "\ud83d\udcc8 Portfolio $302.87 (+0.96%, P/L $+2.87)\n  core   : 4 pos, $232.74 (+4.20%)\n  swing  : 1 pos, $59.67 (+1.43%)\n  Best: JPM +9.54%  |  Worst: WMT -0.21%"
+  "cash": 9.36,
+  "buying_power": 9.36,
+  "total_invested_value": 295.08,
+  "total_portfolio_value": 304.44,
+  "total_pl_dollars": 4.44,
+  "total_pl_pct": 1.48,
+  "summary": "\ud83d\udcc8 Portfolio $304.44 (+1.48%, P/L $+4.44)\n  core   : 5 pos, $235.31 (+4.84%)\n  swing  : 1 pos, $59.77 (+1.59%)\n  Best: JPM +9.07%  |  Worst: AMD -7.81%"
 }
