@@ -5851,5 +5851,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "f09d38d5-c54a-4afd-8f53-f5fb0b8fc658",
+    "text": "Sold AMD core position after broker stop hit $510.22 (-$0.12). Deployed $1.17 into MU swing trade\u2014strong momentum at 55, analyst upgrade to buy (+101% upside), but DRAM lawsuit overhang warrants swing not core. Core bucket holding 5 positions up 5%, swing positioned tight.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-11-16T17:14:27.988942+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2122377775952622026"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-11-16T17:14:27.988942+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
