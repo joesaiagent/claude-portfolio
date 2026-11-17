@@ -1,65 +1,75 @@
 {
-  "timestamp": "2026-11-17T14:13:35.817316+00:00",
+  "timestamp": "2026-11-17T17:13:16.055674+00:00",
   "broker_mode": "LIVE",
   "positions": [
     {
       "ticker": "JPM",
       "shares": 0.1531,
       "entry_price": 315.88,
-      "current_price": 335.15,
-      "market_value": 51.311465,
-      "pl_dollars": 2.950237,
-      "pl_pct": 6.1,
+      "current_price": 331.035,
+      "market_value": 50.681459,
+      "pl_dollars": 2.320231,
+      "pl_pct": 4.798,
       "bucket": "core"
     },
     {
       "ticker": "MA",
       "shares": 0.0969,
       "entry_price": 645.042,
-      "current_price": 656.0,
-      "market_value": 63.5664,
-      "pl_dollars": 1.06183,
-      "pl_pct": 1.699,
+      "current_price": 648.29,
+      "market_value": 62.819301,
+      "pl_dollars": 0.314731,
+      "pl_pct": 0.504,
       "bucket": "core"
     },
     {
       "ticker": "MU",
       "shares": 0.0015,
       "entry_price": 734.8,
-      "current_price": 733.16,
-      "market_value": 1.09974,
-      "pl_dollars": -0.00246,
-      "pl_pct": -0.22300000000000003,
+      "current_price": 694.0134,
+      "market_value": 1.04102,
+      "pl_dollars": -0.06118,
+      "pl_pct": -5.550999999999999,
       "bucket": "core"
+    },
+    {
+      "ticker": "NET",
+      "shares": 0.0039,
+      "entry_price": 294.832,
+      "current_price": 280.66,
+      "market_value": 1.094574,
+      "pl_dollars": -0.055271,
+      "pl_pct": -4.807,
+      "bucket": "swing"
     },
     {
       "ticker": "UBER",
       "shares": 0.8586,
       "entry_price": 68.518,
-      "current_price": 69.33,
-      "market_value": 59.526738,
-      "pl_dollars": 0.697183,
-      "pl_pct": 1.185,
+      "current_price": 68.29,
+      "market_value": 58.633794,
+      "pl_dollars": -0.195761,
+      "pl_pct": -0.333,
       "bucket": "swing"
     },
     {
       "ticker": "V",
       "shares": 0.1575,
       "entry_price": 398.866,
-      "current_price": 422.5,
-      "market_value": 66.54375,
-      "pl_dollars": 3.722355,
-      "pl_pct": 5.925,
+      "current_price": 419.69,
+      "market_value": 66.101175,
+      "pl_dollars": 3.27978,
+      "pl_pct": 5.221,
       "bucket": "core"
     },
     {
       "ticker": "WMT",
       "shares": 0.3916,
       "entry_price": 126.88,
-      "current_price": 126.5,
-      "market_value": 49.5374,
-      "pl_dollars": -0.148808,
-      "pl_pct": -0.299,
+      "current_price": 127.65,
+      "market_value": 49.98774,
+      "pl_dollars": 0.301532,
+      "pl_pct": 0.607,
       "bucket": "core"
     }
   ],
@@ -67,20 +77,20 @@
     "core": {
       "target_dollars": 240.0,
       "deployed_cost_basis": 224.48,
-      "current_value": 232.06,
-      "unrealized_pl_dollars": 7.58,
-      "unrealized_pl_pct": 3.38,
+      "current_value": 230.63,
+      "unrealized_pl_dollars": 6.16,
+      "unrealized_pl_pct": 2.74,
       "realized_pl_dollars": -21.56,
       "position_count": 5
     },
     "swing": {
       "target_dollars": 60.0,
-      "deployed_cost_basis": 58.83,
-      "current_value": 59.53,
-      "unrealized_pl_dollars": 0.7,
-      "unrealized_pl_pct": 1.19,
+      "deployed_cost_basis": 59.98,
+      "current_value": 59.73,
+      "unrealized_pl_dollars": -0.25,
+      "unrealized_pl_pct": -0.42,
       "realized_pl_dollars": 16.61,
-      "position_count": 1
+      "position_count": 2
     },
     "lottery": {
       "target_dollars": 0.0,
@@ -92,11 +102,11 @@
       "position_count": 0
     }
   },
-  "cash": 9.2,
-  "buying_power": 9.2,
-  "total_invested_value": 291.59,
-  "total_portfolio_value": 300.79,
-  "total_pl_dollars": 0.79,
-  "total_pl_pct": 0.26,
-  "summary": "\ud83d\udcc8 Portfolio $300.79 (+0.26%, P/L $+0.79)\n  core   : 5 pos, $232.06 (+3.38%)\n  swing  : 1 pos, $59.53 (+1.19%)\n  Best: JPM +6.10%  |  Worst: WMT -0.30%"
+  "cash": 8.04,
+  "buying_power": 8.04,
+  "total_invested_value": 290.36,
+  "total_portfolio_value": 298.4,
+  "total_pl_dollars": -1.6,
+  "total_pl_pct": -0.53,
+  "summary": "\ud83d\udcc9 Portfolio $298.40 (-0.53%, P/L $-1.60)\n  core   : 5 pos, $230.63 (+2.74%)\n  swing  : 2 pos, $59.73 (-0.42%)\n  Best: V +5.22%  |  Worst: MU -5.55%"
 }

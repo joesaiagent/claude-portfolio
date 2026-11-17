@@ -5909,5 +5909,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "0d3853b6-9119-4d97-86f1-f9ecfd28e1f8",
+    "text": "Grabbed $1.15 of NET on swing momentum (59 score) + strong analyst upgrade (+17%). Cloudflare showing solid technical setup despite analyst concerns on earnings visibility from Gartner positioning.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-11-17T17:13:19.555421+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2122739876835565860"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-11-17T17:13:19.555421+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
