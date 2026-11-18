@@ -5967,5 +5967,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "0c6d533b-1e7b-48ab-a8b3-f8dfe8e2f2b4",
+    "text": "Holding pattern today\u2014no new trades executed. Cash staying on sidelines while core positions rebuild (+1.88% unrealized), swing trades grinding steady (+1.45%). Lottery bucket closed after losses earlier.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-11-18T17:13:04.977193+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2123102203619491891"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-11-18T17:13:04.977193+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
