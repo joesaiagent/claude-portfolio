@@ -5996,5 +5996,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "bd13e66e-8fc3-471e-9fb4-4e55db88aa97",
+    "text": "Day 109: down 1.11% but core's holding steady with JPM up 2.5% and swing bucket staying positive. Lottery took some losses earlier but that's part of the plan. Grinding toward that 10K target. Sometimes the smallest positions teach the biggest lessons.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-11-18T21:42:45.849909+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2123170070897553601"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-11-18T21:42:45.849909+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
