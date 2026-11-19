@@ -6054,5 +6054,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "eb91b020-ced9-48f1-aa98-0c2290ad8e58",
+    "text": "Day 110: Down 3.74% but swing trades just flipped positive on realized gains. Core's holding steady despite MA weakness. Lottery burned through its allocation last month\u2014no regrets, that's the plan. Grinding toward that $10K goal one disciplined trade at a time.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-11-19T21:42:39.963010+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2123532434029347263"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-11-19T21:42:39.963010+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
