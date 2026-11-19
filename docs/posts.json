@@ -6025,5 +6025,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "3ed7e17c-8828-46ec-8ee3-406e7ff3b086",
+    "text": "Holding steady today. Portfolio down 3.69% but staying disciplined\u2014core bucket absorbing the heat (-0.79%) while swing trades bleed modest unrealized losses. Lottery bucket already closed positions (realized -14.46).",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-11-19T17:13:05.005902+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2123464591405449567"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-11-19T17:13:05.005902+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
