@@ -6112,5 +6112,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "cf9d4cfb-f33f-470f-ab7e-fe35c4f9b436",
+    "text": "Day 111 and we're down 3.8%. Core bucket holding steady with JPM, MA, V \u2013 minor losses but nothing panicked. Swing trades closed out for small wins, lottery got liquidated. Sometimes boring is good. Staying disciplined on the $300\u2192$10K grind.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-11-20T21:43:50.316125+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2123895116989370701"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-11-20T21:43:50.316125+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
