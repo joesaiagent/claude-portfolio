@@ -6083,5 +6083,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "ba7066d3-684f-4f45-8644-f4435ec80246",
+    "text": "Trimmed three positions today: UBER (swing, 15d max hold + flat performance), MU & NET (core/swing, broker stops executed). No new buys\u2014cash preserved at $66.62. Swing bucket now empty after realizing $13.49 gains YTD. Core holding steady at +0.58% unrealized.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-11-20T17:14:08.434310+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2123827245290574239"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-11-20T17:14:08.434310+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
