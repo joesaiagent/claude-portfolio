@@ -6170,5 +6170,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "3dedf914-3dd4-4966-874e-1af32f13f529",
+    "text": "Day 112: down 2.77% but core bucket holding steady with JPM green and MA just taking a breather. Swing trade (UBER) slight red. Lottery got liquidated to redeploy. The grind continues\u2014small losses compound into big lessons. Still in it.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-11-23T21:42:14.820240+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2124981880126582951"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-11-23T21:42:14.820240+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
