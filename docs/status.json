@@ -1,45 +1,45 @@
 {
-  "timestamp": "2026-11-23T14:14:32.024081+00:00",
+  "timestamp": "2026-11-23T17:13:53.246272+00:00",
   "broker_mode": "LIVE",
   "positions": [
     {
       "ticker": "JPM",
       "shares": 0.1531,
       "entry_price": 315.88,
-      "current_price": 315.62,
-      "market_value": 48.321422,
-      "pl_dollars": -0.039806,
-      "pl_pct": -0.082,
+      "current_price": 318.38,
+      "market_value": 48.743978,
+      "pl_dollars": 0.38275,
+      "pl_pct": 0.791,
       "bucket": "core"
     },
     {
       "ticker": "MA",
       "shares": 0.0969,
       "entry_price": 645.042,
-      "current_price": 630.46,
-      "market_value": 61.091574,
-      "pl_dollars": -1.412996,
-      "pl_pct": -2.261,
+      "current_price": 636.08,
+      "market_value": 61.636152,
+      "pl_dollars": -0.868418,
+      "pl_pct": -1.389,
       "bucket": "core"
     },
     {
       "ticker": "V",
       "shares": 0.1575,
       "entry_price": 398.866,
-      "current_price": 405.27,
-      "market_value": 63.830025,
-      "pl_dollars": 1.00863,
-      "pl_pct": 1.606,
+      "current_price": 409.87,
+      "market_value": 64.554525,
+      "pl_dollars": 1.73313,
+      "pl_pct": 2.759,
       "bucket": "core"
     },
     {
       "ticker": "WMT",
       "shares": 0.3916,
       "entry_price": 126.88,
-      "current_price": 126.3,
-      "market_value": 49.45908,
-      "pl_dollars": -0.227128,
-      "pl_pct": -0.457,
+      "current_price": 128.64,
+      "market_value": 50.375424,
+      "pl_dollars": 0.689216,
+      "pl_pct": 1.387,
       "bucket": "core"
     }
   ],
@@ -47,9 +47,9 @@
     "core": {
       "target_dollars": 240.0,
       "deployed_cost_basis": 223.37,
-      "current_value": 222.7,
-      "unrealized_pl_dollars": -0.67,
-      "unrealized_pl_pct": -0.3,
+      "current_value": 225.31,
+      "unrealized_pl_dollars": 1.94,
+      "unrealized_pl_pct": 0.87,
       "realized_pl_dollars": -21.67,
       "position_count": 4
     },
@@ -59,7 +59,7 @@
       "current_value": 0,
       "unrealized_pl_dollars": 0,
       "unrealized_pl_pct": 0,
-      "realized_pl_dollars": 13.48,
+      "realized_pl_dollars": 13.58,
       "position_count": 0
     },
     "lottery": {
@@ -72,11 +72,11 @@
       "position_count": 0
     }
   },
-  "cash": 66.62,
-  "buying_power": 66.62,
-  "total_invested_value": 222.7,
-  "total_portfolio_value": 289.32,
-  "total_pl_dollars": -10.68,
-  "total_pl_pct": -3.56,
-  "summary": "\ud83d\udcc9 Portfolio $289.32 (-3.56%, P/L $-10.68)\n  core   : 4 pos, $222.70 (-0.30%)\n  Best: V +1.61%  |  Worst: MA -2.26%"
+  "cash": 66.7,
+  "buying_power": 66.7,
+  "total_invested_value": 225.31,
+  "total_portfolio_value": 292.01,
+  "total_pl_dollars": -7.99,
+  "total_pl_pct": -2.66,
+  "summary": "\ud83d\udcc9 Portfolio $292.01 (-2.66%, P/L $-7.99)\n  core   : 4 pos, $225.31 (+0.87%)\n  Best: V +2.76%  |  Worst: MA -1.39%"
 }

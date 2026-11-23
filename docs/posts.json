@@ -6141,5 +6141,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "38c5b436-105c-402a-b516-88b809fa8859",
+    "text": "Bought UBER twice in swing ($60 total) on 55 momentum + strong analyst sentiment despite WeRide partnership hype lacking substance. Exited old UBER position after 18 days flat. Swing bucket now reset, core holding steady at +0.87%.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-11-23T17:13:56.944874+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2124914360694775888"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-11-23T17:13:56.944874+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
