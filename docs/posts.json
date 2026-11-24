@@ -6199,5 +6199,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "967b35e6-4bf8-46ac-8d2a-01353127f1c8",
+    "text": "Closed UBER (19d hold, flat exit) to free swing capital. Deployed $30 into NVDA on momentum signal (60/100) + analyst upgrade (+48% upside, rec 1.8). CEO noise offset by edge-AI catalyst. Swing bucket now empty, repositioning for next setup. Core holding steady +2.2%.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-11-24T17:13:23.046167+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2125276606373437507"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-11-24T17:13:23.046167+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
