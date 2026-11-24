@@ -6228,5 +6228,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "8ce113a0-34b0-4cf5-bef8-68d6dce43fff",
+    "text": "Day 113: down 1.68% but core bucket staying resilient with JPM and MA creeping green. Swing trade NVDA holding steady. Lottery got wiped earlier but that's the game \u2014 focusing on steady compounding over lottery tickets anyway. Still grinding toward 10K.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-11-24T21:30:11.383759+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2125341233593692268"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-11-24T21:30:11.383759+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
