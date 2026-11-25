@@ -6257,5 +6257,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "5ad9c096-bef5-4226-9840-afb89aea396f",
+    "text": "Deployed $30 today: sold NVDA (swing max-hold hit, -$1.11 realized), then bought RBLX ($2.18, momentum 59 but analyst downgrades + GTA VI threat) and re-entered NVDA ($27.81, momentum 56 despite governance chaos risk). Core bucket steady +2.65%, swing restarting.",
+    "topic": "midday_update",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-11-25T17:13:51.582403+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2125639113894134042"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-11-25T17:13:51.582403+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
