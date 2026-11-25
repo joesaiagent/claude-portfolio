@@ -6286,5 +6286,34 @@
     "posted_platforms": [
       "x"
     ]
+  },
+  {
+    "id": "8d73c614-abaf-476c-a55a-e8f34217de94",
+    "text": "Day 114: Down $3.54 but core bucket holding steady with MA and JPM showing gains. Swing trades in NVDA catching some momentum. Lottery got wiped but that's the bet. Staying disciplined on the 3-bucket plan. Small daily grinds build to $10K.",
+    "topic": "daily_summary",
+    "platform": "x",
+    "status": "posted",
+    "created_at": "2026-11-25T21:42:21.050384+00:00",
+    "fanout": [
+      {
+        "platform": "x",
+        "posted": true,
+        "id": "2125706682307150090"
+      },
+      {
+        "platform": "bluesky",
+        "posted": false,
+        "reason": "creds missing"
+      },
+      {
+        "platform": "mastodon",
+        "posted": false,
+        "reason": "creds missing"
+      }
+    ],
+    "posted_at": "2026-11-25T21:42:21.050384+00:00",
+    "posted_platforms": [
+      "x"
+    ]
   }
 ]
